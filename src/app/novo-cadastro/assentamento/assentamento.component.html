@@ -1,0 +1,231 @@
+<div class="row margem">
+  <div class="col-2"></div>
+  <div class="col-3">
+    <p><strong>Codigo do Beneficiario:</strong> RS0193540000456</p>
+  </div>
+  <div class="col-3">
+    <p><strong>Titular: </strong>Joaquim José da Silva, Maria Rocha da Silva</p>
+  </div>
+  <div class="col-4">
+    <p><strong>Projeto:</strong> RS0195000</p>
+  </div>
+  <div class="col-1"></div>
+  <div class="area_conteudo">
+    <form class="container-fluid px-0" [formGroup]="form">
+      <div class="row gx-2">
+        <div class="col-3">
+          <mat-form-field class="w-100">
+            <mat-label>Nome</mat-label>
+            <input
+              matInput
+              value="Joaquim José da Silva"
+              formControlName="titular_1"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="col-3">
+          <mat-form-field class="w-100">
+            <mat-label>Data de homologação</mat-label>
+            <input
+              matInput
+              value="24/10/2000"
+              formControlName="data_homologacao_1"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field class="w-100">
+            <mat-label>Situação do Assentado</mat-label>
+            <mat-select formControlName="situacao_1">
+              @for (situacao of situacoesAssentado; track situacao.value) {
+              <mat-option [value]="situacao.value">
+                {{ situacao.viewValue }}
+              </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field class="w-100">
+            <mat-label>Selecione a data</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="data_situacao_1"
+            />
+
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row gx-2">
+        <div class="col-3">
+          <mat-form-field class="w-100">
+            <mat-label>Nome</mat-label>
+            <input
+              matInput
+              value="Maria Rocha da Silva"
+              formControlName="titular_2"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="col-2">
+          <mat-form-field class="w-100">
+            <mat-label>Data de homologação</mat-label>
+            <input
+              matInput
+              value="20/03/2005"
+              formControlName="data_homologacao_2"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-2">
+          <mat-form-field class="w-100">
+            <mat-label>Situação do Assentado</mat-label>
+            <mat-select formControlName="situacao_2">
+              @for (situacao of situacoesAssentado2; track situacao.value) {
+              <mat-option [value]="situacao.value">
+                {{ situacao.viewValue }}
+              </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-2">
+          <mat-form-field class="w-100">
+            <mat-label>Selecione a Data</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker2"
+              formControlName="data_situacao_2"
+            />
+
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker2"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <label id="example-radio-group-label" class="w-100"
+            ><strong>Apto para ser beneficiario?</strong>
+          </label>
+          <mat-radio-group
+            formControlName="aptoPNRA"
+            aria-label="Apto para ser beneficiario?"
+            class="w-100"
+          >
+            <mat-radio-button value="1">Option 1</mat-radio-button>
+            <mat-radio-button value="2">Option 2</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </div>
+
+      <hr />
+      <div class="row gx-2 margem_botton">
+        <div class="col-3">
+          <button
+            (click)="adicionarLote()"
+            [disabled]="!loteControlesValidos"
+            type="button"
+            class="btn btn-primary"
+          >
+            <strong>Novo Lote</strong>
+          </button>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <mat-form-field class="w-100">
+            <mat-label>Tipo</mat-label>
+            <mat-select formControlName="tipo_lote">
+              @for (tipo_lote of tipo_lote; track tipo_lote.value) {
+              <mat-option [value]="tipo_lote.value">
+                {{ tipo_lote.viewValue }}
+              </mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field class="w-100">
+            <mat-label>Area do lote</mat-label>
+            <input
+              matInput
+              value="informe a area do lote"
+              formControlName="area_lote"
+            />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field class="w-100">
+            <mat-label>numero</mat-label>
+            <input matInput value="" formControlName="numero_lote" />
+          </mat-form-field>
+        </div>
+        <div class="col-3">
+          <mat-form-field class="w-100">
+            <mat-label>numero do SNCR</mat-label>
+            <input matInput value="" formControlName="codigo_SNCR" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="w-100">
+            <mat-label>Area de denominação da Gleba</mat-label>
+            <input matInput value="" formControlName="denominacao_Gleba" />
+          </mat-form-field>
+        </div>
+        <div class="col-6">
+          <mat-form-field class="w-100">
+            <mat-label>Area de denominação do Lote</mat-label>
+            <input matInput value="" formControlName="denominacao_lote" />
+          </mat-form-field>
+        </div>
+      </div>
+      <hr />
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field class="example-full-width">
+            <mat-label>Observações</mat-label>
+            <textarea
+              matInput
+              placeholder="Ex. It makes me feel..."
+              formControlName="observacao"
+            ></textarea>
+          </mat-form-field>
+        </div>
+
+        <div class="col-3">
+          <mat-form-field>
+            <mat-label>Selecione a data</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker3"
+              formControlName="data_observacao"
+            />
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker3"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-3"></div>
+      </div>
+    </form>
+  </div>
+</div>

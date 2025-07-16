@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "public": true,
+  "builds": [
+    {
+      "src": "INCRA/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "INCRA/dist/incra"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ]
+}

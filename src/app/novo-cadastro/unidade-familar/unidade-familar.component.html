@@ -1,0 +1,337 @@
+<div class="row margem">
+  <div class="col-2"></div>
+  <div class="col-3">
+    <p><strong>Codigo do Beneficiario:</strong> RS0193540000456</p>
+  </div>
+  <div class="col-3">
+    <p><strong>Titular: </strong>Joaquim José da Silva, Maria Rocha da Silva</p>
+  </div>
+  <div class="col-4">
+    <p><strong>Projeto:</strong> RS0195000</p>
+  </div>
+  <div class="col-1"></div>
+</div>
+
+<div class="div-principal">
+  <h1 class="titulo">Unidade Familar</h1>
+
+  <form [formGroup]="formgroup">
+    <div class="row espaco_campos">
+      <mat-form-field class="col-3">
+        <mat-label>Situaço Conjugal</mat-label>
+        <mat-select>
+          @for (s_conjugal of s_conjugal; track s_conjugal) {
+          <mat-option [value]="s_conjugal.value">{{
+            s_conjugal.viewValue
+          }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col-3"
+        ><mat-label>Data da União</mat-label>
+        <input
+          matInput
+          [matDatepicker]="datepicker"
+          formControlName="data_uniao"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="datepicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button matButton matDatepickerCancel>Cancel</button>
+            <button matButton="elevated" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="col-3"
+        ><mat-label>Data da União</mat-label>
+        <input
+          matInput
+          [matDatepicker]="datepicker2"
+          formControlName="data_uniao"
+          formControlName="data_separacao"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="datepicker2"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #datepicker2>
+          <mat-datepicker-actions>
+            <button matButton matDatepickerCancel>Cancel</button>
+            <button matButton="elevated" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="col-3">
+        <mat-label>Renda Familiar</mat-label>
+
+        <input
+          matInput
+          type="text"
+          placeholder="Informe a renda familiar"
+          formControlName="renda_familiar"
+        />
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <h6>Dependente</h6>
+        <!--
+        <mat-icon
+          class="flex justify-center card col-auto d-inline-flex align-items-center ajuste_plus"
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="add"
+        ></mat-icon>
+        -->
+      </div>
+
+      <div class="col-10"></div>
+    </div>
+
+    <div class="row espaco_campos gx-0">
+      <div class="col-2">
+        <mat-form-field>
+          <mat-label>Tipo de dependente</mat-label>
+          <mat-select formControlName="tipo_dependente">
+            @for (t_dependente of t_dependente; track t_dependente) {
+            <mat-option [value]="t_dependente.value">{{
+              t_dependente.viewValue
+            }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="col-2">
+        <mat-form-field>
+          <mat-label>Nome do dependente</mat-label>
+
+          <input
+            matInput
+            type="text"
+            placeholder="Informe o nome"
+            formControlName="nome"
+          />
+        </mat-form-field>
+      </div>
+
+      <div class="col-2">
+        <mat-form-field>
+          <mat-label>Data de Nascimento</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            formControlName="data_nascimento"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col-2">
+        <mat-form-field>
+          <mat-label>Data na Familia</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker1"
+            formControlName="data_na_familia"
+          />
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker1"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <div class="col-2">
+        <mat-form-field>
+          <mat-label>Informe o CPF</mat-label>
+
+          <input
+            matInput
+            type="text"
+            placeholder="Informe o CPF"
+            formControlName="cpf_dependente"
+            mask="000.000.000-00"
+          />
+        </mat-form-field>
+      </div>
+      <!--btn btn-primary align-bottom-fix btn-tamanho-customizado-->
+      <div class="col-2">
+        <button
+          type="button"
+          class="btn btn-primary align-bottom-fix btn-tamanho-customizado2"
+          (click)="adicionarDependente()"
+          [disabled]="!camposDependentePreenchidos()"
+        >
+          <strong>Adicionar Dependente</strong>
+        </button>
+      </div>
+    </div>
+    <!--BTN ADICIONAR DEPENDENTES-->
+    <div class="row campos_dependentes">
+      <div class="col-6">
+        <!--
+          <button mat-raised-button color="primary" (click)="adicionarDependente()">
+        Adicionar Dependente
+         </button>
+          -->
+      </div>
+      <div class="col-6"></div>
+    </div>
+
+    <div class="row espaco_campos">
+      <div class="col-11">
+        <mat-form-field class="w-100">
+          <mat-label>Associação da Unidade Familiar</mat-label>
+          <input
+            matInput
+            placeholder="Associação da Unidade Familiar"
+            formControlName="associacao_unidade_familiar"
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-1">
+        <button
+          class="btn btn-primary align-bottom-fix btn-tamanho-customizado"
+          [disabled]="formgroup.get('associacao_unidade_familiar')?.invalid"
+          (click)="adicionarUnidadeFamiliar()"
+        >
+          Incluir Unidade
+        </button>
+      </div>
+    </div>
+    <!--
+      <mat-icon
+        class="flex justify-center card col-auto d-inline-flex align-items-center ajuste_plus"
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="add"
+      ></mat-icon>
+      -->
+  </form>
+  <hr />
+
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8"
+    *ngIf="dataSource && dataSource.length > 0"
+  >
+    <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="CPF">
+      <th mat-header-cell *matHeaderCellDef>CPF</th>
+      <td mat-cell *matCellDef="let element">{{ element.cpf }}</td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="tipo_dependente">
+      <th mat-header-cell *matHeaderCellDef>tipo_dependente</th>
+      <td mat-cell *matCellDef="let element">{{ element.tipo_dependente }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="data_nasc">
+      <th mat-header-cell *matHeaderCellDef>data_nasc</th>
+      <td mat-cell *matCellDef="let element">{{ element.data_nasc }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="data_entrada_na_familia">
+      <th mat-header-cell *matHeaderCellDef>data_entrada_na_familia</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.data_entrada_na_familia }}
+      </td>
+    </ng-container>
+    <!--
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Symbol</th>
+      <td mat-cell *matCellDef="let element">{{ element.acoes }}</td>
+    </ng-container>
+-->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+          <button
+            mat-menu-item
+            *ngFor="let acao of element.acoes"
+            (click)="executarAcao(acao, element)"
+          >
+            <mat-icon *ngIf="acao === 'visualizar'">visibility</mat-icon>
+            <mat-icon *ngIf="acao === 'editar'">edit</mat-icon>
+            <mat-icon *ngIf="acao === 'e872'">delete</mat-icon>
+            <span>{{ acao }}</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <hr />
+  <table
+    mat-table
+    [dataSource]="associacoesDataSource"
+    class="mat-elevation-z8"
+    *ngIf="associacoesDataSource && associacoesDataSource.length > 0"
+  >
+    <!-- Coluna de Associação -->
+    <ng-container matColumnDef="associacao">
+      <th mat-header-cell *matHeaderCellDef>Associação</th>
+      <td mat-cell *matCellDef="let element">{{ element.associacao }}</td>
+    </ng-container>
+    <hr />
+    <!-- Coluna de Ações -->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="editarAssociacao(element)">
+            <mat-icon>edit</mat-icon>
+            <span>Editar</span>
+          </button>
+          <button mat-menu-item (click)="removerAssociacao(element)">
+            <mat-icon>delete</mat-icon>
+            <span>Excluir</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <!-- Cabeçalho e Linhas -->
+    <tr mat-header-row *matHeaderRowDef="associacoesDisplayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: associacoesDisplayedColumns"></tr>
+  </table>
+</div>

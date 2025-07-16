@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-4"></div>
+  <div class="card flex justify-center ajuste-breadcramb">
+    <p-breadcrumb
+      [model]="items"
+      [home]="home"
+      class="text-justify text-link"
+    />
+  </div>
+</div>
+<div class="conteudo">
+  <router-outlet></router-outlet>
+</div>
+<footer class="footer-fixo row">
+  <div class="col-1"></div>
+  <button
+    class="col-1 btn btn-primary"
+    [routerLink]="['/lista']"
+    (click)="voltar()"
+  >
+    <strong>Voltar</strong>
+  </button>
+  <div class="col-8"></div>
+  <button
+    class="btn btn-primary col-1"
+    (click)="avancar()"
+    *ngIf="!ehUltimaEtapa()"
+  >
+    <strong>Avançar</strong>
+  </button>
+
+  <button
+    class="btn btn-primary col-auto d-inline-flex align-items-center"
+    *ngIf="ehUltimaEtapa()"
+    (click)="salvar()"
+  >
+    <mat-icon class="me-1">done_outline</mat-icon> <strong>Salvar</strong>
+  </button>
+
+  <div class="col-1"></div>
+</footer>

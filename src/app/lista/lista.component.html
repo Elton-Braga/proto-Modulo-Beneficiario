@@ -1,0 +1,234 @@
+<div class="div-principal">
+  <div class="row div-titulo">
+    <div class="col-10">
+      <p class="text-left text-primary">Modulo Beneficiário</p>
+    </div>
+    <div class="col-2 d-flex justify-content-center align-items-center">
+      <!--<button
+        class="btn btn-light btn-cadastro d-inline-flex align-items-center"
+        [routerLink]="['/novo']"
+      >
+        <span class="text-label">Novo Cadastro</span>
+        <mat-icon class="me-1">post_add</mat-icon>
+      </button>-->
+    </div>
+  </div>
+  <div calss="row">
+    <form>
+      <!-- Campos de busca-->
+      <mat-form-field class="col-6">
+        <mat-label>Codigo Beneficiario</mat-label>
+        <input
+          matInput
+          #message
+          maxlength="256"
+          placeholder="Informe o código do Beneficiário"
+        />
+        <mat-hint align="start"> </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="col-6">
+        <mat-label>Codigo Projeto</mat-label>
+        <input
+          matInput
+          #message
+          mask="000.000/0000"
+          maxlength="256"
+          placeholder="Informe o código do do projeto"
+        />
+        <mat-hint align="start"> </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="col-6">
+        <mat-label>CPF</mat-label>
+        <input
+          matInput
+          #message
+          maxlength="256"
+          mask="000.000.000-00"
+          placeholder="Informe o CPF do Beneficiário"
+        />
+        <mat-hint align="start"> </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="col-6">
+        <mat-label>Ordem</mat-label>
+        <input
+          matInput
+          #message
+          mask="000000/0000"
+          maxlength="256"
+          placeholder="Informe o número da Ordem"
+        />
+        <mat-hint align="start"> </mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="col-12">
+        <mat-label>Tipo de Busca</mat-label>
+        <mat-select multiple>
+          @for (tipo_busca of tipo_busca; track tipo_busca) {
+          <mat-option [value]="tipo_busca">{{ tipo_busca }}</mat-option>
+          }
+        </mat-select></mat-form-field
+      >
+      <button
+        matButton="elevated"
+        class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
+      >
+        Pesquisar
+        <mat-icon class="me-1">search</mat-icon>
+      </button>
+
+      <button
+        matButton="elevated"
+        class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
+      >
+        Limpar
+        <mat-icon class="me-1">clear_all</mat-icon>
+      </button>
+      <hr />
+    </form>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="row">
+        <div class="col-1"></div>
+        <div class="col-2">
+          <button
+            mat-button
+            [matMenuTriggerFor]="menu"
+            [disabled]="!selection.hasValue()"
+          >
+            <mat-icon class="me-1">arrow_downward</mat-icon> Exportar
+          </button>
+
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>table_chart</mat-icon>
+              <span>CSV</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>picture_as_pdf</mat-icon>
+              <span>PDF</span>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>grid_on</mat-icon>
+              <span>Excel</span>
+            </button>
+          </mat-menu>
+        </div>
+
+        <div class="col-7"></div>
+
+        <div class="col-2">
+          <div>
+            <!-- Botão de dropdown para ajustar colunas -->
+            <button mat-button [matMenuTriggerFor]="menuColunas">
+              <mat-icon>view_column</mat-icon> Ajustar Colunas
+            </button>
+
+            <!-- Menu suspenso com checkboxes -->
+            <mat-menu #menuColunas="matMenu">
+              <mat-checkbox
+                *ngFor="let coluna of colunasDisponiveis"
+                [(ngModel)]="coluna.visivel"
+                (change)="atualizarColunasVisiveis()"
+              >
+                {{ coluna.label }}
+              </mat-checkbox>
+            </mat-menu>
+          </div>
+        </div>
+      </div>
+      <div class="mat-elevation-z2 p-4">
+        <table mat-table [dataSource]="dataSource" class="mat-table" matSort>
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="check">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox
+                (change)="$event ? toggleAllRows() : null"
+                [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                [aria-label]="checkboxLabel()"
+              >
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox
+                (click)="$event.stopPropagation()"
+                (change)="$event ? selection.toggle(row) : null"
+                [checked]="selection.isSelected(row)"
+                [aria-label]="checkboxLabel(row)"
+              >
+              </mat-checkbox>
+            </td>
+          </ng-container>
+          <!-- CPF -->
+          <ng-container matColumnDef="beneficiario">
+            <th mat-header-cell *matHeaderCellDef>Beneficiário</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.beneficiario }}
+            </td>
+          </ng-container>
+
+          <!-- Data -->
+          <ng-container matColumnDef="data_transferencia">
+            <th mat-header-cell *matHeaderCellDef>Data Transferência</th>
+            <td mat-cell *matCellDef="let element">
+              {{ formatarData(element.data_transferencia) }}
+            </td>
+          </ng-container>
+
+          <!-- Código -->
+          <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef>Código</th>
+            <td mat-cell *matCellDef="let element">{{ element.codigo }}</td>
+          </ng-container>
+
+          <!-- Projeto -->
+          <ng-container matColumnDef="nome_projeto">
+            <th mat-header-cell *matHeaderCellDef>Projeto</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.nome_projeto }}
+            </td>
+          </ng-container>
+
+          <!-- Ações -->
+          <ng-container matColumnDef="acoes">
+            <th mat-header-cell *matHeaderCellDef>Ações</th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button [matMenuTriggerFor]="menu">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+                <button
+                  mat-menu-item
+                  *ngFor="let acao of element.acoes"
+                  (click)="executarAcao(acao, element)"
+                >
+                  <mat-icon *ngIf="acao === 'visualizar'">visibility</mat-icon>
+                  <mat-icon *ngIf="acao === 'editar'">edit</mat-icon>
+                  <mat-icon *ngIf="acao === 'remover'">delete</mat-icon>
+                  <span>{{ acao }}</span>
+                </button>
+              </mat-menu>
+            </td>
+          </ng-container>
+
+          <!-- Linhas -->
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+
+        <mat-paginator
+          [length]="dataSource.data.length"
+          [pageSize]="10"
+          [pageSizeOptions]="[10, 20]"
+          showFirstLastButtons
+        >
+        </mat-paginator>
+      </div>
+    </div>
+  </div>
+</div>

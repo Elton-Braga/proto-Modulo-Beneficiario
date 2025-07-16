@@ -1,0 +1,103 @@
+.div-principal {
+  border-radius: 1.5rem;
+  padding: 2rem;
+
+  border: 1px solid #e9eaec;
+  margin: 0 10rem 15rem 10rem;
+}
+
+.titulo {
+  margin: 3rem 0;
+}
+h1 {
+  color: rgb(12, 71, 122);
+  font-size: 35px;
+}
+.example-form-field {
+  margin-right: 20px;
+}
+
+.ajuste_plus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: auto;
+  border: 1px solid #e0e0e0; // ou outra cor
+  //border-radius: 1%; // para deixar redondo
+  font-size: 24px;
+  color: #57577a;
+  cursor: pointer;
+  margin: 1rem;
+
+  font-size: 24px;
+}
+
+.ajuste_plus:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: auto;
+  border: 1px solid #e0e0e0; // ou outra cor
+  //border-radius: 1%; // para deixar redondo
+  font-size: 24px;
+  color: #57577a;
+  cursor: pointer;
+  margin: 1rem;
+  background-color: #f3f3f3;
+}
+
+.dependent_title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: auto;
+  font-size: 24px;
+  color: #57577a;
+  margin: 1rem;
+}
+
+.largura {
+  width: 100%;
+  padding: 0;
+}
+
+table {
+  width: 100%;
+}
+.campos_dependentes {
+  margin: 0 0 1.5rem 0;
+}
+
+.btn_add_dependentes {
+  width: 10rem;
+}
+
+::ng-deep .mat-form-field {
+  margin-bottom: 0 !important;
+}
+
+.align-bottom-fix {
+  display: flex;
+  align-items: flex-end;
+}
+
+button {
+  margin: 0;
+}
+
+.btn-tamanho-customizado {
+  width: 7.5rem;
+  height: 3.4375rem;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.btn-tamanho-customizado2 {
+  height: 3.4375rem;
+  font-size: 14px;
+  font-weight: bold;
+  margin-left: 6rem;
+}

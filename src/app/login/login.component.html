@@ -1,0 +1,92 @@
+<div class="principal">
+  <div class="container">
+    <div class="row" id="container">
+      <div class="col-7">
+        <div mat-card-image></div>
+        <mat-card-content>
+          <img
+            mat-card-image
+            src="	https://sso.acesso.gov.br/assets/govbr/img/conta_govbr_v2.jpg"
+            class="imagem"
+          />
+        </mat-card-content>
+      </div>
+
+      <div class="col-5">
+        <form
+          class="login"
+          [formGroup]="registrationForm"
+          (ngSubmit)="onSubmit()"
+        >
+          <div class="form-group">
+            <label for="exampleInputEmail1">Informe o CPF</label>
+            <input
+              formControlName="cpf"
+              type="text"
+              mask="000.000.000-00"
+              placeholder="000.000.000-00"
+              class="form-control"
+              id="exampleInputEmail1"
+              placeholder="000.000.000-00"
+              name="=cpf"
+              [(ngModel)]="cpf"
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >We'll never share your email with anyone else.</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input
+              formControlName="senha"
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="Informe a senha"
+              name="senha"
+              [ngModel]="senha"
+            />
+          </div>
+
+          <button
+            type="submit"
+            class="btn btn-primary"
+            id="btn-login"
+            [routerLink]="['/lista']"
+          >
+            Entrar
+          </button>
+
+          <p>Outras opções:</p>
+          <hr />
+          <ul>
+            <li>
+              <a href="#"
+                ><i class="pi pi-building-columns">
+                  Login com seu banco SUA CONTA SERÁ PRATA</i
+                >
+              </a>
+            </li>
+            <li>
+              <a href="#"><i class="pi pi-qrcode"> Login com QR code Seu</i></a>
+            </li>
+            <li>
+              <a href="#"
+                ><i class="pi pi-mobile">
+                  certificado digital Seu certificado digital</i
+                ></a
+              >
+            </li>
+            <li>
+              <a href="#"
+                ><i class="pi pi-cloud-upload">
+                  Certificado digital Seu certificado digital em nuvem
+                </i></a
+              >
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

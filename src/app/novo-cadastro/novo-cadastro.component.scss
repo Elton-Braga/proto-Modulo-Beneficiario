@@ -1,0 +1,31 @@
+.footer-fixo {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: auto; /* ajuste conforme necessário */
+  background-color: #f8f9fa;
+  border-top: 1px solid #dee2e6;
+  z-index: 100; /* garante que fique sobreposto se necessário */
+  height: auto;
+  padding: 1.5rem 0;
+}
+
+.text-link {
+  font-weight: bolder;
+  color: #1649f0;
+  margin: 2rem 1rem;
+}
+
+.text-link:hover {
+  font-weight: bolder;
+  color: #2553eb;
+  text-decoration: underline;
+}
+
+.ajuste-breadcramb {
+  border: 0;
+}
+
+.conteudo {
+  padding-bottom: 0.02px;
+}

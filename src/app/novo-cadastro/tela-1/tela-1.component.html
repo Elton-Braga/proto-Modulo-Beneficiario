@@ -1,0 +1,295 @@
+<div class="row margem">
+  <div class="col-2"></div>
+  <div class="col-3">
+    <p><strong>Codigo do Beneficiario:</strong> RS0193540000456</p>
+  </div>
+  <div class="col-3">
+    <p><strong>Titular: </strong>Joaquim José da Silva</p>
+  </div>
+  <div class="col-4">
+    <p><strong>Projeto:</strong> RS0195000</p>
+  </div>
+  <div class="col-1"></div>
+</div>
+<div class="tela-titular">
+  <h1 class="titulo">Titular</h1>
+
+  <form [formGroup]="formgroup">
+    <div class="row espaco_campos">
+      <mat-form-field class="col-4">
+        <mat-label>Informe o CPF</mat-label>
+
+        <input
+          class="col-4"
+          matInput
+          type="text"
+          mask="000.000.000-00"
+          placeholder="Informe o CPF"
+          formControlName="cpf"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-4">
+        <mat-label>Informe o Nome</mat-label>
+        <input
+          class="col-4"
+          matInput
+          type="text"
+          placeholder="Informe o nome"
+          formControlName="nome"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-4">
+        <mat-label>Informe o Apelido</mat-label>
+        <input
+          class="col-4"
+          matInput
+          type="text"
+          placeholder="Informe o Apelido"
+          formControlName="apelido"
+        />
+      </mat-form-field>
+    </div>
+    <div class="row espaco_campos">
+      <mat-form-field class="col-3">
+        <mat-label>Gênero</mat-label>
+        <mat-select name="food" formControlName="genero">
+          @for (food of foods; track food) {
+          <mat-option [value]="food.value">{{ food.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field col-3">
+        <mat-label>Data de nascimento</mat-label>
+        <input
+          matInput
+          [matDatepicker]="datepicker"
+          formControlName="data_nasc"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="datepicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #datepicker2>
+          <mat-datepicker-actions>
+            <button matButton matDatepickerCancel>Cancel</button>
+            <button matButton="elevated" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="col-3">
+        <mat-label>Estado civil</mat-label>
+        <mat-select name="food" formControlName="estado_civil">
+          @for (e_s of Estado_civil; track Estado_civil) {
+          <mat-option [value]="e_s.value">{{ e_s.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field col-3">
+        <mat-label>Data de Falecimetno</mat-label>
+        <input
+          matInput
+          [matDatepicker]="datepicker2"
+          formControlName="data_falecimento"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="datepicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #datepicker>
+          <mat-datepicker-actions>
+            <button matButton matDatepickerCancel>Cancel</button>
+            <button matButton="elevated" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="row espaco_campos">
+      <mat-form-field class="col-6">
+        <mat-label>Informe o nome do Pai</mat-label>
+
+        <input
+          matInput
+          type="text"
+          placeholder="Informe o nome do Pai"
+          formControlName="pai"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-6">
+        <mat-label>Informe o nome da Mãe</mat-label>
+
+        <input
+          matInput
+          type="text"
+          placeholder="Informe o nome da Mãe"
+          formControlName="mae"
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="row espaco_campos">
+      <mat-form-field class="col-3">
+        <mat-label>Nacionalidade</mat-label>
+        <mat-select name="food" formControlName="nacionalidade">
+          @for (pais of pais; track pais) {
+          <mat-option [value]="pais.value">{{ pais.viewValue }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col-3">
+        <mat-label>UF</mat-label>
+        <mat-select
+          name="uf"
+          formControlName="naturalidade"
+          (selectionChange)="carregarMunicipios($event.value)"
+        >
+          @for (estado of estados; track estado.sigla) {
+          <mat-option [value]="estado.sigla">{{ estado.sigla }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col-3">
+        <mat-label>Município</mat-label>
+        <mat-select
+          (selectionChange)="atualizarCodigoMunicipio($event.value)"
+          name="municipios"
+          formControlName="municipio"
+        >
+          @for (municipio of municipios; track municipio.nome) {
+          <mat-option [value]="municipio.nome">{{ municipio.nome }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col-3">
+        <mat-label>Código do município</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Informe o Código do Município"
+          [value]="codigoMunicipio"
+          disabled
+        />
+      </mat-form-field>
+    </div>
+
+    <div class="row espaco_campos">
+      <mat-form-field class="col-2">
+        <mat-label>Tipo de Identificação</mat-label>
+        <mat-select name="food" formControlName="tipo_identificacao">
+          @for (tipo_identificacao of tipo_identificacao; track
+          tipo_identificacao) {
+          <mat-option [value]="tipo_identificacao.value">{{
+            tipo_identificacao.viewValue
+          }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="col-2">
+        <mat-label>Numero</mat-label>
+
+        <input
+          matInput
+          type="text"
+          placeholder="Informe o numero do Documento"
+          formControlName="numero"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-2">
+        <mat-label>Órgão de expedição</mat-label>
+
+        <input
+          matInput
+          type="text"
+          placeholder="Orgão de expedição"
+          formControlName="orgao_expedicao"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-form-field col-3">
+        <mat-label>Data de Expedição</mat-label>
+        <input
+          matInput
+          [matDatepicker]="datepicker3"
+          formControlName="data_expedicao"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="datepicker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #datepicker3>
+          <mat-datepicker-actions>
+            <button matButton matDatepickerCancel>Cancel</button>
+            <button matButton="elevated" matDatepickerApply>Apply</button>
+          </mat-datepicker-actions>
+        </mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field class="col-3">
+        <mat-label>Numero do NIS</mat-label>
+
+        <input matInput type="text" placeholder="NIS" formControlName="nis" />
+      </mat-form-field>
+    </div>
+
+    <div class="row espaco_campos">
+      <mat-form-field class="col-6">
+        <mat-label>Telefone</mat-label>
+
+        <input
+          matInput
+          type="tel"
+          placeholder="Informe o telefone"
+          mask="(00) 00000-0000"
+          formControlName="telefone"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="col-6">
+        <mat-label>Email</mat-label>
+
+        <input
+          matInput
+          type="email"
+          placeholder="Informe o Email"
+          formControlName="email"
+        />
+      </mat-form-field>
+    </div>
+    <div class="row espaco_campos">
+      <mat-form-field class="col-11">
+        <mat-label>Numero do Processo</mat-label>
+
+        <input
+          matInput
+          type="tel"
+          placeholder="Informe o numero do processo"
+          mask="000000000/0000"
+          formControlName="numero_processo"
+        />
+      </mat-form-field>
+      <div
+        class="col-1 flex justify-center card col-auto d-inline-flex align-items-center ajuste_plus"
+      >
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="add"
+        ></mat-icon>
+      </div>
+    </div>
+  </form>
+</div>

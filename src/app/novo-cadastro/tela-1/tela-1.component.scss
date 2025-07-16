@@ -1,0 +1,51 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.margem {
+  margin: 2rem 0;
+}
+
+.tela-titular {
+  border-radius: 1.5rem;
+  padding: 2rem;
+
+  border: 1px solid #e9eaec;
+  margin: 0 10rem 15rem 10rem;
+}
+
+.titulo {
+  margin: 3rem 0;
+}
+
+.espaco_campos {
+  margin: 1.5rem 0;
+}
+h1 {
+  color: rgb(12, 71, 122);
+  font-size: 35px;
+}
+p {
+  font-size: 19px;
+  color: rgb(12, 71, 122);
+}
+
+.ajuste_plus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 59px;
+  border: 2px solid #e0e0e0; // ou outra cor
+  border-radius: 1%; // para deixar redondo
+  font-size: 24px;
+  color: #57577a;
+  cursor: pointer;
+}
