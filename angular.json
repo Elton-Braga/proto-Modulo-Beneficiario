@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "INCRA": {
+    "proto-Modulo-Beneficiario": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/incra",
+            "outputPath": "dist/proto-modulo-beneficiario",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -37,7 +37,7 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/",
+              "baseHref": "/proto-Modulo-Beneficiario/",
               "budgets": [
                 {
                   "type": "initial",
@@ -64,10 +64,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "INCRA:build:production"
+              "buildTarget": "proto-Modulo-Beneficiario:build:production"
             },
             "development": {
-              "buildTarget": "INCRA:build:development"
+              "buildTarget": "proto-Modulo-Beneficiario:build:development"
             }
           },
           "defaultConfiguration": "development"

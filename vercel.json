@@ -3,10 +3,10 @@
   "public": true,
   "builds": [
     {
-      "src": "INCRA/package.json",
+      "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "INCRA/dist/incra"
+        "distDir": "dist/incra"
       }
     }
   ],
