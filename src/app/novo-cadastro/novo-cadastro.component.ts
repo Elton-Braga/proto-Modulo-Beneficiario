@@ -26,6 +26,9 @@ import { filter } from 'rxjs/operators';
   styleUrl: './novo-cadastro.component.scss',
 })
 export class NovoCadastroComponent {
+  exibirBotaoExecutar = false;
+  executarHabilitado = false;
+
   items: any[] = [];
   home = { icon: 'pi pi-home', routerLink: '/inicio' };
 
@@ -44,18 +47,27 @@ export class NovoCadastroComponent {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {
-        // Pega a URL real da rota após o NavigationEnd
         const currentUrl = this.router.url;
         const partes = currentUrl.split('/');
-        const etapa = partes[partes.length - 1]; // pega a última parte da URL
+        const etapa = partes[partes.length - 1];
+
         this.etapaAtualIndex = this.etapas.indexOf(etapa);
         this.atualizarBreadcrumb();
+
+        this.exibirBotaoExecutar = etapa.toLowerCase() === 'regularizacao';
+        this.executarHabilitado =
+          this.exibirBotaoExecutar && !this.foiNavegadoPorRouter();
       });
 
-    // Evita breadcrumb vazio ao carregar direto (F5)
     const etapaInicial = this.router.url.split('/').pop();
     this.etapaAtualIndex = this.etapas.indexOf(etapaInicial ?? '');
     this.atualizarBreadcrumb();
+
+    // mesma lógica inicial
+    this.exibirBotaoExecutar = etapaInicial?.toLowerCase() === 'regularizacao';
+    this.executarHabilitado =
+      this.exibirBotaoExecutar && !this.foiNavegadoPorRouter();
+    sessionStorage.removeItem('navegouInternamente');
   }
 
   atualizarBreadcrumb() {
@@ -65,7 +77,10 @@ export class NovoCadastroComponent {
         label: this.capitalizar(etapa),
       }));
   }
-
+  foiNavegadoPorRouter(): boolean {
+    // Exemplo básico: você pode armazenar um flag no sessionStorage
+    return sessionStorage.getItem('navegouInternamente') === 'true';
+  }
   capitalizar(str: string): string {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
@@ -76,6 +91,7 @@ export class NovoCadastroComponent {
       this.router.navigate([rotaAnterior], { relativeTo: this.route });
     } else {
       // Está na primeira etapa, volta para a tela de lista
+      sessionStorage.setItem('navegouInternamente', 'true');
       this.router.navigate(['/lista']);
     }
   }
@@ -88,6 +104,7 @@ export class NovoCadastroComponent {
 
     if (this.etapaAtualIndex < this.etapas.length - 1) {
       const rota = this.etapas[this.etapaAtualIndex + 1];
+      sessionStorage.setItem('navegouInternamente', 'true');
       this.router.navigate([rota], { relativeTo: this.route });
     }
   }
@@ -99,5 +116,10 @@ export class NovoCadastroComponent {
   salvar() {
     console.log('Dados salvos!', this.avancar());
     // Aqui poderá chamar serviço de API, exibir snackbar etc.
+  }
+
+  executarAcao() {
+    console.log('Ação de execução iniciada!');
+    // Pode chamar serviço, emitir evento ou interagir com o componente Regularização
   }
 }

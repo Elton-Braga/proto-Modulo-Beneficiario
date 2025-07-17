@@ -28,7 +28,14 @@
   >
     <strong>Avançar</strong>
   </button>
-
+  <button
+    class="btn col-1 btn-success col-auto ms-2 col-auto d-inline-flex align-items-center executar_acao_btn"
+    *ngIf="exibirBotaoExecutar"
+    [disabled]="!executarHabilitado"
+    (click)="executarAcao()"
+  >
+    <mat-icon class="me-1">play_arrow</mat-icon> <strong>Executar</strong>
+  </button>
   <button
     class="btn btn-primary col-auto d-inline-flex align-items-center"
     *ngIf="ehUltimaEtapa()"
@@ -36,6 +43,4 @@
   >
     <mat-icon class="me-1">done_outline</mat-icon> <strong>Salvar</strong>
   </button>
-
-  <div class="col-1"></div>
 </footer>
