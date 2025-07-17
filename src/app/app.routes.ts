@@ -6,6 +6,7 @@ import { Tela1Component } from './novo-cadastro/tela-1/tela-1.component';
 import { Tela2Component } from './novo-cadastro/tela-2/tela-2.component';
 import { UnidadeFamilarComponent } from './novo-cadastro/unidade-familar/unidade-familar.component';
 import { AssentamentoComponent } from './novo-cadastro/assentamento/assentamento.component';
+import { RegularizacaoComponent } from './novo-cadastro/regularizacao/regularizacao.component';
 
 export const routes: Routes = [
   {
@@ -25,6 +26,7 @@ export const routes: Routes = [
       { path: 'Titular2', component: Tela2Component },
       { path: 'UnidadeFamiliar', component: UnidadeFamilarComponent },
       { path: 'Assentamento', component: AssentamentoComponent },
+      { path: 'Regularizacao', component: RegularizacaoComponent },
     ],
   },
 ];
