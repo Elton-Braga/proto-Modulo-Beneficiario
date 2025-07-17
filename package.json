@@ -7,8 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build --configuration production && npx angular-cli-ghpages --dir=dist/proto-modulo-beneficiario",
-    "ghpages": "ng build --base-href=/proto-Modulo-Beneficiario/ && npx angular-cli-ghpages --dir=dist/proto-modulo-beneficiario"
+    "deploy": "ng build --configuration production && npx angular-cli-ghpages --dir=dist/proto-modulo-beneficiario/browser",
+    "ghpages": "ng build --base-href=/proto-Modulo-Beneficiario/ && npx angular-cli-ghpages --dir=dist/proto-modulo-beneficiario/browser"
   },
   "private": true,
   "dependencies": {
