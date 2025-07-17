@@ -164,7 +164,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240115,
     codigo: 101,
     nome_projeto: 'Projeto Esperança',
-    acoes: ['visualizar', 'editar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 2,
@@ -172,7 +172,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240210,
     codigo: 102,
     nome_projeto: 'Projeto Liberdade',
-    acoes: ['visualizar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 3,
@@ -180,7 +180,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240305,
     codigo: 103,
     nome_projeto: 'Projeto Vida Nova',
-    acoes: ['editar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 4,
@@ -188,7 +188,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240401,
     codigo: 104,
     nome_projeto: 'Projeto Cidadania',
-    acoes: ['visualizar', 'remover'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 5,
@@ -196,7 +196,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240510,
     codigo: 105,
     nome_projeto: 'Projeto Esperança',
-    acoes: ['visualizar', 'editar', 'remover'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 6,
@@ -204,7 +204,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240612,
     codigo: 106,
     nome_projeto: 'Projeto Sementes',
-    acoes: ['visualizar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 7,
@@ -212,7 +212,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240720,
     codigo: 107,
     nome_projeto: 'Projeto Terra Livre',
-    acoes: ['editar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 6,
@@ -220,7 +220,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240830,
     codigo: 108,
     nome_projeto: 'Projeto Raízes',
-    acoes: ['remover'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 9,
@@ -228,7 +228,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240901,
     codigo: 109,
     nome_projeto: 'Projeto Água Doce',
-    acoes: ['visualizar', 'editar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 10,
@@ -236,7 +236,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20241015,
     codigo: 110,
     nome_projeto: 'Projeto Recomeço',
-    acoes: ['visualizar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 11,
@@ -244,7 +244,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240120,
     codigo: 111,
     nome_projeto: 'Projeto Horizonte',
-    acoes: ['visualizar', 'remover'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 12,
@@ -252,7 +252,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240225,
     codigo: 112,
     nome_projeto: 'Projeto Semente Viva',
-    acoes: ['editar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 13,
@@ -260,7 +260,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240330,
     codigo: 113,
     nome_projeto: 'Projeto Novo Caminho',
-    acoes: ['visualizar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 14,
@@ -268,7 +268,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240412,
     codigo: 114,
     nome_projeto: 'Projeto Brasil Verde',
-    acoes: ['editar', 'remover'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 15,
@@ -276,7 +276,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240518,
     codigo: 115,
     nome_projeto: 'Projeto Vale Rural',
-    acoes: ['visualizar', 'editar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 16,
@@ -284,7 +284,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240622,
     codigo: 116,
     nome_projeto: 'Projeto Esperança',
-    acoes: ['remover'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 17,
@@ -292,7 +292,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240728,
     codigo: 117,
     nome_projeto: 'Projeto Liberdade',
-    acoes: ['visualizar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 18,
@@ -300,7 +300,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240831,
     codigo: 118,
     nome_projeto: 'Projeto Cidadania',
-    acoes: ['editar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 19,
@@ -308,7 +308,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20240905,
     codigo: 119,
     nome_projeto: 'Projeto Raízes',
-    acoes: ['visualizar', 'editar'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
   {
     check: 20,
@@ -316,6 +316,6 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     data_transferencia: 20241020,
     codigo: 120,
     nome_projeto: 'Projeto Terra Livre',
-    acoes: ['remover'],
+    acoes: ['Visualizar', 'Editar', 'Remover', 'Histórico', 'Espelho PDF'],
   },
 ];
