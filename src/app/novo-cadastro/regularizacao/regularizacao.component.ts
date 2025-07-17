@@ -42,9 +42,9 @@ export class RegularizacaoComponent {
   ];
 
   inclusao_PNRA: any[] = [
-    { value: 'inclusao_0', viewValue: 'inclusao 0' },
-    { value: 'inclusao_1', viewValue: 'inclusao 1' },
-    { value: 'inclusao_2', viewValue: 'inclusao 2' },
+    { value: 'Pessoa Externa ao PNRA', viewValue: 'Pessoa Externa ao PNRA' },
+    { value: 'Beneficiario do PNRA', viewValue: 'Beneficiario do PNRA' },
+    //{ value: 'Separação do Casal', viewValue: 'Separação do Casal' },
   ];
 
   constructor(fb: FormBuilder) {
