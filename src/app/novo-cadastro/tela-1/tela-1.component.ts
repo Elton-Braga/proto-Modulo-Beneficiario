@@ -94,7 +94,7 @@ export class Tela1Component {
       genero: ['', [Validators.required]],
       data_nasc: ['', [Validators.required]],
       estado_civil: ['', [Validators.required]],
-      data_falecimento: ['', [Validators.required]],
+      data_falecimento: [''],
       pai: ['', [Validators.required]],
       mae: ['', [Validators.required]],
       nacionalidade: ['', [Validators.required]],
