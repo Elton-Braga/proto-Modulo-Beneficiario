@@ -1,5 +1,11 @@
 import { NgIf } from '@angular/common';
-import { ChangeDetectionStrategy, Component, model } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  model,
+  signal,
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -41,6 +47,7 @@ export class RegularizacaoComponent {
   readonly indeterminate = model(false);
   readonly labelPosition = model<'before' | 'after'>('after');
   readonly disabled = model(false);
+
   tipo_regularizacao: any[] = [
     { value: 'tipo_0', viewValue: 'tipo 0' },
     { value: 'tipo_1', viewValue: 'tipo 1' },
@@ -93,4 +100,44 @@ export class RegularizacaoComponent {
       this.form.markAllAsTouched();
     }
   }
+
+  readonly task = signal<Task>({
+    name: 'Parent task',
+    completed: false,
+    subtasks: [
+      { name: 'Dependente 1', completed: false },
+      { name: 'Dependente 2', completed: false },
+      { name: 'Dependente 3', completed: false },
+    ],
+  });
+
+  readonly partiallyComplete = computed(() => {
+    const task = this.task();
+    if (!task.subtasks) {
+      return false;
+    }
+    return (
+      task.subtasks.some((t) => t.completed) &&
+      !task.subtasks.every((t) => t.completed)
+    );
+  });
+
+  update(completed: boolean, index?: number) {
+    this.task.update((task) => {
+      if (index === undefined) {
+        task.completed = completed;
+        task.subtasks?.forEach((t) => (t.completed = completed));
+      } else {
+        task.subtasks![index].completed = completed;
+        task.completed = task.subtasks?.every((t) => t.completed) ?? true;
+      }
+      return { ...task };
+    });
+  }
+}
+
+export interface Task {
+  name: string;
+  completed: boolean;
+  subtasks?: Task[];
 }
