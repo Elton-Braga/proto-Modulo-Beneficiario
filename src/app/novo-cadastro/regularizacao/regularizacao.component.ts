@@ -73,8 +73,11 @@ export class RegularizacaoComponent {
   ];
 
   situacao_conjugal: any[] = [
-    { value: 'Pessoa Externa ao PNRA', viewValue: 'Titular desiste do PNRA' },
-    { value: 'Beneficiario do PNRA', viewValue: 'Beneficiario do PNRA' },
+    { value: 'Casado', viewValue: 'Casado' },
+    { value: 'Solteiro', viewValue: 'Solteiro' },
+    { value: 'Viúvo', viewValue: 'Viúvo' },
+    { value: 'Divorciado', viewValue: 'Divorciado' },
+    { value: 'União estável', viewValue: 'União estável' },
   ];
 
   s_conjugal: any[] = [
@@ -103,9 +106,9 @@ export class RegularizacaoComponent {
     name: 'Todos os dependentes',
     completed: false,
     subtasks: [
-      { name: 'Dependente 1', completed: false },
-      { name: 'Dependente 2', completed: false },
-      { name: 'Dependente 3', completed: false },
+      { name: 'João da Silva', completed: false },
+      { name: 'Fernando Albuquerque', completed: false },
+      { name: 'Antonio Eufrasino', completed: false },
     ],
   });
 
