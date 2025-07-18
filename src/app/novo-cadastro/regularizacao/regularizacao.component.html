@@ -86,14 +86,14 @@
                 form.get('inclusao_PNRA')?.value === 'Desistencia do Titular' ||
                 form.get('inclusao_PNRA')?.value === 'Evasão do Titular'
               "
-              >Remoção de:</mat-label
+              >Remoção por:</mat-label
             >
             <mat-label
               *ngIf="
                 form.get('inclusao_PNRA')?.value === 'Pessoa Externa ao PNRA' ||
                 form.get('inclusao_PNRA')?.value === 'Beneficiario do PNRA'
               "
-              >Inclusao por:</mat-label
+              >Inclusao de:</mat-label
             >
             <mat-select formControlName="inclusao_PNRA">
               @for (inclusao_PNRA of inclusao_PNRA; track inclusao_PNRA) {
@@ -216,6 +216,82 @@
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Div exibida condicionalmente - Separação do casal -->
+
+      <div
+        class="row"
+        *ngIf="form.get('inclusao_PNRA')?.value === 'Separação do casal'"
+      >
+        <div class="col-12 mb-3">
+          <h4><strong>Destino do Titular Excluído</strong></h4>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <mat-form-field class="w-100">
+            <mat-label>Destino do Titular Excluído</mat-label>
+            <mat-select formControlName="destino_titular_excluido">
+              @for (item of destino_titular_excluido; track item.value) {
+              <mat-option [value]="item.value">{{ item.viewValue }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-md-3 mb-3"
+          *ngIf="
+            form.get('destino_titular_excluido')?.value ===
+            'Titular excluído vai para outro lote vago'
+          "
+        >
+          <mat-form-field class="w-100">
+            <mat-label>SR</mat-label>
+            <mat-select formControlName="sr">
+              @for (item of sr; track item.value) {
+              <mat-option [value]="item.value">{{ item.viewValue }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-md-3 mb-3"
+          *ngIf="
+            form.get('destino_titular_excluido')?.value ===
+            'Titular excluído vai para outro lote vago'
+          "
+        >
+          <mat-form-field class="w-100">
+            <mat-label>Codigo do projeto</mat-label>
+            <input
+              matInput
+              placeholder="Codigo do projeto"
+              value=""
+              formControlName="cod_projeto"
+            />
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-md-3 mb-3"
+          *ngIf="
+            form.get('destino_titular_excluido')?.value ===
+            'Titular excluído vai para outro lote vago'
+          "
+        >
+          <mat-form-field class="w-100">
+            <mat-label>Lote</mat-label>
+            <input
+              matInput
+              placeholder="Numero do Lote"
+              value=""
+              formControlName="n_lote"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
       <hr />
       <hr />
       <div class="row campos_checkbox">

@@ -71,9 +71,23 @@ export class RegularizacaoComponent {
   ];
 
   situacao_conjugal: any[] = [
-    { value: 'Pessoa Externa ao PNRA', viewValue: 'Pessoa Externa ao PNRA' },
+    { value: 'Pessoa Externa ao PNRA', viewValue: 'Titular desiste do PNRA' },
     { value: 'Beneficiario do PNRA', viewValue: 'Beneficiario do PNRA' },
   ];
+
+  destino_titular_excluido: any[] = [
+    { value: 'Titular desiste do PNRA', viewValue: 'Titular desiste do PNRA' },
+    {
+      value: 'Titular excluído vai para outro lote vago',
+      viewValue: 'Titular excluído vai para outro lote vago',
+    },
+    {
+      value: 'Titular excluído se une a outro beneficiário',
+      viewValue: 'Titular excluído se une a outro beneficiário',
+    },
+  ];
+
+  sr: any[] = [{ value: 'valor ficticio', viewValue: 'valor ficticio' }];
 
   readonly task = signal<Task>({
     name: 'Todos os dependentes',
@@ -98,6 +112,10 @@ export class RegularizacaoComponent {
       cpf_titular2: [],
       data_uniao: [],
       situacao_conjugal: [],
+      destino_titular_excluido: [],
+      n_lote: [],
+      cod_projeto: [],
+      sr: ['valor ficticio'],
     });
   }
 
