@@ -64,21 +64,33 @@ export class RegularizacaoComponent {
     { value: 'Default', viewValue: 'Default' },
     { value: 'Pessoa Externa ao PNRA', viewValue: 'Pessoa Externa ao PNRA' },
     { value: 'Beneficiario do PNRA', viewValue: 'Beneficiario do PNRA' },
-    //{ value: 'Separação do Casal', viewValue: 'Separação do Casal' },
+    { value: 'Separação do casal', viewValue: 'Separação do casal' },
+    { value: 'Falecimento de Titular', viewValue: 'Falecimento de Titular' },
+    { value: 'Desistencia do Titular', viewValue: 'Desistencia do Titular' },
+    { value: 'Evasão do Titular', viewValue: 'Evasão do Titular' },
   ];
 
   situacao_conjugal: any[] = [
     { value: 'Pessoa Externa ao PNRA', viewValue: 'Pessoa Externa ao PNRA' },
     { value: 'Beneficiario do PNRA', viewValue: 'Beneficiario do PNRA' },
-    //{ value: 'Separação do Casal', viewValue: 'Separação do Casal' },
   ];
+
+  readonly task = signal<Task>({
+    name: 'Todos os dependentes',
+    completed: false,
+    subtasks: [
+      { name: 'Dependente 1', completed: false },
+      { name: 'Dependente 2', completed: false },
+      { name: 'Dependente 3', completed: false },
+    ],
+  });
 
   constructor(fb: FormBuilder) {
     this.form = fb.group({
       tipo_regularizacao: [null, Validators.required],
       detalhe_regularizacao: [null, Validators.required],
       data_regularizacao: [null, Validators.required],
-      inclusao_PNRA: [null, Validators.required],
+      inclusao_PNRA: ['Default', Validators.required],
       inclusao_titular: [],
       inclusao_unidade_familiar: [],
       inclusao_assentamento: [],
@@ -100,16 +112,6 @@ export class RegularizacaoComponent {
       this.form.markAllAsTouched();
     }
   }
-
-  readonly task = signal<Task>({
-    name: 'Parent task',
-    completed: false,
-    subtasks: [
-      { name: 'Dependente 1', completed: false },
-      { name: 'Dependente 2', completed: false },
-      { name: 'Dependente 3', completed: false },
-    ],
-  });
 
   readonly partiallyComplete = computed(() => {
     const task = this.task();

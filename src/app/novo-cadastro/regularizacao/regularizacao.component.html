@@ -76,7 +76,25 @@
 
         <div class="col-3">
           <mat-form-field class="w-100">
-            <mat-label>Inclusao de:</mat-label>
+            <mat-label *ngIf="form.get('inclusao_PNRA')?.value === 'Default'"
+              >Selecione uma opção para inclusão ou remoção</mat-label
+            >
+            <mat-label
+              *ngIf="
+                form.get('inclusao_PNRA')?.value === 'Separação do casal' ||
+                form.get('inclusao_PNRA')?.value === 'Falecimento de Titular' ||
+                form.get('inclusao_PNRA')?.value === 'Desistencia do Titular' ||
+                form.get('inclusao_PNRA')?.value === 'Evasão do Titular'
+              "
+              >Remoção de:</mat-label
+            >
+            <mat-label
+              *ngIf="
+                form.get('inclusao_PNRA')?.value === 'Pessoa Externa ao PNRA' ||
+                form.get('inclusao_PNRA')?.value === 'Beneficiario do PNRA'
+              "
+              >Inclusao por:</mat-label
+            >
             <mat-select formControlName="inclusao_PNRA">
               @for (inclusao_PNRA of inclusao_PNRA; track inclusao_PNRA) {
               <mat-option [value]="inclusao_PNRA.value">{{
