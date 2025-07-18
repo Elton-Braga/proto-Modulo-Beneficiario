@@ -87,6 +87,153 @@
           </mat-form-field>
         </div>
       </div>
+
+      <!-- Div exibida condicionalmente - Pessoa Externa ao PNRA -->
+
+      <div
+        class="row"
+        *ngIf="form.get('inclusao_PNRA')?.value === 'Pessoa Externa ao PNRA'"
+      >
+        <div class="col-12 mb-3">
+          <h4><strong>Novo Beneficiário - Externo ao PNRA</strong></h4>
+        </div>
+        <div class="col-md-4 mb-3">
+          <mat-form-field class="w-100">
+            <mat-label>Titular</mat-label>
+            <input
+              matInput
+              placeholder="Informe o nome do novo Titular"
+              value=""
+              formControlName="inclusao_titular"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <mat-form-field class="w-100">
+            <mat-label>Unidade Familiar</mat-label>
+            <input
+              matInput
+              placeholder="Informe a Unidade Familiar"
+              value=""
+              formControlName="inclusao_unidade_familiar"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <mat-form-field class="w-100">
+            <mat-label>Assentamento</mat-label>
+            <input
+              matInput
+              placeholder="Informe o nome do assentamento"
+              value=""
+              formControlName="inclusao_assentamento"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Div exibida condicionalmente - Beneficiario do PNRA -->
+
+      <div
+        class="row"
+        *ngIf="form.get('inclusao_PNRA')?.value === 'Beneficiario do PNRA'"
+      >
+        <div class="col-12 mb-3">
+          <h4><strong>Novo Beneficiario - Interno PNRA</strong></h4>
+        </div>
+        <div class="col-md-3 mb-3">
+          <mat-form-field class="w-100">
+            <mat-label>Código Titular</mat-label>
+            <input
+              matInput
+              placeholder="Informe o código do novo Titular"
+              value=""
+              formControlName="cod_titular"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <mat-form-field class="w-100">
+            <mat-label>CPF</mat-label>
+            <input
+              matInput
+              placeholder="Informe a Unidade Familiar"
+              value=""
+              formControlName="cpf_titular2"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <mat-form-field class="w-100">
+            <mat-label>Data da União</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker3"
+              formControlName="data_uniao"
+            />
+
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker3"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <mat-form-field class="w-100">
+            <mat-label>Situação Conjugal</mat-label>
+            <mat-select formControlName="situacao_conjugal">
+              @for (situacao_conjugal of situacao_conjugal; track
+              situacao_conjugal) {
+              <mat-option [value]="situacao_conjugal.value">{{
+                situacao_conjugal.viewValue
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
     </form>
   </div>
 </div>
+<!--
+<div class="row">
+          <div class="col-3">
+            <label class="example-margin">Align:</label>
+            <mat-radio-group>
+              <mat-radio-button class="example-margin" value="after"
+                >After</mat-radio-button
+              >
+              <mat-radio-button class="example-margin" value="before"
+                >Before</mat-radio-button
+              >
+            </mat-radio-group>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            
+            <mat-card class="result">
+              <mat-card-content>
+                <h2 class="example-h2">Result</h2>
+
+                <section class="example-section">
+                  <mat-checkbox
+                    class="example-margin"
+                    [(indeterminate)]="indeterminate"
+                    [labelPosition]="labelPosition()"
+                    [disabled]="disabled()"
+                  >
+                    I'm a checkbox
+                  </mat-checkbox>
+                </section>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+-->
