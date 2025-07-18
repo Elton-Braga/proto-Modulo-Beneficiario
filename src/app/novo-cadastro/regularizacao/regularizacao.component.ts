@@ -54,6 +54,7 @@ export class RegularizacaoComponent {
   ];
 
   inclusao_PNRA: any[] = [
+    { value: 'Default', viewValue: 'Default' },
     { value: 'Pessoa Externa ao PNRA', viewValue: 'Pessoa Externa ao PNRA' },
     { value: 'Beneficiario do PNRA', viewValue: 'Beneficiario do PNRA' },
     //{ value: 'Separação do Casal', viewValue: 'Separação do Casal' },
