@@ -290,6 +290,86 @@
             />
           </mat-form-field>
         </div>
+        <!----Titular se uni a outro beneficiario-->
+
+        <div
+          class="col-md-2 mb-2"
+          *ngIf="
+            form.get('destino_titular_excluido')?.value ===
+            'Titular excluído se une a outro beneficiário'
+          "
+        >
+          <mat-form-field class="w-100">
+            <mat-label>Data da União</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker5"
+              formControlName="data_uniao2"
+            />
+
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker5"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker5></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-md-2 mb-2"
+          *ngIf="
+            form.get('destino_titular_excluido')?.value ===
+            'Titular excluído se une a outro beneficiário'
+          "
+        >
+          <mat-form-field class="w-100">
+            <mat-label>CPF do Titular</mat-label>
+            <input
+              matInput
+              placeholder="000.000.000-00"
+              value=""
+              mask="000.000.000-00"
+              formControlName="n_lote"
+            />
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-md-2 mb-2"
+          *ngIf="
+            form.get('destino_titular_excluido')?.value ===
+            'Titular excluído se une a outro beneficiário'
+          "
+        >
+          <mat-form-field class="w-100">
+            <mat-label>Codigo do Beneficiario</mat-label>
+            <input
+              matInput
+              placeholder="codigo do beneficiario"
+              value=""
+              formControlName="cod_beneficiario"
+            />
+          </mat-form-field>
+        </div>
+
+        <div
+          class="col-md-3 mb-3"
+          *ngIf="
+            form.get('destino_titular_excluido')?.value ===
+            'Titular excluído se une a outro beneficiário'
+          "
+        >
+          <mat-form-field class="w-100">
+            <mat-label>Situação Conjugal</mat-label>
+            <mat-select formControlName="situacao_conjugal">
+              @for (item of s_conjugal; track item.value) {
+              <mat-option [value]="item.value">{{ item.viewValue }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!--FIM - Titular excluido se une a outro beneficiario-->
       </div>
 
       <hr />

@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 
 @Component({
   selector: 'app-regularizacao',
@@ -35,8 +36,9 @@ import { MatSelectModule } from '@angular/material/select';
     MatRadioModule,
     MatCardModule,
     NgIf,
+    NgxMaskDirective,
   ],
-  providers: [provideNativeDateAdapter()],
+  providers: [provideNativeDateAdapter(), provideNgxMask()],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './regularizacao.component.html',
   styleUrl: './regularizacao.component.scss',
@@ -75,6 +77,14 @@ export class RegularizacaoComponent {
     { value: 'Beneficiario do PNRA', viewValue: 'Beneficiario do PNRA' },
   ];
 
+  s_conjugal: any[] = [
+    { value: 'Casado', viewValue: 'Casado' },
+    { value: 'Solteiro', viewValue: 'Solteiro' },
+    { value: 'Viúvo', viewValue: 'Viúvo' },
+    { value: 'Divorciado', viewValue: 'Divorciado' },
+    { value: 'União estável', viewValue: 'União estável' },
+  ];
+
   destino_titular_excluido: any[] = [
     { value: 'Titular desiste do PNRA', viewValue: 'Titular desiste do PNRA' },
     {
@@ -111,11 +121,13 @@ export class RegularizacaoComponent {
       cod_titular: [],
       cpf_titular2: [],
       data_uniao: [],
-      situacao_conjugal: [],
+      situacao_conjugal: ['Solteiro'],
       destino_titular_excluido: [],
       n_lote: [],
       cod_projeto: [],
       sr: ['valor ficticio'],
+      data_uniao2: [],
+      cod_beneficiario: [],
     });
   }
 
