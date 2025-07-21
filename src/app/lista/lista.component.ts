@@ -21,6 +21,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxMaskConfig, NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { Router, RouterLink } from '@angular/router';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 @Component({
   selector: 'app-lista',
@@ -40,12 +41,16 @@ import { Router, RouterLink } from '@angular/router';
     MatCheckboxModule,
     FormsModule,
     NgxMaskDirective,
+    CdkAccordionModule,
   ],
   providers: [provideNgxMask()],
   templateUrl: './lista.component.html',
   styleUrl: './lista.component.scss',
 })
 export class ListaComponent implements AfterViewInit {
+  items = ['Filtro de Busca'];
+  expandedIndex = 0;
+
   displayedColumns: string[] = [
     'check',
     'beneficiario',

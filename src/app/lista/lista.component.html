@@ -3,92 +3,116 @@
     <div class="col-10">
       <p class="text-left text-primary">Modulo Beneficiário</p>
     </div>
-    <div class="col-2 d-flex justify-content-center align-items-center">
-      <!--<button
-        class="btn btn-light btn-cadastro d-inline-flex align-items-center"
-        [routerLink]="['/novo']"
-      >
-        <span class="text-label">Novo Cadastro</span>
-        <mat-icon class="me-1">post_add</mat-icon>
-      </button>-->
-    </div>
+    <div class="col-2 d-flex justify-content-center align-items-center"></div>
   </div>
-  <div calss="row">
-    <form>
-      <!-- Campos de busca-->
-      <mat-form-field class="col-6">
-        <mat-label>Codigo Beneficiario</mat-label>
-        <input
-          matInput
-          #message
-          maxlength="256"
-          placeholder="Informe o código do Beneficiário"
-        />
-        <mat-hint align="start"> </mat-hint>
-      </mat-form-field>
-
-      <mat-form-field class="col-6">
-        <mat-label>Codigo Projeto</mat-label>
-        <input
-          matInput
-          #message
-          mask="000.000/0000"
-          maxlength="256"
-          placeholder="Informe o código do do projeto"
-        />
-        <mat-hint align="start"> </mat-hint>
-      </mat-form-field>
-
-      <mat-form-field class="col-6">
-        <mat-label>CPF</mat-label>
-        <input
-          matInput
-          #message
-          maxlength="256"
-          mask="000.000.000-00"
-          placeholder="Informe o CPF do Beneficiário"
-        />
-        <mat-hint align="start"> </mat-hint>
-      </mat-form-field>
-
-      <mat-form-field class="col-6">
-        <mat-label>Ordem</mat-label>
-        <input
-          matInput
-          #message
-          mask="000000/0000"
-          maxlength="256"
-          placeholder="Informe o número da Ordem"
-        />
-        <mat-hint align="start"> </mat-hint>
-      </mat-form-field>
-
-      <mat-form-field class="col-12">
-        <mat-label>Tipo de Busca</mat-label>
-        <mat-select multiple>
-          @for (tipo_busca of tipo_busca; track tipo_busca) {
-          <mat-option [value]="tipo_busca">{{ tipo_busca }}</mat-option>
-          }
-        </mat-select></mat-form-field
-      >
+  <!--Acordeon-->
+  <cdk-accordion class="example-accordion row">
+    @for (item of items; track item; let index = $index) {
+    <cdk-accordion-item
+      #accordionItem="cdkAccordionItem"
+      class="example-accordion-item"
+    >
       <button
-        matButton="elevated"
-        class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
+        class="example-accordion-item-header"
+        (click)="accordionItem.toggle()"
+        tabindex="0"
+        [attr.id]="'accordion-header-' + index"
+        [attr.aria-expanded]="accordionItem.expanded"
+        [attr.aria-controls]="'accordion-body-' + index"
       >
-        Pesquisar
-        <mat-icon class="me-1">search</mat-icon>
+        <strong>{{ item }}</strong>
+        <span class="example-accordion-item-description">
+          Click to {{ accordionItem.expanded ? "close" : "open" }}
+        </span>
       </button>
+      @if(accordionItem.expanded) {
+      <div
+        class="example-accordion-item-body"
+        role="region"
+        [style.display]="accordionItem.expanded ? '' : 'none'"
+        [attr.id]="'accordion-body-' + index"
+        [attr.aria-labelledby]="'accordion-header-' + index"
+      >
+        <form>
+          <!-- Campos de busca-->
+          <mat-form-field class="col-3">
+            <mat-label>Codigo Beneficiario</mat-label>
+            <input
+              matInput
+              #message
+              maxlength="256"
+              placeholder="Informe o código do Beneficiário"
+            />
+            <mat-hint align="start"> </mat-hint>
+          </mat-form-field>
 
-      <button
-        matButton="elevated"
-        class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
-      >
-        Limpar
-        <mat-icon class="me-1">clear_all</mat-icon>
-      </button>
-      <hr />
-    </form>
-  </div>
+          <mat-form-field class="col-3">
+            <mat-label>CPF</mat-label>
+            <input
+              matInput
+              #message
+              mask="000.000.000-00"
+              maxlength="256"
+              placeholder="Informe o código do do projeto"
+            />
+            <mat-hint align="start"> </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="col-6">
+            <mat-label>Nome do Beneficiário</mat-label>
+            <input
+              matInput
+              #message
+              maxlength="256"
+              placeholder="Informe o CPF do Beneficiário"
+            />
+            <mat-hint align="start"> </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="col-6">
+            <mat-label>Ordem</mat-label>
+            <input
+              matInput
+              #message
+              mask="000000/0000"
+              maxlength="256"
+              placeholder="Informe o número da Ordem"
+            />
+            <mat-hint align="start"> </mat-hint>
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label>Tipo de Busca</mat-label>
+            <mat-select multiple>
+              @for (tipo_busca of tipo_busca; track tipo_busca) {
+              <mat-option [value]="tipo_busca">{{ tipo_busca }}</mat-option>
+              }
+            </mat-select></mat-form-field
+          >
+          <button
+            matButton="elevated"
+            class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
+          >
+            Pesquisar
+            <mat-icon class="me-1">search</mat-icon>
+          </button>
+
+          <button
+            matButton="elevated"
+            class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
+          >
+            Limpar
+            <mat-icon class="me-1">clear_all</mat-icon>
+          </button>
+        </form>
+      </div>
+      }
+    </cdk-accordion-item>
+    }
+  </cdk-accordion>
+  <br />
+  <!--Final Acordeon-->
+  <div calss="row"></div>
 
   <div class="row">
     <div class="col-12">
