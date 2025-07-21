@@ -1,4 +1,9 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ViewChild,
+} from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
@@ -9,6 +14,7 @@ import {
   FormControl,
   FormGroup,
   FormsModule,
+  ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
@@ -22,6 +28,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxMaskConfig, NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { Router, RouterLink } from '@angular/router';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { ServicosService } from '../novo-cadastro/tela-1/servico/servicos.service';
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
 
 @Component({
   selector: 'app-lista',
@@ -42,12 +52,21 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
     FormsModule,
     NgxMaskDirective,
     CdkAccordionModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
   ],
-  providers: [provideNgxMask()],
+  providers: [provideNgxMask(), ServicosService, provideNativeDateAdapter()],
   templateUrl: './lista.component.html',
   styleUrl: './lista.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ListaComponent implements AfterViewInit {
+  formularioBusca!: FormGroup;
+  estados: any[] = [];
+  municipios: any[] = [];
+  estadoSelecionado: string = '';
+
   items = ['Filtro de Busca'];
   expandedIndex = 0;
 
@@ -84,20 +103,63 @@ export class ListaComponent implements AfterViewInit {
   check: any;
 
   toppings = new FormControl('');
-  tipo_busca: string[] = ['Nome do Beneficiario', 'Codigo do Beneficiario'];
+  sr: string[] = ['021', '002', '003', '004', '005'];
+  situacao: string[] = [
+    'Em andamento',
+    'Atualizado',
+    'Cancelado',
+    'Em Análise',
+  ];
 
-  constructor(private router: Router, fb: FormBuilder) {
+  constructor(
+    private router: Router,
+    fb: FormBuilder,
+    private servicosService: ServicosService
+  ) {
     this.form = fb.group({
       codigo_beneficiario: [],
       codigo_projeto: [],
       cpf: [],
       ordem: [],
       tipo_busca: [],
+      nome_beneficiario: [],
+      estados: [],
+      municipios: [],
+      sr: [],
+      nome_projeto: [],
+      lote: [],
+      data_situacao: [],
+      situacao: [],
     });
   }
+
+  ngOnInit() {
+    this.carregarEstados();
+  }
+
+  trackByValue(index: number, item: any): string {
+    return item.value;
+  }
+
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.atualizarColunasVisiveis();
+  }
+
+  carregarEstados(): void {
+    this.servicosService.getEstados().subscribe({
+      next: (dados) => (this.estados = dados),
+      error: (erro) => console.error('Erro ao carregar estados:', erro),
+    });
+  }
+
+  carregarMunicipiosPorEstado(siglaEstado: string): void {
+    if (!siglaEstado) return;
+
+    this.servicosService.getMunicipiosPorUF(siglaEstado).subscribe({
+      next: (dados) => (this.municipios = dados),
+      error: (erro) => console.error('Erro ao carregar municípios:', erro),
+    });
   }
 
   formatarData(dataNumerica: number): string {

@@ -5,6 +5,7 @@
     </div>
     <div class="col-2 d-flex justify-content-center align-items-center"></div>
   </div>
+
   <!--Acordeon-->
   <cdk-accordion class="example-accordion row">
     @for (item of items; track item; let index = $index) {
@@ -33,7 +34,7 @@
         [attr.id]="'accordion-body-' + index"
         [attr.aria-labelledby]="'accordion-header-' + index"
       >
-        <form>
+        <form [formGroup]="form">
           <!-- Campos de busca-->
           <mat-form-field class="col-3">
             <mat-label>Codigo Beneficiario</mat-label>
@@ -42,6 +43,7 @@
               #message
               maxlength="256"
               placeholder="Informe o código do Beneficiário"
+              formControlName="codigo_beneficiario"
             />
             <mat-hint align="start"> </mat-hint>
           </mat-form-field>
@@ -54,6 +56,7 @@
               mask="000.000.000-00"
               maxlength="256"
               placeholder="Informe o código do do projeto"
+              formControlName="cpf"
             />
             <mat-hint align="start"> </mat-hint>
           </mat-form-field>
@@ -65,45 +68,94 @@
               #message
               maxlength="256"
               placeholder="Informe o CPF do Beneficiário"
+              formControlName="nome_beneficiario"
             />
             <mat-hint align="start"> </mat-hint>
           </mat-form-field>
 
-          <mat-form-field class="col-6">
-            <mat-label>Ordem</mat-label>
-            <input
-              matInput
-              #message
-              mask="000000/0000"
-              maxlength="256"
-              placeholder="Informe o número da Ordem"
-            />
-            <mat-hint align="start"> </mat-hint>
+          <mat-form-field class="col-1">
+            <mat-label>Estados</mat-label>
+            <mat-select
+              name="uf"
+              formControlName="estados"
+              (selectionChange)="carregarMunicipiosPorEstado($event.value)"
+            >
+              @for (food of estados; track food) {
+              <mat-option [value]="food.sigla">{{ food.sigla }}</mat-option>
+              }
+            </mat-select>
           </mat-form-field>
 
-          <mat-form-field class="col-12">
-            <mat-label>Tipo de Busca</mat-label>
+          <mat-form-field class="col-2">
+            <mat-label>Municipios</mat-label>
+            <mat-select name="municipios" formControlName="municipios">
+              @for (food of municipios; track food) {
+              <mat-option [value]="food.sigla">{{ food.nome }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="col-1">
+            <mat-label>SR</mat-label>
             <mat-select multiple>
-              @for (tipo_busca of tipo_busca; track tipo_busca) {
-              <mat-option [value]="tipo_busca">{{ tipo_busca }}</mat-option>
+              @for (sr of sr; track sr) {
+              <mat-option [value]="sr">{{ sr }}</mat-option>
               }
             </mat-select></mat-form-field
           >
-          <button
-            matButton="elevated"
-            class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
-          >
-            Pesquisar
-            <mat-icon class="me-1">search</mat-icon>
-          </button>
 
-          <button
-            matButton="elevated"
-            class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
-          >
-            Limpar
-            <mat-icon class="me-1">clear_all</mat-icon>
-          </button>
+          <mat-form-field class="col-2">
+            <mat-label>Nome do Projeto</mat-label>
+
+            <input matInput formControlName="nome_projeto" />
+          </mat-form-field>
+
+          <mat-form-field class="col-2">
+            <mat-label>Lote</mat-label>
+
+            <input matInput formControlName="lote" />
+          </mat-form-field>
+          <mat-form-field class="col-2">
+            <mat-label>Situação</mat-label>
+
+            <mat-select>
+              @for (situacao of situacao; track situacao) {
+              <mat-option [value]="situacao">{{ situacao }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="col-2"
+            ><mat-label>Data da situação</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              formControlName="data_situacao" />
+
+            <mat-datepicker-toggle
+              matIconSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker
+          ></mat-form-field>
+
+          <div class="row">
+            <button
+              matButton="elevated"
+              class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
+            >
+              Pesquisar
+              <mat-icon class="me-1">search</mat-icon>
+            </button>
+
+            <button
+              matButton="elevated"
+              class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
+            >
+              Limpar
+              <mat-icon class="me-1">clear_all</mat-icon>
+            </button>
+          </div>
         </form>
       </div>
       }
