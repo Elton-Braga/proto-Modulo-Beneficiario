@@ -171,11 +171,24 @@ export class ListaComponent implements AfterViewInit {
     return new Intl.DateTimeFormat('pt-BR').format(data);
   }
 
+  executarAcaoParaRotas(acao: string, element: any) {}
+
   executarAcao(acao: string, elemento: Beneficiario) {
     console.log(`Ação "${acao}" executada para CPF ${elemento.nome_T1}`);
     // Aqui você pode redirecionar, abrir modal, etc.
-    if (acao === 'editar') {
-      this.router.navigate(['/novo']);
+    switch (acao) {
+      case 'Editar':
+        this.router.navigate(['novo']);
+        break;
+      case 'Visualizar':
+        // lógica para visualizar
+        break;
+      case 'Histórico':
+        // lógica para histórico
+        break;
+      case 'Espelho PDF':
+        // lógica para PDF
+        break;
     }
   }
 

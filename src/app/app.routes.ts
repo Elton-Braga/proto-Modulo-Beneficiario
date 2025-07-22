@@ -13,6 +13,7 @@ export const routes: Routes = [
     path: '',
     component: LoginComponent,
   },
+  { path: '', redirectTo: 'lista', pathMatch: 'full' },
   {
     path: 'lista',
     component: ListaComponent,
@@ -29,6 +30,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'Titular', pathMatch: 'full' },
       { path: 'Titular', component: Tela1Component },
+      { path: '', redirectTo: 'Titular1', pathMatch: 'full' },
       { path: 'Titular2', component: Tela2Component },
       { path: 'UnidadeFamiliar', component: UnidadeFamilarComponent },
       { path: 'Assentamento', component: AssentamentoComponent },

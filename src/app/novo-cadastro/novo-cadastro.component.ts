@@ -29,6 +29,7 @@ import { filter } from 'rxjs/operators';
     MatIconModule,
     RouterModule,
   ],
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './novo-cadastro.component.html',
   styleUrl: './novo-cadastro.component.scss',
