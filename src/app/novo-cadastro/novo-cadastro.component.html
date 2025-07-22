@@ -17,6 +17,7 @@
     class="col-1 btn btn-primary"
     [routerLink]="['/lista']"
     (click)="voltar()"
+    hidden
   >
     <strong>Voltar</strong>
   </button>
@@ -25,6 +26,7 @@
     class="btn btn-primary col-1"
     (click)="avancar()"
     *ngIf="!ehUltimaEtapa()"
+    hidden
   >
     <strong>Avançar</strong>
   </button>
@@ -33,6 +35,7 @@
     *ngIf="exibirBotaoExecutar"
     [disabled]="!executarHabilitado"
     (click)="executarAcao()"
+    hidden
   >
     <mat-icon class="me-1">play_arrow</mat-icon> <strong>Executar</strong>
   </button>
@@ -40,6 +43,7 @@
     class="btn btn-primary col-auto d-inline-flex align-items-center"
     *ngIf="ehUltimaEtapa()"
     (click)="salvar()"
+    hidden
   >
     <mat-icon class="me-1">done_outline</mat-icon> <strong>Salvar</strong>
   </button>
