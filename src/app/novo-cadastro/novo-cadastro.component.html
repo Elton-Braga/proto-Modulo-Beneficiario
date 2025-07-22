@@ -1,40 +1,72 @@
 <div class="row">
-  <div class="col-4"></div>
+  <div class="col-4 flex justify-center"></div>
   <div class="card flex justify-center ajuste-breadcramb">
     <div class="menu">
       <strong
-        ><a class="btn btn-light botao" routerLink="Titular"
+        ><a
+          class="btn btn-light col-auto d-inline-flex align-items-center botao btn_home"
+          routerLink="../lista"
+          ><mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="home"
+          ></mat-icon>
+          Lista</a
+        ></strong
+      >
+      <strong
+        ><a
+          class="btn btn-light botao"
+          routerLink="Titular"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Titular 1</a
         ></strong
       >
       <strong
-        ><a class="btn btn-light botao" routerLink="Titular2"
+        ><a
+          class="btn btn-light botao"
+          routerLink="Titular2"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Titular 2</a
         ></strong
       >
       <strong
-        ><a class="btn btn-light botao" routerLink="UnidadeFamiliar"
+        ><a
+          class="btn btn-light botao"
+          routerLink="UnidadeFamiliar"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Unidade Familiar</a
         ></strong
       >
       <strong
-        ><a class="btn btn-light botao" routerLink="Assentamento"
+        ><a
+          class="btn btn-light botao"
+          routerLink="Assentamento"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Assentamento</a
         ></strong
       >
       <strong
-        ><a class="btn btn-light botao" routerLink="Regularizacao"
+        ><a
+          class="btn btn-light botao"
+          routerLink="Regularizacao"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
           >Regularização</a
         ></strong
       >
     </div>
     <!--Breadcrumb e botões avançar, salvar e voltar ocultados com o valor hidden-->
-    <p-breadcrumb
+    <!-- <p-breadcrumb
       [model]="items"
       [home]="home"
       class="text-justify text-link"
       hidden
-    />
+    /> -->
   </div>
 </div>
 <div class="conteudo">

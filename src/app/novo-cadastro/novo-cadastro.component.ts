@@ -1,10 +1,16 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Output,
+} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import {
   ActivatedRoute,
   Router,
   RouterLink,
   NavigationEnd,
+  RouterModule,
 } from '@angular/router';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { RouterOutlet } from '@angular/router';
@@ -21,7 +27,9 @@ import { filter } from 'rxjs/operators';
     RouterOutlet,
     NgIf,
     MatIconModule,
+    RouterModule,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './novo-cadastro.component.html',
   styleUrl: './novo-cadastro.component.scss',
 })

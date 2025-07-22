@@ -35,10 +35,26 @@
 }
 
 .menu {
-  margin: 100px 30px;
+  //background-color: #b9d9f8;
+  margin: 80px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  transform: translateX(-40px);
 }
 
 .botao {
   font-weight: bold;
   color: #1649f0;
+}
+
+a.active {
+  background-color: #007bff !important; /* Azul Bootstrap */
+  color: white !important;
+  font-weight: bold;
+}
+
+.btn_home {
+  background-color: #dee2e6;
 }
