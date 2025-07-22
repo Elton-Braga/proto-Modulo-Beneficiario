@@ -6,164 +6,171 @@
     <div class="col-2 d-flex justify-content-center align-items-center"></div>
   </div>
 
-  <!--Acordeon-->
-  <cdk-accordion class="example-accordion row">
-    @for (item of items; track item; let index = $index) {
-    <cdk-accordion-item
-      #accordionItem="cdkAccordionItem"
-      class="example-accordion-item"
-    >
-      <button
-        class="example-accordion-item-header"
-        (click)="accordionItem.toggle()"
-        tabindex="0"
-        [attr.id]="'accordion-header-' + index"
-        [attr.aria-expanded]="accordionItem.expanded"
-        [attr.aria-controls]="'accordion-body-' + index"
+  <div class="row">
+    <!--Acordeon--><cdk-accordion class="example-accordion">
+      @for (item of items; track item; let index = $index) {
+      <cdk-accordion-item
+        #accordionItem="cdkAccordionItem"
+        class="example-accordion-item"
       >
-        <strong>{{ item }}</strong>
-        <span class="example-accordion-item-description">
-          Click to {{ accordionItem.expanded ? "close" : "open" }}
-        </span>
-      </button>
-      @if(accordionItem.expanded) {
-      <div
-        class="example-accordion-item-body"
-        role="region"
-        [style.display]="accordionItem.expanded ? '' : 'none'"
-        [attr.id]="'accordion-body-' + index"
-        [attr.aria-labelledby]="'accordion-header-' + index"
-      >
-        <form [formGroup]="form">
-          <!-- Campos de busca-->
-          <mat-form-field class="col-3">
-            <mat-label>Codigo Beneficiario</mat-label>
-            <input
-              matInput
-              #message
-              maxlength="256"
-              placeholder="Informe o código do Beneficiário"
-              formControlName="codigo_beneficiario"
-            />
-            <mat-hint align="start"> </mat-hint>
-          </mat-form-field>
+        <button
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#collapseOne"
+          class="example-accordion-item-header accordion-button"
+          (click)="accordionItem.toggle()"
+          tabindex="0"
+          [attr.id]="'accordion-header-' + index"
+          [attr.aria-expanded]="accordionItem.expanded"
+          [attr.aria-controls]="'accordion-body-' + index"
+        >
+          <strong>{{ item }}</strong>
+          <span class="example-accordion-item-description">
+            Click to {{ accordionItem.expanded ? "close" : "open" }}
+          </span>
+        </button>
+        @if(accordionItem.expanded) {
+        <div
+          class="example-accordion-item-body"
+          role="region"
+          [style.display]="accordionItem.expanded ? '' : 'none'"
+          [attr.id]="'accordion-body-' + index"
+          [attr.aria-labelledby]="'accordion-header-' + index"
+        >
+          <form [formGroup]="form">
+            <!-- Campos de busca-->
+            <mat-form-field class="col-3">
+              <mat-label>Codigo Beneficiario</mat-label>
+              <input
+                matInput
+                #message
+                maxlength="256"
+                placeholder="Informe o código do Beneficiário"
+                formControlName="codigo_beneficiario"
+              />
+              <mat-hint align="start"> </mat-hint>
+            </mat-form-field>
 
-          <mat-form-field class="col-3">
-            <mat-label>CPF</mat-label>
-            <input
-              matInput
-              #message
-              mask="000.000.000-00"
-              maxlength="256"
-              placeholder="Informe o código do do projeto"
-              formControlName="cpf"
-            />
-            <mat-hint align="start"> </mat-hint>
-          </mat-form-field>
+            <mat-form-field class="col-3">
+              <mat-label>CPF</mat-label>
+              <input
+                matInput
+                #message
+                mask="000.000.000-00"
+                maxlength="256"
+                placeholder="Informe o código do do projeto"
+                formControlName="cpf"
+              />
+              <mat-hint align="start"> </mat-hint>
+            </mat-form-field>
 
-          <mat-form-field class="col-6">
-            <mat-label>Nome do Beneficiário</mat-label>
-            <input
-              matInput
-              #message
-              maxlength="256"
-              placeholder="Informe o CPF do Beneficiário"
-              formControlName="nome_beneficiario"
-            />
-            <mat-hint align="start"> </mat-hint>
-          </mat-form-field>
+            <mat-form-field class="col-6">
+              <mat-label>Nome do Beneficiário</mat-label>
+              <input
+                matInput
+                #message
+                maxlength="256"
+                placeholder="Informe o CPF do Beneficiário"
+                formControlName="nome_beneficiario"
+              />
+              <mat-hint align="start"> </mat-hint>
+            </mat-form-field>
 
-          <mat-form-field class="col-1">
-            <mat-label>Estados</mat-label>
-            <mat-select
-              name="uf"
-              formControlName="estados"
-              (selectionChange)="carregarMunicipiosPorEstado($event.value)"
+            <mat-form-field class="col-1">
+              <mat-label>Estados</mat-label>
+              <mat-select
+                name="uf"
+                formControlName="estados"
+                (selectionChange)="carregarMunicipiosPorEstado($event.value)"
+              >
+                @for (food of estados; track food) {
+                <mat-option [value]="food.sigla">{{ food.sigla }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="col-2">
+              <mat-label>Municipios</mat-label>
+              <mat-select name="municipios" formControlName="municipios">
+                @for (food of municipios; track food) {
+                <mat-option [value]="food.sigla">{{ food.nome }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field class="col-1">
+              <mat-label>SR</mat-label>
+              <mat-select multiple>
+                @for (sr of sr; track sr) {
+                <mat-option [value]="sr">{{ sr }}</mat-option>
+                }
+              </mat-select></mat-form-field
             >
-              @for (food of estados; track food) {
-              <mat-option [value]="food.sigla">{{ food.sigla }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
 
-          <mat-form-field class="col-2">
-            <mat-label>Municipios</mat-label>
-            <mat-select name="municipios" formControlName="municipios">
-              @for (food of municipios; track food) {
-              <mat-option [value]="food.sigla">{{ food.nome }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
+            <mat-form-field class="col-2">
+              <mat-label>Nome do Projeto</mat-label>
 
-          <mat-form-field class="col-1">
-            <mat-label>SR</mat-label>
-            <mat-select multiple>
-              @for (sr of sr; track sr) {
-              <mat-option [value]="sr">{{ sr }}</mat-option>
-              }
-            </mat-select></mat-form-field
-          >
+              <input matInput formControlName="nome_projeto" />
+            </mat-form-field>
 
-          <mat-form-field class="col-2">
-            <mat-label>Nome do Projeto</mat-label>
+            <mat-form-field class="col-2">
+              <mat-label>Lote</mat-label>
 
-            <input matInput formControlName="nome_projeto" />
-          </mat-form-field>
+              <input matInput formControlName="lote" />
+            </mat-form-field>
+            <mat-form-field class="col-2">
+              <mat-label>Situação</mat-label>
 
-          <mat-form-field class="col-2">
-            <mat-label>Lote</mat-label>
+              <mat-select>
+                @for (situacao of situacao; track situacao) {
+                <mat-option [value]="situacao">{{ situacao }}</mat-option>
+                }
+              </mat-select>
+            </mat-form-field>
 
-            <input matInput formControlName="lote" />
-          </mat-form-field>
-          <mat-form-field class="col-2">
-            <mat-label>Situação</mat-label>
+            <mat-form-field class="col-2"
+              ><mat-label>Data da situação</mat-label>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                formControlName="data_situacao" />
 
-            <mat-select>
-              @for (situacao of situacao; track situacao) {
-              <mat-option [value]="situacao">{{ situacao }}</mat-option>
-              }
-            </mat-select>
-          </mat-form-field>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker
+            ></mat-form-field>
 
-          <mat-form-field class="col-2"
-            ><mat-label>Data da situação</mat-label>
-            <input
-              matInput
-              [matDatepicker]="picker"
-              formControlName="data_situacao" />
+            <div class="row">
+              <button
+                matButton="elevated"
+                class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
+              >
+                Pesquisar
+                <mat-icon class="me-1">search</mat-icon>
+              </button>
 
-            <mat-datepicker-toggle
-              matIconSuffix
-              [for]="picker"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker
-          ></mat-form-field>
-
-          <div class="row">
-            <button
-              matButton="elevated"
-              class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
-            >
-              Pesquisar
-              <mat-icon class="me-1">search</mat-icon>
-            </button>
-
-            <button
-              matButton="elevated"
-              class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
-            >
-              Limpar
-              <mat-icon class="me-1">clear_all</mat-icon>
-            </button>
-          </div>
-        </form>
-      </div>
+              <button
+                matButton="elevated"
+                class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
+              >
+                Limpar
+                <mat-icon class="me-1">clear_all</mat-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+        }
+      </cdk-accordion-item>
       }
-    </cdk-accordion-item>
-    }
-  </cdk-accordion>
-  <br />
-  <!--Final Acordeon-->
+    </cdk-accordion>
+    <br />
+    <br />
+    <br />
+    <!--Final Acordeon-->
+  </div>
+
   <div calss="row"></div>
 
   <div class="row">

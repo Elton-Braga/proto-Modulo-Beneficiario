@@ -55,16 +55,20 @@ p {
 //Acordeon
 .example-accordion {
   display: block;
-  max-width: 500px;
+  max-width: 100%; /* Garante responsividade */
+  width: 100%;
 }
 
 .example-accordion-item {
   display: block;
   border: solid 1px #ccc;
-
-  width: 121.875rem;
+  width: 100%; /* ou 'auto', dependendo do layout */
   padding: 0;
   margin: 0 0 0 15px;
+}
+
+.btn_acordeon {
+  width: 100%;
 }
 
 .example-accordion-item + .example-accordion-item {
