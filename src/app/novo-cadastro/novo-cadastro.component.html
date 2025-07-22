@@ -1,6 +1,33 @@
 <div class="row">
   <div class="col-4"></div>
   <div class="card flex justify-center ajuste-breadcramb">
+    <div class="menu">
+      <strong
+        ><a class="btn btn-light botao" routerLink="Titular"
+          >Titular 1</a
+        ></strong
+      >
+      <strong
+        ><a class="btn btn-light botao" routerLink="Titular2"
+          >Titular 2</a
+        ></strong
+      >
+      <strong
+        ><a class="btn btn-light botao" routerLink="UnidadeFamiliar"
+          >Unidade Familiar</a
+        ></strong
+      >
+      <strong
+        ><a class="btn btn-light botao" routerLink="Assentamento"
+          >Assentamento</a
+        ></strong
+      >
+      <strong
+        ><a class="btn btn-light botao" routerLink="Regularizacao"
+          >Regularização</a
+        ></strong
+      >
+    </div>
     <!--Breadcrumb e botões avançar, salvar e voltar ocultados com o valor hidden-->
     <p-breadcrumb
       [model]="items"
@@ -30,8 +57,8 @@
     *ngIf="!ehUltimaEtapa()"
     hidden
   >
-    <strong>Avançar</strong>
-  </button>
+    <strong>Avançar</strong></button
+  ><!--
   <button
     class="btn col-1 btn-success col-auto ms-2 col-auto d-inline-flex align-items-center executar_acao_btn"
     *ngIf="exibirBotaoExecutar"
@@ -48,5 +75,5 @@
     hidden
   >
     <mat-icon class="me-1">done_outline</mat-icon> <strong>Salvar</strong>
-  </button>
+  </button>-->
 </footer>

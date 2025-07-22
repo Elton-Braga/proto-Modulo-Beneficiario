@@ -17,6 +17,12 @@ export const routes: Routes = [
     path: 'lista',
     component: ListaComponent,
   },
+
+  { path: 'Titular', component: Tela1Component },
+  { path: 'Titular2', component: Tela2Component },
+  { path: 'UnidadeFamiliar', component: UnidadeFamilarComponent },
+  { path: 'Assentamento', component: AssentamentoComponent },
+  { path: 'Regularizacao', component: RegularizacaoComponent },
   {
     path: 'novo',
     component: NovoCadastroComponent,
