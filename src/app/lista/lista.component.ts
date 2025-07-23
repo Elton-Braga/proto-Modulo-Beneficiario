@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  inject,
   ViewChild,
 } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -32,6 +33,15 @@ import { ServicosService } from '../novo-cadastro/tela-1/servico/servicos.servic
 import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
+import {
+  MatDialog,
+  MAT_DIALOG_DATA,
+  MatDialogTitle,
+  MatDialogContent,
+} from '@angular/material/dialog';
+import { ModalEspelhoComponent } from './modal/modal-espelho/modal-espelho.component';
+import { ModalHistoricoComponent } from './modal/modal-historico/modal-historico.component';
+import { ModalRegularizacaoComponent } from './modal/modal-regularizacao/modal-regularizacao.component';
 
 @Component({
   selector: 'app-lista',
@@ -60,6 +70,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
   templateUrl: './lista.component.html',
   styleUrl: './lista.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class ListaComponent implements AfterViewInit {
   formularioBusca!: FormGroup;
@@ -137,6 +148,32 @@ export class ListaComponent implements AfterViewInit {
     this.carregarEstados();
   }
 
+  dialog = inject(MatDialog);
+
+  openDialogEspelho() {
+    const dialogRef = this.dialog.open(ModalEspelhoComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openDialogHistorico() {
+    const dialogRef = this.dialog.open(ModalHistoricoComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  openDialogRegularizacao() {
+    const dialogRef = this.dialog.open(ModalRegularizacaoComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
   trackByValue(index: number, item: any): string {
     return item.value;
   }
@@ -181,12 +218,15 @@ export class ListaComponent implements AfterViewInit {
         this.router.navigate(['novo']);
         break;
       case 'Visualizar':
+        this.openDialogRegularizacao();
         // lógica para visualizar
         break;
       case 'Histórico':
+        this.openDialogHistorico();
         // lógica para histórico
         break;
       case 'Espelho PDF':
+        this.openDialogEspelho();
         // lógica para PDF
         break;
     }
