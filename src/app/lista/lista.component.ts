@@ -85,23 +85,33 @@ export class ListaComponent implements AfterViewInit {
 
   displayedColumns: string[] = [
     'check',
-    'nome_T2',
-    'periodo_regularizacao',
     'codigo_projeto',
+    'projeto',
+    'lote',
     'nome_T1',
+    'situacao_T1',
+    'nome_T2',
+    'situacao_T2',
+    'data_situacao_T2',
+    'regularizacao',
+    'periodo_regularizacao',
+    'status',
     'acoes',
   ];
 
   colunasDisponiveis = [
     { chave: 'check', label: 'Selecionar', visivel: true },
-    { chave: 'nome_T2', label: 'CPF', visivel: true },
-    {
-      chave: 'periodo_regularizacao',
-      label: 'Data de Transferência',
-      visivel: true,
-    },
     { chave: 'codigo_projeto', label: 'Código', visivel: true },
-    { chave: 'nome_T1', label: 'Projeto', visivel: true },
+    { chave: 'projeto', label: 'Projeto', visivel: true },
+    { chave: 'lote', label: 'Lote', visivel: true },
+    { chave: 'nome_T1', label: 'Nome T1', visivel: true },
+    { chave: 'situacao_T1', label: 'Situação T1', visivel: true },
+    { chave: 'nome_T2', label: 'Nome T2', visivel: true },
+    { chave: 'situacao_T2', label: 'Situação T2', visivel: true },
+    { chave: 'data_situacao_T2', label: 'Data Situação T2', visivel: true },
+    { chave: 'regularizacao', label: 'Regularização', visivel: true },
+    { chave: 'periodo_regularizacao', label: 'Período', visivel: true },
+    { chave: 'status', label: 'Status', visivel: true },
     { chave: 'acoes', label: 'Ações', visivel: true },
   ];
 

@@ -243,21 +243,6 @@
             </td>
           </ng-container>
 
-          <!-- CPF (nome_T2) -->
-          <ng-container matColumnDef="nome_T2">
-            <th mat-header-cell *matHeaderCellDef class="cabecalho">Nome T2</th>
-            <td mat-cell *matCellDef="let element">{{ element.nome_T2 }}</td>
-          </ng-container>
-
-          <!-- Data de Transferência (periodo_regularizacao) -->
-          <ng-container matColumnDef="periodo_regularizacao">
-            <th mat-header-cell *matHeaderCellDef>Data de Transferência</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.periodo_regularizacao }}
-            </td>
-          </ng-container>
-
-          <!-- Código (codigo_projeto) -->
           <ng-container matColumnDef="codigo_projeto">
             <th mat-header-cell *matHeaderCellDef>Código</th>
             <td mat-cell *matCellDef="let element">
@@ -265,10 +250,74 @@
             </td>
           </ng-container>
 
-          <!-- Projeto (nome_T1) -->
-          <ng-container matColumnDef="nome_T1">
+          <!-- Projeto -->
+          <ng-container matColumnDef="projeto">
             <th mat-header-cell *matHeaderCellDef>Projeto</th>
+            <td mat-cell *matCellDef="let element">{{ element.projeto }}</td>
+          </ng-container>
+
+          <!-- Lote -->
+          <ng-container matColumnDef="lote">
+            <th mat-header-cell *matHeaderCellDef>Lote</th>
+            <td mat-cell *matCellDef="let element">{{ element.lote }}</td>
+          </ng-container>
+
+          <!-- Nome T1 -->
+          <ng-container matColumnDef="nome_T1">
+            <th mat-header-cell *matHeaderCellDef>Nome T1</th>
             <td mat-cell *matCellDef="let element">{{ element.nome_T1 }}</td>
+          </ng-container>
+
+          <!-- Situação T1 -->
+          <ng-container matColumnDef="situacao_T1">
+            <th mat-header-cell *matHeaderCellDef>Situação T1</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.situacao_T1 }}
+            </td>
+          </ng-container>
+
+          <!-- Nome T2 -->
+          <ng-container matColumnDef="nome_T2">
+            <th mat-header-cell *matHeaderCellDef>Nome T2</th>
+            <td mat-cell *matCellDef="let element">{{ element.nome_T2 }}</td>
+          </ng-container>
+
+          <!-- Situação T2 -->
+          <ng-container matColumnDef="situacao_T2">
+            <th mat-header-cell *matHeaderCellDef>Situação T2</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.situacao_T2 }}
+            </td>
+          </ng-container>
+
+          <!-- Data da Situação T2 -->
+          <ng-container matColumnDef="data_situacao_T2">
+            <th mat-header-cell *matHeaderCellDef>Data Situação T2</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.data_situacao_T2 }}
+            </td>
+          </ng-container>
+
+          <!-- Regularização -->
+          <ng-container matColumnDef="regularizacao">
+            <th mat-header-cell *matHeaderCellDef>Regularização</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.regularizacao }}
+            </td>
+          </ng-container>
+
+          <!-- Período de Regularização -->
+          <ng-container matColumnDef="periodo_regularizacao">
+            <th mat-header-cell *matHeaderCellDef>Período</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.periodo_regularizacao }}
+            </td>
+          </ng-container>
+
+          <!-- Status -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let element">{{ element.status }}</td>
           </ng-container>
 
           <!-- Ações -->
