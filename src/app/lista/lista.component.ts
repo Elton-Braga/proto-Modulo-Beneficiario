@@ -4,6 +4,7 @@ import {
   Component,
   inject,
   ViewChild,
+  ViewEncapsulation,
 } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -71,6 +72,7 @@ import { ModalRegularizacaoComponent } from './modal/modal-regularizacao/modal-r
   styleUrl: './lista.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
+  encapsulation: ViewEncapsulation.None,
 })
 export class ListaComponent implements AfterViewInit {
   formularioBusca!: FormGroup;
