@@ -39,6 +39,7 @@ import {
   MAT_DIALOG_DATA,
   MatDialogTitle,
   MatDialogContent,
+  MatDialogModule,
 } from '@angular/material/dialog';
 import { ModalEspelhoComponent } from './modal/modal-espelho/modal-espelho.component';
 import { ModalHistoricoComponent } from './modal/modal-historico/modal-historico.component';
@@ -68,6 +69,7 @@ import { MOCK_BENEFICIARIOS } from './MOCK_BENEFICIATIO';
     HttpClientModule,
     ReactiveFormsModule,
     MatDatepickerModule,
+    MatDialogModule,
   ],
   providers: [provideNgxMask(), ServicosService, provideNativeDateAdapter()],
   templateUrl: './lista.component.html',
