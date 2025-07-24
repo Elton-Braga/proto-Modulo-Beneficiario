@@ -77,7 +77,7 @@ export class ListaComponent implements AfterViewInit {
   estados: any[] = [];
   municipios: any[] = [];
   estadoSelecionado: string = '';
-
+  dialog = inject(MatDialog);
   items = ['Filtro de Busca'];
   expandedIndex = 0;
 
@@ -148,10 +148,11 @@ export class ListaComponent implements AfterViewInit {
     this.carregarEstados();
   }
 
-  dialog = inject(MatDialog);
-
   openDialogEspelho() {
-    const dialogRef = this.dialog.open(ModalEspelhoComponent);
+    const dialogRef = this.dialog.open(ModalEspelhoComponent, {
+      height: '1000px',
+      width: '1500px',
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -159,7 +160,10 @@ export class ListaComponent implements AfterViewInit {
   }
 
   openDialogHistorico() {
-    const dialogRef = this.dialog.open(ModalHistoricoComponent);
+    const dialogRef = this.dialog.open(ModalHistoricoComponent, {
+      height: '1000px',
+      width: '1500px',
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -167,7 +171,10 @@ export class ListaComponent implements AfterViewInit {
   }
 
   openDialogRegularizacao() {
-    const dialogRef = this.dialog.open(ModalRegularizacaoComponent);
+    const dialogRef = this.dialog.open(ModalRegularizacaoComponent, {
+      height: '400px',
+      width: '600px',
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
