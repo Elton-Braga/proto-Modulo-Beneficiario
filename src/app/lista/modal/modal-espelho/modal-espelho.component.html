@@ -27,6 +27,7 @@
         [attr.id]="'accordion-body-' + index"
         [attr.aria-labelledby]="'accordion-header-' + index"
       >
+        @switch (index) { @case (0) {
         <h2 class="titulo">Espelho do Beneficiário</h2>
 
         <table>
@@ -43,6 +44,27 @@
             <td>{{ beneficiario.status }}</td>
           </tr>
         </table>
+        } @case (1) {
+        <table>
+          <tr class="linha">
+            <th><strong>Projeto</strong></th>
+
+            <th><strong>Lote</strong></th>
+            <th><strong>Situação T1</strong></th>
+            <th><strong>Situação T2</strong></th>
+            <th><strong>Regularização</strong></th>
+            <th><strong>Periodo</strong></th>
+          </tr>
+          <tr>
+            <td>{{ beneficiario.projeto }}</td>
+            <td>{{ beneficiario.lote }}</td>
+            <td>{{ beneficiario.situacao_T1 }}</td>
+            <td>{{ beneficiario.situacao_T2 }}</td>
+            <td>{{ beneficiario.regularizacao }}</td>
+            <td>{{ beneficiario.periodo_regularizacao }}</td>
+          </tr>
+        </table>
+        } }
       </div>
       }
     </cdk-accordion-item>
