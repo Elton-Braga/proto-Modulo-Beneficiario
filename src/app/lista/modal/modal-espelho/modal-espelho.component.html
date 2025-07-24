@@ -1,5 +1,5 @@
 <div class="ajuste row">
-  <cdk-accordion class="example-accordion col-12">
+  <cdk-accordion class="example-accordion col-12" [multi]="true">
     @for (item of items; track item; let index = $index) {
     <cdk-accordion-item
       #accordionItem="cdkAccordionItem"
@@ -19,7 +19,7 @@
           Click to {{ accordionItem.expanded ? "close" : "open" }}
         </span>
       </button>
-      @if(accordionItem.expanded) {
+      @if (accordionItem.expanded) {
       <div
         class="example-accordion-item-body"
         role="region"
@@ -29,16 +29,20 @@
       >
         <h2 class="titulo">Espelho do Beneficiário</h2>
 
-        <p class="dados">
-          <strong>Nome T1:</strong> {{ beneficiario.nome_T1 }}
-        </p>
-        <p class="dados">
-          <strong>Nome T2:</strong> {{ beneficiario.nome_T2 }}
-        </p>
-        <p class="dados">
-          <strong>Projeto:</strong> {{ beneficiario.projeto }}
-        </p>
-        <p class="dados"><strong>Status:</strong> {{ beneficiario.status }}</p>
+        <table>
+          <tr class="linha">
+            <th><strong>Nome T1</strong></th>
+            <th><strong>Nome T2</strong></th>
+            <th><strong>Projeto</strong></th>
+            <th><strong>Status</strong></th>
+          </tr>
+          <tr>
+            <td>{{ beneficiario.nome_T1 }}</td>
+            <td>{{ beneficiario.nome_T2 }}</td>
+            <td>{{ beneficiario.projeto }}</td>
+            <td>{{ beneficiario.status }}</td>
+          </tr>
+        </table>
       </div>
       }
     </cdk-accordion-item>
@@ -46,7 +50,12 @@
   </cdk-accordion>
 </div>
 <div class="row ajuste">
-  <div class="col-11"></div>
+  <div class="col-1">
+    <button type="button" class="btn btn-primary">
+      <strong>Voltar</strong>
+    </button>
+  </div>
+  <div class="col-10"></div>
   <div class="col-1">
     <button type="button" class="btn btn-primary">
       <strong>Imprimir</strong>
