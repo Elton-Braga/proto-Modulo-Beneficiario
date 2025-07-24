@@ -1,5 +1,5 @@
-<div class="ajuste">
-  <cdk-accordion class="example-accordion">
+<div class="ajuste row">
+  <cdk-accordion class="example-accordion col-12">
     @for (item of items; track item; let index = $index) {
     <cdk-accordion-item
       #accordionItem="cdkAccordionItem"
@@ -44,4 +44,12 @@
     </cdk-accordion-item>
     }
   </cdk-accordion>
+</div>
+<div class="row ajuste">
+  <div class="col-11"></div>
+  <div class="col-1">
+    <button type="button" class="btn btn-primary">
+      <strong>Imprimir</strong>
+    </button>
+  </div>
 </div>
