@@ -162,11 +162,12 @@ export class ListaComponent implements AfterViewInit {
     this.carregarEstados();
   }
 
-  openDialogEspelho() {
+  openDialogEspelho(elemento: Beneficiario) {
     const dialogRef = this.dialog.open(ModalEspelhoComponent, {
       width: '90vw',
       height: '90vh',
       maxWidth: 'none',
+      data: elemento, // <<<< Aqui você envia o objeto
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -189,8 +190,8 @@ export class ListaComponent implements AfterViewInit {
   openDialogRegularizacao() {
     const dialogRef = this.dialog.open(ModalRegularizacaoComponent, {
       width: '90vw',
-      height: '90vh',
       maxWidth: 'none',
+      panelClass: 'custom-dialog-container',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -239,7 +240,7 @@ export class ListaComponent implements AfterViewInit {
         // lógica para histórico
         break;
       case 'Espelho PDF':
-        this.openDialogEspelho();
+        this.openDialogEspelho(elemento);
         // lógica para PDF
         break;
     }
@@ -289,5 +290,3 @@ export class ListaComponent implements AfterViewInit {
       .map((c) => c.chave);
   }
 }
-
-/*area de mock */

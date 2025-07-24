@@ -14,7 +14,7 @@
         [attr.aria-expanded]="accordionItem.expanded"
         [attr.aria-controls]="'accordion-body-' + index"
       >
-        <strong>{{ item }}</strong>
+        <strong class="titulo-acordeon">{{ item }}</strong>
         <span class="example-accordion-item-description">
           Click to {{ accordionItem.expanded ? "close" : "open" }}
         </span>
@@ -27,10 +27,18 @@
         [attr.id]="'accordion-body-' + index"
         [attr.aria-labelledby]="'accordion-header-' + index"
       >
-        Lorem ipsum dolor, sit amet, consectetur adipisicing elit. Perferendis
-        excepturi incidunt ipsum deleniti labore, tempore non nam doloribus
-        blanditiis veritatis illo autem iure aliquid ullam rem tenetur deserunt
-        velit culpa?
+        <h2 class="titulo">Espelho do Beneficiário</h2>
+
+        <p class="dados">
+          <strong>Nome T1:</strong> {{ beneficiario.nome_T1 }}
+        </p>
+        <p class="dados">
+          <strong>Nome T2:</strong> {{ beneficiario.nome_T2 }}
+        </p>
+        <p class="dados">
+          <strong>Projeto:</strong> {{ beneficiario.projeto }}
+        </p>
+        <p class="dados"><strong>Status:</strong> {{ beneficiario.status }}</p>
       </div>
       }
     </cdk-accordion-item>

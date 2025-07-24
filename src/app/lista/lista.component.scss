@@ -119,3 +119,7 @@ th {
   font-weight: bolder;
   color: #0444ce !important;
 }
+
+::ng-deep .custom-dialog-container .mat-dialog-container {
+  border-radius: 0.5rem;
+}
