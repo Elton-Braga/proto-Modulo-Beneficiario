@@ -72,7 +72,7 @@
     }
   </cdk-accordion>
 </div>
-<div class="row ajuste">
+<div class="row ajuste nao-imprimir">
   <div class="col-1">
     <button type="button" class="btn btn-primary" (click)="fechar()">
       <strong>Voltar</strong>
@@ -80,7 +80,7 @@
   </div>
   <div class="col-10"></div>
   <div class="col-1">
-    <button type="button" class="btn btn-primary">
+    <button type="button" class="btn btn-primary" (click)="imprimir()">
       <strong>Imprimir</strong>
     </button>
   </div>

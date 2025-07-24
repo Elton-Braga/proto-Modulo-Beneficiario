@@ -1,3 +1,9 @@
+@media print {
+  .nao-imprimir {
+    display: none !important;
+  }
+}
+
 .ajuste {
   padding: 3.125rem;
 }

@@ -32,4 +32,8 @@ export class ModalEspelhoComponent {
     console.log('Fechando modal...');
     this.dialogRef.close();
   }
+
+  imprimir(): void {
+    window.print();
+  }
 }
