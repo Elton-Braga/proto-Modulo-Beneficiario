@@ -150,8 +150,9 @@ export class ListaComponent implements AfterViewInit {
 
   openDialogEspelho() {
     const dialogRef = this.dialog.open(ModalEspelhoComponent, {
-      height: '1000px',
-      width: '1500px',
+      width: '90vw',
+      height: '90vh',
+      maxWidth: 'none',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -161,8 +162,9 @@ export class ListaComponent implements AfterViewInit {
 
   openDialogHistorico() {
     const dialogRef = this.dialog.open(ModalHistoricoComponent, {
-      height: '1000px',
-      width: '1500px',
+      width: '90vw',
+      height: '90vh',
+      maxWidth: 'none',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -172,8 +174,9 @@ export class ListaComponent implements AfterViewInit {
 
   openDialogRegularizacao() {
     const dialogRef = this.dialog.open(ModalRegularizacaoComponent, {
-      height: '400px',
-      width: '600px',
+      width: '90vw',
+      height: '90vh',
+      maxWidth: 'none',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -206,17 +209,6 @@ export class ListaComponent implements AfterViewInit {
     });
   }
 
-  formatarData(dataNumerica: number): string {
-    const str = dataNumerica.toString();
-    const ano = +str.substring(0, 4);
-    const mes = +str.substring(4, 6) - 1;
-    const dia = +str.substring(6, 8);
-    const data = new Date(ano, mes, dia);
-    return new Intl.DateTimeFormat('pt-BR').format(data);
-  }
-
-  executarAcaoParaRotas(acao: string, element: any) {}
-
   executarAcao(acao: string, elemento: Beneficiario) {
     console.log(`Ação "${acao}" executada para CPF ${elemento.nome_T1}`);
     // Aqui você pode redirecionar, abrir modal, etc.
@@ -238,6 +230,17 @@ export class ListaComponent implements AfterViewInit {
         break;
     }
   }
+
+  formatarData(dataNumerica: number): string {
+    const str = dataNumerica.toString();
+    const ano = +str.substring(0, 4);
+    const mes = +str.substring(4, 6) - 1;
+    const dia = +str.substring(6, 8);
+    const data = new Date(ano, mes, dia);
+    return new Intl.DateTimeFormat('pt-BR').format(data);
+  }
+
+  executarAcaoParaRotas(acao: string, element: any) {}
 
   /** Whether the number of selected elements matches the total number of rows. */
   isAllSelected() {
