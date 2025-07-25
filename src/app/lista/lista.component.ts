@@ -179,7 +179,7 @@ export class ListaComponent implements AfterViewInit {
 
   openDialogHistorico() {
     const dialogRef = this.dialog.open(ModalHistoricoComponent, {
-      width: '90vw',
+      width: '40vw',
       height: '90vh',
       maxWidth: 'none',
     });
