@@ -12,7 +12,21 @@
   <div class="col-1"></div>
 </div>
 <div class="tela-titular">
-  <h1 class="titulo">Titular</h1>
+  <div class="row align-items-center">
+    <div class="col-2"><h1 class="titulo">Titular</h1></div>
+    <div class="col-8"></div>
+    <div class="col-1">
+      <button
+        type="button"
+        class="btn btn-light ajuste-btn"
+        [disabled]="!formgroup.valid"
+        (click)="adicionarDependente()"
+      >
+        <strong>+ Dependente</strong>
+      </button>
+    </div>
+    <div class="col-1"></div>
+  </div>
 
   <form [formGroup]="formgroup">
     <div class="row espaco_campos">
@@ -152,8 +166,9 @@
           formControlName="naturalidade"
           (selectionChange)="carregarMunicipios($event.value)"
         >
-          @for (estado of estados; track estado.sigla) {
-          <mat-option [value]="estado.sigla">{{ estado.sigla }}</mat-option>
+          @for (estado of estados; track estado.id) {
+          <!--(estado of estados; track: estado.id)-->
+          <mat-option [value]="estado.id">{{ estado.sigla }}</mat-option>
           }
         </mat-select>
       </mat-form-field>
@@ -165,7 +180,7 @@
           name="municipios"
           formControlName="municipio"
         >
-          @for (municipio of municipios; track municipio.nome) {
+          @for (municipio of municipios; track municipio.id) {
           <mat-option [value]="municipio.nome">{{ municipio.nome }}</mat-option>
           }
         </mat-select>
@@ -284,8 +299,60 @@
       <div
         class="col-1 flex justify-center col-auto d-inline-flex align-items-center text-right text-end ajuste_plus"
       >
-        <button type="button" class="btn btn-primary">Novo Processo</button>
+        <button
+          type="button"
+          class="btn btn-primary"
+          [disabled]="
+            formgroup.get('numero_processo')?.invalid ||
+            !formgroup.get('numero_processo')?.value
+          "
+          (click)="adicionarProcesso()"
+        >
+          Novo Processo
+        </button>
       </div>
     </div>
   </form>
+  <div class="row">
+    <div class="col-12">
+      <cdk-accordion class="example-accordion">
+        @for (item of items; track item; let index = $index) {
+        <cdk-accordion-item
+          #accordionItem="cdkAccordionItem"
+          class="example-accordion-item"
+        >
+          <button
+            class="example-accordion-item-header"
+            (click)="accordionItem.toggle()"
+            tabindex="0"
+            [attr.id]="'accordion-header-' + index"
+            [attr.aria-expanded]="accordionItem.expanded"
+            [attr.aria-controls]="'accordion-body-' + index"
+          >
+            {{ item }}
+            <span class="example-accordion-item-description">
+              Click to {{ accordionItem.expanded ? "close" : "open" }}
+            </span>
+          </button>
+          @if(accordionItem.expanded) {
+          <div
+            class="example-accordion-item-body"
+            role="region"
+            [style.display]="accordionItem.expanded ? '' : 'none'"
+            [attr.id]="'accordion-body-' + index"
+            [attr.aria-labelledby]="'accordion-header-' + index"
+          >
+            <div *ngIf="processos.length > 0" class="mt-2">
+              <strong>Processos adicionados:</strong>
+              <ul>
+                <li *ngFor="let p of processos">{{ p }}</li>
+              </ul>
+            </div>
+          </div>
+          }
+        </cdk-accordion-item>
+        }
+      </cdk-accordion>
+    </div>
+  </div>
 </div>

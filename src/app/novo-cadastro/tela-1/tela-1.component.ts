@@ -16,6 +16,8 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { ServicosService } from '../tela-1/servico/servicos.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-tela-1',
@@ -29,6 +31,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
+    CdkAccordionModule,
+    NgIf,
+    NgFor,
   ],
   templateUrl: './tela-1.component.html',
   styleUrl: './tela-1.component.scss',
@@ -62,6 +67,10 @@ export class Tela1Component {
   estados: any[] = [];
   municipios: any[] = [];
   codigoMunicipio: string = '';
+  items = ['Processos'];
+  expandedIndex = 0;
+  dependentes: any[] = [];
+  processos: string[] = [];
 
   foods: any[] = [
     { value: 'steak-0', viewValue: 'Masculino' },
@@ -192,6 +201,51 @@ export class Tela1Component {
 
       // Atualiza o FormGroup com o código, mesmo que o input esteja desabilitado
       this.formgroup.patchValue({ cod_municipio: municipioSelecionado.id });
+    }
+  }
+
+  adicionarProcesso() {
+    const numeroProcesso = this.formgroup.get('numero_processo')?.value;
+
+    if (!numeroProcesso) {
+      alert('Informe o número do processo.');
+      return;
+    }
+
+    // Verifica se o processo já foi adicionado
+    if (this.processos.includes(numeroProcesso)) {
+      alert('Este número de processo já foi adicionado.');
+      return;
+    }
+
+    // Adiciona o processo
+    this.processos.push(numeroProcesso);
+    console.log('Processo adicionado:', numeroProcesso);
+
+    // (Opcional) Limpa apenas o campo de número do processo
+    this.formgroup.get('numero_processo')?.reset();
+  }
+
+  adicionarDependente() {
+    if (this.dependentes.length >= 1) {
+      alert('Apenas um dependente pode ser adicionado.');
+      return;
+    }
+
+    if (this.formgroup.valid) {
+      const novoDependente = this.formgroup.value; // ou selecione apenas os campos que quiser
+
+      this.dependentes.push(novoDependente);
+
+      // Se quiser limpar o formulário após adicionar:
+      this.formgroup.reset();
+
+      // Ou emitir evento, salvar em storage, etc.
+      console.log('Dependente adicionado:', novoDependente);
+    } else {
+      alert(
+        'Preencha todos os campos obrigatórios para adicionar o dependente.'
+      );
     }
   }
 }
