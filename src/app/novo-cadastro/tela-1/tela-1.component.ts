@@ -18,6 +18,7 @@ import { ServicosService } from '../tela-1/servico/servicos.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { NgFor, NgIf } from '@angular/common';
+import { NumeroProcessoSeiPipe } from '../../pipes/numero-processo-sei.pipe';
 
 @Component({
   selector: 'app-tela-1',
@@ -34,6 +35,7 @@ import { NgFor, NgIf } from '@angular/common';
     CdkAccordionModule,
     NgIf,
     NgFor,
+    NumeroProcessoSeiPipe,
   ],
   templateUrl: './tela-1.component.html',
   styleUrl: './tela-1.component.scss',
