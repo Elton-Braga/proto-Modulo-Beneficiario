@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { NgFor, NgIf } from '@angular/common';
 import { NumeroProcessoSeiPipe } from '../../pipes/numero-processo-sei.pipe';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-tela-1',
@@ -36,6 +37,7 @@ import { NumeroProcessoSeiPipe } from '../../pipes/numero-processo-sei.pipe';
     NgIf,
     NgFor,
     NumeroProcessoSeiPipe,
+    MatTableModule,
   ],
   templateUrl: './tela-1.component.html',
   styleUrl: './tela-1.component.scss',
@@ -70,6 +72,7 @@ export class Tela1Component {
   municipios: any[] = [];
   codigoMunicipio: string = '';
   items = ['Processos'];
+  itemDependente = ['Novo Dependente / Titular'];
   expandedIndex = 0;
   dependentes: any[] = [];
   processos: string[] = [];
@@ -96,6 +99,7 @@ export class Tela1Component {
     { value: 'br', viewValue: 'Brasileiro' },
     { value: 'outro', viewValue: 'Outro' },
   ];
+  displayedColumns: string[] = ['cpf', 'nome', 'apelido', 'acoes'];
 
   constructor(fb: FormBuilder, private localidadesService: ServicosService) {
     this.formgroup = fb.group({
@@ -105,7 +109,7 @@ export class Tela1Component {
       genero: ['', [Validators.required]],
       data_nasc: ['', [Validators.required]],
       estado_civil: ['', [Validators.required]],
-      data_falecimento: [''],
+      data_falecimento: ['', []],
       pai: ['', [Validators.required]],
       mae: ['', [Validators.required]],
       nacionalidade: ['', [Validators.required]],
@@ -192,7 +196,8 @@ export class Tela1Component {
 
   carregarMunicipios(uf: string) {
     this.localidadesService.getMunicipiosPorUF(uf).subscribe((municipios) => {
-      this.municipios = municipios;
+      console.log('Municipios carregados:', municipios);
+      this.municipios = municipios.filter((m, i, arr) => m && m.id); // filtra nulos
     });
   }
 
@@ -228,26 +233,44 @@ export class Tela1Component {
     this.formgroup.get('numero_processo')?.reset();
   }
 
-  adicionarDependente() {
+  adicionarDependente(): void {
     if (this.dependentes.length >= 1) {
       alert('Apenas um dependente pode ser adicionado.');
       return;
     }
 
     if (this.formgroup.valid) {
-      const novoDependente = this.formgroup.value; // ou selecione apenas os campos que quiser
+      const novoDependente = this.formgroup.value;
 
-      this.dependentes.push(novoDependente);
-
-      // Se quiser limpar o formulário após adicionar:
+      this.dependentes.push({ ...novoDependente });
       this.formgroup.reset();
 
-      // Ou emitir evento, salvar em storage, etc.
       console.log('Dependente adicionado:', novoDependente);
     } else {
       alert(
         'Preencha todos os campos obrigatórios para adicionar o dependente.'
       );
     }
+  }
+
+  editarDependente(index: number): void {
+    const dependente = this.dependentes[index];
+    this.formgroup.patchValue(dependente);
+    this.dependentes.splice(index, 1); // Remove da tabela para ser atualizado
+  }
+
+  removerDependente(index: number): void {
+    this.dependentes.splice(index, 1);
+  }
+
+  trackByEstado(index: number, estado: any): any {
+    return estado.id;
+  }
+
+  trackByMunicipioId(index: number, municipio: any): any {
+    return municipio?.id ?? index;
+  }
+  trackByTipoIdentificacao(index: number, tipo: any): string {
+    return tipo.value;
   }
 }
