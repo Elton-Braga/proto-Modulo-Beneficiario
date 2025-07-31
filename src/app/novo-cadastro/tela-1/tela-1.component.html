@@ -46,7 +46,7 @@
           >
             <strong> {{ item }}</strong>
             <span class="example-accordion-item-description">
-              Click to {{ accordionItem.expanded ? "close" : "open" }}
+              Click para {{ accordionItem.expanded ? "Fechar" : "Abrir" }}
             </span>
           </button>
           @if(accordionItem.expanded) {
@@ -144,7 +144,7 @@
           formControlName="nome"
         />
       </mat-form-field>
-
+      <!--
       <mat-form-field class="col-4">
         <mat-label>Informe o Apelido</mat-label>
         <input
@@ -194,7 +194,7 @@
           }
         </mat-select>
       </mat-form-field>
-      <!--
+      
   <mat-form-field class="example-form-field col-3">
         <mat-label>Data de Falecimento</mat-label>
         <input
@@ -211,7 +211,7 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #picker4></mat-datepicker>
       </mat-form-field>    
--->
+
 
       <mat-form-field class="example-form-field col-3">
         <mat-label>Data de Falecimetno</mat-label>
@@ -231,10 +231,11 @@
             <button matButton="elevated" matDatepickerApply>Apply</button>
           </mat-datepicker-actions>
         </mat-datepicker>
-      </mat-form-field>
+      </mat-form-field>-->
     </div>
 
-    <div class="row espaco_campos">
+    <!--<div class="row espaco_campos">
+      
       <mat-form-field class="col-6">
         <mat-label>Informe o nome do Pai</mat-label>
 
@@ -256,8 +257,9 @@
           formControlName="mae"
         />
       </mat-form-field>
-    </div>
+    </div>-->
 
+    <!--
     <div class="row espaco_campos">
       <mat-form-field class="col-3">
         <mat-label>Nacionalidade</mat-label>
@@ -310,8 +312,9 @@
           disabled
         />
       </mat-form-field>
-    </div>
+    </div>-->
 
+    <!--
     <div class="row espaco_campos">
       <mat-form-field class="col-2">
         <mat-label>Tipo de Identificação</mat-label>
@@ -360,7 +363,7 @@
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
           matIconSuffix
-          [for]="datepicker"
+          [for]="datepicker3"
         ></mat-datepicker-toggle>
         <mat-datepicker #datepicker3>
           <mat-datepicker-actions>
@@ -375,8 +378,9 @@
 
         <input matInput type="text" placeholder="NIS" formControlName="nis" />
       </mat-form-field>
-    </div>
+    </div>-->
 
+    <!--
     <div class="row espaco_campos">
       <mat-form-field class="col-6">
         <mat-label>Telefone</mat-label>
@@ -400,7 +404,7 @@
           formControlName="email"
         />
       </mat-form-field>
-    </div>
+    </div> -->
     <div class="row espaco_campos">
       <mat-form-field class="col-11">
         <mat-label>Numero do Processo</mat-label>
@@ -448,7 +452,7 @@
           >
             <strong>{{ item }}</strong>
             <span class="example-accordion-item-description">
-              Click to {{ accordionItem.expanded ? "close" : "open" }}
+              Click para {{ accordionItem.expanded ? "Fechar" : "Abrir" }}
             </span>
           </button>
           @if(accordionItem.expanded) {
@@ -485,3 +489,5 @@
     <button type="button" class="btn btn-primary">Salvar</button>
   </div>
 </div>
+<!--
+<app-unidade-familar></app-unidade-familar>-->
