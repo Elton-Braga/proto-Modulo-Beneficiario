@@ -64,6 +64,8 @@ p {
 .example-accordion-item {
   display: block;
   border: solid 1px #ccc;
+  margin: 0;
+  width: 100%;
 }
 
 .example-accordion-item + .example-accordion-item {
@@ -138,5 +140,12 @@ td {
 }
 
 .ajuste-btns {
-  padding: 1rem 0;
+  padding: 1rem 0.5rem 1rem 0.8rem;
+}
+
+.acordeonProcessos {
+  display: block;
+  max-width: 100%; /* Garante responsividade */
+  width: 100%;
+  margin-left: 1rem;
 }

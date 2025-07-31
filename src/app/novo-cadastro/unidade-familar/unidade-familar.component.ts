@@ -39,7 +39,7 @@ import { NgFor, NgIf } from '@angular/common';
     NgIf,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-
+  standalone: true,
   templateUrl: './unidade-familar.component.html',
   styleUrl: './unidade-familar.component.scss',
 })

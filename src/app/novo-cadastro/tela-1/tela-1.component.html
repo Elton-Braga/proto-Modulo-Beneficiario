@@ -1,18 +1,12 @@
 <div class="tela-titular">
-  <div class="row align-items-center">
-    <div class="col-2"><h1 class="titulo">Titular</h1></div>
-    <div class="col-8"></div>
-    <div class="col-1"></div>
-    <div class="col-1"></div>
-  </div>
-
   <div class="row">
     <div class="col-12">
-      <cdk-accordion class="example-accordion">
-        @for (item of itemDependente; track item; let index = $index) {
+      <cdk-accordion class="example-accordion col-12" [multi]="true">
+        @for (item of itemsTelas; track item; let index = $index) {
         <cdk-accordion-item
           #accordionItem="cdkAccordionItem"
           class="example-accordion-item"
+          [expanded]="index === expandedIndex"
         >
           <button
             class="example-accordion-item-header"
@@ -22,12 +16,12 @@
             [attr.aria-expanded]="accordionItem.expanded"
             [attr.aria-controls]="'accordion-body-' + index"
           >
-            <strong> {{ item }}</strong>
+            <strong class="titulo-acordeon">{{ item }}</strong>
             <span class="example-accordion-item-description">
-              Click para {{ accordionItem.expanded ? "Fechar" : "Abrir" }}
+              Click to {{ accordionItem.expanded ? "close" : "open" }}
             </span>
           </button>
-          @if(accordionItem.expanded) {
+          @if (accordionItem.expanded) {
           <div
             class="example-accordion-item-body"
             role="region"
@@ -35,54 +29,244 @@
             [attr.id]="'accordion-body-' + index"
             [attr.aria-labelledby]="'accordion-header-' + index"
           >
-            <div *ngIf="dependentes.length > 0" class="mt-2">
-              <table
-                mat-table
-                [dataSource]="dependentes"
-                class="mat-elevation-z2 w-100 mt-3"
-              >
-                <!-- CPF -->
-                <ng-container matColumnDef="cpf">
-                  <th mat-header-cell *matHeaderCellDef>CPF</th>
-                  <td mat-cell *matCellDef="let element">{{ element.cpf }}</td>
-                </ng-container>
+            @switch (index) { @case (0) {
+            <div class="col-12">
+              <cdk-accordion class="example-accordion">
+                @for (item of itemDependente; track item; let index = $index) {
+                <cdk-accordion-item
+                  #accordionItem="cdkAccordionItem"
+                  class="example-accordion-item"
+                >
+                  <button
+                    class="example-accordion-item-header"
+                    (click)="accordionItem.toggle()"
+                    tabindex="0"
+                    [attr.id]="'accordion-header-' + index"
+                    [attr.aria-expanded]="accordionItem.expanded"
+                    [attr.aria-controls]="'accordion-body-' + index"
+                  >
+                    <strong> {{ item }}</strong>
+                    <span class="example-accordion-item-description">
+                      Click para
+                      {{ accordionItem.expanded ? "Fechar" : "Abrir" }}
+                    </span>
+                  </button>
+                  @if(accordionItem.expanded) {
+                  <div
+                    class="example-accordion-item-body"
+                    role="region"
+                    [style.display]="accordionItem.expanded ? '' : 'none'"
+                    [attr.id]="'accordion-body-' + index"
+                    [attr.aria-labelledby]="'accordion-header-' + index"
+                  >
+                    <div *ngIf="dependentes.length > 0" class="mt-2">
+                      <table
+                        mat-table
+                        [dataSource]="dependentes"
+                        class="mat-elevation-z2 w-100 mt-3"
+                      >
+                        <!-- CPF -->
+                        <ng-container matColumnDef="cpf">
+                          <th mat-header-cell *matHeaderCellDef>CPF</th>
+                          <td mat-cell *matCellDef="let element">
+                            {{ element.cpf }}
+                          </td>
+                        </ng-container>
 
-                <!-- Nome -->
-                <ng-container matColumnDef="nome">
-                  <th mat-header-cell *matHeaderCellDef>Nome</th>
-                  <td mat-cell *matCellDef="let element">
-                    {{ element.nome }}
-                  </td>
-                </ng-container>
+                        <!-- Nome -->
+                        <ng-container matColumnDef="nome">
+                          <th mat-header-cell *matHeaderCellDef>Nome</th>
+                          <td mat-cell *matCellDef="let element">
+                            {{ element.nome }}
+                          </td>
+                        </ng-container>
 
-                <!-- Ações -->
-                <ng-container matColumnDef="acoes">
-                  <th mat-header-cell *matHeaderCellDef>Ações</th>
-                  <td mat-cell *matCellDef="let element; let i = index">
-                    <button
-                      mat-icon-button
-                      color="primary"
-                      (click)="editarDependente(i)"
-                    >
-                      <mat-icon>edit</mat-icon>
-                    </button>
-                    <button
-                      mat-icon-button
-                      color="warn"
-                      (click)="removerDependente(i)"
-                    >
-                      <mat-icon>delete</mat-icon>
-                    </button>
-                  </td>
-                </ng-container>
+                        <!-- Ações -->
+                        <ng-container matColumnDef="acoes">
+                          <th mat-header-cell *matHeaderCellDef>Ações</th>
+                          <td mat-cell *matCellDef="let element; let i = index">
+                            <button
+                              mat-icon-button
+                              color="primary"
+                              (click)="editarDependente(i)"
+                            >
+                              <mat-icon>edit</mat-icon>
+                            </button>
+                            <button
+                              mat-icon-button
+                              color="warn"
+                              (click)="removerDependente(i)"
+                            >
+                              <mat-icon>delete</mat-icon>
+                            </button>
+                          </td>
+                        </ng-container>
 
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr
-                  mat-row
-                  *matRowDef="let row; columns: displayedColumns"
-                ></tr>
-              </table>
+                        <tr
+                          mat-header-row
+                          *matHeaderRowDef="displayedColumns"
+                        ></tr>
+                        <tr
+                          mat-row
+                          *matRowDef="let row; columns: displayedColumns"
+                        ></tr>
+                      </table>
+                    </div>
+                  </div>
+                  }
+                </cdk-accordion-item>
+                }
+              </cdk-accordion>
             </div>
+
+            <form [formGroup]="formgroup">
+              <div class="row espaco_campos">
+                <mat-form-field class="col-4">
+                  <mat-label>Informe o CPF</mat-label>
+
+                  <input
+                    class="col-4"
+                    matInput
+                    type="text"
+                    mask="000.000.000-00"
+                    placeholder="Informe o CPF"
+                    formControlName="cpf"
+                    (blur)="validarCpf()"
+                  />
+                </mat-form-field>
+
+                <mat-form-field class="col-4">
+                  <mat-label>Informe o Nome</mat-label>
+                  <input
+                    class="col-4"
+                    matInput
+                    type="text"
+                    placeholder="Informe o nome"
+                    formControlName="nome"
+                  />
+                </mat-form-field>
+              </div>
+
+              <div class="row espaco_campos">
+                <mat-form-field class="col-11">
+                  <mat-label>Numero do Processo</mat-label>
+
+                  <input
+                    matInput
+                    type="tel"
+                    placeholder="Informe o numero do processo"
+                    mask="000000000/0000"
+                    formControlName="numero_processo"
+                  />
+                </mat-form-field>
+                <div
+                  class="col-1 flex justify-center col-auto d-inline-flex align-items-center text-right text-end ajuste_plus"
+                >
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    [disabled]="
+                      formgroup.get('numero_processo')?.invalid ||
+                      !formgroup.get('numero_processo')?.value
+                    "
+                    (click)="adicionarProcesso()"
+                  >
+                    Novo Processo
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <div class="col-12">
+              <cdk-accordion class="acordeonProcessos">
+                @for (item of items; track item; let index = $index) {
+                <cdk-accordion-item
+                  #accordionItem="cdkAccordionItem"
+                  class="example-accordion-item"
+                >
+                  <button
+                    class="example-accordion-item-header"
+                    (click)="accordionItem.toggle()"
+                    tabindex="0"
+                    [attr.id]="'accordion-header-' + index"
+                    [attr.aria-expanded]="accordionItem.expanded"
+                    [attr.aria-controls]="'accordion-body-' + index"
+                  >
+                    <strong>{{ item }}</strong>
+                    <span class="example-accordion-item-description">
+                      Click para
+                      {{ accordionItem.expanded ? "Fechar" : "Abrir" }}
+                    </span>
+                  </button>
+                  @if(accordionItem.expanded) {
+                  <div
+                    class="example-accordion-item-body"
+                    role="region"
+                    [style.display]="accordionItem.expanded ? '' : 'none'"
+                    [attr.id]="'accordion-body-' + index"
+                    [attr.aria-labelledby]="'accordion-header-' + index"
+                  >
+                    <div *ngIf="processos.length > 0" class="mt-2">
+                      <table class="tabela-processos">
+                        <tr class="linha-titulo">
+                          <th>
+                            <p class="titulo-tabela">Processos adicionados</p>
+                          </th>
+                          <th>Ações</th>
+                        </tr>
+                        <tr *ngFor="let p of processos">
+                          <td class="celula-dados">
+                            <p class="dado">{{ p | numeroProcessoSei }}</p>
+                          </td>
+                          <td>...</td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                  }
+                </cdk-accordion-item>
+                }
+              </cdk-accordion>
+            </div>
+
+            <div class="row ajuste-btns">
+              <div class="col-11">
+                <button type="button" class="btn btn-primary">Salvar</button>
+              </div>
+
+              <div class="col-1">
+                <button
+                  type="button"
+                  class="btn btn-light"
+                  [disabled]="
+                    !formgroup.valid ||
+                    dependentes.length >= 1 ||
+                    cpfIgualAoOriginal
+                  "
+                  (click)="adicionarDependente()"
+                >
+                  <strong>+ Dependente</strong>
+                </button>
+              </div>
+            </div>
+
+            } @case (1) {
+            <h2 class="titulo">Unidade Familiar</h2>
+            <table>
+              <tr class="linha">
+                <th><strong>Projeto</strong></th>
+
+                <th><strong>Lote</strong></th>
+                <th><strong>Situação T1</strong></th>
+                <th><strong>Situação T2</strong></th>
+                <th><strong>Regularização</strong></th>
+                <th><strong>Periodo</strong></th>
+              </tr>
+              <tr>
+                <td>...</td>
+              </tr>
+            </table>
+            } }
           </div>
           }
         </cdk-accordion-item>
@@ -91,130 +275,7 @@
     </div>
   </div>
 
-  <form [formGroup]="formgroup">
-    <div class="row espaco_campos">
-      <mat-form-field class="col-4">
-        <mat-label>Informe o CPF</mat-label>
-
-        <input
-          class="col-4"
-          matInput
-          type="text"
-          mask="000.000.000-00"
-          placeholder="Informe o CPF"
-          formControlName="cpf"
-          (blur)="validarCpf()"
-        />
-      </mat-form-field>
-
-      <mat-form-field class="col-4">
-        <mat-label>Informe o Nome</mat-label>
-        <input
-          class="col-4"
-          matInput
-          type="text"
-          placeholder="Informe o nome"
-          formControlName="nome"
-        />
-      </mat-form-field>
-    </div>
-
-    <div class="row espaco_campos">
-      <mat-form-field class="col-11">
-        <mat-label>Numero do Processo</mat-label>
-
-        <input
-          matInput
-          type="tel"
-          placeholder="Informe o numero do processo"
-          mask="000000000/0000"
-          formControlName="numero_processo"
-        />
-      </mat-form-field>
-      <div
-        class="col-1 flex justify-center col-auto d-inline-flex align-items-center text-right text-end ajuste_plus"
-      >
-        <button
-          type="button"
-          class="btn btn-primary"
-          [disabled]="
-            formgroup.get('numero_processo')?.invalid ||
-            !formgroup.get('numero_processo')?.value
-          "
-          (click)="adicionarProcesso()"
-        >
-          Novo Processo
-        </button>
-      </div>
-    </div>
-  </form>
-  <div class="row">
-    <div class="col-12">
-      <cdk-accordion class="example-accordion">
-        @for (item of items; track item; let index = $index) {
-        <cdk-accordion-item
-          #accordionItem="cdkAccordionItem"
-          class="example-accordion-item"
-        >
-          <button
-            class="example-accordion-item-header"
-            (click)="accordionItem.toggle()"
-            tabindex="0"
-            [attr.id]="'accordion-header-' + index"
-            [attr.aria-expanded]="accordionItem.expanded"
-            [attr.aria-controls]="'accordion-body-' + index"
-          >
-            <strong>{{ item }}</strong>
-            <span class="example-accordion-item-description">
-              Click para {{ accordionItem.expanded ? "Fechar" : "Abrir" }}
-            </span>
-          </button>
-          @if(accordionItem.expanded) {
-          <div
-            class="example-accordion-item-body"
-            role="region"
-            [style.display]="accordionItem.expanded ? '' : 'none'"
-            [attr.id]="'accordion-body-' + index"
-            [attr.aria-labelledby]="'accordion-header-' + index"
-          >
-            <div *ngIf="processos.length > 0" class="mt-2">
-              <table class="tabela-processos">
-                <tr class="linha-titulo">
-                  <th><p class="titulo-tabela">Processos adicionados</p></th>
-                  <th>Ações</th>
-                </tr>
-                <tr *ngFor="let p of processos">
-                  <td class="celula-dados">
-                    <p class="dado">{{ p | numeroProcessoSei }}</p>
-                  </td>
-                  <td>...</td>
-                </tr>
-              </table>
-            </div>
-          </div>
-          }
-        </cdk-accordion-item>
-        }
-      </cdk-accordion>
-    </div>
-  </div>
+  <div class="row"></div>
   <!--botão Salvar e + dependente-->
-  <div class="row ajuste-btns">
-    <div class="col-11">
-      <button type="button" class="btn btn-primary">Salvar</button>
-    </div>
-
-    <div class="col-1">
-      <button
-        type="button"
-        class="btn btn-light"
-        [disabled]="
-          !formgroup.valid || dependentes.length >= 1 || cpfIgualAoOriginal
-        "
-        (click)="adicionarDependente()"
-      >
-        <strong>+ Dependente</strong>
-      </button>
-    </div>
-  </div>
 </div>
+<div class="row"></div>

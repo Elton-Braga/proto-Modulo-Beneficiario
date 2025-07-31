@@ -17,13 +17,29 @@ import { MatIconModule } from '@angular/material/icon';
 import { ServicosService } from '../tela-1/servico/servicos.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { NgFor, NgIf } from '@angular/common';
+import {
+  NgComponentOutlet,
+  NgFor,
+  NgIf,
+  NgSwitch,
+  NgSwitchCase,
+  NgSwitchDefault,
+} from '@angular/common';
 import { NumeroProcessoSeiPipe } from '../../pipes/numero-processo-sei.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { Beneficiario } from '../../lista/beneficiario';
 import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
+import { RegularizacaoComponent } from '../regularizacao/regularizacao.component';
+import { UnidadeFamilarComponent } from '../unidade-familar/unidade-familar.component';
+
+interface AbaAcordeon {
+  titulo: string;
+  componente: any;
+  visivel: boolean;
+}
 
 @Component({
+  standalone: true,
   selector: 'app-tela-1',
   imports: [
     MatInputModule,
@@ -40,6 +56,11 @@ import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
     NgFor,
     NumeroProcessoSeiPipe,
     MatTableModule,
+    NgComponentOutlet,
+    NgSwitch,
+    NgSwitchCase,
+    RegularizacaoComponent,
+    UnidadeFamilarComponent,
   ],
   templateUrl: './tela-1.component.html',
   styleUrl: './tela-1.component.scss',
@@ -62,6 +83,23 @@ export class Tela1Component {
   cpfInvalido = false;
   cpfOriginal = ''; // defina isso com o CPF vindo da rota
   cpfIgualAoOriginal = false;
+
+  itemsTelas = ['Titular', 'Unidade Familiar', 'Regularização'];
+  expandedIndexTelas = 0;
+  /*
+  abas: AbaAcordeon[] = [
+    // { titulo: 'Titular', componente: Tela1Component, visivel: true },
+    {
+      titulo: 'Regularização',
+      componente: RegularizacaoComponent,
+      visivel: false,
+    },
+    {
+      titulo: 'Unidade Familiar',
+      componente: UnidadeFamilarComponent,
+      visivel: false,
+    },
+  ];*/
 
   constructor(fb: FormBuilder) {
     const dadosRota = history.state;
