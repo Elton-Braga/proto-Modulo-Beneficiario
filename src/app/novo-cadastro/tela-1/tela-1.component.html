@@ -2,18 +2,7 @@
   <div class="row align-items-center">
     <div class="col-2"><h1 class="titulo">Titular</h1></div>
     <div class="col-8"></div>
-    <div class="col-1">
-      <button
-        type="button"
-        class="btn btn-light ajuste-btn"
-        [disabled]="
-          !formgroup.valid || dependentes.length >= 1 || cpfIgualAoOriginal
-        "
-        (click)="adicionarDependente()"
-      >
-        <strong>+ Dependente</strong>
-      </button>
-    </div>
+    <div class="col-1"></div>
     <div class="col-1"></div>
   </div>
 
@@ -209,8 +198,23 @@
       </cdk-accordion>
     </div>
   </div>
+  <!--botão Salvar e + dependente-->
+  <div class="row ajuste-btns">
+    <div class="col-11">
+      <button type="button" class="btn btn-primary">Salvar</button>
+    </div>
 
-  <div class="col-1 ajuste-btn-salvar">
-    <button type="button" class="btn btn-primary">Salvar</button>
+    <div class="col-1">
+      <button
+        type="button"
+        class="btn btn-light"
+        [disabled]="
+          !formgroup.valid || dependentes.length >= 1 || cpfIgualAoOriginal
+        "
+        (click)="adicionarDependente()"
+      >
+        <strong>+ Dependente</strong>
+      </button>
+    </div>
   </div>
 </div>
