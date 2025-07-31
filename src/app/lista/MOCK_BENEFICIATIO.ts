@@ -14,6 +14,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     regularizacao: 'Assentamento',
     periodo_regularizacao: '24/11/1986',
     status: 'Deferido',
+    cpf_T1: '000.000.000-00',
+    numero_processo: ['000044000/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
   },
   {
@@ -29,6 +31,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     regularizacao: 'Inclusão',
     periodo_regularizacao: '12/03/2002',
     status: 'Negado',
+    cpf_T1: '111.000.000-00',
+    numero_processo: ['000000011/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
   },
   {
@@ -44,6 +48,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     regularizacao: 'Transferido',
     periodo_regularizacao: '03/05/1998',
     status: 'Em Análise',
+    cpf_T1: '000.000.000-25',
+    numero_processo: ['000000000/2222'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
   },
   {
@@ -59,6 +65,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     regularizacao: 'Falecimento',
     periodo_regularizacao: '15/08/2001',
     status: 'Suspenso',
+    cpf_T1: '000.000.000-02',
+    numero_processo: ['456734532/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
   },
   {
@@ -74,6 +82,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     regularizacao: 'Desistente',
     periodo_regularizacao: '01/04/2004',
     status: 'Cancelado',
+    cpf_T1: '000.000.010-00',
+    numero_processo: ['645789456/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
   },
   {
@@ -89,6 +99,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     regularizacao: 'Assentamento',
     periodo_regularizacao: '18/10/2003',
     status: 'Deferido',
+    cpf_T1: '000.000.123-00',
+    numero_processo: ['123789456/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
   },
   {
@@ -104,6 +116,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     regularizacao: 'Transferido',
     periodo_regularizacao: '02/09/2002',
     status: 'Negado',
+    cpf_T1: '000.456.000-00',
+    numero_processo: ['123456789/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
   },
   {
@@ -119,6 +133,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     regularizacao: 'Inclusão',
     periodo_regularizacao: '19/01/2010',
     status: 'Em Análise',
+    cpf_T1: '000.004.000-00',
+    numero_processo: ['222222223/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
   },
   {
@@ -134,6 +150,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     regularizacao: 'Falecimento',
     periodo_regularizacao: '30/07/1999',
     status: 'Suspenso',
+    cpf_T1: '000.048.000-00',
+    numero_processo: ['222222222/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
   },
   {
@@ -149,6 +167,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     regularizacao: 'Desistente',
     periodo_regularizacao: '12/12/2008',
     status: 'Cancelado',
+    cpf_T1: '800.000.000-00',
+    numero_processo: ['111111111/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
   },
   // Registros 11 a 20 omitidos por brevidade, posso completar se desejar

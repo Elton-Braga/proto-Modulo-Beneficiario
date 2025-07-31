@@ -20,6 +20,8 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { NgFor, NgIf } from '@angular/common';
 import { NumeroProcessoSeiPipe } from '../../pipes/numero-processo-sei.pipe';
 import { MatTableModule } from '@angular/material/table';
+import { Beneficiario } from '../../lista/beneficiario';
+import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
 
 @Component({
   selector: 'app-tela-1',
@@ -54,14 +56,23 @@ export class Tela1Component {
   dependentes: any[] = [];
   processos: string[] = [];
   numero_processo!: FormControl;
-  displayedColumns: string[] = ['cpf', 'nome', 'apelido', 'acoes'];
+  displayedColumns: string[] = ['cpf', 'nome', 'acoes'];
   selectedValue!: string;
+  beneficiarios: Beneficiario[] = [];
+  cpfInvalido = false;
+  cpfOriginal = ''; // defina isso com o CPF vindo da rota
+  cpfIgualAoOriginal = false;
 
-  constructor(fb: FormBuilder, private localidadesService: ServicosService) {
+  constructor(fb: FormBuilder) {
+    const dadosRota = history.state;
+
     this.formgroup = fb.group({
-      nome: ['', [Validators.required]],
-      cpf: ['', [Validators.required]],
-      numero_processo: ['', [Validators.required]],
+      nome: [
+        { value: dadosRota.nome || '', disabled: true },
+        [Validators.required],
+      ],
+      cpf: [dadosRota.cpf || '', [Validators.required]],
+      numero_processo: [dadosRota.numero_processo || '', [Validators.required]],
     });
 
     this.nome = this.formgroup.get('nome') as FormControl;
@@ -70,10 +81,44 @@ export class Tela1Component {
   }
 
   ngOnInit() {
+    this.beneficiarios = MOCK_BENEFICIARIOS;
+    /*
     this.carregarFormularioDoLocalStorage();
     // Expor função globalmente
     (window as any).salvarFormTela1 = () =>
       this.salvarFormularioNoLocalStorage();
+
+    const dados = history.state;
+
+    // Se os dados vierem da tela de lista, preenche o formulário
+    if (dados && (dados.nome || dados.cpf || dados.numero_processo)) {
+      this.formgroup.patchValue({
+        nome: dados.nome || '',
+        cpf: dados.cpf || '',
+        numero_processo: dados.numero_processo || '',
+      });
+    }*/
+
+    const dados = history.state;
+    console.log('Dados da rota:', dados);
+
+    this.carregarFormularioDoLocalStorage();
+
+    (window as any).salvarFormTela1 = () =>
+      this.salvarFormularioNoLocalStorage();
+
+    if (dados && (dados.nome || dados.cpf || dados.numero_processo)) {
+      this.formgroup.patchValue({
+        nome: dados.nome || '',
+        cpf: dados.cpf || '',
+        numero_processo:
+          (Array.isArray(dados.numero_processo)
+            ? dados.numero_processo[0]
+            : dados.numero_processo) || '',
+      });
+
+      this.cpfOriginal = dados.cpf || '';
+    }
   }
 
   salvarFormularioNoLocalStorage(): void {
@@ -89,6 +134,22 @@ export class Tela1Component {
     const dados = localStorage.getItem('dadosCadastroBeneficiario');
     if (dados) {
       this.formgroup.patchValue(JSON.parse(dados));
+    }
+  }
+
+  validarCpf() {
+    const cpf = this.formgroup.get('cpf')?.value;
+
+    const beneficiario = this.beneficiarios.find((b) => b.cpf_T1 === cpf);
+
+    if (beneficiario) {
+      this.formgroup.patchValue({ nome: beneficiario.nome_T1 });
+      this.cpfInvalido = false;
+      this.cpfIgualAoOriginal = cpf === this.cpfOriginal;
+    } else {
+      this.formgroup.patchValue({ nome: '' });
+      this.cpfInvalido = true;
+      this.cpfIgualAoOriginal = false;
     }
   }
 

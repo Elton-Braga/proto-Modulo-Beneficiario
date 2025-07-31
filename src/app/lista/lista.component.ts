@@ -231,8 +231,15 @@ export class ListaComponent implements AfterViewInit {
     // Aqui você pode redirecionar, abrir modal, etc.
     switch (acao) {
       case 'Editar':
-        this.router.navigate(['novo']);
+        this.router.navigate(['/novo'], {
+          state: {
+            nome: elemento.nome_T1,
+            cpf: elemento.cpf_T1,
+            numero_processo: elemento.numero_processo,
+          },
+        });
         break;
+
       case 'Visualizar':
         this.openDialogRegularizacao();
         // lógica para visualizar
