@@ -20,11 +20,12 @@
           routerLink="Titular"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }"
-          >Titular 1</a
+          >Titular</a
         ></strong
       >
       <strong
         ><a
+          *ngIf="false"
           class="btn btn-light botao"
           routerLink="Titular2"
           routerLinkActive="active"
@@ -34,6 +35,7 @@
       >
       <strong
         ><a
+          *ngIf="false"
           class="btn btn-light botao"
           routerLink="UnidadeFamiliar"
           routerLinkActive="active"
@@ -43,6 +45,7 @@
       >
       <strong
         ><a
+          *ngIf="false"
           class="btn btn-light botao"
           routerLink="Assentamento"
           routerLinkActive="active"
@@ -52,6 +55,7 @@
       >
       <strong
         ><a
+          *ngIf="false"
           class="btn btn-light botao"
           routerLink="Regularizacao"
           routerLinkActive="active"
@@ -60,13 +64,6 @@
         ></strong
       >
     </div>
-    <!--Breadcrumb e botões avançar, salvar e voltar ocultados com o valor hidden-->
-    <!-- <p-breadcrumb
-      [model]="items"
-      [home]="home"
-      class="text-justify text-link"
-      hidden
-    /> -->
   </div>
 </div>
 <div class="conteudo">
@@ -89,25 +86,8 @@
     *ngIf="!ehUltimaEtapa()"
     hidden
   >
-    <strong>Avançar</strong></button
-  ><!--
-  <button
-    class="btn col-1 btn-success col-auto ms-2 col-auto d-inline-flex align-items-center executar_acao_btn"
-    *ngIf="exibirBotaoExecutar"
-    [disabled]="!executarHabilitado"
-    (click)="executarAcao()"
-    hidden
-  >
-    <mat-icon class="me-1">play_arrow</mat-icon> <strong>Executar</strong>
+    <strong>Avançar</strong>
   </button>
-  <button
-    class="btn btn-primary col-auto d-inline-flex align-items-center"
-    *ngIf="ehUltimaEtapa()"
-    (click)="salvar()"
-    hidden
-  >
-    <mat-icon class="me-1">done_outline</mat-icon> <strong>Salvar</strong>
-  </button>-->
 
   <button class="btn btn-primary col-auto d-inline-flex align-items-center">
     <mat-icon class="me-1">done_outline</mat-icon> <strong>Salvar Tudo</strong>
