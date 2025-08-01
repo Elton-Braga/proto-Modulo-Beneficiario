@@ -31,6 +31,7 @@ import { Beneficiario } from '../../lista/beneficiario';
 import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
 import { RegularizacaoComponent } from '../regularizacao/regularizacao.component';
 import { UnidadeFamilarComponent } from '../unidade-familar/unidade-familar.component';
+import { AssentamentoComponent } from '../assentamento/assentamento.component';
 
 interface AbaAcordeon {
   titulo: string;
@@ -56,11 +57,9 @@ interface AbaAcordeon {
     NgFor,
     NumeroProcessoSeiPipe,
     MatTableModule,
-    NgComponentOutlet,
-    NgSwitch,
-    NgSwitchCase,
     RegularizacaoComponent,
     UnidadeFamilarComponent,
+    AssentamentoComponent,
   ],
   templateUrl: './tela-1.component.html',
   styleUrl: './tela-1.component.scss',
@@ -84,7 +83,7 @@ export class Tela1Component {
   cpfOriginal = ''; // defina isso com o CPF vindo da rota
   cpfIgualAoOriginal = false;
 
-  itemsTelas = ['Titular', 'Unidade Familiar', 'Regularização'];
+  itemsTelas = ['Titular', 'Unidade Familiar', 'Assentamento', 'Regularização'];
   expandedIndexTelas = 0;
   /*
   abas: AbaAcordeon[] = [
