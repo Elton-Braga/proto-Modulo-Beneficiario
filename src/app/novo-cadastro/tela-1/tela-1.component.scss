@@ -25,7 +25,7 @@
 }
 
 .espaco_campos {
-  margin: 1.5rem 0;
+  margin: 1.5rem 1rem;
 }
 h1 {
   color: rgb(12, 71, 122);
@@ -148,4 +148,8 @@ td {
   max-width: 100%; /* Garante responsividade */
   width: 100%;
   margin-left: 1rem;
+}
+
+.mais-dependente-btn {
+  padding: 0 0rem 0 0rem;
 }

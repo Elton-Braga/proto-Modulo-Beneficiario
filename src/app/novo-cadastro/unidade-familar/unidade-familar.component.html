@@ -1,6 +1,6 @@
 <div class="div-principal">
   <form [formGroup]="formgroup">
-    <div class="row espaco_campos">
+    <div class="row">
       <mat-form-field class="col-3">
         <mat-label>Situaço Conjugal</mat-label>
         <mat-select>
@@ -66,7 +66,7 @@
     </div>
     <div class="row">
       <div class="col-2">
-        <h6>Dependente</h6>
+        <h5>Dependente</h5>
         <!--
         <mat-icon
           class="flex justify-center card col-auto d-inline-flex align-items-center ajuste_plus"
@@ -81,90 +81,80 @@
     </div>
 
     <div class="row espaco_campos gx-0">
-      <div class="col-2">
-        <mat-form-field>
-          <mat-label>Tipo de dependente</mat-label>
-          <mat-select formControlName="tipo_dependente">
-            @for (t_dependente of t_dependente; track t_dependente) {
-            <mat-option [value]="t_dependente.value">{{
-              t_dependente.viewValue
-            }}</mat-option>
-            }
-          </mat-select>
-        </mat-form-field>
-      </div>
+      <mat-form-field class="col-2">
+        <mat-label>Tipo de dependente</mat-label>
+        <mat-select formControlName="tipo_dependente">
+          @for (t_dependente of t_dependente; track t_dependente) {
+          <mat-option [value]="t_dependente.value">{{
+            t_dependente.viewValue
+          }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
 
-      <div class="col-2">
-        <mat-form-field>
-          <mat-label>Nome do dependente</mat-label>
+      <mat-form-field class="col-2">
+        <mat-label>Nome do dependente</mat-label>
 
-          <input
-            matInput
-            type="text"
-            placeholder="Informe o nome"
-            formControlName="nome"
-          />
-        </mat-form-field>
-      </div>
+        <input
+          matInput
+          type="text"
+          placeholder="Informe o nome"
+          formControlName="nome"
+        />
+      </mat-form-field>
 
-      <div class="col-2">
-        <mat-form-field>
-          <mat-label>Data de Nascimento</mat-label>
-          <input
-            matInput
-            [matDatepicker]="picker"
-            formControlName="data_nascimento"
-          />
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-      </div>
+      <mat-form-field class="col-2">
+        <mat-label>Data de Nascimento</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="data_nascimento"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
 
-      <div class="col-2">
-        <mat-form-field>
-          <mat-label>Data na Familia</mat-label>
-          <input
-            matInput
-            [matDatepicker]="picker1"
-            formControlName="data_na_familia"
-          />
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle
-            matIconSuffix
-            [for]="picker1"
-          ></mat-datepicker-toggle>
-          <mat-datepicker #picker1></mat-datepicker>
-        </mat-form-field>
-      </div>
+      <mat-form-field class="col-2">
+        <mat-label>Data na Familia</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker1"
+          formControlName="data_na_familia"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker1"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
 
-      <div class="col-2">
-        <mat-form-field>
-          <mat-label>Informe o CPF</mat-label>
+      <mat-form-field class="col-3">
+        <mat-label>Informe o CPF</mat-label>
 
-          <input
-            matInput
-            type="text"
-            placeholder="Informe o CPF"
-            formControlName="cpf_dependente"
-            mask="000.000.000-00"
-          />
-        </mat-form-field>
-      </div>
+        <input
+          matInput
+          type="text"
+          placeholder="Informe o CPF"
+          formControlName="cpf_dependente"
+          mask="000.000.000-00"
+        />
+      </mat-form-field>
+
       <!--btn btn-primary align-bottom-fix btn-tamanho-customizado-->
-      <div class="col-2">
-        <button
-          type="button"
-          class="btn btn-primary align-bottom-fix btn-tamanho-customizado2"
-          (click)="adicionarDependente()"
-          [disabled]="!camposDependentePreenchidos()"
-        >
-          <strong>Adicionar Dependente</strong>
-        </button>
-      </div>
+
+      <button
+        type="button"
+        class="btn btn-primary align-bottom-fix btn-tamanho-customizado2 col-1 text-center"
+        (click)="adicionarDependente()"
+        [disabled]="!camposDependentePreenchidos()"
+      >
+        <strong>Novo Dependente</strong>
+      </button>
     </div>
     <!--BTN ADICIONAR DEPENDENTES-->
     <div class="row campos_dependentes">
