@@ -121,7 +121,7 @@
 
             <form [formGroup]="formgroup">
               <div class="row espaco_campos">
-                <mat-form-field class="col-4">
+                <mat-form-field class="col-6">
                   <mat-label>Informe o CPF</mat-label>
 
                   <input
@@ -135,7 +135,7 @@
                   />
                 </mat-form-field>
 
-                <mat-form-field class="col-4">
+                <mat-form-field class="col-5">
                   <mat-label>Informe o Nome</mat-label>
                   <input
                     class="col-4"
@@ -145,6 +145,21 @@
                     formControlName="nome"
                   />
                 </mat-form-field>
+
+                <div class="col-1">
+                  <button
+                    type="button"
+                    class="btn btn-primary"
+                    [disabled]="
+                      !formgroup.valid ||
+                      dependentes.length >= 1 ||
+                      cpfIgualAoOriginal
+                    "
+                    (click)="adicionarDependente()"
+                  >
+                    <strong>+ Dependente</strong>
+                  </button>
+                </div>
               </div>
 
               <div class="row espaco_campos">
@@ -235,7 +250,7 @@
               </div>
 
               <div class="col-1">
-                <button
+                <!-- <button
                   type="button"
                   class="btn btn-light"
                   [disabled]="
@@ -246,7 +261,7 @@
                   (click)="adicionarDependente()"
                 >
                   <strong>+ Dependente</strong>
-                </button>
+                </button> -->
               </div>
             </div>
 
