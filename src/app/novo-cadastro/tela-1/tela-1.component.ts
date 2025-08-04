@@ -108,6 +108,7 @@ export class Tela1Component {
         { value: dadosRota.nome || '', disabled: true },
         [Validators.required],
       ],
+      cod_beneficiario: [],
       cpf: [dadosRota.cpf || '', [Validators.required]],
       numero_processo: [dadosRota.numero_processo || '', [Validators.required]],
     });
