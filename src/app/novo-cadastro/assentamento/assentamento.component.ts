@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
+import { ServicosService } from '../tela-1/servico/servicos.service';
 
 @Component({
   selector: 'app-assentamento',
@@ -139,16 +140,22 @@ export class AssentamentoComponent {
     { value: 'teste2', viewValue: 'teste2' },
     { value: 'teste3', viewValue: 'teste3' },
   ];
-
+  municipios: any[] = [];
+  estados: any[] = [];
   lotes: Lote[] = [];
+  sr: string[] = ['021', '002', '003', '004', '005'];
   observacoes: Observacao[] = [];
 
   private readonly STORAGE_KEY = 'cadastroBenef';
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private servicosService: ServicosService
+  ) {}
 
   // ---------- inicialização ----------
   ngOnInit(): void {
+    this.carregarEstados();
     this.form = this.fb.group({
       titular_1: [
         { value: 'Joaquim José da Silva', disabled: true },
@@ -185,6 +192,8 @@ export class AssentamentoComponent {
 
       observacao: [''],
       data_observacao: [''],
+      municipios: ['', Validators.required],
+      estados: ['', Validators.required],
     });
 
     // tenta carregar do localStorage
@@ -278,6 +287,23 @@ export class AssentamentoComponent {
         observacoes: this.observacoes,
       })
     );
+  }
+
+  carregarEstados(): void {
+    this.servicosService.getEstados().subscribe({
+      next: (dados) => (this.estados = dados),
+      error: (erro) => console.error('Erro ao carregar estados:', erro),
+    });
+    console.log('clicou', this.estados);
+  }
+
+  carregarMunicipiosPorEstado(siglaEstado: string): void {
+    if (!siglaEstado) return;
+
+    this.servicosService.getMunicipiosPorUF(siglaEstado).subscribe({
+      next: (dados) => (this.municipios = dados),
+      error: (erro) => console.error('Erro ao carregar municípios:', erro),
+    });
   }
 }
 

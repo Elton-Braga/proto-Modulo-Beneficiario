@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row margem">
   <div class="area_conteudo">
     <form class="container-fluid px-0" [formGroup]="form">
       <div class="row gx-2">
@@ -184,6 +184,40 @@
             <input matInput value="" formControlName="denominacao_lote" />
           </mat-form-field>
         </div>
+      </div>
+      <hr />
+
+      <div class="row">
+        <mat-form-field class="col-4">
+          <mat-label>SR</mat-label>
+          <mat-select multiple>
+            @for (sr of sr; track sr) {
+            <mat-option [value]="sr">{{ sr }}</mat-option>
+            }
+          </mat-select></mat-form-field
+        >
+
+        <mat-form-field class="col-4">
+          <mat-label>Estados</mat-label>
+          <mat-select
+            name="uf"
+            formControlName="estados"
+            (selectionChange)="carregarMunicipiosPorEstado($event.value)"
+          >
+            @for (food of estados; track food) {
+            <mat-option [value]="food.sigla">{{ food.sigla }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="col-4">
+          <mat-label>Municipios</mat-label>
+          <mat-select name="municipios" formControlName="municipios">
+            @for (food of municipios; track food) {
+            <mat-option [value]="food.nome">{{ food.nome }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
       </div>
       <hr />
       <div class="row">
