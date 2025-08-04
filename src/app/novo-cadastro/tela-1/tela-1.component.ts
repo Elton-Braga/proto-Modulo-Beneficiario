@@ -116,6 +116,8 @@ export class Tela1Component {
       cod_beneficiario: [],
       cpf: [dadosRota.cpf || '', [Validators.required]],
       numero_processo: [dadosRota.numero_processo || '', [Validators.required]],
+      telefone: [],
+      email: [],
     });
 
     this.nome = this.formgroup.get('nome') as FormControl;
