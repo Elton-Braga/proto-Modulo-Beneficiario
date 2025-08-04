@@ -165,29 +165,25 @@
          </button>
           -->
       </div>
-      <div class="col-6"></div>
     </div>
 
-    <div class="row espaco_campos">
-      <div class="col-11">
-        <mat-form-field class="w-100">
-          <mat-label>Associação da Unidade Familiar</mat-label>
-          <input
-            matInput
-            placeholder="Associação da Unidade Familiar"
-            formControlName="associacao_unidade_familiar"
-          />
-        </mat-form-field>
-      </div>
-      <div class="col-1">
-        <button
-          class="btn btn-primary align-bottom-fix btn-tamanho-customizado"
-          [disabled]="formgroup.get('associacao_unidade_familiar')?.invalid"
-          (click)="adicionarUnidadeFamiliar()"
-        >
-          Incluir Unidade
-        </button>
-      </div>
+    <div class="row">
+      <mat-form-field class="col-11">
+        <mat-label>Associação da Unidade Familiar</mat-label>
+        <input
+          matInput
+          placeholder="Associação da Unidade Familiar"
+          formControlName="associacao_unidade_familiar"
+        />
+      </mat-form-field>
+
+      <button
+        class="btn btn-primary btn-tamanho-customizado col-1"
+        [disabled]="formgroup.get('associacao_unidade_familiar')?.invalid"
+        (click)="adicionarUnidadeFamiliar()"
+      >
+        Incluir Unidade
+      </button>
     </div>
     <!--
       <mat-icon
