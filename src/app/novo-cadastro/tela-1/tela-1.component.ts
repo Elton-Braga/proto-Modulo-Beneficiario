@@ -71,7 +71,7 @@ export class Tela1Component {
   nome!: FormControl;
   cpf!: FormControl;
   items = ['Processos'];
-  itemDependente = ['Novo Dependente / Titular'];
+  itemDependente = ['Novo Dependente / Beneficiário'];
   expandedIndex = 0;
   dependentes: any[] = [];
   processos: string[] = [];
@@ -83,7 +83,12 @@ export class Tela1Component {
   cpfOriginal = ''; // defina isso com o CPF vindo da rota
   cpfIgualAoOriginal = false;
 
-  itemsTelas = ['Titular', 'Unidade Familiar', 'Assentamento', 'Regularização'];
+  itemsTelas = [
+    'Beneficiário',
+    'Unidade Familiar',
+    'Assentamento',
+    'Regularização',
+  ];
   expandedIndexTelas = 0;
   /*
   abas: AbaAcordeon[] = [
