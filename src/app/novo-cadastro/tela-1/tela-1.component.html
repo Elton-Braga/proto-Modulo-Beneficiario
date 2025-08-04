@@ -30,12 +30,13 @@
             [attr.aria-labelledby]="'accordion-header-' + index"
           >
             @switch (index) { @case (0) {
-            <div class="col-12">
+            <div class="col-12" *ngIf="dependentes.length > 0">
               <cdk-accordion class="example-accordion">
                 @for (item of itemDependente; track item; let index = $index) {
                 <cdk-accordion-item
                   #accordionItem="cdkAccordionItem"
                   class="example-accordion-item"
+                  [expanded]="index === expandedIndex"
                 >
                   <button
                     class="example-accordion-item-header"
@@ -211,12 +212,13 @@
               </div>
             </form>
 
-            <div class="col-12">
+            <div class="col-12" *ngIf="processos.length > 0">
               <cdk-accordion class="acordeonProcessos">
                 @for (item of items; track item; let index = $index) {
                 <cdk-accordion-item
                   #accordionItem="cdkAccordionItem"
                   class="example-accordion-item"
+                  [expanded]="index === processos.length - 1"
                 >
                   <button
                     class="example-accordion-item-header"

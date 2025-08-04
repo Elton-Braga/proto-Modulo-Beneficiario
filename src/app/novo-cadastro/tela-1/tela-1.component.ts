@@ -70,8 +70,8 @@ export class Tela1Component {
   formgroup!: FormGroup;
   nome!: FormControl;
   cpf!: FormControl;
-  items = ['Processos'];
-  itemDependente = ['Novo Dependente / Beneficiário'];
+  items = ['Processos Adicionados'];
+  itemDependente = ['Conjuge  incluído'];
   expandedIndex = 0;
   dependentes: any[] = [];
   processos: string[] = [];
@@ -90,6 +90,7 @@ export class Tela1Component {
     'Regularização',
   ];
   expandedIndexTelas = 0;
+  expandirAcordeonDependente = false;
   /*
   abas: AbaAcordeon[] = [
     // { titulo: 'Titular', componente: Tela1Component, visivel: true },
