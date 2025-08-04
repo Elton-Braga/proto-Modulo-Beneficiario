@@ -41,17 +41,8 @@ p {
 }
 
 .ajuste_plus {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 30px;
-  height: 59px;
-  border: 2px solid #ffffff; // ou outra cor
-  border-radius: 1%; // para deixar redondo
-  font-size: 24px;
-  color: #57577a;
-  cursor: pointer;
+  height: 3.4rem;
+  color: #ffffff;
 }
 
 .ajuste-btn {
@@ -156,4 +147,5 @@ td {
 
 .mais-dependente-btn {
   padding: 0rem;
+  height: 3.4rem;
 }

@@ -151,20 +151,18 @@
                   />
                 </mat-form-field>
 
-                <div class="col-1 mais-dependente-btn">
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    [disabled]="
-                      !formgroup.valid ||
-                      dependentes.length >= 1 ||
-                      cpfIgualAoOriginal
-                    "
-                    (click)="adicionarDependente()"
-                  >
-                    <mat-label>Incluir Conjuge</mat-label>
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  class="btn btn-primary col-1 mais-dependente-btn"
+                  [disabled]="
+                    !formgroup.valid ||
+                    dependentes.length >= 1 ||
+                    cpfIgualAoOriginal
+                  "
+                  (click)="adicionarDependente()"
+                >
+                  <mat-label>Incluir Conjuge</mat-label>
+                </button>
 
                 <mat-form-field class="col-6">
                   <mat-label>Telefone</mat-label>
@@ -198,21 +196,18 @@
                     formControlName="numero_processo"
                   />
                 </mat-form-field>
-                <div
-                  class="col-1 flex justify-center col-auto d-inline-flex align-items-center text-right text-end ajuste_plus"
+
+                <button
+                  type="button"
+                  class="btn btn-primary col-1 flex justify-center col-auto d-inline-flex align-items-center text-right text-end ajuste_plus"
+                  [disabled]="
+                    formgroup.get('numero_processo')?.invalid ||
+                    !formgroup.get('numero_processo')?.value
+                  "
+                  (click)="adicionarProcesso()"
                 >
-                  <button
-                    type="button"
-                    class="btn btn-primary"
-                    [disabled]="
-                      formgroup.get('numero_processo')?.invalid ||
-                      !formgroup.get('numero_processo')?.value
-                    "
-                    (click)="adicionarProcesso()"
-                  >
-                    Novo Processo
-                  </button>
-                </div>
+                  Novo Processo
+                </button>
               </div>
             </form>
 
@@ -270,7 +265,7 @@
 
             <div class="row ajuste-btns">
               <div class="col-11">
-                <button type="button" class="btn btn-primary btn-salvar">
+                <button type="button" class="btn btn-primary ajuste_plus">
                   Salvar
                 </button>
               </div>
