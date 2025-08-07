@@ -189,11 +189,12 @@ export class ListaComponent implements AfterViewInit {
     });
   }
 
-  openDialogRegularizacao() {
+  openDialogRegularizacao(elemento: Beneficiario) {
     const dialogRef = this.dialog.open(ModalRegularizacaoComponent, {
       width: '90vw',
       maxWidth: 'none',
       panelClass: 'custom-dialog-container',
+      data: elemento, // <-- Aqui está a passagem do dado
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -241,7 +242,7 @@ export class ListaComponent implements AfterViewInit {
         break;
 
       case 'Visualizar':
-        this.openDialogRegularizacao();
+        this.openDialogRegularizacao(elemento);
         // lógica para visualizar
         break;
       case 'Histórico':

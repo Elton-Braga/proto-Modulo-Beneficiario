@@ -1,1 +1,39 @@
-<p>modal-regularizacao works!</p>
+<div class="dados">
+  <h2>Dados do Beneficiário</h2>
+  <ul class="list-group">
+    <li class="list-group-item">
+      <strong>Codigo do projet:</strong> {{ dados.codigo_projeto }}
+    </li>
+    <li class="list-group-item">
+      <strong>Nome do Projeto</strong> {{ dados.projeto }}
+    </li>
+    <li class="list-group-item">
+      <strong>Numero do Lote</strong> {{ dados.lote }}
+    </li>
+    <li class="list-group-item">
+      <strong>Titular:</strong> {{ dados.nome_T1 }}
+    </li>
+    <li class="list-group-item"><strong>CPF:</strong> {{ dados.cpf_T1 }}</li>
+
+    <li class="list-group-item">
+      <strong>Projeto:</strong> {{ dados.projeto }}
+    </li>
+    <li class="list-group-item"><strong>Status:</strong> {{ dados.status }}</li>
+    <li class="list-group-item">
+      <strong>Situacao:</strong> {{ dados.situacao_T1 }}
+    </li>
+    <li class="list-group-item">
+      <strong>Data da Situacao:</strong> {{ dados.data_situacao_T2 }}
+    </li>
+    <li class="list-group-item">
+      <strong>Regularizacao:</strong> {{ dados.regularizacao }}
+    </li>
+    <li class="list-group-item">
+      <strong>Periodo de Regularizacao:</strong>
+      {{ dados.periodo_regularizacao }}
+    </li>
+    <li class="list-group-item">
+      <strong>Numero do proceso SEI:</strong> {{ dados.numero_processo }}
+    </li>
+  </ul>
+</div>
