@@ -12,7 +12,9 @@ export interface Beneficiario {
   periodo_regularizacao: string;
   status: string;
   acoes: string[];
-  numero_processo: string[];
+  numero_processo: string | string[];
   cpf_T1: string;
   codigo_beneficiario: string;
+  telefone: string;
+  email: string;
 }

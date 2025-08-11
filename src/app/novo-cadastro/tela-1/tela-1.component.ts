@@ -122,9 +122,9 @@ export class Tela1Component {
         { value: dadosRota.cpf || '', disabled: true },
         [Validators.required],
       ],
+      telefone: [{ value: dadosRota.telefone || '' }, Validators.required],
+      email: [{ value: dadosRota.email || '' }, Validators.required],
       numero_processo: [dadosRota.numero_processo || '', [Validators.required]],
-      telefone: [],
-      email: [],
     });
 
     this.nome = this.formgroup.get('nome') as FormControl;
@@ -148,12 +148,16 @@ export class Tela1Component {
       (dados.nome ||
         dados.cpf ||
         dados.numero_processo ||
-        dados.codigo_beneficiario)
+        dados.codigo_beneficiario ||
+        dados.email ||
+        dados.telefone)
     ) {
       this.formgroup.patchValue({
         nome: dados.nome || '',
         cpf: dados.cpf || '',
         cod_beneficiario: dados.codigo_beneficiario || '',
+        email: dados.email,
+        telefone: dados.telefone,
         numero_processo:
           (Array.isArray(dados.numero_processo)
             ? dados.numero_processo[0]

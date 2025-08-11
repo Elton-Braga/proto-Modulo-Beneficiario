@@ -229,15 +229,33 @@ export class ListaComponent implements AfterViewInit {
 
   executarAcao(acao: string, elemento: Beneficiario) {
     console.log(`Ação "${acao}" executada para CPF ${elemento.nome_T1}`);
+
     // Aqui você pode redirecionar, abrir modal, etc.
     switch (acao) {
       case 'Editar':
+        const {
+          nome_T1,
+          cpf_T1,
+          numero_processo,
+          codigo_beneficiario,
+          email,
+          telefone,
+        } = elemento;
         this.router.navigate(['/novo'], {
           state: {
             nome: elemento.nome_T1,
             cpf: elemento.cpf_T1,
+            numero_processo,
+            codigo_beneficiario,
+            email,
+            telefone,
+            /*
             numero_processo: elemento.numero_processo,
             codigo_beneficiario: elemento.codigo_beneficiario,
+            email: elemento.email,
+            telefone: elemento.telefone,
+
+            */
           },
         });
         break;
@@ -255,6 +273,9 @@ export class ListaComponent implements AfterViewInit {
         // lógica para PDF
         break;
     }
+
+    //console.log('Email:', elemento.email);
+    //console.log('Telefone:', elemento.telefone);
   }
 
   formatarData(dataNumerica: number): string {

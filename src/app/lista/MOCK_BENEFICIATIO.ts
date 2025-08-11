@@ -18,6 +18,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['000044000/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
     codigo_beneficiario: '000',
+    telefone: '(00) 00000-0000',
+    email: 'aaa@aa.com',
   },
   {
     check: 2,
@@ -36,6 +38,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['000000011/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
     codigo_beneficiario: '0001',
+    telefone: '(00) 00000-0000',
+    email: 'aaa@aa.com',
   },
   {
     check: 3,
@@ -54,6 +58,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['000000000/2222'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
     codigo_beneficiario: '0002',
+    telefone: '(00) 00000-0000',
+    email: 'aaa@aa.com',
   },
   {
     check: 4,
@@ -72,6 +78,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['456734532/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
     codigo_beneficiario: '0003',
+    telefone: '(00) 00000-0000',
+    email: 'aaa@aa.com',
   },
   {
     check: 5,
@@ -90,6 +98,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['645789456/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
     codigo_beneficiario: '0004',
+    telefone: '(00) 00000-0000',
+    email: 'aaa@aa.com',
   },
   {
     check: 6,
@@ -108,6 +118,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['123789456/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
     codigo_beneficiario: '0005',
+    telefone: '(00) 00000-0000',
+    email: 'aaa@aa.com',
   },
   {
     check: 7,
@@ -126,6 +138,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['123456789/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
     codigo_beneficiario: '0006',
+    telefone: '(00) 00000-0000',
+    email: 'aaa@aa.com',
   },
   {
     check: 8,
@@ -144,6 +158,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['222222223/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
     codigo_beneficiario: '0007',
+    telefone: '(00) 00000-0000',
+    email: 'aaa@aa.com',
   },
   {
     check: 9,
@@ -162,6 +178,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['222222222/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
     codigo_beneficiario: '0009',
+    telefone: '(00) 00000-0000',
+    email: 'aaa@aa.com',
   },
   {
     check: 10,
@@ -180,5 +198,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['111111111/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
     codigo_beneficiario: '00010',
+    telefone: '(00) 00000-0000',
+    email: 'aaa@aa.com',
   },
 ];
