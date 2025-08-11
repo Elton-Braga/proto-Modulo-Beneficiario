@@ -83,8 +83,14 @@ export class Tela2Component {
         { value: dadosRota.cpf || '', disabled: true },
         [Validators.required],
       ],
-      telefone: [{ value: dadosRota.telefone || '' }, Validators.required],
-      email: [{ value: dadosRota.email || '' }, Validators.required],
+      telefone: [
+        { value: dadosRota.telefone || '', disabled: true },
+        Validators.required,
+      ],
+      email: [
+        { value: dadosRota.email || '', disabled: true },
+        Validators.required,
+      ],
     });
 
     this.nome = this.formgroup.get('nome') as FormControl;
