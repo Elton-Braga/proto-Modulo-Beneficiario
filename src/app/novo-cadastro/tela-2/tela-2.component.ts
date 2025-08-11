@@ -103,21 +103,19 @@ export class Tela2Component {
     const dados = history.state;
     console.log('Dados da rota:', dados);
 
-    this.carregarFormularioDoLocalStorage();
-
     (window as any).salvarFormTela1 = () =>
       this.salvarFormularioNoLocalStorage();
 
     if (
       dados &&
-      (dados.nome ||
+      (dados.nome_T2 ||
         dados.cpf ||
         dados.codigo_beneficiario ||
         dados.email ||
         dados.telefone)
     ) {
       this.formgroup.patchValue({
-        nome: dados.nome || '',
+        nome: dados.nome_T2 || '',
         cpf: dados.cpf || '',
         cod_beneficiario: dados.codigo_beneficiario || '',
         email: dados.email,
@@ -137,12 +135,6 @@ export class Tela2Component {
   }
 
   //Função para recuperar os dados ao iniciar
-  carregarFormularioDoLocalStorage(): void {
-    const dados = localStorage.getItem('dadosCadastroBeneficiario');
-    if (dados) {
-      this.formgroup.patchValue(JSON.parse(dados));
-    }
-  }
 
   validarCpf() {
     const cpf = this.formgroup.get('cpf')?.value;
@@ -158,57 +150,5 @@ export class Tela2Component {
       this.cpfInvalido = true;
       this.cpfIgualAoOriginal = false;
     }
-  }
-
-  adicionarProcesso() {
-    const numeroProcesso = this.formgroup.get('numero_processo')?.value;
-
-    if (!numeroProcesso) {
-      alert('Informe o número do processo.');
-      return;
-    }
-
-    // Verifica se o processo já foi adicionado
-    if (this.processos.includes(numeroProcesso)) {
-      alert('Este número de processo já foi adicionado.');
-      return;
-    }
-
-    // Adiciona o processo
-    this.processos.push(numeroProcesso);
-    console.log('Processo adicionado:', numeroProcesso);
-
-    // (Opcional) Limpa apenas o campo de número do processo
-    this.formgroup.get('numero_processo')?.reset();
-  }
-
-  adicionarDependente(): void {
-    if (this.dependentes.length >= 1) {
-      alert('Apenas um dependente pode ser adicionado.');
-      return;
-    }
-
-    if (this.formgroup.valid) {
-      const novoDependente = this.formgroup.value;
-
-      this.dependentes.push({ ...novoDependente });
-      this.formgroup.reset();
-
-      console.log('Dependente adicionado:', novoDependente);
-    } else {
-      alert(
-        'Preencha todos os campos obrigatórios para adicionar o dependente.'
-      );
-    }
-  }
-
-  editarDependente(index: number): void {
-    const dependente = this.dependentes[index];
-    this.formgroup.patchValue(dependente);
-    this.dependentes.splice(index, 1); // Remove da tabela para ser atualizado
-  }
-
-  removerDependente(index: number): void {
-    this.dependentes.splice(index, 1);
   }
 }

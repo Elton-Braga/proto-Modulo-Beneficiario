@@ -236,6 +236,7 @@ export class ListaComponent implements AfterViewInit {
         const {
           nome_T1,
           cpf_T1,
+          nome_T2,
           numero_processo,
           codigo_beneficiario,
           email,
@@ -245,6 +246,7 @@ export class ListaComponent implements AfterViewInit {
           state: {
             nome: elemento.nome_T1,
             cpf: elemento.cpf_T1,
+            nome_T2: elemento.nome_T2,
             numero_processo,
             codigo_beneficiario,
             email,
@@ -269,6 +271,7 @@ export class ListaComponent implements AfterViewInit {
 
     //console.log('Email:', elemento.email);
     //console.log('Telefone:', elemento.telefone);
+    console.log('nome 2:', elemento.nome_T2);
   }
 
   formatarData(dataNumerica: number): string {
