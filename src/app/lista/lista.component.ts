@@ -237,6 +237,7 @@ export class ListaComponent implements AfterViewInit {
             nome: elemento.nome_T1,
             cpf: elemento.cpf_T1,
             numero_processo: elemento.numero_processo,
+            codigo_beneficiario: elemento.codigo_beneficiario,
           },
         });
         break;

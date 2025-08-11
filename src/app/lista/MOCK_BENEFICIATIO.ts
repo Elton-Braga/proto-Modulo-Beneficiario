@@ -17,6 +17,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_T1: '000.000.000-00',
     numero_processo: ['000044000/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
+    codigo_beneficiario: '000',
   },
   {
     check: 2,
@@ -34,6 +35,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_T1: '111.000.000-00',
     numero_processo: ['000000011/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
+    codigo_beneficiario: '0001',
   },
   {
     check: 3,
@@ -51,6 +53,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_T1: '000.000.000-25',
     numero_processo: ['000000000/2222'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
+    codigo_beneficiario: '0002',
   },
   {
     check: 4,
@@ -68,6 +71,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_T1: '000.000.000-02',
     numero_processo: ['456734532/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
+    codigo_beneficiario: '0003',
   },
   {
     check: 5,
@@ -85,6 +89,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_T1: '000.000.010-00',
     numero_processo: ['645789456/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
+    codigo_beneficiario: '0004',
   },
   {
     check: 6,
@@ -102,6 +107,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_T1: '000.000.123-00',
     numero_processo: ['123789456/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
+    codigo_beneficiario: '0005',
   },
   {
     check: 7,
@@ -119,6 +125,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_T1: '000.456.000-00',
     numero_processo: ['123456789/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
+    codigo_beneficiario: '0006',
   },
   {
     check: 8,
@@ -136,6 +143,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_T1: '000.004.000-00',
     numero_processo: ['222222223/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
+    codigo_beneficiario: '0007',
   },
   {
     check: 9,
@@ -153,6 +161,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_T1: '000.048.000-00',
     numero_processo: ['222222222/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
+    codigo_beneficiario: '0009',
   },
   {
     check: 10,
@@ -170,6 +179,6 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_T1: '800.000.000-00',
     numero_processo: ['111111111/0000'],
     acoes: ['Visualizar', 'Editar', 'Histórico', 'Espelho PDF'],
+    codigo_beneficiario: '00010',
   },
-  // Registros 11 a 20 omitidos por brevidade, posso completar se desejar
 ];

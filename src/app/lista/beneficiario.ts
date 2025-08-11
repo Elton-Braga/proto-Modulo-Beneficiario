@@ -14,4 +14,5 @@ export interface Beneficiario {
   acoes: string[];
   numero_processo: string[];
   cpf_T1: string;
+  codigo_beneficiario: string;
 }

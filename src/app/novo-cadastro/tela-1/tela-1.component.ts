@@ -114,8 +114,14 @@ export class Tela1Component {
         { value: dadosRota.nome || '', disabled: true },
         [Validators.required],
       ],
-      cod_beneficiario: [],
-      cpf: [dadosRota.cpf || '', [Validators.required]],
+      cod_beneficiario: [
+        { value: dadosRota.codigo_beneficiario || '', disabled: true },
+        [Validators.required],
+      ],
+      cpf: [
+        { value: dadosRota.cpf || '', disabled: true },
+        [Validators.required],
+      ],
       numero_processo: [dadosRota.numero_processo || '', [Validators.required]],
       telefone: [],
       email: [],
@@ -128,22 +134,6 @@ export class Tela1Component {
 
   ngOnInit() {
     this.beneficiarios = MOCK_BENEFICIARIOS;
-    /*
-    this.carregarFormularioDoLocalStorage();
-    // Expor função globalmente
-    (window as any).salvarFormTela1 = () =>
-      this.salvarFormularioNoLocalStorage();
-
-    const dados = history.state;
-
-    // Se os dados vierem da tela de lista, preenche o formulário
-    if (dados && (dados.nome || dados.cpf || dados.numero_processo)) {
-      this.formgroup.patchValue({
-        nome: dados.nome || '',
-        cpf: dados.cpf || '',
-        numero_processo: dados.numero_processo || '',
-      });
-    }*/
 
     const dados = history.state;
     console.log('Dados da rota:', dados);
@@ -153,10 +143,17 @@ export class Tela1Component {
     (window as any).salvarFormTela1 = () =>
       this.salvarFormularioNoLocalStorage();
 
-    if (dados && (dados.nome || dados.cpf || dados.numero_processo)) {
+    if (
+      dados &&
+      (dados.nome ||
+        dados.cpf ||
+        dados.numero_processo ||
+        dados.codigo_beneficiario)
+    ) {
       this.formgroup.patchValue({
         nome: dados.nome || '',
         cpf: dados.cpf || '',
+        cod_beneficiario: dados.codigo_beneficiario || '',
         numero_processo:
           (Array.isArray(dados.numero_processo)
             ? dados.numero_processo[0]
