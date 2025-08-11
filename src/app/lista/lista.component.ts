@@ -249,13 +249,6 @@ export class ListaComponent implements AfterViewInit {
             codigo_beneficiario,
             email,
             telefone,
-            /*
-            numero_processo: elemento.numero_processo,
-            codigo_beneficiario: elemento.codigo_beneficiario,
-            email: elemento.email,
-            telefone: elemento.telefone,
-
-            */
           },
         });
         break;

@@ -17,8 +17,11 @@ import { MatIconModule } from '@angular/material/icon';
 
 import { HttpClientModule } from '@angular/common/http';
 import { ServicosService } from '../tela-2/servico/servicos.service';
+import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
+import { Beneficiario } from '../../lista/beneficiario';
 
 @Component({
+  standalone: true,
   selector: 'app-tela-2',
   imports: [
     MatInputModule,
@@ -40,134 +43,89 @@ export class Tela2Component {
   formgroup!: FormGroup;
   nome!: FormControl;
   cpf!: FormControl;
-  apelido!: FormControl;
-  genero!: FormControl;
-  data_nasc!: FormControl;
-  estado_civil!: FormControl;
-  data_falecimento!: FormControl;
-  pai!: FormControl;
-  mae!: FormControl;
-  nacionalidade!: FormControl;
-  naturalidade!: FormControl;
-  municipio!: FormControl;
-  cod_municipio!: FormControl;
-  tipo_identificaçao!: FormControl;
-  numero!: FormControl;
-  orgao_expedicao!: FormControl;
-  data_expedicao!: FormControl;
-  nis!: FormControl;
-  telefone!: FormControl;
-  email!: FormControl;
+  items = ['Processos Adicionados'];
+  itemDependente = ['Conjuge  incluído'];
+  expandedIndex = 0;
+  dependentes: any[] = [];
+  processos: string[] = [];
   numero_processo!: FormControl;
+  displayedColumns: string[] = ['cpf', 'nome', 'acoes'];
   selectedValue!: string;
-  estados: any[] = [];
-  municipios: any[] = [];
-  codigoMunicipio: string = '';
-  pais: any[] = [
-    { value: 'br', viewValue: 'Brasileiro' },
-    { value: 'outro', viewValue: 'Outro' },
-  ];
+  beneficiarios: Beneficiario[] = [];
+  cpfInvalido = false;
+  cpfOriginal = ''; // defina isso com o CPF vindo da rota
+  cpfIgualAoOriginal = false;
 
-  foods: any[] = [
-    { value: 'steak-0', viewValue: 'Masculino' },
-    { value: 'pizza-1', viewValue: 'Feminino' },
-  ];
+  itemsTelas = [
+    'Beneficiário',
+    'Conjuge',
+    'Unidade Familiar',
 
-  tipo_identificacao: any[] = [
-    { value: 'RG', viewValue: 'Identidade Civil' },
-    { value: 'RGM', viewValue: 'Identidade Funcional Militar' },
-    { value: 'RGF', viewValue: 'Carteira de Habilitação' },
+    'Assentamento',
+    'Regularização',
   ];
+  expandedIndexTelas = 0;
+  expandirAcordeonDependente = false;
 
-  Estado_civil: any[] = [
-    { value: 'steak-0', viewValue: 'Casado' },
-    { value: 'pizza-1', viewValue: 'Solteiro' },
-    { value: 'steak-0', viewValue: 'Viuvo' },
-    { value: 'pizza-1', viewValue: 'Divorciado' },
-  ];
+  constructor(fb: FormBuilder) {
+    const dadosRota = history.state;
 
-  constructor(fb: FormBuilder, private localidadesService: ServicosService) {
     this.formgroup = fb.group({
-      nome: ['', [Validators.required]],
-      cpf: ['', [Validators.required]],
-      apelido: ['', [Validators.required]],
-      genero: ['', [Validators.required]],
-      data_nasc: ['', [Validators.required]],
-      estado_civil: ['', [Validators.required]],
-      data_falecimento: [''],
-      pai: ['', [Validators.required]],
-      mae: ['', [Validators.required]],
-      nacionalidade: ['', [Validators.required]],
-      naturalidade: ['', [Validators.required]],
-      municipio: ['', [Validators.required]],
-      cod_municipio: ['', [Validators.required]],
-      tipo_identificacao: ['', [Validators.required]],
-      numero: ['', [Validators.required]],
-      orgao_expedicao: ['', [Validators.required]],
-      data_expedicao: ['', [Validators.required]],
-      nis: ['', [Validators.required]],
-      telefone: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      numero_processo: ['', [Validators.required]],
+      nome: [
+        { value: dadosRota.nome || '', disabled: true },
+        [Validators.required],
+      ],
+      cod_beneficiario: [
+        { value: dadosRota.codigo_beneficiario || '', disabled: true },
+        [Validators.required],
+      ],
+      cpf: [
+        { value: dadosRota.cpf || '', disabled: true },
+        [Validators.required],
+      ],
+      telefone: [{ value: dadosRota.telefone || '' }, Validators.required],
+      email: [{ value: dadosRota.email || '' }, Validators.required],
     });
 
     this.nome = this.formgroup.get('nome') as FormControl;
     this.cpf = this.formgroup.get('cpf') as FormControl;
-    this.apelido = this.formgroup.get('apelido') as FormControl;
-    this.genero = this.formgroup.get('genero') as FormControl;
-    this.data_nasc = this.formgroup.get('data_nasc') as FormControl;
-    this.estado_civil = this.formgroup.get('estado_civil') as FormControl;
-    this.data_falecimento = this.formgroup.get(
-      'data_falecimento'
-    ) as FormControl;
-    this.pai = this.formgroup.get('pai') as FormControl;
-    this.mae = this.formgroup.get('mae') as FormControl;
-    this.nacionalidade = this.formgroup.get('nacionalidade') as FormControl;
-    this.naturalidade = this.formgroup.get('naturalidade') as FormControl;
-    this.municipio = this.formgroup.get('municipio') as FormControl;
-    this.cod_municipio = this.formgroup.get('cod_municipio') as FormControl;
-    this.tipo_identificaçao = this.formgroup.get(
-      'tipo_identificaçao'
-    ) as FormControl;
-    this.numero = this.formgroup.get('numero') as FormControl;
-    this.orgao_expedicao = this.formgroup.get('orgao_expedicao') as FormControl;
-    this.data_expedicao = this.formgroup.get('data_expedicao') as FormControl;
-    this.nis = this.formgroup.get('nis') as FormControl;
-    this.telefone = this.formgroup.get('telefone') as FormControl;
-    this.email = this.formgroup.get('email') as FormControl;
-    this.numero_processo = this.formgroup.get('numero_processo') as FormControl;
   }
 
   ngOnInit() {
-    this.carregarFormularioDoLocalStorage();
-    this.localidadesService.getEstados().subscribe((estados) => {
-      this.estados = estados;
-    });
+    this.beneficiarios = MOCK_BENEFICIARIOS;
 
-    // Expor função globalmente
+    const dados = history.state;
+    console.log('Dados da rota:', dados);
+
+    this.carregarFormularioDoLocalStorage();
+
     (window as any).salvarFormTela1 = () =>
       this.salvarFormularioNoLocalStorage();
 
-    // Carrega municípios quando o estado mudar
-
-    // Atualiza o código do município quando selecionado
-    this.formgroup
-      .get('municipio')
-      ?.valueChanges.subscribe((municipioSelecionado) => {
-        const municipio = this.municipios.find(
-          (m) => m.nome === municipioSelecionado
-        );
-        if (municipio) {
-          this.formgroup.get('cod_municipio')?.setValue(municipio.id);
-        }
+    if (
+      dados &&
+      (dados.nome ||
+        dados.cpf ||
+        dados.codigo_beneficiario ||
+        dados.email ||
+        dados.telefone)
+    ) {
+      this.formgroup.patchValue({
+        nome: dados.nome || '',
+        cpf: dados.cpf || '',
+        cod_beneficiario: dados.codigo_beneficiario || '',
+        email: dados.email,
+        telefone: dados.telefone,
       });
+
+      this.cpfOriginal = dados.cpf || '';
+    }
   }
 
   salvarFormularioNoLocalStorage(): void {
     const dados = this.formgroup.value;
     localStorage.setItem('dadosCadastroBeneficiario', JSON.stringify(dados));
   }
-
   trackBySigla(index: number, estado: any): string {
     return estado.sigla;
   }
@@ -180,19 +138,71 @@ export class Tela2Component {
     }
   }
 
-  carregarMunicipios(uf: string) {
-    this.localidadesService.getMunicipiosPorUF(uf).subscribe((municipios) => {
-      this.municipios = municipios;
-    });
+  validarCpf() {
+    const cpf = this.formgroup.get('cpf')?.value;
+
+    const beneficiario = this.beneficiarios.find((b) => b.cpf_T1 === cpf);
+
+    if (beneficiario) {
+      this.formgroup.patchValue({ nome: beneficiario.nome_T1 });
+      this.cpfInvalido = false;
+      this.cpfIgualAoOriginal = cpf === this.cpfOriginal;
+    } else {
+      this.formgroup.patchValue({ nome: '' });
+      this.cpfInvalido = true;
+      this.cpfIgualAoOriginal = false;
+    }
   }
 
-  atualizarCodigoMunicipio(nome: string) {
-    const municipioSelecionado = this.municipios.find((m) => m.nome === nome);
-    if (municipioSelecionado) {
-      this.codigoMunicipio = municipioSelecionado.id;
+  adicionarProcesso() {
+    const numeroProcesso = this.formgroup.get('numero_processo')?.value;
 
-      // Atualiza o FormGroup com o código, mesmo que o input esteja desabilitado
-      this.formgroup.patchValue({ cod_municipio: municipioSelecionado.id });
+    if (!numeroProcesso) {
+      alert('Informe o número do processo.');
+      return;
     }
+
+    // Verifica se o processo já foi adicionado
+    if (this.processos.includes(numeroProcesso)) {
+      alert('Este número de processo já foi adicionado.');
+      return;
+    }
+
+    // Adiciona o processo
+    this.processos.push(numeroProcesso);
+    console.log('Processo adicionado:', numeroProcesso);
+
+    // (Opcional) Limpa apenas o campo de número do processo
+    this.formgroup.get('numero_processo')?.reset();
+  }
+
+  adicionarDependente(): void {
+    if (this.dependentes.length >= 1) {
+      alert('Apenas um dependente pode ser adicionado.');
+      return;
+    }
+
+    if (this.formgroup.valid) {
+      const novoDependente = this.formgroup.value;
+
+      this.dependentes.push({ ...novoDependente });
+      this.formgroup.reset();
+
+      console.log('Dependente adicionado:', novoDependente);
+    } else {
+      alert(
+        'Preencha todos os campos obrigatórios para adicionar o dependente.'
+      );
+    }
+  }
+
+  editarDependente(index: number): void {
+    const dependente = this.dependentes[index];
+    this.formgroup.patchValue(dependente);
+    this.dependentes.splice(index, 1); // Remove da tabela para ser atualizado
+  }
+
+  removerDependente(index: number): void {
+    this.dependentes.splice(index, 1);
   }
 }

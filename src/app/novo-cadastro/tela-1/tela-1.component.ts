@@ -32,6 +32,7 @@ import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
 import { RegularizacaoComponent } from '../regularizacao/regularizacao.component';
 import { UnidadeFamilarComponent } from '../unidade-familar/unidade-familar.component';
 import { AssentamentoComponent } from '../assentamento/assentamento.component';
+import { Tela2Component } from '../tela-2/tela-2.component';
 
 interface AbaAcordeon {
   titulo: string;
@@ -60,6 +61,7 @@ interface AbaAcordeon {
     RegularizacaoComponent,
     UnidadeFamilarComponent,
     AssentamentoComponent,
+    Tela2Component,
   ],
   templateUrl: './tela-1.component.html',
   styleUrl: './tela-1.component.scss',
@@ -85,7 +87,9 @@ export class Tela1Component {
 
   itemsTelas = [
     'Beneficiário',
+    'Conjuge',
     'Unidade Familiar',
+
     'Assentamento',
     'Regularização',
   ];
