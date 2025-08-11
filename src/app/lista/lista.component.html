@@ -335,13 +335,34 @@
                   *ngFor="let acao of element.acoes"
                   (click)="executarAcao(acao, element)"
                 >
-                  <mat-icon *ngIf="acao === 'Visualizar'">visibility</mat-icon>
-                  <mat-icon *ngIf="acao === 'Editar'">edit</mat-icon>
+                  <mat-icon *ngIf="acao === 'Detalhar'">visibility</mat-icon>
+                  <mat-icon *ngIf="acao === 'Alteração Cadastral'"
+                    >edit</mat-icon
+                  >
 
-                  <mat-icon *ngIf="acao === 'Histórico'">history</mat-icon>
-                  <mat-icon *ngIf="acao === 'Espelho PDF'"
+                  <mat-icon *ngIf="acao === 'Histórico de Operações'"
+                    >history</mat-icon
+                  >
+
+                  <mat-icon *ngIf="acao === 'Histórico do Beneficiario'"
+                    >history_2</mat-icon
+                  >
+
+                  <mat-icon *ngIf="acao === 'Espelho do Beneficiário'"
                     >picture_as_pdf</mat-icon
                   >
+
+                  <mat-icon *ngIf="acao === 'Inclusão/Alteração de Cônjuge'"
+                    >person_add</mat-icon
+                  >
+
+                  <mat-icon *ngIf="acao === 'Bloqueio / Desbloqueio'"
+                    >block</mat-icon
+                  >
+                  <mat-icon *ngIf="acao === 'Sucessão do Lote'"
+                    >view_timeline</mat-icon
+                  >
+
                   <span>{{ acao }}</span>
                 </button>
               </mat-menu>

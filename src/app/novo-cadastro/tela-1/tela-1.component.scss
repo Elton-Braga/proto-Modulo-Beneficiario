@@ -150,3 +150,7 @@ td {
   padding: 0rem;
   height: 3.4rem;
 }
+
+.mat-form-field-disabled .mat-form-field-label {
+  position: static !important;
+}

@@ -232,7 +232,7 @@ export class ListaComponent implements AfterViewInit {
 
     // Aqui você pode redirecionar, abrir modal, etc.
     switch (acao) {
-      case 'Editar':
+      case 'Alteração Cadastral':
         const {
           nome_T1,
           cpf_T1,
@@ -260,15 +260,15 @@ export class ListaComponent implements AfterViewInit {
         });
         break;
 
-      case 'Visualizar':
+      case 'Detalhar':
         this.openDialogRegularizacao(elemento);
         // lógica para visualizar
         break;
-      case 'Histórico':
+      case 'Histórico de Operações':
         this.openDialogHistorico();
         // lógica para histórico
         break;
-      case 'Espelho PDF':
+      case 'Espelho do Beneficiário':
         this.openDialogEspelho(elemento);
         // lógica para PDF
         break;
