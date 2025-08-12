@@ -119,8 +119,12 @@
 
             <form [formGroup]="formgroup">
               <div class="row espaco_campos">
-                <mat-form-field class="col-5" appearance="fill">
-                  <!--<mat-label>CPF</mat-label>-->
+                <mat-form-field
+                  class="col-5"
+                  appearance="fill"
+                  floatLabel="always"
+                >
+                  <mat-label>CPF</mat-label>
 
                   <input
                     matInput
@@ -130,12 +134,20 @@
                   />
                 </mat-form-field>
 
-                <mat-form-field class="col-4">
+                <mat-form-field
+                  class="col-4"
+                  appearance="fill"
+                  floatLabel="always"
+                >
                   <mat-label>Nome</mat-label>
                   <input matInput type="text" formControlName="nome" />
                 </mat-form-field>
 
-                <mat-form-field class="col-3">
+                <mat-form-field
+                  class="col-3"
+                  appearance="fill"
+                  floatLabel="always"
+                >
                   <mat-label>Código do Beneficiário</mat-label>
                   <input
                     matInput
@@ -179,8 +191,12 @@
               </div>
 
               <div class="row espaco_campos">
-                <mat-form-field class="col-11">
-                  <!--<mat-label>Numero do Processo</mat-label>-->
+                <mat-form-field
+                  class="col-11"
+                  appearance="fill"
+                  floatLabel="always"
+                >
+                  <mat-label>Numero do Processo</mat-label>
 
                   <input
                     matInput
