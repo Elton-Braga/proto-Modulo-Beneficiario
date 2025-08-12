@@ -71,25 +71,21 @@
 </div>
 <footer class="footer-fixo row">
   <div class="col-1"></div>
-  <button
-    class="col-1 btn btn-primary"
-    [routerLink]="['/lista']"
-    (click)="voltar()"
-    hidden
-  >
-    <strong>Voltar</strong>
-  </button>
-  <div class="col-8"></div>
-  <button
-    class="btn btn-primary col-1"
-    (click)="avancar()"
-    *ngIf="!ehUltimaEtapa()"
-    hidden
-  >
-    <strong>Avançar</strong>
-  </button>
+  <div class="col-2">
+    <button class="btn btn-primary">
+      <strong>Registrar conferencia de dados</strong>
+    </button>
+  </div>
 
-  <button class="btn btn-primary col-auto d-inline-flex align-items-center">
-    <mat-icon class="me-1">done_outline</mat-icon> <strong>Salvar Tudo</strong>
-  </button>
+  <div class="col-2">
+    <button class="btn btn-primary">
+      <strong>Cruzar com outras fontes</strong>
+    </button>
+  </div>
+  <div class="col-5"></div>
+  <div class="col-1">
+    <button class="btn btn-primary col-auto d-inline-flex align-items-center">
+      <mat-icon class="me-1">done_outline</mat-icon> <strong>Salvar</strong>
+    </button>
+  </div>
 </footer>
