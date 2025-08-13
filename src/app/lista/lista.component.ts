@@ -47,6 +47,7 @@ import { ModalRegularizacaoComponent } from './modal/modal-regularizacao/modal-r
 import { Beneficiario } from './beneficiario';
 import { MOCK_BENEFICIARIOS } from './MOCK_BENEFICIATIO';
 import { ConjugeComponent } from './modal/conjuge/conjuge.component';
+import { RegularizacaoComponent } from '../novo-cadastro/regularizacao/regularizacao.component';
 
 @Component({
   selector: 'app-lista',
@@ -190,7 +191,7 @@ export class ListaComponent implements AfterViewInit {
     });
   }
 
-  openDialogRegularizacao(elemento: Beneficiario) {
+  openDialogDetalhar(elemento: Beneficiario) {
     const dialogRef = this.dialog.open(ModalRegularizacaoComponent, {
       width: '90vw',
       maxWidth: 'none',
@@ -202,6 +203,21 @@ export class ListaComponent implements AfterViewInit {
       console.log(`Dialog result: ${result}`);
     });
   }
+
+  openDialogSucessaoLote(elemento: Beneficiario) {
+    const dialogRef = this.dialog.open(RegularizacaoComponent, {
+      width: '90vw',
+      maxWidth: 'none',
+      height: '90vh',
+      panelClass: 'custom-dialog-container',
+      data: elemento, // <-- Aqui está a passagem do dado
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+  //RegularizacaoComponent
 
   openDialogInclusaoConjuge(elemento: Beneficiario) {
     const dialogRef = this.dialog.open(ConjugeComponent, {
@@ -270,7 +286,7 @@ export class ListaComponent implements AfterViewInit {
         break;
 
       case 'Detalhar':
-        this.openDialogRegularizacao(elemento);
+        this.openDialogDetalhar(elemento);
         // lógica para visualizar
         break;
       case 'Histórico de Operações':
@@ -285,6 +301,13 @@ export class ListaComponent implements AfterViewInit {
         this.openDialogInclusaoConjuge(elemento);
         // lógica para PDF
         break;
+
+      case 'Sucessão do Lote':
+        this.openDialogSucessaoLote(elemento);
+        // lógica para PDF
+        break;
+
+      //openDialogSucessaoLote(elemento: Beneficiario)
     }
 
     //Inclusão/Alteração de Cônjuge

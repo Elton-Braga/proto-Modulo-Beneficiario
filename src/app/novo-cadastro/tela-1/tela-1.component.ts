@@ -29,7 +29,7 @@ import { NumeroProcessoSeiPipe } from '../../pipes/numero-processo-sei.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { Beneficiario } from '../../lista/beneficiario';
 import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
-import { RegularizacaoComponent } from '../regularizacao/regularizacao.component';
+
 import { UnidadeFamilarComponent } from '../unidade-familar/unidade-familar.component';
 import { AssentamentoComponent } from '../assentamento/assentamento.component';
 import { Tela2Component } from '../tela-2/tela-2.component';
@@ -58,7 +58,7 @@ interface AbaAcordeon {
     NgFor,
     NumeroProcessoSeiPipe,
     MatTableModule,
-    RegularizacaoComponent,
+
     UnidadeFamilarComponent,
     AssentamentoComponent,
     Tela2Component,
@@ -85,30 +85,9 @@ export class Tela1Component {
   cpfOriginal = ''; // defina isso com o CPF vindo da rota
   cpfIgualAoOriginal = false;
 
-  itemsTelas = [
-    'Beneficiário',
-    'Conjuge',
-    'Unidade Familiar',
-
-    'Assentamento',
-    'Regularização',
-  ];
+  itemsTelas = ['Beneficiário', 'Conjuge', 'Unidade Familiar', 'Assentamento'];
   expandedIndexTelas = 0;
   expandirAcordeonDependente = false;
-  /*
-  abas: AbaAcordeon[] = [
-    // { titulo: 'Titular', componente: Tela1Component, visivel: true },
-    {
-      titulo: 'Regularização',
-      componente: RegularizacaoComponent,
-      visivel: false,
-    },
-    {
-      titulo: 'Unidade Familiar',
-      componente: UnidadeFamilarComponent,
-      visivel: false,
-    },
-  ];*/
 
   constructor(fb: FormBuilder) {
     const dadosRota = history.state;
