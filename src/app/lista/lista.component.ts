@@ -46,6 +46,7 @@ import { ModalHistoricoComponent } from './modal/modal-historico/modal-historico
 import { ModalRegularizacaoComponent } from './modal/modal-regularizacao/modal-regularizacao.component';
 import { Beneficiario } from './beneficiario';
 import { MOCK_BENEFICIARIOS } from './MOCK_BENEFICIATIO';
+import { ConjugeComponent } from './modal/conjuge/conjuge.component';
 
 @Component({
   selector: 'app-lista',
@@ -202,6 +203,19 @@ export class ListaComponent implements AfterViewInit {
     });
   }
 
+  openDialogInclusaoConjuge(elemento: Beneficiario) {
+    const dialogRef = this.dialog.open(ConjugeComponent, {
+      width: '90vw',
+      maxWidth: 'none',
+      panelClass: 'custom-dialog-container',
+      data: elemento, // <-- Aqui está a passagem do dado
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
   trackByValue(index: number, item: any): string {
     return item.value;
   }
@@ -267,7 +281,13 @@ export class ListaComponent implements AfterViewInit {
         this.openDialogEspelho(elemento);
         // lógica para PDF
         break;
+      case 'Inclusão/Alteração de Cônjuge':
+        this.openDialogInclusaoConjuge(elemento);
+        // lógica para PDF
+        break;
     }
+
+    //Inclusão/Alteração de Cônjuge
 
     //console.log('Email:', elemento.email);
     //console.log('Telefone:', elemento.telefone);
