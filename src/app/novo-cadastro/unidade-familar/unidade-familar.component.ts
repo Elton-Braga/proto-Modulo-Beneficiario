@@ -233,18 +233,27 @@ export class UnidadeFamilarComponent {
     this.formgroup.get('associacao_unidade_familiar')?.reset();
   }
 
+  /** Editar: ativa o modo edição */
   editarAssociacao(element: AssociacaoUnidadeFamiliar) {
-    console.log('Editar:', element);
-    // lógica de edição opcional
+    element.editando = true;
+  }
+
+  salvarAssociacao(element: AssociacaoUnidadeFamiliar) {
+    element.editando = false;
+    localStorage.setItem(
+      'associacoes',
+      JSON.stringify(this.associacoesDataSource)
+    );
   }
 
   removerAssociacao(element: AssociacaoUnidadeFamiliar) {
-    const armazenadas = JSON.parse(localStorage.getItem('associacoes') || '[]');
-    const atualizadas = armazenadas.filter(
-      (a: AssociacaoUnidadeFamiliar) => a.associacao !== element.associacao
+    this.associacoesDataSource = this.associacoesDataSource.filter(
+      (a) => a.associacao !== element.associacao
     );
-    localStorage.setItem('associacoes', JSON.stringify(atualizadas));
-    this.associacoesDataSource = [...atualizadas];
+    localStorage.setItem(
+      'associacoes',
+      JSON.stringify(this.associacoesDataSource)
+    );
   }
 
   camposDependentePreenchidos(): boolean {
@@ -303,6 +312,7 @@ export interface PeriodicElement {
 
 interface AssociacaoUnidadeFamiliar {
   associacao: string;
+  editando?: boolean; // controle de edição
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
