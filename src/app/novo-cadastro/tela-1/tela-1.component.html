@@ -293,7 +293,9 @@
             } @case (2) {
 
             <!--Unidade Familiar-->
-            <app-unidade-familar></app-unidade-familar>
+            <app-unidade-familar
+              [codigoBeneficiario]="formgroup.get('cod_beneficiario')?.value"
+            ></app-unidade-familar>
             <!--Unidade Familiar-->
             }@case (3) {
 
@@ -313,3 +315,8 @@
   <!--botão Salvar e + dependente-->
 </div>
 <div class="row"></div>
+
+<!--
+<app-unidade-familar
+  [codigoBeneficiario]="formgroup.get('cod_beneficiario')?.value"
+></app-unidade-familar>-->

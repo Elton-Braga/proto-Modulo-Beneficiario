@@ -33,11 +33,10 @@
       </mat-form-field>
 
       <mat-form-field class="col-3"
-        ><mat-label>Data da União</mat-label>
+        ><mat-label>Data da Separação</mat-label>
         <input
           matInput
           [matDatepicker]="datepicker2"
-          formControlName="data_uniao"
           formControlName="data_separacao"
         />
         <mat-hint>MM/DD/YYYY</mat-hint>
@@ -67,14 +66,6 @@
     <div class="row">
       <div class="col-2">
         <h5>Dependente</h5>
-        <!--
-        <mat-icon
-          class="flex justify-center card col-auto d-inline-flex align-items-center ajuste_plus"
-          aria-hidden="false"
-          aria-label="Example home icon"
-          fontIcon="add"
-        ></mat-icon>
-        -->
       </div>
 
       <div class="col-10"></div>
@@ -123,7 +114,7 @@
         <input
           matInput
           [matDatepicker]="picker1"
-          formControlName="data_na_familia"
+          formControlName="data_entrada_na_familia"
         />
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle
@@ -153,7 +144,7 @@
         (click)="adicionarDependente()"
         [disabled]="!camposDependentePreenchidos()"
       >
-        <strong>Add Dependente</strong>
+        <strong>+ Dependente</strong>
       </button>
     </div>
     <!--BTN ADICIONAR DEPENDENTES-->
@@ -196,34 +187,143 @@
   </form>
   <hr />
 
-  <table
+  <div class="table-responsive">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8 table table-bordered align-middle"
+      *ngIf="dataSource && dataSource.length > 0"
+    >
+      <!-- Nome -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef>Nome</th>
+        <td mat-cell *matCellDef="let element">
+          <input
+            matInput
+            [(ngModel)]="element.nome"
+            [disabled]="!element.editando"
+          />
+        </td>
+      </ng-container>
+
+      <!-- CPF -->
+      <ng-container matColumnDef="cpf">
+        <th mat-header-cell *matHeaderCellDef>CPF</th>
+        <td mat-cell *matCellDef="let element">
+          <input
+            matInput
+            [(ngModel)]="element.cpf"
+            [disabled]="!element.editando"
+          />
+        </td>
+      </ng-container>
+
+      <!-- Tipo Dependente -->
+      <ng-container matColumnDef="tipo_dependente">
+        <th mat-header-cell *matHeaderCellDef>Tipo Dependente</th>
+        <td mat-cell *matCellDef="let element">
+          <input
+            matInput
+            [(ngModel)]="element.tipo_dependente"
+            [disabled]="!element.editando"
+          />
+        </td>
+      </ng-container>
+
+      <!-- Data Nascimento -->
+      <ng-container matColumnDef="data_nascimento">
+        <th mat-header-cell *matHeaderCellDef>Data Nasc.</th>
+        <td mat-cell *matCellDef="let element">
+          <input
+            matInput
+            type="date"
+            [(ngModel)]="element.data_nascimento"
+            [disabled]="!element.editando"
+          />
+        </td>
+      </ng-container>
+
+      <!-- Data Entrada na Família -->
+      <ng-container matColumnDef="data_entrada_na_familia">
+        <th mat-header-cell *matHeaderCellDef>Data Entrada Família</th>
+        <td mat-cell *matCellDef="let element">
+          <input
+            matInput
+            type="date"
+            [(ngModel)]="element.data_entrada_na_familia"
+            [disabled]="!element.editando"
+          />
+        </td>
+      </ng-container>
+
+      <!-- Data União -->
+      <ng-container matColumnDef="data_uniao">
+        <th mat-header-cell *matHeaderCellDef>Data União</th>
+        <td mat-cell *matCellDef="let element">
+          <input
+            matInput
+            type="date"
+            [(ngModel)]="element.data_uniao"
+            [disabled]="!element.editando"
+          />
+        </td>
+      </ng-container>
+
+      <!-- Ações -->
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef>Ações</th>
+        <!-- Faltava isso -->
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="editar(element)">
+              <mat-icon>edit</mat-icon> Editar
+            </button>
+            <button
+              mat-menu-item
+              (click)="salvar(element)"
+              [disabled]="!element.editando"
+            >
+              <mat-icon>save</mat-icon> Salvar
+            </button>
+            <button mat-menu-item (click)="remover(element)">
+              <mat-icon>delete</mat-icon> Remover
+            </button>
+          </mat-menu>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+
+  <!--<table
     mat-table
     [dataSource]="dataSource"
     class="mat-elevation-z8"
     *ngIf="dataSource && dataSource.length > 0"
   >
-    <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-    <!-- Position Column -->
+    
     <ng-container matColumnDef="nome">
       <th mat-header-cell *matHeaderCellDef>Nome</th>
       <td mat-cell *matCellDef="let element">{{ element.nome }}</td>
     </ng-container>
 
-    <!-- Name Column -->
+    
     <ng-container matColumnDef="CPF">
       <th mat-header-cell *matHeaderCellDef>CPF</th>
       <td mat-cell *matCellDef="let element">{{ element.cpf }}</td>
     </ng-container>
 
-    <!-- Weight Column -->
     <ng-container matColumnDef="tipo_dependente">
       <th mat-header-cell *matHeaderCellDef>tipo_dependente</th>
       <td mat-cell *matCellDef="let element">{{ element.tipo_dependente }}</td>
     </ng-container>
 
-    <!-- Symbol Column -->
+    
     <ng-container matColumnDef="data_nasc">
       <th mat-header-cell *matHeaderCellDef>data_nasc</th>
       <td mat-cell *matCellDef="let element">{{ element.data_nasc }}</td>
@@ -235,12 +335,7 @@
         {{ element.data_entrada_na_familia }}
       </td>
     </ng-container>
-    <!--
-    <ng-container matColumnDef="acoes">
-      <th mat-header-cell *matHeaderCellDef>Symbol</th>
-      <td mat-cell *matCellDef="let element">{{ element.acoes }}</td>
-    </ng-container>
--->
+    
     <ng-container matColumnDef="acoes">
       <th mat-header-cell *matHeaderCellDef>Ações</th>
       <td mat-cell *matCellDef="let element">
@@ -265,7 +360,7 @@
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-  </table>
+  </table>-->
 
   <hr />
   <table
