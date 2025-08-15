@@ -33,11 +33,17 @@ import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
 import { UnidadeFamilarComponent } from '../unidade-familar/unidade-familar.component';
 import { AssentamentoComponent } from '../assentamento/assentamento.component';
 import { Tela2Component } from '../tela-2/tela-2.component';
+import { MatMenu, MatMenuModule } from '@angular/material/menu';
 
 interface AbaAcordeon {
   titulo: string;
   componente: any;
   visivel: boolean;
+}
+
+export interface Processo {
+  numero: string;
+  editando?: boolean;
 }
 
 @Component({
@@ -55,13 +61,14 @@ interface AbaAcordeon {
     HttpClientModule,
     CdkAccordionModule,
     NgIf,
-    NgFor,
-    NumeroProcessoSeiPipe,
+    //NgFor,
+    //NumeroProcessoSeiPipe,
     MatTableModule,
-
     UnidadeFamilarComponent,
     AssentamentoComponent,
     Tela2Component,
+    MatMenu,
+    MatMenuModule,
   ],
   templateUrl: './tela-1.component.html',
   styleUrl: './tela-1.component.scss',
@@ -69,6 +76,8 @@ interface AbaAcordeon {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Tela1Component {
+  processoSelecionado?: Processo;
+  processos: Processo[] = [];
   formgroup!: FormGroup;
   nome!: FormControl;
   cpf!: FormControl;
@@ -76,7 +85,7 @@ export class Tela1Component {
   itemDependente = ['Conjuge  incluído'];
   expandedIndex = 0;
   dependentes: any[] = [];
-  processos: string[] = [];
+  //processos: string[] = [];
   numero_processo!: FormControl;
   displayedColumns: string[] = ['cpf', 'nome', 'acoes'];
   selectedValue!: string;
@@ -107,12 +116,18 @@ export class Tela1Component {
       ],
       telefone: [{ value: dadosRota.telefone || '' }, Validators.required],
       email: [{ value: dadosRota.email || '' }, Validators.required],
-      numero_processo: [dadosRota.numero_processo || '', [Validators.required]],
+      numero_processo: ['', [Validators.required]], // 🔹 agora sempre vazio
     });
 
-    this.nome = this.formgroup.get('nome') as FormControl;
-    this.cpf = this.formgroup.get('cpf') as FormControl;
-    this.numero_processo = this.formgroup.get('numero_processo') as FormControl;
+    // 🔹 processo vindo da rota salvo direto na lista (não no form)
+    if (dadosRota.numero_processo) {
+      this.processos.push({
+        numero: Array.isArray(dadosRota.numero_processo)
+          ? dadosRota.numero_processo[0]
+          : dadosRota.numero_processo,
+        editando: false,
+      });
+    }
   }
 
   ngOnInit() {
@@ -184,25 +199,28 @@ export class Tela1Component {
   }
 
   adicionarProcesso() {
-    const numeroProcesso = this.formgroup.get('numero_processo')?.value;
+    const numero = this.formgroup.get('numero_processo')?.value;
+    if (!numero) return;
 
-    if (!numeroProcesso) {
-      alert('Informe o número do processo.');
+    if (this.processos.find((p) => p.numero === numero)) {
+      alert('Este processo já foi adicionado.');
       return;
     }
 
-    // Verifica se o processo já foi adicionado
-    if (this.processos.includes(numeroProcesso)) {
-      alert('Este número de processo já foi adicionado.');
-      return;
-    }
-
-    // Adiciona o processo
-    this.processos.push(numeroProcesso);
-    console.log('Processo adicionado:', numeroProcesso);
-
-    // (Opcional) Limpa apenas o campo de número do processo
+    this.processos.push({ numero, editando: false });
     this.formgroup.get('numero_processo')?.reset();
+  }
+
+  editarProcesso(p: Processo) {
+    p.editando = true;
+  }
+
+  salvarProcesso(p: Processo) {
+    p.editando = false;
+  }
+
+  excluirProcesso(p: Processo) {
+    this.processos = this.processos.filter((proc) => proc !== p);
   }
 
   adicionarDependente(): void {

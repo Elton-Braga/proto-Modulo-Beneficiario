@@ -1,0 +1,4 @@
+export interface Processo {
+  numero: string;
+  editando?: boolean;
+}
