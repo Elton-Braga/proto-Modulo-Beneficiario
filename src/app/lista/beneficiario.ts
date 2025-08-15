@@ -17,4 +17,24 @@ export interface Beneficiario {
   codigo_beneficiario: string;
   telefone: string;
   email: string;
+
+  // 🔹 Novos atributos
+  data_nascimento: any; // formato 'yyyy-MM-dd' ou Date
+  estado_civil: string;
+  falecido: boolean;
+  data_falecimento?: string | null; // opcional, só se falecido for true
+
+  nome_pai: string;
+  nome_mae: string;
+  nacionalidade: string;
+  naturalidade: string;
+  municipio: string;
+  codigo_municipio: string;
+
+  tipo_documento: string; // ex: 'RG'
+  numero_documento: string;
+  orgao_emissor: string;
+  uf_orgao: string;
+
+  numero_nis: string;
 }

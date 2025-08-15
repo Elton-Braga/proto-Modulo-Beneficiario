@@ -271,16 +271,51 @@ export class ListaComponent implements AfterViewInit {
           codigo_beneficiario,
           email,
           telefone,
+
+          // Novos campos adicionados:
+          data_nascimento,
+          estado_civil,
+          falecido,
+          data_falecimento,
+          nome_pai,
+          nome_mae,
+          nacionalidade,
+          naturalidade,
+          municipio,
+          codigo_municipio,
+          tipo_documento,
+          numero_documento,
+          orgao_emissor,
+          uf_orgao,
+          numero_nis,
         } = elemento;
+
         this.router.navigate(['/novo'], {
           state: {
-            nome: elemento.nome_T1,
-            cpf: elemento.cpf_T1,
-            nome_T2: elemento.nome_T2,
+            nome: nome_T1,
+            cpf: cpf_T1,
+            nome_T2,
             numero_processo,
             codigo_beneficiario,
             email,
             telefone,
+
+            // Inclusão dos novos atributos
+            data_nascimento,
+            estado_civil,
+            falecido,
+            data_falecimento,
+            nome_pai,
+            nome_mae,
+            nacionalidade,
+            naturalidade,
+            municipio,
+            codigo_municipio,
+            tipo_documento,
+            numero_documento,
+            orgao_emissor,
+            uf_orgao,
+            numero_nis,
           },
         });
         break;

@@ -117,27 +117,50 @@ export class Tela1Component {
         [Validators.required],
       ],
 
-      data_nascimento: ['', Validators.required],
-      estado_civil: ['', Validators.required],
-      falecido: [false], // checkbox
-      data_falecimento: [{ value: '', disabled: true }], // habilita só se falecido = true
+      data_nascimento: [
+        { value: dadosRota.data_nascimento || '', disabled: true },
+        Validators.required,
+      ],
+      estado_civil: [
+        { value: dadosRota.estado_civil || '', disabled: true },
+        Validators.required,
+      ],
+      falecido: [{ value: dadosRota.falecido || false, disabled: false }], // checkbox
+      data_falecimento: [
+        {
+          value: dadosRota.data_falecimento || '',
+          disabled: true, // sempre desativado aqui
+        },
+      ],
 
-      nome_pai: [''],
-      nome_mae: [''],
-      nacionalidade: [''],
-      naturalidade: [''],
-      municipio: [''],
-      codigo_municipio: [''],
+      nome_pai: [{ value: dadosRota.nome_pai || '', disabled: true }],
+      nome_mae: [{ value: dadosRota.nome_mae || '', disabled: true }],
+      nacionalidade: [{ value: dadosRota.nacionalidade || '', disabled: true }],
+      naturalidade: [{ value: dadosRota.naturalidade || '', disabled: true }],
+      municipio: [{ value: dadosRota.municipio || '', disabled: true }],
+      codigo_municipio: [
+        { value: dadosRota.codigo_municipio || '', disabled: true },
+      ],
 
-      tipo_documento: ['RG'], // default RG
-      numero_documento: [''],
-      orgao_emissor: [''],
-      uf_orgao: [''],
+      tipo_documento: [
+        { value: dadosRota.tipo_documento || 'RG', disabled: true },
+      ],
+      numero_documento: [
+        { value: dadosRota.numero_documento || '', disabled: true },
+      ],
+      orgao_emissor: [{ value: dadosRota.orgao_emissor || '', disabled: true }],
+      uf_orgao: [{ value: dadosRota.uf_orgao || '', disabled: true }],
 
-      numero_nis: [''],
+      numero_nis: [{ value: dadosRota.numero_nis || '', disabled: true }],
 
-      telefone: [{ value: dadosRota.telefone || '' }, Validators.required],
-      email: [{ value: dadosRota.email || '' }, Validators.required],
+      telefone: [
+        { value: dadosRota.telefone || '', disabled: true },
+        Validators.required,
+      ],
+      email: [
+        { value: dadosRota.email || '', disabled: true },
+        Validators.required,
+      ],
 
       numero_processo: ['', [Validators.required]], // 🔹 agora sempre vazio
     });
@@ -187,6 +210,16 @@ export class Tela1Component {
 
       this.cpfOriginal = dados.cpf || '';
     }
+
+    this.formgroup.get('falecido')?.valueChanges.subscribe((falecido) => {
+      const dataFalecimentoControl = this.formgroup.get('data_falecimento');
+      if (falecido) {
+        dataFalecimentoControl?.enable();
+      } else {
+        dataFalecimentoControl?.disable();
+        dataFalecimentoControl?.reset();
+      }
+    });
   }
 
   salvarFormularioNoLocalStorage(): void {
