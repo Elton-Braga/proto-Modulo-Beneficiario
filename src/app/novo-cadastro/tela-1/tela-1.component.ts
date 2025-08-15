@@ -34,6 +34,7 @@ import { UnidadeFamilarComponent } from '../unidade-familar/unidade-familar.comp
 import { AssentamentoComponent } from '../assentamento/assentamento.component';
 import { Tela2Component } from '../tela-2/tela-2.component';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 interface AbaAcordeon {
   titulo: string;
@@ -69,6 +70,7 @@ export interface Processo {
     Tela2Component,
     MatMenu,
     MatMenuModule,
+    MatCheckboxModule,
   ],
   templateUrl: './tela-1.component.html',
   styleUrl: './tela-1.component.scss',
@@ -114,8 +116,29 @@ export class Tela1Component {
         { value: dadosRota.cpf || '', disabled: true },
         [Validators.required],
       ],
+
+      data_nascimento: ['', Validators.required],
+      estado_civil: ['', Validators.required],
+      falecido: [false], // checkbox
+      data_falecimento: [{ value: '', disabled: true }], // habilita só se falecido = true
+
+      nome_pai: [''],
+      nome_mae: [''],
+      nacionalidade: [''],
+      naturalidade: [''],
+      municipio: [''],
+      codigo_municipio: [''],
+
+      tipo_documento: ['RG'], // default RG
+      numero_documento: [''],
+      orgao_emissor: [''],
+      uf_orgao: [''],
+
+      numero_nis: [''],
+
       telefone: [{ value: dadosRota.telefone || '' }, Validators.required],
       email: [{ value: dadosRota.email || '' }, Validators.required],
+
       numero_processo: ['', [Validators.required]], // 🔹 agora sempre vazio
     });
 
