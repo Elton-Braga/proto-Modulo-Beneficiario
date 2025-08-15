@@ -35,6 +35,9 @@ import { AssentamentoComponent } from '../assentamento/assentamento.component';
 import { Tela2Component } from '../tela-2/tela-2.component';
 import { MatMenu, MatMenuModule } from '@angular/material/menu';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CdkTableModule } from '@angular/cdk/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 interface AbaAcordeon {
   titulo: string;
@@ -71,6 +74,10 @@ export interface Processo {
     MatMenu,
     MatMenuModule,
     MatCheckboxModule,
+    CdkTableModule,
+
+    MatSortModule,
+    MatPaginatorModule,
   ],
   templateUrl: './tela-1.component.html',
   styleUrl: './tela-1.component.scss',
@@ -118,40 +125,28 @@ export class Tela1Component {
       ],
 
       data_nascimento: [
-        { value: dadosRota.data_nascimento || '', disabled: true },
+        dadosRota.data_nascimento ? new Date(dadosRota.data_nascimento) : null,
         Validators.required,
       ],
-      estado_civil: [
-        { value: dadosRota.estado_civil || '', disabled: true },
-        Validators.required,
-      ],
-      falecido: [{ value: dadosRota.falecido || false, disabled: false }], // checkbox
+      estado_civil: [dadosRota.estado_civil || ''],
+      falecido: [dadosRota.falecido || false],
       data_falecimento: [
-        {
-          value: dadosRota.data_falecimento || '',
-          disabled: true, // sempre desativado aqui
-        },
+        dadosRota.data_falecimento
+          ? new Date(dadosRota.data_falecimento)
+          : null,
       ],
 
-      nome_pai: [{ value: dadosRota.nome_pai || '', disabled: true }],
-      nome_mae: [{ value: dadosRota.nome_mae || '', disabled: true }],
-      nacionalidade: [{ value: dadosRota.nacionalidade || '', disabled: true }],
-      naturalidade: [{ value: dadosRota.naturalidade || '', disabled: true }],
-      municipio: [{ value: dadosRota.municipio || '', disabled: true }],
-      codigo_municipio: [
-        { value: dadosRota.codigo_municipio || '', disabled: true },
-      ],
-
-      tipo_documento: [
-        { value: dadosRota.tipo_documento || 'RG', disabled: true },
-      ],
-      numero_documento: [
-        { value: dadosRota.numero_documento || '', disabled: true },
-      ],
-      orgao_emissor: [{ value: dadosRota.orgao_emissor || '', disabled: true }],
-      uf_orgao: [{ value: dadosRota.uf_orgao || '', disabled: true }],
-
-      numero_nis: [{ value: dadosRota.numero_nis || '', disabled: true }],
+      nome_pai: [dadosRota.nome_pai || ''],
+      nome_mae: [dadosRota.nome_mae || ''],
+      nacionalidade: [dadosRota.nacionalidade || ''],
+      naturalidade: [dadosRota.naturalidade || ''],
+      municipio: [dadosRota.municipio || ''],
+      codigo_municipio: [dadosRota.codigo_municipio || ''],
+      tipo_documento: [dadosRota.tipo_documento || 'RG'],
+      numero_documento: [dadosRota.numero_documento || ''],
+      orgao_emissor: [dadosRota.orgao_emissor || ''],
+      uf_orgao: [dadosRota.uf_orgao || ''],
+      numero_nis: [dadosRota.numero_nis || ''],
 
       telefone: [
         { value: dadosRota.telefone || '', disabled: true },
@@ -202,10 +197,11 @@ export class Tela1Component {
         cod_beneficiario: dados.codigo_beneficiario || '',
         email: dados.email,
         telefone: dados.telefone,
+        /* o campo de numero do processo aparece pre-preenchido
         numero_processo:
           (Array.isArray(dados.numero_processo)
             ? dados.numero_processo[0]
-            : dados.numero_processo) || '',
+            : dados.numero_processo) || '',*/
       });
 
       this.cpfOriginal = dados.cpf || '';
@@ -255,30 +251,52 @@ export class Tela1Component {
   }
 
   adicionarProcesso() {
-    const numero = this.formgroup.get('numero_processo')?.value;
+    const numero = this.formgroup.get('numero_processo')?.value?.trim();
     if (!numero) return;
 
-    if (this.processos.find((p) => p.numero === numero)) {
+    if (this.processos.some((p) => p.numero === numero)) {
       alert('Este processo já foi adicionado.');
       return;
     }
 
-    this.processos.push({ numero, editando: false });
+    this.processos = [...this.processos, { numero, editando: false }];
     this.formgroup.get('numero_processo')?.reset();
   }
 
+  trackByNumero(index: number, item: Processo): string {
+    return item.numero;
+  }
+
+  onNumeroChange(valor: string, index: number) {
+    const atual = this.processos[index];
+    this.processos = [
+      ...this.processos.slice(0, index),
+      { ...atual, numero: valor },
+      ...this.processos.slice(index + 1),
+    ];
+  }
+
   editarProcesso(p: Processo) {
-    p.editando = true;
+    const i = this.processos.indexOf(p);
+    if (i > -1) {
+      this.processos = this.processos.map((x, idx) =>
+        idx === i ? { ...x, editando: true } : x
+      );
+    }
   }
 
   salvarProcesso(p: Processo) {
-    p.editando = false;
+    const i = this.processos.indexOf(p);
+    if (i > -1) {
+      this.processos = this.processos.map((x, idx) =>
+        idx === i ? { ...x, editando: false } : x
+      );
+    }
   }
 
   excluirProcesso(p: Processo) {
     this.processos = this.processos.filter((proc) => proc !== p);
   }
-
   adicionarDependente(): void {
     if (this.dependentes.length >= 1) {
       alert('Apenas um dependente pode ser adicionado.');

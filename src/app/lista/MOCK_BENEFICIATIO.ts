@@ -29,7 +29,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     codigo_beneficiario: '000',
     telefone: '(00) 00000-0000',
     email: 'aaa@aa.com',
-    data_nascimento: '1980/05/20',
+    data_nascimento: '1/04/2015',
     estado_civil: 'Casado',
     falecido: false,
     data_falecimento: null,

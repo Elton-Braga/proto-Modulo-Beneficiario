@@ -19,7 +19,7 @@ export interface Beneficiario {
   email: string;
 
   // 🔹 Novos atributos
-  data_nascimento: any; // formato 'yyyy-MM-dd' ou Date
+  data_nascimento: string; // formato 'yyyy-MM-dd' ou Date
   estado_civil: string;
   falecido: boolean;
   data_falecimento?: string | null; // opcional, só se falecido for true
