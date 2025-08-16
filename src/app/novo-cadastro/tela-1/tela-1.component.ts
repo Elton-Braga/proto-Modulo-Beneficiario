@@ -149,11 +149,11 @@ export class Tela1Component {
       numero_nis: [dadosRota.numero_nis || ''],
 
       telefone: [
-        { value: dadosRota.telefone || '', disabled: true },
+        { value: dadosRota.telefone || '', disabled: false },
         Validators.required,
       ],
       email: [
-        { value: dadosRota.email || '', disabled: true },
+        { value: dadosRota.email || '', disabled: false },
         Validators.required,
       ],
 

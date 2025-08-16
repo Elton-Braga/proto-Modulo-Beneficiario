@@ -83,6 +83,30 @@ export class Tela2Component {
         { value: dadosRota.cpf || '', disabled: true },
         [Validators.required],
       ],
+
+      data_nascimento: [
+        dadosRota.data_nascimento ? new Date(dadosRota.data_nascimento) : null,
+        Validators.required,
+      ],
+      estado_civil: [dadosRota.estado_civil || ''],
+      falecido: [dadosRota.falecido || false],
+      data_falecimento: [
+        dadosRota.data_falecimento
+          ? new Date(dadosRota.data_falecimento)
+          : null,
+      ],
+
+      nome_pai: [dadosRota.nome_pai || ''],
+      nome_mae: [dadosRota.nome_mae || ''],
+      nacionalidade: [dadosRota.nacionalidade || ''],
+      naturalidade: [dadosRota.naturalidade || ''],
+      municipio: [dadosRota.municipio || ''],
+      codigo_municipio: [dadosRota.codigo_municipio || ''],
+      tipo_documento: [dadosRota.tipo_documento || 'RG'],
+      numero_documento: [dadosRota.numero_documento || ''],
+      orgao_emissor: [dadosRota.orgao_emissor || ''],
+      uf_orgao: [dadosRota.uf_orgao || ''],
+      numero_nis: [dadosRota.numero_nis || ''],
       telefone: [
         { value: dadosRota.telefone || '', disabled: true },
         Validators.required,
