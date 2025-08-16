@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ServicosService } from '../tela-2/servico/servicos.service';
 import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
 import { Beneficiario } from '../../lista/beneficiario';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   standalone: true,
@@ -33,6 +34,7 @@ import { Beneficiario } from '../../lista/beneficiario';
     MatButtonModule,
     MatIconModule,
     HttpClientModule,
+    MatCheckboxModule,
   ],
   templateUrl: './tela-2.component.html',
   styleUrl: './tela-2.component.scss',
@@ -89,7 +91,7 @@ export class Tela2Component {
         Validators.required,
       ],
       estado_civil: [dadosRota.estado_civil || ''],
-      falecido: [dadosRota.falecido || false],
+      falecido: [dadosRota.falecido || true],
       data_falecimento: [
         dadosRota.data_falecimento
           ? new Date(dadosRota.data_falecimento)
@@ -148,6 +150,16 @@ export class Tela2Component {
 
       this.cpfOriginal = dados.cpf || '';
     }
+
+    this.formgroup.get('falecido')?.valueChanges.subscribe((falecido) => {
+      const dataFalecimentoControl = this.formgroup.get('data_falecimento');
+      if (falecido) {
+        dataFalecimentoControl?.enable();
+      } else {
+        dataFalecimentoControl?.disable();
+        dataFalecimentoControl?.reset();
+      }
+    });
   }
 
   salvarFormularioNoLocalStorage(): void {
