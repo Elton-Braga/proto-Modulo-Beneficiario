@@ -108,11 +108,11 @@ export class Tela2Component {
       uf_orgao: [dadosRota.uf_orgao || ''],
       numero_nis: [dadosRota.numero_nis || ''],
       telefone: [
-        { value: dadosRota.telefone || '', disabled: true },
+        { value: dadosRota.telefone || '', disabled: false },
         Validators.required,
       ],
       email: [
-        { value: dadosRota.email || '', disabled: true },
+        { value: dadosRota.email || '', disabled: false },
         Validators.required,
       ],
     });
