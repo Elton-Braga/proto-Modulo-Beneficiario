@@ -84,8 +84,8 @@
                 formControlName="estados"
                 (selectionChange)="carregarMunicipiosPorEstado($event.value)"
               >
-                @for (food of estados; track food) {
-                <mat-option [value]="food.sigla">{{ food.sigla }}</mat-option>
+                @for (estado of estados; track estado) {
+                <mat-option [value]="estado.id">{{ estado.sigla }}</mat-option>
                 }
               </mat-select>
             </mat-form-field>
@@ -93,8 +93,10 @@
             <mat-form-field class="col-2">
               <mat-label>Municipios</mat-label>
               <mat-select name="municipios" formControlName="municipios">
-                @for (food of municipios; track food) {
-                <mat-option [value]="food.sigla">{{ food.nome }}</mat-option>
+                @for (municipio of municipios; track municipio) {
+                <mat-option [value]="municipio.id">{{
+                  municipio.nome
+                }}</mat-option>
                 }
               </mat-select>
             </mat-form-field>

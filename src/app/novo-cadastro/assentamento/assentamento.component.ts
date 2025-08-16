@@ -110,29 +110,21 @@ export class AssentamentoComponent {
   ];
 
   situacoesAssentado = [
-    { value: 'ativo', viewValue: 'Ativo' },
-    { value: 'desligado', viewValue: 'Desligado' },
-    { value: 'falecido', viewValue: 'Falecido' },
-    { value: 'em_revisao', viewValue: 'Em Revisão' },
-    { value: 'em_analise', viewValue: 'Em Análise' },
-    { value: 'indeferido', viewValue: 'Indeferido' },
+    { value: 'assentado', viewValue: 'assentado' },
+    { value: 'evadido', viewValue: 'evadido' },
+    { value: 'desistente', viewValue: 'desistente' },
     { value: 'regularizado', viewValue: 'Regularizado' },
-    { value: 'remanejado', viewValue: 'Remanejado' },
-    { value: 'renunciou', viewValue: 'Renunciou' },
-    { value: 'transferido', viewValue: 'Transferido' },
+    { value: 'regularizado', viewValue: 'regularizado' },
+    { value: 'bloqueado', viewValue: 'bloqueado' },
   ];
 
   situacoesAssentado2 = [
-    { value: 'ativo', viewValue: 'Ativo' },
-    { value: 'desligado', viewValue: 'Desligado' },
-    { value: 'falecido', viewValue: 'Falecido' },
-    { value: 'em_revisao', viewValue: 'Em Revisão' },
-    { value: 'em_analise', viewValue: 'Em Análise' },
-    { value: 'indeferido', viewValue: 'Indeferido' },
+    { value: 'assentado', viewValue: 'assentado' },
+    { value: 'evadido', viewValue: 'evadido' },
+    { value: 'desistente', viewValue: 'desistente' },
     { value: 'regularizado', viewValue: 'Regularizado' },
-    { value: 'remanejado', viewValue: 'Remanejado' },
-    { value: 'renunciou', viewValue: 'Renunciou' },
-    { value: 'transferido', viewValue: 'Transferido' },
+    { value: 'regularizado', viewValue: 'regularizado' },
+    { value: 'bloqueado', viewValue: 'bloqueado' },
   ];
 
   tipo_lote = [

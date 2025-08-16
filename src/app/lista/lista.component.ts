@@ -134,10 +134,12 @@ export class ListaComponent implements AfterViewInit {
   toppings = new FormControl('');
   sr: string[] = ['021', '002', '003', '004', '005'];
   situacao: string[] = [
-    'Em andamento',
-    'Atualizado',
-    'Cancelado',
-    'Em Análise',
+    'assentado',
+    'evadido',
+    'desistente',
+    'regularizado',
+    'bloqueado',
+    'irregular',
   ];
 
   dadosOriginais = [...MOCK_BENEFICIARIOS];
