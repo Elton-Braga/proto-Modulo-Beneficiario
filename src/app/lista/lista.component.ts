@@ -357,6 +357,10 @@ export class ListaComponent implements AfterViewInit {
           orgao_emissor,
           uf_orgao,
           numero_nis,
+          data_homologacao_Titular,
+          data_situacao_Conjuge,
+          data_situacao_Titular,
+          data_homologacao_conjuge,
         } = elemento;
 
         this.router.navigate(['/novo'], {
@@ -385,6 +389,10 @@ export class ListaComponent implements AfterViewInit {
             orgao_emissor,
             uf_orgao,
             numero_nis,
+            data_homologacao_Titular,
+            data_situacao_Conjuge,
+            data_situacao_Titular,
+            data_homologacao_conjuge,
           },
         });
         break;

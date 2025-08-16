@@ -155,7 +155,7 @@ export class AssentamentoComponent {
         [Validators.required],
       ],
       data_homologacao_1: [
-        { value: new Date('1999-05-24'), disabled: true },
+        { value: dadosRota.data_homologacao_Titular, disabled: false },
         Validators.required,
       ],
       situacao_1: ['', Validators.required],
@@ -166,10 +166,13 @@ export class AssentamentoComponent {
         [Validators.required],
       ],
       data_homologacao_2: [
-        { value: new Date('2005-04-27'), disabled: true },
+        { value: dadosRota.data_homologacao_conjuge, disabled: false },
         Validators.required,
       ],
-      situacao_2: ['', Validators.required],
+      situacao_2: [
+        { value: dadosRota.data_situacao_Conjuge, disabled: false },
+        Validators.required,
+      ],
       aptoPNRA: ['', Validators.required],
 
       tipo_lote: ['', Validators.required],
