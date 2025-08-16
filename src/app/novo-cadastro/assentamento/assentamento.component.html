@@ -103,14 +103,18 @@
             <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field>
         </div>
-        <div class="col-3">
-          <label id="example-radio-group-label" class="w-100"
-            ><strong>Apto para ser beneficiario?</strong>
+        <div class="col-3 text-end">
+          <label
+            id="example-radio-group-label"
+            class="w-100 text-end d-flex justify-content-end gap-2"
+          >
+            <strong>Apto para ser beneficiário?</strong>
           </label>
+
           <mat-radio-group
             formControlName="aptoPNRA"
-            aria-label="Apto para ser beneficiario?"
-            class="w-100"
+            aria-label="Apto para ser beneficiário?"
+            class="d-flex justify-content-end gap-2"
           >
             <mat-radio-button value="S">Sim</mat-radio-button>
             <mat-radio-button value="N">Não</mat-radio-button>
@@ -118,7 +122,10 @@
         </div>
       </div>
 
-      <hr />
+      <!--<hr />
+      Area destinada ao lote-->
+
+      <!--
       <div class="row gx-2 margem_botton">
         <div class="col-3">
           <button
@@ -185,8 +192,12 @@
           </mat-form-field>
         </div>
       </div>
-      <hr />
 
+    -->
+
+      <!--encerra area destinada ao lote
+      <hr />-->
+      <!--
       <div class="row">
         <mat-form-field class="col-4">
           <mat-label>SR</mat-label>
@@ -219,7 +230,8 @@
           </mat-select>
         </mat-form-field>
       </div>
-      <hr />
+      
+      <hr />-->
       <div class="row">
         <div class="col-6">
           <mat-form-field class="example-full-width">
@@ -232,21 +244,38 @@
           </mat-form-field>
         </div>
 
-        <div class="col-3">
-          <mat-form-field>
-            <mat-label>Selecione a data</mat-label>
-            <input
-              matInput
-              [matDatepicker]="picker3"
-              formControlName="data_observacao"
-            />
-            <mat-datepicker-toggle
-              matIconSuffix
-              [for]="picker3"
-            ></mat-datepicker-toggle>
-            <mat-datepicker #picker3></mat-datepicker>
-          </mat-form-field>
+        <mat-form-field class="col-3">
+          <mat-label>Selecione a data</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker3"
+            formControlName="data_observacao"
+          />
+          <mat-datepicker-toggle
+            matIconSuffix
+            [for]="picker3"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
+
+        <div class="col-3 text-end">
+          <label
+            id="example-radio-group-label"
+            class="w-100 text-end d-flex justify-content-end gap-2"
+          >
+            <strong>Apto para ser beneficiário?</strong>
+          </label>
+
+          <mat-radio-group
+            formControlName="pr"
+            aria-label="Apto para ser beneficiário?"
+            class="d-flex justify-content-end gap-2"
+          >
+            <mat-radio-button value="S">Publica</mat-radio-button>
+            <mat-radio-button value="N">Reservada</mat-radio-button>
+          </mat-radio-group>
         </div>
+
         <div class="col-3"></div>
       </div>
     </form>

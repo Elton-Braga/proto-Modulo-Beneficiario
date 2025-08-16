@@ -194,6 +194,7 @@ export class AssentamentoComponent {
       data_observacao: [''],
       municipios: ['', Validators.required],
       estados: ['', Validators.required],
+      pr: ['', Validators.required],
     });
 
     // tenta carregar do localStorage

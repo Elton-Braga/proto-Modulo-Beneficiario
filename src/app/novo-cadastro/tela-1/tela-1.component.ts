@@ -38,6 +38,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { CdkTableModule } from '@angular/cdk/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { LoteComponent } from '../lote/lote.component';
+//import { LoteComponent } from "../lote/lote.component";
 
 interface AbaAcordeon {
   titulo: string;
@@ -75,9 +77,9 @@ export interface Processo {
     MatMenuModule,
     MatCheckboxModule,
     CdkTableModule,
-
     MatSortModule,
     MatPaginatorModule,
+    LoteComponent,
   ],
   templateUrl: './tela-1.component.html',
   styleUrl: './tela-1.component.scss',
@@ -103,7 +105,14 @@ export class Tela1Component {
   cpfOriginal = ''; // defina isso com o CPF vindo da rota
   cpfIgualAoOriginal = false;
 
-  itemsTelas = ['Beneficiário', 'Conjuge', 'Unidade Familiar', 'Assentamento'];
+  itemsTelas = [
+    'Beneficiário',
+    'Conjuge',
+    'Unidade Familiar',
+    'Situação',
+    'Lote',
+    //'Assentamento',
+  ];
   expandedIndexTelas = 0;
   expandirAcordeonDependente = false;
 
