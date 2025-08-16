@@ -145,16 +145,20 @@
 
             <div class="row">
               <button
-                matButton="elevated"
-                class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
+                mat-raised-button
+                color="primary"
+                class="col-1 btn_buscar"
+                (click)="pesquisar()"
               >
                 Pesquisar
                 <mat-icon class="me-1">search</mat-icon>
               </button>
 
               <button
-                matButton="elevated"
-                class="btn btn-light col-1 btn_buscar d-inline-flex align-items-center btn-cadastro"
+                mat-raised-button
+                color="warn"
+                class="col-1 btn_buscar"
+                (click)="limpar()"
               >
                 Limpar
                 <mat-icon class="me-1">clear_all</mat-icon>
@@ -372,6 +376,17 @@
           <!-- Linhas -->
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
           <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+          <!-- Mensagem quando não há dados -->
+          <tr class="mat-row" *matNoDataRow>
+            <td
+              class="mat-cell"
+              [attr.colspan]="displayedColumns.length"
+              style="text-align: center"
+            >
+              Nenhuma informação encontrada
+            </td>
+          </tr>
         </table>
 
         <mat-paginator

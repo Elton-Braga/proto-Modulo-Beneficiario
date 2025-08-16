@@ -140,6 +140,8 @@ export class ListaComponent implements AfterViewInit {
     'Em Análise',
   ];
 
+  dadosOriginais = [...MOCK_BENEFICIARIOS];
+
   constructor(
     private router: Router,
     fb: FormBuilder,
@@ -164,6 +166,71 @@ export class ListaComponent implements AfterViewInit {
 
   ngOnInit() {
     this.carregarEstados();
+  }
+
+  pesquisar() {
+    const filtros = this.form.value;
+
+    this.dataSource.data = this.dadosOriginais.filter((item) => {
+      // aplica os filtros apenas se o valor for preenchido
+      const matchCodigo = filtros.codigo_beneficiario
+        ? item.codigo_beneficiario
+            ?.toString()
+            .includes(filtros.codigo_beneficiario)
+        : true;
+
+      const matchCpf = filtros.cpf ? item.cpf_T1?.includes(filtros.cpf) : true;
+
+      const matchNome = filtros.nome_beneficiario
+        ? item.nome_T1
+            ?.toLowerCase()
+            .includes(filtros.nome_beneficiario.toLowerCase())
+        : true;
+
+      const matchEstado = filtros.estados
+        ? item.uf_orgao === filtros.estados
+        : true;
+
+      const matchMunicipio = filtros.municipios
+        ? item.codigo_municipio === filtros.municipios
+        : true;
+
+      const matchSR = filtros.sr?.length
+        ? filtros.sr.includes(item.check.toString().padStart(3, '0'))
+        : true;
+
+      const matchProjeto = filtros.nome_projeto
+        ? item.projeto
+            ?.toLowerCase()
+            .includes(filtros.nome_projeto.toLowerCase())
+        : true;
+
+      const matchLote = filtros.lote
+        ? item.lote?.toString() === filtros.lote.toString()
+        : true;
+
+      const matchSituacao = filtros.situacao
+        ? item.situacao_T1 === filtros.situacao ||
+          item.situacao_T2 === filtros.situacao
+        : true;
+
+      return (
+        matchCodigo &&
+        matchCpf &&
+        matchNome &&
+        matchEstado &&
+        matchMunicipio &&
+        matchSR &&
+        matchProjeto &&
+        matchLote &&
+        matchSituacao
+      );
+    });
+  }
+
+  limpar() {
+    this.form.reset();
+    this.dataSource.data = [...this.dadosOriginais];
   }
 
   openDialogEspelho(elemento: Beneficiario) {
