@@ -113,8 +113,8 @@ export class AssentamentoComponent {
     { value: 'assentado', viewValue: 'assentado' },
     { value: 'evadido', viewValue: 'evadido' },
     { value: 'desistente', viewValue: 'desistente' },
-    { value: 'regularizado', viewValue: 'Regularizado' },
-    { value: 'regularizado', viewValue: 'regularizado' },
+    { value: 'regularizado_1', viewValue: 'Regularizado' },
+    { value: 'regularizado_2', viewValue: 'Regularizado' },
     { value: 'bloqueado', viewValue: 'bloqueado' },
   ];
 
@@ -122,8 +122,8 @@ export class AssentamentoComponent {
     { value: 'assentado', viewValue: 'assentado' },
     { value: 'evadido', viewValue: 'evadido' },
     { value: 'desistente', viewValue: 'desistente' },
-    { value: 'regularizado', viewValue: 'Regularizado' },
-    { value: 'regularizado', viewValue: 'regularizado' },
+    { value: 'regularizado_1', viewValue: 'Regularizado' },
+    { value: 'regularizado_2', viewValue: 'Regularizado' },
     { value: 'bloqueado', viewValue: 'bloqueado' },
   ];
 
@@ -147,11 +147,12 @@ export class AssentamentoComponent {
 
   // ---------- inicialização ----------
   ngOnInit(): void {
+    const dadosRota = history.state;
     this.carregarEstados();
     this.form = this.fb.group({
       titular_1: [
-        { value: 'Joaquim José da Silva', disabled: true },
-        Validators.required,
+        { value: dadosRota.nome || '', disabled: true },
+        [Validators.required],
       ],
       data_homologacao_1: [
         { value: new Date('1999-05-24'), disabled: true },
@@ -161,8 +162,8 @@ export class AssentamentoComponent {
       data_situacao_1: ['', Validators.required],
       data_situacao_2: ['', Validators.required],
       titular_2: [
-        { value: 'Maria Rocha da Silva', disabled: true },
-        Validators.required,
+        { value: dadosRota.nome_T2 || '', disabled: true },
+        [Validators.required],
       ],
       data_homologacao_2: [
         { value: new Date('2005-04-27'), disabled: true },
@@ -178,7 +179,7 @@ export class AssentamentoComponent {
       ],
       numero_lote: ['', Validators.required],
       codigo_SNCR: ['', Validators.required],
-      link_mapa: ['', Validators.pattern(/^https?:\/\//i)],
+      //link_mapa: ['', Validators.pattern(/^https?:\/\//i)],
       denominacao_Gleba: ['', Validators.required],
       denominacao_lote: ['', Validators.required],
 
@@ -186,7 +187,7 @@ export class AssentamentoComponent {
       data_observacao: [''],
       municipios: ['', Validators.required],
       estados: ['', Validators.required],
-      pr: ['', Validators.required],
+      apto_para_beneficiario: ['', Validators.required],
     });
 
     // tenta carregar do localStorage

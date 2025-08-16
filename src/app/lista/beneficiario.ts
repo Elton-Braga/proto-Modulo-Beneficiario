@@ -18,7 +18,7 @@ export interface Beneficiario {
   telefone: string;
   email: string;
 
-  // 🔹 Novos atributos
+  // 🔹 Novos atributos já existentes
   data_nascimento: string; // formato 'yyyy-MM-dd' ou Date
   estado_civil: string;
   falecido: boolean;
@@ -37,4 +37,24 @@ export interface Beneficiario {
   uf_orgao: string;
 
   numero_nis: string;
+
+  // 🔹 Atributos da nova lista
+  data_homologacao_Titular: string;
+  situacao_Titular: string;
+  data_situacao_Titular: string | null;
+  data_situacao_Conjuge: string | null;
+  data_homologacao_conjuge: string | null;
+  situacao_conjuge: string;
+  aptoPNRA_conjuge: boolean | null;
+  tipo_lote: string;
+  area_lote: number | null;
+  numero_lote: string;
+  codigo_SNCR: string;
+  denominacao_Gleba: string;
+  denominacao_lote: string;
+  observacao: string;
+  data_observacao: string | null;
+  municipios: string;
+  estados: string;
+  apto_para_beneficiario: string; // será validado pelo formulário (required)
 }
