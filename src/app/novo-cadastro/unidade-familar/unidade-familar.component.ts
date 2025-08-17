@@ -184,6 +184,7 @@ export class UnidadeFamilarComponent {
             ? new Date(d.data_entrada_na_familia)
             : null,
           data_uniao: d.data_uniao ? new Date(d.data_uniao) : null,
+          associacao_unidade_familiar: d.associacao_unidade_familiar,
           acoes: ['editar', 'remover'],
           editando: false,
         }))
