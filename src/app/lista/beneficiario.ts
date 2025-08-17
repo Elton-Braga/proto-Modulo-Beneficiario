@@ -1,3 +1,5 @@
+import { UnidadeFamiliar } from './unidadeFamiliar';
+
 export interface Beneficiario {
   check: any;
   codigo_projeto: string;
@@ -57,4 +59,5 @@ export interface Beneficiario {
   municipios: string;
   estados: string;
   apto_para_beneficiario: string; // será validado pelo formulário (required)
+  dependentes: UnidadeFamiliar[];
 }

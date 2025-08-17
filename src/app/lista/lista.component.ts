@@ -393,6 +393,7 @@ export class ListaComponent implements AfterViewInit {
             data_situacao_Conjuge,
             data_situacao_Titular,
             data_homologacao_conjuge,
+            dependentes: elemento.dependentes ?? [],
           },
         });
         break;
