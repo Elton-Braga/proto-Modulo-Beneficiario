@@ -111,6 +111,8 @@ export class Tela1Component {
     'Unidade Familiar',
     'Situação',
     'Lote',
+    'Observações',
+    'Bloqueios',
     //'Assentamento',
   ];
   expandedIndexTelas = 0;
