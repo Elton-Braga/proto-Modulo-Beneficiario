@@ -196,7 +196,10 @@ export class AssentamentoComponent {
       denominacao_lote: ['', Validators.required],
 
       observacao: [''],
-      data_observacao: [''],
+      data_observacao: [
+        { value: dadosRota.data_observacao || '', disabled: false },
+        Validators.required,
+      ],
       municipios: ['', Validators.required],
       estados: ['', Validators.required],
       apto_para_beneficiario: ['', Validators.required],

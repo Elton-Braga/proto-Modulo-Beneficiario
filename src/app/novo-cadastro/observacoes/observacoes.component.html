@@ -1,1 +1,46 @@
-<h1>Em desenvolvimento - tela de Observações</h1>
+<form class="container-fluid px-0" [formGroup]="form">
+  <div class="row">
+    <mat-form-field class="example-full-width col-6">
+      <mat-label>Observações</mat-label>
+      <textarea
+        matInput
+        placeholder="Ex. It makes me feel..."
+        formControlName="observacao"
+      ></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="col-3">
+      <mat-label>Data da Observação</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker3"
+        formControlName="data_observacao"
+      />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker3"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker3></mat-datepicker>
+    </mat-form-field>
+
+    <div class="col-3 text-end">
+      <label
+        id="example-radio-group-label"
+        class="w-100 text-end d-flex justify-content-end gap-2"
+      >
+        <strong>Status da observação:</strong>
+      </label>
+
+      <mat-radio-group
+        formControlName="apto_para_beneficiario"
+        aria-label="Apto para ser beneficiário?"
+        class="d-flex justify-content-end gap-2"
+      >
+        <mat-radio-button value="S">Publica</mat-radio-button>
+        <mat-radio-button value="N">Reservada</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div class="col-3"></div>
+  </div>
+</form>
