@@ -26,7 +26,7 @@
         <div class="col-3">
           <mat-form-field class="w-100">
             <mat-label>Situação do Assentado</mat-label>
-            <mat-select formControlName="situacao_1">
+            <mat-select formControlName="situacao_titular">
               @for (situacao of situacoesAssentado; track situacao.value) {
               <mat-option [value]="situacao.value">
                 {{ situacao.viewValue }}
@@ -78,7 +78,7 @@
         <div class="col-2">
           <mat-form-field class="w-100">
             <mat-label>Situação do Assentado</mat-label>
-            <mat-select formControlName="situacao_2">
+            <mat-select formControlName="situacao_conjuge">
               @for (situacao of situacoesAssentado2; track situacao.value) {
               <mat-option [value]="situacao.value">
                 {{ situacao.viewValue }}

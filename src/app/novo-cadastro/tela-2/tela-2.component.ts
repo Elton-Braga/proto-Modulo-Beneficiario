@@ -91,7 +91,7 @@ export class Tela2Component {
         Validators.required,
       ],
       estado_civil: [dadosRota.estado_civil || ''],
-      falecido: [dadosRota.falecido || true],
+      falecido: [dadosRota.falecido || false],
       data_falecimento: [
         dadosRota.data_falecimento
           ? new Date(dadosRota.data_falecimento)

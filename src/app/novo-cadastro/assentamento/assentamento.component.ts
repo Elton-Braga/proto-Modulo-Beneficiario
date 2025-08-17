@@ -158,9 +158,18 @@ export class AssentamentoComponent {
         { value: dadosRota.data_homologacao_Titular, disabled: false },
         Validators.required,
       ],
-      situacao_1: ['', Validators.required],
-      data_situacao_1: ['', Validators.required],
-      data_situacao_2: ['', Validators.required],
+      situacao_titular: [
+        { value: dadosRota.situacao_Titular || '', disabled: false },
+        Validators.required,
+      ],
+      data_situacao_1: [
+        dadosRota.data_situacao_Titular || '',
+        Validators.required,
+      ],
+      data_situacao_2: [
+        dadosRota.data_situacao_Conjuge || '',
+        Validators.required,
+      ],
       titular_2: [
         { value: dadosRota.nome_T2 || '', disabled: true },
         [Validators.required],
@@ -169,8 +178,8 @@ export class AssentamentoComponent {
         { value: dadosRota.data_homologacao_conjuge, disabled: false },
         Validators.required,
       ],
-      situacao_2: [
-        { value: dadosRota.data_situacao_Conjuge, disabled: false },
+      situacao_conjuge: [
+        { value: dadosRota.situacao_conjuge || '', disabled: false },
         Validators.required,
       ],
       aptoPNRA: ['', Validators.required],

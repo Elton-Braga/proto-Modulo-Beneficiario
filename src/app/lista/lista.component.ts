@@ -361,6 +361,22 @@ export class ListaComponent implements AfterViewInit {
           data_situacao_Conjuge,
           data_situacao_Titular,
           data_homologacao_conjuge,
+
+          situacao_Titular,
+          situacao_conjuge,
+
+          aptoPNRA_conjuge,
+          tipo_lote,
+          area_lote,
+          numero_lote,
+          codigo_SNCR,
+          denominacao_Gleba,
+          denominacao_lote,
+          observacao,
+          data_observacao,
+          municipios,
+          estados,
+          apto_para_beneficiario,
         } = elemento;
 
         this.router.navigate(['/novo'], {
@@ -393,6 +409,23 @@ export class ListaComponent implements AfterViewInit {
             data_situacao_Conjuge,
             data_situacao_Titular,
             data_homologacao_conjuge,
+
+            situacao_Titular,
+            situacao_conjuge,
+
+            aptoPNRA_conjuge,
+            tipo_lote,
+            area_lote,
+            numero_lote,
+            codigo_SNCR,
+            denominacao_Gleba,
+            denominacao_lote,
+            observacao,
+            data_observacao,
+            municipios,
+            estados,
+            apto_para_beneficiario,
+
             dependentes: elemento.dependentes ?? [],
           },
         });
