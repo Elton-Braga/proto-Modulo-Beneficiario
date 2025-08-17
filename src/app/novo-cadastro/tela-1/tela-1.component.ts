@@ -39,6 +39,8 @@ import { CdkTableModule } from '@angular/cdk/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { LoteComponent } from '../lote/lote.component';
+import { ObservacoesComponent } from '../observacoes/observacoes.component';
+import { BloqueiosComponent } from '../bloqueios/bloqueios.component';
 //import { LoteComponent } from "../lote/lote.component";
 
 interface AbaAcordeon {
@@ -80,6 +82,8 @@ export interface Processo {
     MatSortModule,
     MatPaginatorModule,
     LoteComponent,
+    ObservacoesComponent,
+    BloqueiosComponent,
   ],
   templateUrl: './tela-1.component.html',
   styleUrl: './tela-1.component.scss',
