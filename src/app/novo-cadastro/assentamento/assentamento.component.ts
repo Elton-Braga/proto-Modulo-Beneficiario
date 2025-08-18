@@ -148,41 +148,46 @@ export class AssentamentoComponent {
   // ---------- inicialização ----------
   ngOnInit(): void {
     const dadosRota = history.state;
+    const situacao = dadosRota || {};
+
     this.carregarEstados();
     this.form = this.fb.group({
       titular_1: [
-        { value: dadosRota.nome || '', disabled: true },
+        { value: situacao.nome || '', disabled: true },
         [Validators.required],
       ],
       data_homologacao_1: [
-        { value: dadosRota.data_homologacao_Titular, disabled: false },
+        { value: situacao.data_homologacao_Titular, disabled: false },
         Validators.required,
       ],
       situacao_titular: [
-        { value: dadosRota.situacao_Titular || '', disabled: false },
+        { value: situacao.situacao_Titular || '', disabled: false },
         Validators.required,
       ],
       data_situacao_1: [
-        dadosRota.data_situacao_Titular || '',
+        situacao.data_situacao_Titular || '',
         Validators.required,
       ],
       data_situacao_2: [
-        dadosRota.data_situacao_Conjuge || '',
+        situacao.data_situacao_Conjuge || '',
         Validators.required,
       ],
       titular_2: [
-        { value: dadosRota.nome_T2 || '', disabled: true },
+        { value: situacao.nome_T2 || '', disabled: true },
         [Validators.required],
       ],
       data_homologacao_2: [
-        { value: dadosRota.data_homologacao_conjuge, disabled: false },
+        { value: situacao.data_homologacao_conjuge, disabled: false },
         Validators.required,
       ],
       situacao_conjuge: [
-        { value: dadosRota.situacao_conjuge || '', disabled: false },
+        { value: situacao.situacao_conjuge || '', disabled: false },
         Validators.required,
       ],
-      aptoPNRA: ['', Validators.required],
+      aptoPNRA: [
+        { value: situacao.apto_para_beneficiario || '', disabled: false },
+        Validators.required,
+      ],
 
       tipo_lote: ['', Validators.required],
       area_lote: [
@@ -197,7 +202,7 @@ export class AssentamentoComponent {
 
       observacao: [''],
       data_observacao: [
-        { value: dadosRota.data_observacao || '', disabled: false },
+        { value: situacao.data_observacao || '', disabled: false },
         Validators.required,
       ],
       municipios: ['', Validators.required],
