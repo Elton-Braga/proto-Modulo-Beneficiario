@@ -377,6 +377,7 @@ export class ListaComponent implements AfterViewInit {
           municipios,
           estados,
           apto_para_beneficiario,
+          bloqueios,
         } = elemento;
 
         this.router.navigate(['/novo'], {
@@ -427,6 +428,7 @@ export class ListaComponent implements AfterViewInit {
             apto_para_beneficiario,
 
             dependentes: elemento.dependentes ?? [],
+            bloqueios: elemento.bloqueios ?? [],
           },
         });
         break;

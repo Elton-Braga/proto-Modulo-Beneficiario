@@ -8,6 +8,8 @@ import {
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
+import { Beneficiario } from '../../lista/beneficiario';
 
 @Component({
   selector: 'app-bloqueios',
@@ -24,33 +26,58 @@ import { MatInputModule } from '@angular/material/input';
 })
 export class BloqueiosComponent {
   form!: FormGroup;
+  beneficiarios: Beneficiario[] = [];
 
   constructor(private fb: FormBuilder) {
+    const dadosRota = history.state;
+    const bloqueio =
+      dadosRota.bloqueios && dadosRota.bloqueios.length > 0
+        ? dadosRota.bloqueios[0]
+        : {};
+
     this.form = this.fb.group({
-      codigoBeneficiario: ['', Validators.required],
-      codigoTipoBloqueio: ['', Validators.required],
-      descricaoBloqueio: ['', [Validators.required, Validators.minLength(3)]],
-      codigoTransacao: ['', Validators.required],
-      dataBloqueio: [
-        '',
-        [Validators.required, Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)],
+      codigoBeneficiario: [
+        { value: bloqueio.codigo_beneficiario || '', disabled: true }, // <--- Alteração aqui
+        [Validators.required],
       ],
-      codigoSubBloqueio: ['', Validators.required],
+      codigoTipoBloqueio: [
+        bloqueio.codigo_tipo_bloqueio || '',
+        [Validators.required],
+      ],
+      descricaoBloqueio: [
+        bloqueio.descricao_bloqueio || '',
+        [Validators.required],
+      ],
+      codigoTransacao: [bloqueio.codigo_transacao || '', [Validators.required]],
+      dataBloqueio: [bloqueio.data_bloqueio || '', [Validators.required]],
+      codigoSubBloqueio: [
+        bloqueio.codigo_sub_bloqueio || '',
+        [Validators.required],
+      ],
       descricaoSubBloqueio: [
-        '',
-        [Validators.required, Validators.minLength(3)],
+        bloqueio.descricao_sub_bloqueio || '',
+        [Validators.required],
       ],
-      codigoMotivoBloqueio: ['', Validators.required],
+      codigoMotivoBloqueio: [
+        bloqueio.codigo_motivo_bloqueio || '',
+        [Validators.required],
+      ],
       descricaoMotivoBloqueio: [
-        '',
-        [Validators.required, Validators.minLength(3)],
+        bloqueio.descricao_motivo_bloqueio || '',
+        [Validators.required],
       ],
-      desbloqueioAtendido: ['', Validators.required],
-      situacaoAnalise: ['', Validators.required],
-      dataResultado: [
-        '',
-        [Validators.required, Validators.pattern(/^\d{4}-\d{2}-\d{2}$/)],
+      desbloqueioAtendido: [
+        bloqueio.desbloqueio_atendido || '',
+        [Validators.required],
       ],
+      situacaoAnalise: [bloqueio.situacao_analise || '', [Validators.required]],
+      dataResultado: [bloqueio.data_resultado || '', [Validators.required]],
     });
+  }
+  ngOnInit() {
+    this.beneficiarios = MOCK_BENEFICIARIOS;
+
+    const dados = history.state;
+    console.log('Dados da rota:', dados);
   }
 }

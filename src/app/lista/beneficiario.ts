@@ -1,3 +1,4 @@
+import { BeneficiarioBloqueio } from './beneficiarioBloqueio';
 import { UnidadeFamiliar } from './unidadeFamiliar';
 
 export interface Beneficiario {
@@ -60,4 +61,5 @@ export interface Beneficiario {
   estados: string;
   apto_para_beneficiario: string; // será validado pelo formulário (required)
   dependentes: UnidadeFamiliar[];
+  bloqueios: BeneficiarioBloqueio[];
 }
