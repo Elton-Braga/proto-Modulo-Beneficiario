@@ -66,3 +66,126 @@
     </div>
   </div>
 </form>
+
+<!-- ================== TABELA DE LOTES ================== -->
+<div *ngIf="lotes.length > 0">
+  <table mat-table [dataSource]="lotes" class="mat-elevation-z8 w-100 mt-3">
+    <!-- Tipo -->
+    <ng-container matColumnDef="tipo_lote">
+      <th mat-header-cell *matHeaderCellDef>Tipo</th>
+      <td mat-cell *matCellDef="let lote; let i = index">
+        <input
+          matInput
+          [(ngModel)]="lote.tipo_lote"
+          [disabled]="!lote.editando"
+        />
+      </td>
+    </ng-container>
+
+    <!-- Área -->
+    <ng-container matColumnDef="area_lote">
+      <th mat-header-cell *matHeaderCellDef>Área</th>
+      <td mat-cell *matCellDef="let lote; let i = index">
+        <input
+          matInput
+          [(ngModel)]="lote.area_lote"
+          [disabled]="!lote.editando"
+        />
+      </td>
+    </ng-container>
+
+    <!-- Número -->
+    <ng-container matColumnDef="numero_lote">
+      <th mat-header-cell *matHeaderCellDef>Número</th>
+      <td mat-cell *matCellDef="let lote; let i = index">
+        <input
+          matInput
+          [(ngModel)]="lote.numero_lote"
+          [disabled]="!lote.editando"
+        />
+      </td>
+    </ng-container>
+
+    <!-- SNCR -->
+    <ng-container matColumnDef="codigo_SNCR">
+      <th mat-header-cell *matHeaderCellDef>SNCR</th>
+      <td mat-cell *matCellDef="let lote; let i = index">
+        <input
+          matInput
+          [(ngModel)]="lote.codigo_SNCR"
+          [disabled]="!lote.editando"
+        />
+      </td>
+    </ng-container>
+
+    <!-- Gleba -->
+    <ng-container matColumnDef="denominacao_Gleba">
+      <th mat-header-cell *matHeaderCellDef>Gleba</th>
+      <td mat-cell *matCellDef="let lote; let i = index">
+        <input
+          matInput
+          [(ngModel)]="lote.denominacao_Gleba"
+          [disabled]="!lote.editando"
+        />
+      </td>
+    </ng-container>
+
+    <!-- Lote -->
+    <ng-container matColumnDef="denominacao_lote">
+      <th mat-header-cell *matHeaderCellDef>Lote</th>
+      <td mat-cell *matCellDef="let lote; let i = index">
+        <input
+          matInput
+          [(ngModel)]="lote.denominacao_lote"
+          [disabled]="!lote.editando"
+        />
+      </td>
+    </ng-container>
+
+    <!-- Ações -->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let lote; let i = index">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          (click)="loteSelecionado = lote; indexSelecionado = i"
+          class="botao-acoes"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <mat-menu #menu="matMenu">
+      <button
+        mat-menu-item
+        (click)="editarLote(loteSelecionado!)"
+        *ngIf="!loteSelecionado?.editando"
+      >
+        <mat-icon>edit</mat-icon>
+        <span>Editar</span>
+      </button>
+      <button
+        mat-menu-item
+        (click)="salvarLote(loteSelecionado!)"
+        *ngIf="loteSelecionado?.editando"
+      >
+        <mat-icon>save</mat-icon>
+        <span>Salvar</span>
+      </button>
+      <button
+        mat-menu-item
+        *ngIf="indexSelecionado !== undefined"
+        (click)="excluirLote(indexSelecionado)"
+      >
+        <mat-icon>delete</mat-icon>
+        <span>Excluir</span>
+      </button>
+    </mat-menu>
+
+    <!-- Cabeçalho e linhas -->
+    <tr mat-header-row *matHeaderRowDef="colunasTabela"></tr>
+    <tr mat-row *matRowDef="let row; columns: colunasTabela"></tr>
+  </table>
+</div>

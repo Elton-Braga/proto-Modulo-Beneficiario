@@ -1,4 +1,5 @@
 import { BeneficiarioBloqueio } from './beneficiarioBloqueio';
+import { Lote } from './lote';
 import { UnidadeFamiliar } from './unidadeFamiliar';
 
 export interface Beneficiario {
@@ -62,4 +63,5 @@ export interface Beneficiario {
   apto_para_beneficiario: string; // será validado pelo formulário (required)
   dependentes: UnidadeFamiliar[];
   bloqueios: BeneficiarioBloqueio[];
+  tela_lote: Lote[];
 }

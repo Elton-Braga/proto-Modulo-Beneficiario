@@ -4,12 +4,17 @@ import {
   FormBuilder,
   Validators,
   ReactiveFormsModule,
+  FormsModule,
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ServicosService } from '../tela-1/servico/servicos.service';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatTableModule } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-lote',
@@ -20,29 +25,41 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatSelectModule,
     ReactiveFormsModule,
+    MatTableModule,
+    FormsModule,
+    MatIconModule,
+    MatMenuModule,
   ],
   templateUrl: './lote.component.html',
   styleUrls: ['./lote.component.scss'],
 })
 export class LoteComponent {
   form!: FormGroup;
-
-  /** opções do campo Tipo de Lote */
+  lotes: Lote[] = [];
+  loteSelecionado?: Lote;
+  indexSelecionado?: number;
   tipo_lote = [
     { value: 'teste1', viewValue: 'teste1' },
     { value: 'teste2', viewValue: 'teste2' },
     { value: 'teste3', viewValue: 'teste3' },
   ];
 
-  lotes: Lote[] = [];
-  private readonly STORAGE_KEY = 'cadastroBenef';
+  colunasTabela: string[] = [
+    'tipo_lote',
+    'area_lote',
+    'numero_lote',
+    'codigo_SNCR',
+    'denominacao_Gleba',
+    'denominacao_lote',
+    'acoes', // adiciona a coluna de ações
+  ];
 
   constructor(
     private fb: FormBuilder,
-    private servicosService: ServicosService
+    private servicosService: ServicosService,
+    private router: Router
   ) {}
 
-  // ---------- inicialização ----------
   ngOnInit(): void {
     this.form = this.fb.group({
       tipo_lote: ['', Validators.required],
@@ -56,67 +73,47 @@ export class LoteComponent {
       denominacao_lote: ['', Validators.required],
     });
 
-    // tenta carregar do localStorage
-    const salvo = localStorage.getItem(this.STORAGE_KEY);
-    if (salvo) {
-      const { formValues, lotes } = JSON.parse(salvo);
-      this.form.patchValue(formValues);
-      this.lotes = lotes ?? [];
+    // Recupera dados enviados pela rota
+    // ✅ Recupera via history.state
+    const state = history.state as any;
+    if (state?.tela_lote) {
+      this.lotes = state.tela_lote.map((l: Lote) => ({
+        ...l,
+        editando: false,
+      }));
     }
   }
 
-  // ---------- getter conveniência ----------
-  get loteControlesValidos(): boolean {
-    return this.form.valid;
-    /*
-    return ['tipo_lote', 'area_lote', 'numero_lote', 'codigo_SNCR'].every(
-      (campo) => this.form.get(campo)?.valid
-    );*/
-  }
-
-  // ---------- inclusão de Lote ----------
   adicionarLote(): void {
-    if (
-      this.form.get('tipo_lote')?.invalid ||
-      this.form.get('area_lote')?.invalid ||
-      this.form.get('numero_lote')?.invalid ||
-      this.form.get('codigo_SNCR')?.invalid ||
-      this.form.get('denominacao_Gleba')?.invalid ||
-      this.form.get('denominacao_lote')?.invalid
-    ) {
+    if (!this.form.valid) {
       return;
     }
 
     const lote: Lote = {
-      tipo_lote: this.form.value.tipo_lote,
-      area_lote: this.form.value.area_lote,
-      numero_lote: this.form.value.numero_lote,
-      codigo_SNCR: this.form.value.codigo_SNCR,
-      denominacao_Gleba: this.form.value.denominacao_Gleba,
-      denominacao_lote: this.form.value.denominacao_lote,
+      ...this.form.value,
+      editando: false,
     };
+    this.lotes = [...this.lotes, lote];
 
-    this.lotes.push(lote);
-    this.form.patchValue({
-      tipo_lote: '',
-      area_lote: '',
-      numero_lote: '',
-      codigo_SNCR: '',
-      denominacao_Gleba: '',
-      denominacao_lote: '',
-    });
-    this.salvarNoStorage();
+    this.form.reset();
   }
 
-  // ---------- persistência ----------
-  private salvarNoStorage(): void {
-    localStorage.setItem(
-      this.STORAGE_KEY,
-      JSON.stringify({
-        formValues: this.form.value,
-        lotes: this.lotes,
-      })
-    );
+  editarLote(lote: Lote): void {
+    lote.editando = true;
+  }
+
+  salvarLote(lote: Lote): void {
+    lote.editando = false;
+    // Aqui pode chamar service para persistir alterações, se necessário
+  }
+
+  excluirLote(index: number): void {
+    this.lotes.splice(index, 1);
+    this.lotes = [...this.lotes];
+  }
+
+  get loteControlesValidos(): boolean {
+    return this.form.valid;
   }
 }
 
@@ -127,4 +124,5 @@ interface Lote {
   codigo_SNCR: string;
   denominacao_Gleba: string;
   denominacao_lote: string;
+  editando?: boolean; // controle de edição
 }

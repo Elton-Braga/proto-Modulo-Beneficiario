@@ -1,4 +1,4 @@
-import { UnidadeFamiliar } from '../../lista/unidadeFamiliar';
+/*import { UnidadeFamiliar } from '../../lista/unidadeFamiliar';
 export const MOCK_DEPENDENTES: {
   codigo_beneficiario: string;
   dependentes: UnidadeFamiliar[];
@@ -241,3 +241,4 @@ export const MOCK_DEPENDENTES: {
     ],
   },
 ];
+*/

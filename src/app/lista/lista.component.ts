@@ -378,6 +378,9 @@ export class ListaComponent implements AfterViewInit {
           estados,
           apto_para_beneficiario,
           bloqueios,
+          tela_lote,
+
+          // codigo_beneficiario_lote, codigo_tipo_bloqueio, descricao_bloqueio, codigo_transacao, data_bloqueio, codigo_sub_bloqueio, descricao_sub_bloqueio, codigo_motivo_bloqueio, descricao_motivo_bloqueio, desbloqueio_atendido, situacao_analise, data_resultado
         } = elemento;
 
         this.router.navigate(['/novo'], {
@@ -429,6 +432,7 @@ export class ListaComponent implements AfterViewInit {
 
             dependentes: elemento.dependentes ?? [],
             bloqueios: elemento.bloqueios ?? [],
+            tela_lote: elemento.tela_lote ?? [],
           },
         });
         break;
