@@ -15,6 +15,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '12/10/2003',
     status: 'Negado',
     cpf_T1: '111.000.000-00',
+
+    cpf_conjuge: '123.456.789-00',
     numero_processo: ['000000011/0000'],
     acoes: [
       'Detalhar',
@@ -142,6 +144,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '12/10/2002',
     status: 'Negado',
     cpf_T1: '111.000.000-00',
+    cpf_conjuge: '123.456.789-11',
     numero_processo: ['000000011/0000'],
     acoes: [
       'Detalhar',
@@ -283,6 +286,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '10/10/2005',
     status: 'Em Análise',
     cpf_T1: '000.000.000-25',
+    cpf_conjuge: '123.456.789-22',
     numero_processo: ['000000000/2222'],
     acoes: [
       'Detalhar',
@@ -397,6 +401,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '12/10/2003',
     status: 'Negado',
     cpf_T1: '111.000.000-00',
+    cpf_conjuge: '123.456.789-33',
     numero_processo: ['000000011/0000'],
     acoes: [
       'Detalhar',
@@ -525,6 +530,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '01/04/2004',
     status: 'Cancelado',
     cpf_T1: '000.000.010-00',
+    cpf_conjuge: '123.456.789-44',
     numero_processo: ['645789456/0000'],
     acoes: [
       'Detalhar',
@@ -652,6 +658,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '18/10/2003',
     status: 'Deferido',
     cpf_T1: '000.000.123-00',
+    cpf_conjuge: '123.456.789-45',
     numero_processo: ['123789456/0000'],
     acoes: [
       'Detalhar',
@@ -765,6 +772,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '02/09/2002',
     status: 'Negado',
     cpf_T1: '000.456.000-00',
+    cpf_conjuge: '123.456.789-46',
     numero_processo: ['123456789/0000'],
     acoes: [
       'Detalhar',
@@ -878,6 +886,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '19/01/2010',
     status: 'Em Análise',
     cpf_T1: '000.004.000-00',
+    cpf_conjuge: '123.456.789-47',
     numero_processo: ['222222223/0000'],
     acoes: [
       'Detalhar',
@@ -1005,6 +1014,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '30/07/1999',
     status: 'Suspenso',
     cpf_T1: '000.048.000-00',
+    cpf_conjuge: '123.456.789-88',
     numero_processo: ['222222222/0000'],
     acoes: [
       'Detalhar',
@@ -1132,6 +1142,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '12/12/2008',
     status: 'Cancelado',
     cpf_T1: '800.000.000-00',
+    cpf_conjuge: '123.456.789-99',
     numero_processo: ['111111111/0000'],
     acoes: [
       'Detalhar',

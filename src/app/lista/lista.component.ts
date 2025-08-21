@@ -163,6 +163,7 @@ export class ListaComponent implements AfterViewInit {
       lote: [],
       data_situacao: [],
       situacao: [],
+      numero_processo: [''],
     });
   }
 
@@ -174,17 +175,22 @@ export class ListaComponent implements AfterViewInit {
     const filtros = this.form.value;
 
     this.dataSource.data = this.dadosOriginais.filter((item) => {
-      // aplica os filtros apenas se o valor for preenchido
       const matchCodigo = filtros.codigo_beneficiario
         ? item.codigo_beneficiario
             ?.toString()
             .includes(filtros.codigo_beneficiario)
         : true;
 
-      const matchCpf = filtros.cpf ? item.cpf_T1?.includes(filtros.cpf) : true;
+      const matchCpf = filtros.cpf
+        ? item.cpf_T1?.includes(filtros.cpf) ||
+          item.cpf_conjuge?.includes(filtros.cpf)
+        : true;
 
       const matchNome = filtros.nome_beneficiario
         ? item.nome_T1
+            ?.toLowerCase()
+            .includes(filtros.nome_beneficiario.toLowerCase()) ||
+          item.nome_T2
             ?.toLowerCase()
             .includes(filtros.nome_beneficiario.toLowerCase())
         : true;
@@ -216,6 +222,17 @@ export class ListaComponent implements AfterViewInit {
           item.situacao_T2 === filtros.situacao
         : true;
 
+      // 🔎 Busca por numero_processo (string ou array)
+      const matchNumeroProcesso = filtros.numero_processo
+        ? Array.isArray(item.numero_processo)
+          ? item.numero_processo.some((proc) =>
+              proc.toLowerCase().includes(filtros.numero_processo.toLowerCase())
+            )
+          : item.numero_processo
+              ?.toLowerCase()
+              .includes(filtros.numero_processo.toLowerCase())
+        : true;
+
       return (
         matchCodigo &&
         matchCpf &&
@@ -225,7 +242,8 @@ export class ListaComponent implements AfterViewInit {
         matchSR &&
         matchProjeto &&
         matchLote &&
-        matchSituacao
+        matchSituacao &&
+        matchNumeroProcesso
       );
     });
   }

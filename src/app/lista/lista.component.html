@@ -40,7 +40,7 @@
         >
           <form [formGroup]="form">
             <!-- Campos de busca-->
-            <mat-form-field class="col-3">
+            <mat-form-field appearance="outline" class="col-2">
               <mat-label>Codigo Beneficiario</mat-label>
               <input
                 matInput
@@ -52,32 +52,52 @@
               <mat-hint align="start"> </mat-hint>
             </mat-form-field>
 
-            <mat-form-field class="col-3">
-              <mat-label>CPF</mat-label>
+            <mat-form-field appearance="outline" class="col-3">
+              <mat-label>CPF do Beneficiario</mat-label>
               <input
                 matInput
                 #message
                 mask="000.000.000-00"
                 maxlength="256"
-                placeholder="Informe o código do do projeto"
+                placeholder="CPF do beneficiario"
                 formControlName="cpf"
               />
               <mat-hint align="start"> </mat-hint>
             </mat-form-field>
 
-            <mat-form-field class="col-6 ajuste_campo_nome">
-              <mat-label>Nome do Titular</mat-label>
+            <mat-form-field
+              appearance="outline"
+              class="col-5 ajuste_campo_nome"
+            >
+              <mat-label>Nome do beneficiario</mat-label>
               <input
                 matInput
                 #message
                 maxlength="256"
-                placeholder="Informe o nome do Titular"
+                placeholder="Informe o nome do beneficiario"
                 formControlName="nome_beneficiario"
               />
               <mat-hint align="start"> </mat-hint>
             </mat-form-field>
 
-            <mat-form-field class="col-1">
+            <mat-form-field
+              appearance="outline"
+              appearance="outline"
+              class="col-2 ajuste_campo_nome"
+            >
+              <mat-label>Numero do Processo</mat-label>
+              <input
+                matInput
+                #message
+                maxlength="256"
+                mask="000000000/0000"
+                placeholder="Numero do Processo"
+                formControlName="numero_processo"
+              />
+              <mat-hint align="start"> </mat-hint>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="col-1">
               <mat-label>Estados</mat-label>
               <mat-select
                 name="uf"
@@ -90,7 +110,7 @@
               </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="col-2">
+            <mat-form-field appearance="outline" class="col-2">
               <mat-label>Municipios</mat-label>
               <mat-select name="municipios" formControlName="municipios">
                 @for (municipio of municipios; track municipio) {
@@ -101,7 +121,7 @@
               </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="col-1">
+            <mat-form-field appearance="outline" class="col-1">
               <mat-label>SR</mat-label>
               <mat-select multiple formControlName="sr">
                 @for (sr of sr; track sr) {
@@ -110,18 +130,18 @@
               </mat-select></mat-form-field
             >
 
-            <mat-form-field class="col-2">
+            <mat-form-field appearance="outline" class="col-2">
               <mat-label>Nome do Projeto</mat-label>
 
               <input matInput formControlName="nome_projeto" />
             </mat-form-field>
 
-            <mat-form-field class="col-2">
+            <mat-form-field appearance="outline" class="col-2">
               <mat-label>Lote</mat-label>
 
               <input matInput formControlName="lote" />
             </mat-form-field>
-            <mat-form-field class="col-2">
+            <mat-form-field appearance="outline" class="col-2">
               <mat-label>Situação</mat-label>
 
               <mat-select formControlName="situacao">
@@ -131,7 +151,7 @@
               </mat-select>
             </mat-form-field>
 
-            <mat-form-field class="col-2"
+            <mat-form-field appearance="outline" class="col-2"
               ><mat-label>Data da situação</mat-label>
               <input
                 matInput
@@ -147,7 +167,7 @@
 
             <div class="row">
               <button
-                mat-raised-button
+                mat-stroked-button
                 color="primary"
                 class="col-1 btn_buscar"
                 (click)="pesquisar()"
@@ -157,7 +177,7 @@
               </button>
 
               <button
-                mat-raised-button
+                mat-stroked-button
                 color="warn"
                 class="col-1 btn_buscar"
                 (click)="limpar()"
