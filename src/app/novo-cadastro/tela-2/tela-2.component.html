@@ -1,24 +1,24 @@
 <form [formGroup]="formgroup">
   <div class="row espaco_campos">
-    <mat-form-field class="col-5" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-5" floatLabel="always">
       <mat-label>CPF</mat-label>
 
       <input matInput type="text" mask="000.000.000-00" formControlName="cpf" />
     </mat-form-field>
 
-    <mat-form-field class="col-4" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>Nome</mat-label>
       <input matInput type="text" formControlName="nome" />
     </mat-form-field>
 
-    <mat-form-field class="col-3" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-3" floatLabel="always">
       <mat-label>Código do Beneficiário</mat-label>
       <input matInput type="text" formControlName="cod_beneficiario" readonly />
     </mat-form-field>
 
     <!-- 🔹 Campos novos -->
 
-    <mat-form-field class="col-3" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-3" floatLabel="always">
       <mat-label>Data de Nascimento</mat-label>
       <input
         readonly
@@ -33,12 +33,12 @@
       <mat-datepicker #pickerNascimento></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field class="col-5" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-5" floatLabel="always">
       <mat-label>Estado Civil</mat-label>
       <input matInput type="text" formControlName="estado_civil" />
     </mat-form-field>
 
-    <mat-form-field class="col-3" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-3" floatLabel="always">
       <mat-label>Data de Falecimento</mat-label>
       <input
         matInput
@@ -58,59 +58,59 @@
     >
     <!--</div>-->
 
-    <mat-form-field class="col-6" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-6" floatLabel="always">
       <mat-label>Nome do Pai</mat-label>
       <input matInput type="text" formControlName="nome_pai" />
     </mat-form-field>
 
-    <mat-form-field class="col-6" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-6" floatLabel="always">
       <mat-label>Nome da Mãe</mat-label>
       <input matInput type="text" formControlName="nome_mae" />
     </mat-form-field>
 
-    <mat-form-field class="col-4" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>Nacionalidade</mat-label>
       <input matInput type="text" formControlName="nacionalidade" />
     </mat-form-field>
 
-    <mat-form-field class="col-4" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>Naturalidade</mat-label>
       <input matInput type="text" formControlName="naturalidade" />
     </mat-form-field>
 
-    <mat-form-field class="col-4" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>Município</mat-label>
       <input matInput type="text" formControlName="municipio" />
     </mat-form-field>
   </div>
 
   <div class="row espaco_campos">
-    <mat-form-field class="col-4" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>Código do Município</mat-label>
       <input matInput type="text" formControlName="codigo_municipio" />
     </mat-form-field>
 
-    <mat-form-field class="col-4" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>Tipo de Documento</mat-label>
       <input matInput type="text" formControlName="tipo_documento" />
     </mat-form-field>
 
-    <mat-form-field class="col-4" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>Número do Documento</mat-label>
       <input matInput type="text" formControlName="numero_documento" />
     </mat-form-field>
 
-    <mat-form-field class="col-4" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>Órgão Emissor</mat-label>
       <input matInput type="text" formControlName="orgao_emissor" />
     </mat-form-field>
 
-    <mat-form-field class="col-4" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>UF do Órgão</mat-label>
       <input matInput type="text" formControlName="uf_orgao" />
     </mat-form-field>
 
-    <mat-form-field class="col-4" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>Número do NIS</mat-label>
       <input matInput type="text" formControlName="numero_nis" />
     </mat-form-field>
@@ -130,7 +130,7 @@
                   <mat-label>Incluir Conjuge</mat-label>
                 </button>-->
 
-    <mat-form-field class="col-6" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-6" floatLabel="always">
       <mat-label>Telefone</mat-label>
       <input
         matInput
@@ -139,7 +139,7 @@
         formControlName="telefone"
       />
     </mat-form-field>
-    <mat-form-field class="col-6" appearance="fill" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-6" floatLabel="always">
       <mat-label>E-mail</mat-label>
       <input
         matInput

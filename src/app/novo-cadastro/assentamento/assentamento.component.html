@@ -3,7 +3,7 @@
     <form class="container-fluid px-0" [formGroup]="form">
       <div class="row gx-2">
         <div class="col-3">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Nome</mat-label>
             <input
               matInput
@@ -14,7 +14,7 @@
         </div>
 
         <div class="col-3">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Data de homologação</mat-label>
             <input
               matInput
@@ -24,7 +24,7 @@
           </mat-form-field>
         </div>
         <div class="col-3">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Situação do Assentado</mat-label>
             <mat-select formControlName="situacao_titular">
               @for (situacao of situacoesAssentado; track situacao.value) {
@@ -36,7 +36,7 @@
           </mat-form-field>
         </div>
         <div class="col-3">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Selecione a data</mat-label>
             <input
               matInput
@@ -55,7 +55,7 @@
 
       <div class="row gx-2">
         <div class="col-3">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Nome</mat-label>
             <input
               matInput
@@ -66,7 +66,7 @@
         </div>
 
         <div class="col-2">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Data de homologação</mat-label>
             <input
               matInput
@@ -76,7 +76,7 @@
           </mat-form-field>
         </div>
         <div class="col-2">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Situação do Assentado</mat-label>
             <mat-select formControlName="situacao_conjuge">
               @for (situacao of situacoesAssentado2; track situacao.value) {
@@ -88,7 +88,7 @@
           </mat-form-field>
         </div>
         <div class="col-2">
-          <mat-form-field class="w-100">
+          <mat-form-field appearance="outline" class="w-100">
             <mat-label>Selecione a Data</mat-label>
             <input
               matInput
@@ -130,7 +130,7 @@
       <!--
       <div class="row">
         <div class="col-6">
-          <mat-form-field class="example-full-width">
+          <mat-form-field appearance="outline"  class="example-full-width">
             <mat-label>Observações</mat-label>
             <textarea
               matInput
@@ -140,7 +140,7 @@
           </mat-form-field>
         </div>
 
-        <mat-form-field class="col-3">
+        <mat-form-field appearance="outline"  class="col-3">
           <mat-label>Data da Observação</mat-label>
           <input
             matInput

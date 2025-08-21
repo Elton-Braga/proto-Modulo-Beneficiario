@@ -62,6 +62,7 @@ export interface Beneficiario {
   estados: string;
   apto_para_beneficiario: string; // será validado pelo formulário (required)
   cpf_conjuge: string;
+  cod_beneficiario: String;
   dependentes: UnidadeFamiliar[];
   bloqueios: BeneficiarioBloqueio[];
   tela_lote: Lote[];

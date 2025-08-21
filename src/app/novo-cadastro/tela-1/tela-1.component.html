@@ -121,7 +121,7 @@
               <div class="row espaco_campos">
                 <mat-form-field
                   class="col-5"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>CPF</mat-label>
@@ -136,7 +136,7 @@
 
                 <mat-form-field
                   class="col-4"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Nome</mat-label>
@@ -145,7 +145,7 @@
 
                 <mat-form-field
                   class="col-3"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Código do Beneficiário</mat-label>
@@ -161,7 +161,7 @@
 
                 <mat-form-field
                   class="col-3"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Data de Nascimento</mat-label>
@@ -180,7 +180,7 @@
 
                 <mat-form-field
                   class="col-5"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Estado Civil</mat-label>
@@ -189,7 +189,7 @@
 
                 <mat-form-field
                   class="col-3"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Data de Falecimento</mat-label>
@@ -213,7 +213,7 @@
 
                 <mat-form-field
                   class="col-6"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Nome do Pai</mat-label>
@@ -222,7 +222,7 @@
 
                 <mat-form-field
                   class="col-6"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Nome da Mãe</mat-label>
@@ -231,7 +231,7 @@
 
                 <mat-form-field
                   class="col-4"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Nacionalidade</mat-label>
@@ -240,7 +240,7 @@
 
                 <mat-form-field
                   class="col-4"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Naturalidade</mat-label>
@@ -249,7 +249,7 @@
 
                 <mat-form-field
                   class="col-4"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Município</mat-label>
@@ -260,7 +260,7 @@
               <div class="row espaco_campos">
                 <mat-form-field
                   class="col-4"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Código do Município</mat-label>
@@ -273,7 +273,7 @@
 
                 <mat-form-field
                   class="col-4"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Tipo de Documento</mat-label>
@@ -286,7 +286,7 @@
 
                 <mat-form-field
                   class="col-4"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Número do Documento</mat-label>
@@ -299,7 +299,7 @@
 
                 <mat-form-field
                   class="col-4"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Órgão Emissor</mat-label>
@@ -308,7 +308,7 @@
 
                 <mat-form-field
                   class="col-4"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>UF do Órgão</mat-label>
@@ -317,7 +317,7 @@
 
                 <mat-form-field
                   class="col-4"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Número do NIS</mat-label>
@@ -326,7 +326,7 @@
 
                 <!--Encerra campos novos-->
 
-                <mat-form-field class="col-6">
+                <mat-form-field appearance="outline" class="col-6">
                   <mat-label>Telefone</mat-label>
                   <input
                     matInput
@@ -335,7 +335,7 @@
                     formControlName="telefone"
                   />
                 </mat-form-field>
-                <mat-form-field class="col-6">
+                <mat-form-field appearance="outline" class="col-6">
                   <mat-label>E-mail</mat-label>
                   <input
                     matInput
@@ -349,7 +349,7 @@
               <div class="row espaco_campos">
                 <mat-form-field
                   class="col-11"
-                  appearance="fill"
+                  appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Numero do Processo</mat-label>
@@ -394,8 +394,9 @@
                     <input
                       matInput
                       [value]="p.numero"
-                      (input)="onNumeroChange($any($event.target).value, i)"
+                      (input)="onNumeroChange($event, i)"
                       [disabled]="!p.editando"
+                      class="w-100"
                       class="w-100"
                     />
                   </td>

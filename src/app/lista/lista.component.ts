@@ -162,6 +162,7 @@ export class ListaComponent implements AfterViewInit {
       nome_projeto: [],
       lote: [],
       data_situacao: [],
+      data_final_situacao: [],
       situacao: [],
       numero_processo: [''],
     });
@@ -213,6 +214,14 @@ export class ListaComponent implements AfterViewInit {
             .includes(filtros.nome_projeto.toLowerCase())
         : true;
 
+      const matchCodProjeto = filtros.codigo_projeto
+        ? item.projeto
+            ?.toLowerCase()
+            .includes(filtros.codigo_projeto.toLowerCase())
+        : true;
+
+      //codigo_projeto
+
       const matchLote = filtros.lote
         ? item.lote?.toString() === filtros.lote.toString()
         : true;
@@ -240,6 +249,7 @@ export class ListaComponent implements AfterViewInit {
         matchEstado &&
         matchMunicipio &&
         matchSR &&
+        matchCodProjeto &&
         matchProjeto &&
         matchLote &&
         matchSituacao &&
