@@ -1,0 +1,55 @@
+/*.principal {
+  margin: 5rem 3rem;
+}*/
+
+/* Área principal com o background */
+.principal {
+  min-height: 50vh; /* ocupa a altura da viewport */
+  position: relative; /* base para posicionar o card */
+  background-image: url("../assets/Familia-Bettim-e1736528642677.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-size: 100%;
+  /* Cor de fundo de segurança caso a imagem não carregue */
+  background-color: #0b3f23;
+}
+
+/* Título legível sobre o fundo */
+.principal .container h1 {
+  color: #fff;
+  margin-top: 0rem;
+  margin-bottom: 0;
+}
+
+/* Card de acesso rápido “flutuando” à direita, como no mock */
+.principal .card {
+  position: absolute;
+  right: 5%;
+  top: 20%;
+  width: 280px;
+  border-radius: 12px;
+}
+
+/* Centraliza o card e ajusta espaçamentos em telas menores */
+@media (max-width: 992px) {
+  .principal {
+    padding-bottom: 2rem;
+  }
+  .principal .card {
+    position: static;
+    margin: 2rem auto 0;
+    width: min(90%, 360px);
+  }
+}
+
+.hover-icone {
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.hover-icone :hover {
+  text-decoration: none;
+  text-shadow: 0 2px 6px rgba(28, 67, 196, 0.4);
+  font-weight: bolder;
+}

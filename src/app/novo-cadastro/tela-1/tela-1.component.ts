@@ -282,7 +282,7 @@ export class Tela1Component {
     return item.numero;
   }
 
-  onNumeroChange(event: Event, index: number) {
+  onNumeroChange(event: InputEvent, index: number) {
     const valor = (event.target as HTMLInputElement).value;
 
     const atual = this.processos[index];

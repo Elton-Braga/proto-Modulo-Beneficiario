@@ -7,6 +7,7 @@ import { Tela2Component } from './novo-cadastro/tela-2/tela-2.component';
 import { UnidadeFamilarComponent } from './novo-cadastro/unidade-familar/unidade-familar.component';
 import { AssentamentoComponent } from './novo-cadastro/assentamento/assentamento.component';
 import { RegularizacaoComponent } from './novo-cadastro/regularizacao/regularizacao.component';
+import { TelaDashboardComponent } from './tela-dashboard/tela-dashboard.component';
 
 export const routes: Routes = [
   {
@@ -19,22 +20,18 @@ export const routes: Routes = [
     component: ListaComponent,
   },
 
-  { path: 'Titular', component: Tela1Component },
-  { path: 'Titular2', component: Tela2Component },
-  { path: 'UnidadeFamiliar', component: UnidadeFamilarComponent },
-  { path: 'Assentamento', component: AssentamentoComponent },
-  { path: 'Regularizacao', component: RegularizacaoComponent },
+  {
+    path: 'selecaodeservicos',
+    component: TelaDashboardComponent,
+  },
+
   {
     path: 'novo',
     component: NovoCadastroComponent,
     children: [
       { path: '', redirectTo: 'Titular', pathMatch: 'full' },
       { path: 'Titular', component: Tela1Component },
-      { path: '', redirectTo: 'Titular1', pathMatch: 'full' },
-      { path: 'Titular2', component: Tela2Component },
-      { path: 'UnidadeFamiliar', component: UnidadeFamilarComponent },
-      { path: 'Assentamento', component: AssentamentoComponent },
-      { path: 'Regularizacao', component: RegularizacaoComponent },
     ],
   },
 ];
+//TelaDashboardComponent
