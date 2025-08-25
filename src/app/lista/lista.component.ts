@@ -89,6 +89,8 @@ export class ListaComponent implements AfterViewInit {
   items = ['Filtro de Busca'];
   expandedIndex = 0;
 
+  preencher_pendencias = 'Não';
+
   displayedColumns: string[] = [
     'check',
     'codigo_projeto',
