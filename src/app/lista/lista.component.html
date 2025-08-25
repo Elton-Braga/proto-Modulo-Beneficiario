@@ -317,6 +317,12 @@
             <td mat-cell *matCellDef="let element">{{ element.nome_T1 }}</td>
           </ng-container>
 
+          <!-- CPF T1 -->
+          <ng-container matColumnDef="cpf_T1">
+            <th mat-header-cell *matHeaderCellDef>CPF do Titular</th>
+            <td mat-cell *matCellDef="let element">{{ element.cpf_T1 }}</td>
+          </ng-container>
+
           <!-- Situação T1 -->
           <ng-container matColumnDef="situacao_T1">
             <th mat-header-cell *matHeaderCellDef>Situação</th>
@@ -328,7 +334,17 @@
           <!-- Nome T2 -->
           <ng-container matColumnDef="nome_T2">
             <th mat-header-cell *matHeaderCellDef>Conjuge</th>
-            <td mat-cell *matCellDef="let element">{{ element.nome_T2 }}</td>
+            <td mat-cell *matCellDef="let element">
+              {{ element.cpf_conjuge }}
+            </td>
+          </ng-container>
+
+          <!-- CPF T2 -->
+          <ng-container matColumnDef="cpf_T2">
+            <th mat-header-cell *matHeaderCellDef>CPF do Conjuge</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.cpf_conjuge }}
+            </td>
           </ng-container>
 
           <!-- Situação T2 -->
@@ -364,10 +380,17 @@
             </td>
           </ng-container>-->
 
-          <!-- Status -->
+          <!-- Status 
           <ng-container matColumnDef="status">
             <th mat-header-cell *matHeaderCellDef>Status</th>
             <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+          </ng-container>-->
+
+          <ng-container matColumnDef="pendencias">
+            <th mat-header-cell *matHeaderCellDef>Pendencias</th>
+            <td mat-cell *matCellDef="let element">
+              <!--{{ element.situacao_T2 }}-->
+            </td>
           </ng-container>
 
           <!-- Ações -->
