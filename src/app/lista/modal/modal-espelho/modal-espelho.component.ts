@@ -8,17 +8,19 @@ import {
   MatDialogModule,
   MatDialogRef,
 } from '@angular/material/dialog';
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-modal-espelho',
-  imports: [CdkAccordionModule, MatTableModule, MatDialogModule],
+  imports: [CdkAccordionModule, MatTableModule, MatDialogModule, NgFor, NgIf],
   templateUrl: './modal-espelho.component.html',
   styleUrl: './modal-espelho.component.scss',
 })
 export class ModalEspelhoComponent {
   beneficiario: Beneficiario;
 
-  items = ['Beneficiarios', 'Dados do Projeto'];
+  //items = ['Beneficiarios', 'Dados do Projeto'];
+  items = ['Beneficiarios'];
   expandedIndex = 0;
 
   constructor(

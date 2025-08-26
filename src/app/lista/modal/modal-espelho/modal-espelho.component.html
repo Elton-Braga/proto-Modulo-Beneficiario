@@ -28,43 +28,183 @@
         [attr.aria-labelledby]="'accordion-header-' + index"
       >
         @switch (index) { @case (0) {
-        <h2 class="titulo">Espelho do Beneficiário</h2>
 
+        <!-- TABELA TITULAR -->
+        <h3 class="titulo">Titular</h3>
         <table>
-          <tr class="linha">
-            <th><strong>Nome T1</strong></th>
-            <th><strong>Nome T2</strong></th>
-            <th><strong>Projeto</strong></th>
-            <th><strong>Status</strong></th>
+          <tr>
+            <th>
+              <strong>Código do Beneficiário:</strong>
+              {{ beneficiario.codigo_beneficiario }}
+            </th>
+            <th><strong>Nome:</strong> {{ beneficiario.nome_T1 }}</th>
+            <th><strong>CPF: </strong>{{ beneficiario.cpf_T1 }}</th>
+            <th>
+              <strong>Data de Nascimento:</strong>
+              {{ beneficiario.data_nascimento }}
+            </th>
           </tr>
           <tr>
-            <td>{{ beneficiario.nome_T1 }}</td>
-            <td>{{ beneficiario.nome_T2 }}</td>
-            <td>{{ beneficiario.projeto }}</td>
-            <td>{{ beneficiario.status }}</td>
-          </tr>
-        </table>
-        } @case (1) {
-        <h2 class="titulo">Espelho do Projeto</h2>
-        <table>
-          <tr class="linha">
-            <th><strong>Projeto</strong></th>
-
-            <th><strong>Lote</strong></th>
-            <th><strong>Situação T1</strong></th>
-            <th><strong>Situação T2</strong></th>
-            <th><strong>Regularização</strong></th>
-            <th><strong>Periodo</strong></th>
+            <th><strong>Telefone: </strong>{{ beneficiario.telefone }}</th>
+            <th><strong>Email: </strong>{{ beneficiario.email }}</th>
+            <th>
+              <strong>Estado Civil: </strong>{{ beneficiario.estado_civil }}
+            </th>
+            <th><strong>Nome do Pai: </strong>{{ beneficiario.nome_pai }}</th>
           </tr>
           <tr>
-            <td>{{ beneficiario.projeto }}</td>
-            <td>{{ beneficiario.lote }}</td>
-            <td>{{ beneficiario.situacao_T1 }}</td>
-            <td>{{ beneficiario.situacao_T2 }}</td>
-            <td>{{ beneficiario.regularizacao }}</td>
-            <td>{{ beneficiario.periodo_regularizacao }}</td>
+            <th><strong>Nome da Mãe: </strong>{{ beneficiario.nome_mae }}</th>
+            <th><strong>Estado: </strong>{{ beneficiario.estados }}</th>
+            <th><strong>Município:</strong> {{ beneficiario.municipio }}</th>
+            <th>
+              <strong>Tipo do Documento: </strong
+              >{{ beneficiario.tipo_documento }}
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <strong>Número do Documento:</strong>
+              {{ beneficiario.numero_documento }}
+            </th>
+            <th>
+              <strong>Órgão Emissor: </strong>{{ beneficiario.orgao_emissor }}
+            </th>
+            <th>
+              <strong>Número do NIS: </strong>{{ beneficiario.numero_nis }}
+            </th>
+            <th></th>
           </tr>
         </table>
+
+        <!-- TABELA CÔNJUGE -->
+        <h3 class="titulo">Cônjuge</h3>
+        <table>
+          <tr>
+            <th><strong>Nome: </strong>{{ beneficiario.nome_T2 }}</th>
+            <th><strong>CPF: </strong>{{ beneficiario.cpf_conjuge }}</th>
+            <th>
+              <strong>Estado Civil: </strong>{{ beneficiario.situacao_conjuge }}
+            </th>
+            <th>
+              <strong>Data da Situação:</strong>
+              {{ beneficiario.data_situacao_Conjuge }}
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <strong>Data de Homologação:</strong>
+              {{ beneficiario.data_homologacao_conjuge }}
+            </th>
+            <th>
+              <strong>Apto PNRA: </strong>{{ beneficiario.aptoPNRA_conjuge }}
+            </th>
+            <th></th>
+            <th></th>
+          </tr>
+        </table>
+
+        <h3 class="titulo">Unidade Familiar</h3>
+
+        <table
+          *ngIf="
+            beneficiario.dependentes && beneficiario.dependentes.length > 0
+          "
+        >
+          <tr>
+            <th><strong>Situação Conjugal</strong></th>
+            <th><strong>Data da União</strong></th>
+            <th><strong>Data da Separação</strong></th>
+            <th><strong>Renda Familiar</strong></th>
+          </tr>
+          <tr *ngFor="let dep of beneficiario.dependentes">
+            <td>{{ dep.situacao_conjugal }}</td>
+            <td>{{ dep.data_uniao }}</td>
+            <td>{{ dep.data_separacao }}</td>
+            <td>{{ dep.renda_familiar }}</td>
+          </tr>
+
+          <tr>
+            <th><strong>Nome do Dependente</strong></th>
+            <th><strong>Tipo de Dependente</strong></th>
+            <th><strong>Nome</strong></th>
+            <th><strong>Data de Nascimento</strong></th>
+          </tr>
+          <tr *ngFor="let dep of beneficiario.dependentes">
+            <td>{{ dep.nome_dependente }}</td>
+            <td>{{ dep.tipo_dependente }}</td>
+            <td>{{ dep.nome }}</td>
+            <td>{{ dep.data_nascimento }}</td>
+          </tr>
+
+          <tr>
+            <th><strong>Data de Entrada na Família</strong></th>
+            <th><strong>CPF do Dependente</strong></th>
+            <th colspan="2"><strong>Associação Unidade Familiar</strong></th>
+          </tr>
+          <tr *ngFor="let dep of beneficiario.dependentes">
+            <td>{{ dep.data_entrada_na_familia }}</td>
+            <td>{{ dep.cpf_dependente }}</td>
+            <td colspan="2">{{ dep.associacao_unidade_familiar }}</td>
+          </tr>
+        </table>
+
+        <!-- Caso não tenha dependentes -->
+        <p
+          *ngIf="
+            !beneficiario.dependentes || beneficiario.dependentes.length === 0
+          "
+        >
+          Nenhum dependente cadastrado.
+        </p>
+
+        <h3 class="titulo">Dados do Projeto</h3>
+        <table>
+          <tr>
+            <th>
+              <strong>Código do Projeto: </strong
+              >{{ beneficiario.codigo_projeto }}
+            </th>
+            <th><strong>Projeto: </strong>{{ beneficiario.projeto }}</th>
+            <th><strong>Lote: </strong>{{ beneficiario.lote }}</th>
+            <th>
+              <strong>Regularização: </strong>{{ beneficiario.regularizacao }}
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <strong>Número do Processo: </strong
+              >{{ beneficiario.numero_processo }}
+            </th>
+            <th><strong>Estado: </strong>{{ beneficiario.estados }}</th>
+            <th><strong>Município: </strong>{{ beneficiario.municipio }}</th>
+            <th>
+              <strong>Código do Município:</strong>
+              {{ beneficiario.codigo_municipio }}
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <strong>Número do Lote: </strong>{{ beneficiario.numero_lote }}
+            </th>
+            <th>
+              <strong>Código SNCR: </strong>{{ beneficiario.codigo_SNCR }}
+            </th>
+            <th>
+              <strong>Denominação da Gleba:</strong>
+              {{ beneficiario.denominacao_Gleba }}
+            </th>
+            <th>
+              <strong>Denominação do Lote:</strong>
+              {{ beneficiario.denominacao_lote }}
+            </th>
+          </tr>
+          <tr>
+            <th colspan="4">
+              <strong>Observações: </strong>{{ beneficiario.observacao }}
+            </th>
+          </tr>
+        </table>
+
         } }
       </div>
       }

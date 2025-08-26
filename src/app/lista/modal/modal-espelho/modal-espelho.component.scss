@@ -72,14 +72,25 @@
   font-size: 20px;
 }
 
-table tr th {
-  padding: 20px 30px;
-  border: solid 1px #fffffe;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: #eee;
 }
 
-td {
-  padding: 25px;
-  border: solid 1px #fffffe;
+th {
+  background-color: #eee;
+  border: 1px solid #ffffff;
+  padding: 8px;
+  text-align: left;
+  font-weight: normal;
+}
+
+.titulo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 15px 0 8px 0;
 }
 
 .linha {
