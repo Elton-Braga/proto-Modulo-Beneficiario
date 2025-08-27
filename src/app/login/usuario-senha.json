@@ -1,0 +1,12 @@
+[
+  {
+    "usuario": "12345678910",
+    "senha": "senhaSegura123",
+    "perfil": "analista"
+  },
+  {
+    "usuario": "98765432100",
+    "senha": "senhaForte456",
+    "perfil": "cidadao"
+  }
+]

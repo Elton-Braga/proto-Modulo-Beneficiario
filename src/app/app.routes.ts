@@ -8,30 +8,37 @@ import { UnidadeFamilarComponent } from './novo-cadastro/unidade-familar/unidade
 import { AssentamentoComponent } from './novo-cadastro/assentamento/assentamento.component';
 import { RegularizacaoComponent } from './novo-cadastro/regularizacao/regularizacao.component';
 import { TelaDashboardComponent } from './tela-dashboard/tela-dashboard.component';
+import { authGuard } from './login/guarda de rotas/auth.guard';
+
+//import { authGuard } from './auth.guard'; // guarda funcional
 
 export const routes: Routes = [
+  // Rotas públicas
+  { path: 'login', component: LoginComponent },
+
+  // Rotas protegidas (precisam de login)
   {
     path: '',
-    component: LoginComponent,
-  },
-  { path: '', redirectTo: 'lista', pathMatch: 'full' },
-  {
-    path: 'lista',
-    component: ListaComponent,
-  },
-
-  {
-    path: 'selecaodeservicos',
-    component: TelaDashboardComponent,
-  },
-
-  {
-    path: 'novo',
-    component: NovoCadastroComponent,
+    canActivate: [authGuard],
     children: [
-      { path: '', redirectTo: 'Titular', pathMatch: 'full' },
-      { path: 'Titular', component: Tela1Component },
+      { path: '', redirectTo: 'lista', pathMatch: 'full' },
+      { path: 'lista', component: ListaComponent },
+      { path: 'selecaodeservicos', component: TelaDashboardComponent },
+      {
+        path: 'novo',
+        component: NovoCadastroComponent,
+        children: [
+          { path: '', redirectTo: 'Titular', pathMatch: 'full' },
+          { path: 'Titular', component: Tela1Component },
+          { path: 'Tela2', component: Tela2Component },
+          { path: 'UnidadeFamiliar', component: UnidadeFamilarComponent },
+          { path: 'Assentamento', component: AssentamentoComponent },
+          { path: 'Regularizacao', component: RegularizacaoComponent },
+        ],
+      },
     ],
   },
+
+  // Fallback
+  { path: '**', redirectTo: 'login' },
 ];
-//TelaDashboardComponent

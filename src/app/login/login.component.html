@@ -6,54 +6,44 @@
         <mat-card-content>
           <img
             mat-card-image
-            src="	https://sso.acesso.gov.br/assets/govbr/img/conta_govbr_v2.jpg"
+            src="https://sso.acesso.gov.br/assets/govbr/img/conta_govbr_v2.jpg"
             class="imagem"
           />
         </mat-card-content>
       </div>
 
       <div class="col-5">
+        <!-- form reativo -->
         <form
           class="login"
           [formGroup]="registrationForm"
           (ngSubmit)="onSubmit()"
         >
           <div class="form-group">
-            <label for="exampleInputEmail1">Informe o CPF</label>
+            <label for="cpf">Informe o CPF</label>
             <input
               formControlName="cpf"
               type="text"
               mask="000.000.000-00"
               placeholder="000.000.000-00"
               class="form-control"
-              id="exampleInputEmail1"
-              placeholder="000.000.000-00"
-              name="=cpf"
-              [(ngModel)]="cpf"
+              id="cpf"
             />
-            <small id="emailHelp" class="form-text text-muted"
-              >We'll never share your email with anyone else.</small
-            >
           </div>
+
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="senha">Password</label>
             <input
               formControlName="senha"
               type="password"
               class="form-control"
-              id="exampleInputPassword1"
+              id="senha"
               placeholder="Informe a senha"
-              name="senha"
-              [ngModel]="senha"
             />
           </div>
 
-          <button
-            type="submit"
-            class="btn btn-primary"
-            id="btn-login"
-            [routerLink]="['/selecaodeservicos']"
-          >
+          <!-- botão só envia o formulário -->
+          <button type="submit" class="btn btn-primary" id="btn-login">
             Entrar
           </button>
 
@@ -62,26 +52,20 @@
           <ul>
             <li>
               <a href="#"
-                ><i class="pi pi-building-columns">
-                  Login com seu banco SUA CONTA SERÁ PRATA</i
-                >
-              </a>
-            </li>
-            <li>
-              <a href="#"><i class="pi pi-qrcode"> Login com QR code Seu</i></a>
-            </li>
-            <li>
-              <a href="#"
-                ><i class="pi pi-mobile">
-                  certificado digital Seu certificado digital</i
-                ></a
+                ><i class="pi pi-building-columns"></i> Login com seu banco SUA
+                CONTA SERÁ PRATA</a
               >
             </li>
             <li>
+              <a href="#"><i class="pi pi-qrcode"></i> Login com QR code</a>
+            </li>
+            <li>
+              <a href="#"><i class="pi pi-mobile"></i> Certificado digital</a>
+            </li>
+            <li>
               <a href="#"
-                ><i class="pi pi-cloud-upload">
-                  Certificado digital Seu certificado digital em nuvem
-                </i></a
+                ><i class="pi pi-cloud-upload"></i> Certificado digital em
+                nuvem</a
               >
             </li>
           </ul>

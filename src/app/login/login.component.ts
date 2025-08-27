@@ -10,7 +10,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from './servico de autenticacao/auth-service.service';
 
 @Component({
   selector: 'app-login',
@@ -27,54 +28,32 @@ import { RouterModule } from '@angular/router';
 })
 export class LoginComponent {
   registrationForm: FormGroup;
-  cpf: any = '';
-  senha: any = '';
-  mockUsuarios = [
-    { cpf: '111.111.111-11', senha: '123456' },
-    { cpf: '222.222.222-22', senha: 'senha123' },
-    { cpf: '333.333.333-33', senha: 'abc123' },
-    { cpf: '444.444.444-44', senha: 'qwerty' },
-    { cpf: '555.555.555-55', senha: 'admin' },
-    { cpf: '666.666.666-66', senha: 'root123' },
-    { cpf: '777.777.777-77', senha: 'senha777' },
-    { cpf: '888.888.888-88', senha: 'pass888' },
-    { cpf: '999.999.999-99', senha: 'senha999' },
-    { cpf: '000.000.000-00', senha: 'zerozero' },
-  ];
   erroAutenticacao = '';
 
-  constructor(private fb: FormBuilder) {
+  // mock de usuários
+  private mockUsuarios = [
+    { cpf: '11111111111', senha: '123456', perfil: 'admin' },
+    { cpf: '22222222222', senha: 'senha123', perfil: 'colaborador' },
+  ];
+
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.registrationForm = this.fb.group({
-      cpf: ['', [Validators.required, Validators.email]],
+      cpf: ['', [Validators.required]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
-  ngOnInit() {}
-  //Garante que o campo não seja nulo, se foi tocado ou se houve alguma outra ação
-  get cpfTouched(): AbstractControl {
-    return this.registrationForm.get('cpf')!;
-  }
+  onSubmit() {
+    const { cpf, senha } = this.registrationForm.value;
 
-  get senhaTouched(): AbstractControl {
-    return this.registrationForm.get('senha')!;
-  }
-  onSubmit(): void {
-    this.cpf.value;
-    const senha = this.senha.value;
-
-    //ealiza a busca de um usuário com CPF correspondente na lista de usuários fictícios (mockUsuarios)
-    const usuario = this.mockUsuarios.find((u) => u.cpf === this.cpf.value);
-
-    if (!usuario) {
-      this.erroAutenticacao = 'CPF não encontrado.';
-    } else if (usuario.senha !== this.senha.value) {
-      console.log((this.erroAutenticacao = 'Senha incorreta.'));
+    if (this.authService.login(cpf, senha)) {
+      this.router.navigate(['/selecaodeservicos']);
     } else {
-      this.erroAutenticacao = '';
-      console.log('Login realizado com sucesso!');
+      alert('Usuário ou senha inválidos');
     }
-
-    console.log(this.registrationForm.value);
   }
 }
