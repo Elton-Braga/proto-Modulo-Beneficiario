@@ -4,6 +4,7 @@ import { UnidadeFamiliar } from './unidadeFamiliar';
 
 export interface Beneficiario {
   check: any;
+  sr: any;
   codigo_projeto: string;
   projeto: any;
   lote: number;

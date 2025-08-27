@@ -3,6 +3,8 @@ import { Beneficiario } from './beneficiario';
 export const MOCK_BENEFICIARIOS: Beneficiario[] = [
   {
     check: 1,
+    sr: 'RS005',
+
     codigo_projeto: 'RS0195011',
     projeto: 'PA Piratini',
     lote: 102,
@@ -20,13 +22,12 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['000000011/0000'],
     acoes: [
       'Detalhar',
-      'Alteração Cadastral',
-      'Histórico de Operações',
-      'Histórico do Beneficiario',
+      'Editar',
+      'Histórico do Beneficiário',
+
       'Espelho do Beneficiário',
-      'Inclusão/Alteração de Cônjuge',
-      'Bloqueio / Desbloqueio',
-      'Sucessão do Lote',
+
+      'Operações',
     ],
     codigo_beneficiario: '001',
     telefone: '(00) 12345-456',
@@ -132,6 +133,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
   },
   {
     check: 2,
+    sr: 'RS005',
     codigo_projeto: 'RS0195001',
     projeto: 'PA Piratini',
     lote: 102,
@@ -149,13 +151,12 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['000000011/0000'],
     acoes: [
       'Detalhar',
-      'Alteração Cadastral',
-      'Histórico de Operações',
-      'Histórico do Beneficiario',
+      'Editar',
+      'Histórico do Beneficiário',
+
       'Espelho do Beneficiário',
-      'Inclusão/Alteração de Cônjuge',
-      'Bloqueio / Desbloqueio',
-      'Sucessão do Lote',
+
+      'Operações',
     ],
     codigo_beneficiario: '0001',
     telefone: '(00) 00000-0000',
@@ -275,6 +276,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
   },
   {
     check: 3,
+    sr: 'RS005',
     codigo_projeto: 'RS0195002',
     projeto: 'PA Piratini',
     lote: 103,
@@ -292,13 +294,12 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['000000000/2222'],
     acoes: [
       'Detalhar',
-      'Alteração Cadastral',
-      'Histórico de Operações',
-      'Histórico do Beneficiario',
+      'Editar',
+      'Histórico do Beneficiário',
+
       'Espelho do Beneficiário',
-      'Inclusão/Alteração de Cônjuge',
-      'Bloqueio / Desbloqueio',
-      'Sucessão do Lote',
+
+      'Operações',
     ],
     codigo_beneficiario: '0002',
     telefone: '(00) 00000-0000',
@@ -391,6 +392,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
   },
   {
     check: 4,
+    sr: 'RS005',
     codigo_projeto: 'RS0195015',
     projeto: 'PA Piratini',
     lote: 102,
@@ -408,13 +410,12 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['000000011/0000'],
     acoes: [
       'Detalhar',
-      'Alteração Cadastral',
-      'Histórico de Operações',
-      'Histórico do Beneficiario',
+      'Editar',
+      'Histórico do Beneficiário',
+
       'Espelho do Beneficiário',
-      'Inclusão/Alteração de Cônjuge',
-      'Bloqueio / Desbloqueio',
-      'Sucessão do Lote',
+
+      'Operações',
     ],
     codigo_beneficiario: '0004',
     telefone: '(00) 12345-456',
@@ -521,6 +522,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
   },
   {
     check: 5,
+    sr: 'RS005',
     codigo_projeto: 'RS0195004',
     projeto: 'PA Piratini',
     lote: 105,
@@ -538,13 +540,12 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['645789456/0000'],
     acoes: [
       'Detalhar',
-      'Alteração Cadastral',
-      'Histórico de Operações',
-      'Histórico do Beneficiario',
+      'Editar',
+      'Histórico do Beneficiário',
+
       'Espelho do Beneficiário',
-      'Inclusão/Alteração de Cônjuge',
-      'Bloqueio / Desbloqueio',
-      'Sucessão do Lote',
+
+      'Operações',
     ],
     codigo_beneficiario: '0004',
     telefone: '(00) 00000-0000',
@@ -650,6 +651,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
   },
   {
     check: 6,
+    sr: 'RS005',
     codigo_projeto: 'RS0195005',
     projeto: 'PA Piratini',
     lote: 106,
@@ -667,13 +669,12 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['123789456/0000'],
     acoes: [
       'Detalhar',
-      'Alteração Cadastral',
-      'Histórico de Operações',
-      'Histórico do Beneficiario',
+      'Editar',
+      'Histórico do Beneficiário',
+
       'Espelho do Beneficiário',
-      'Inclusão/Alteração de Cônjuge',
-      'Bloqueio / Desbloqueio',
-      'Sucessão do Lote',
+
+      'Operações',
     ],
     codigo_beneficiario: '0005',
     telefone: '(00) 00000-0000',
@@ -765,6 +766,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
   },
   {
     check: 7,
+    sr: 'RS005',
     codigo_projeto: 'RS0195006',
     projeto: 'PA Piratini',
     lote: 107,
@@ -782,13 +784,12 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['123456789/0000'],
     acoes: [
       'Detalhar',
-      'Alteração Cadastral',
-      'Histórico de Operações',
-      'Histórico do Beneficiario',
+      'Editar',
+      'Histórico do Beneficiário',
+
       'Espelho do Beneficiário',
-      'Inclusão/Alteração de Cônjuge',
-      'Bloqueio / Desbloqueio',
-      'Sucessão do Lote',
+
+      'Operações',
     ],
     codigo_beneficiario: '0006',
     telefone: '(00) 00000-0000',
@@ -880,6 +881,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
   },
   {
     check: 8,
+    sr: 'RS005',
     codigo_projeto: 'RS0195007',
     projeto: 'PA Piratini',
     lote: 108,
@@ -897,13 +899,12 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['222222223/0000'],
     acoes: [
       'Detalhar',
-      'Alteração Cadastral',
-      'Histórico de Operações',
-      'Histórico do Beneficiario',
+      'Editar',
+      'Histórico do Beneficiário',
+
       'Espelho do Beneficiário',
-      'Inclusão/Alteração de Cônjuge',
-      'Bloqueio / Desbloqueio',
-      'Sucessão do Lote',
+
+      'Operações',
     ],
     codigo_beneficiario: '0007',
     telefone: '(00) 00000-0000',
@@ -1009,6 +1010,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
   },
   {
     check: 9,
+    sr: 'RS005',
     codigo_projeto: 'RS0195008',
     projeto: 'PA Piratini',
     lote: 109,
@@ -1026,13 +1028,12 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['222222222/0000'],
     acoes: [
       'Detalhar',
-      'Alteração Cadastral',
-      'Histórico de Operações',
-      'Histórico do Beneficiario',
+      'Editar',
+      'Histórico do Beneficiário',
+
       'Espelho do Beneficiário',
-      'Inclusão/Alteração de Cônjuge',
-      'Bloqueio / Desbloqueio',
-      'Sucessão do Lote',
+
+      'Operações',
     ],
     codigo_beneficiario: '0009',
     telefone: '(00) 00000-0000',
@@ -1138,6 +1139,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
   },
   {
     check: 10,
+    sr: 'RS005',
     codigo_projeto: 'RS0195009',
     projeto: 'PA Piratini',
     lote: 110,
@@ -1155,13 +1157,12 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     numero_processo: ['111111111/0000'],
     acoes: [
       'Detalhar',
-      'Alteração Cadastral',
-      'Histórico de Operações',
-      'Histórico do Beneficiario',
+      'Editar',
+      'Histórico do Beneficiário',
+
       'Espelho do Beneficiário',
-      'Inclusão/Alteração de Cônjuge',
-      'Bloqueio / Desbloqueio',
-      'Sucessão do Lote',
+
+      'Operações',
     ],
     codigo_beneficiario: '00010',
     telefone: '(00) 00000-0000',

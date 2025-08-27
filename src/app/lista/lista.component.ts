@@ -93,36 +93,49 @@ export class ListaComponent implements AfterViewInit {
 
   displayedColumns: string[] = [
     'check',
+    'SR',
+    'Estado',
+    'municipio',
     'codigo_projeto',
     'projeto',
-    //'lote',
+
+    'cod_beneficiario',
     'nome_T1',
     'cpf_T1',
-    'situacao_T1',
+
     'nome_T2',
     'cpf_conjuge',
+    'situacao_T1',
     //'situacao_T2',
     'data_situacao_T2',
-    'regularizacao',
+    //'regularizacao',
     // 'periodo_regularizacao',
     //'status',
     'pendencias',
     'acoes',
   ];
-
+  //naturalidade, municipio
   colunasDisponiveis = [
     { chave: 'check', label: 'Selecionar', visivel: true },
+    { chave: 'SR', label: 'SR', visivel: true },
+    { chave: 'Estado', label: 'Estado', visivel: true },
+    { chave: 'municipio', label: 'municipio', visivel: true },
     { chave: 'codigo_projeto', label: 'Código', visivel: true },
     { chave: 'projeto', label: 'Projeto', visivel: true },
-    // { chave: 'lote', label: 'Lote', visivel: true },
+    {
+      chave: 'cod_beneficiario',
+      label: 'Codigo do Beneficiario',
+      visivel: true,
+    },
     { chave: 'nome_T1', label: 'Nome T1', visivel: true },
     { chave: 'cpf_T1', label: 'CPF do Titular', visivel: true },
-    { chave: 'situacao_T1', label: 'Situação T1', visivel: true },
+
     { chave: 'nome_T2', label: 'Nome T2', visivel: true },
     { chave: 'cpf_conjuge', label: 'CPF do COnjuge', visivel: true },
+    { chave: 'situacao_T1', label: 'Situação T1', visivel: true },
     //{ chave: 'situacao_T2', label: 'Situação T2', visivel: true },
     { chave: 'data_situacao_T2', label: 'Data Situação T2', visivel: true },
-    { chave: 'regularizacao', label: 'Regularização', visivel: true },
+    //{ chave: 'regularizacao', label: 'Regularização', visivel: true },
     // { chave: 'periodo_regularizacao', label: 'Período', visivel: true },
     { chave: 'pendencias', label: 'Período', visivel: true },
     //{ chave: 'status', label: 'Status', visivel: true },
@@ -367,7 +380,7 @@ export class ListaComponent implements AfterViewInit {
 
     // Aqui você pode redirecionar, abrir modal, etc.
     switch (acao) {
-      case 'Alteração Cadastral':
+      case 'Editar':
         const {
           nome_T1,
           cpf_T1,
@@ -477,7 +490,7 @@ export class ListaComponent implements AfterViewInit {
         this.openDialogDetalhar(elemento);
         // lógica para visualizar
         break;
-      case 'Histórico de Operações':
+      case 'Histórico do Beneficiário':
         this.openDialogHistorico();
         // lógica para histórico
         break;
@@ -490,7 +503,7 @@ export class ListaComponent implements AfterViewInit {
         // lógica para PDF
         break;
 
-      case 'Sucessão do Lote':
+      case 'Operações':
         this.openDialogSucessaoLote(elemento);
         // lógica para PDF
         break;
