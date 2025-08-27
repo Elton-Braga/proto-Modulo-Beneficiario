@@ -68,8 +68,12 @@
 </form>
 
 <!-- ================== TABELA DE LOTES ================== -->
-<div *ngIf="lotes.length > 0">
-  <table mat-table [dataSource]="lotes" class="mat-elevation-z8 w-100 mt-3">
+<div *ngIf="lotes.length > 0" class="tabela-container">
+  <table
+    mat-table
+    [dataSource]="lotes"
+    class="mat-elevation-z8 w-100 mt-3 tabela"
+  >
     <!-- Tipo -->
     <ng-container matColumnDef="tipo_lote">
       <th mat-header-cell *matHeaderCellDef>Tipo</th>

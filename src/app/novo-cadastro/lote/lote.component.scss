@@ -21,3 +21,19 @@
     font-size: 20px;
   }
 }
+
+.tabela-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.tabela {
+  min-width: 800px; // valor base para não colapsar colunas
+}
+
+@media screen and (max-width: 768px) {
+  .mat-column-codigo_SNCR,
+  .mat-column-denominacao_Gleba {
+    display: none;
+  }
+}
