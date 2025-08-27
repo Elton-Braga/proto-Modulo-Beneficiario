@@ -7,7 +7,7 @@ export interface Beneficiario {
   sr: any;
   codigo_projeto: string;
   projeto: any;
-  lote: number;
+  lote: any | number;
   nome_T1: string;
   situacao_T1: any;
   nome_T2: string;
@@ -52,7 +52,7 @@ export interface Beneficiario {
   situacao_conjuge: string;
   aptoPNRA_conjuge: boolean | null;
   tipo_lote: string;
-  area_lote: number | null;
+  area_lote: number | null | any;
   numero_lote: string;
   codigo_SNCR: string;
   denominacao_Gleba: string;
