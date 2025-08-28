@@ -81,23 +81,6 @@
               <mat-hint align="start"> </mat-hint>
             </mat-form-field>
 
-            <!--<mat-form-field
-              appearance="outline"
-              appearance="outline"
-              class="col-2 ajuste_campo_nome"
-            >
-              <mat-label>Numero do Processo</mat-label>
-              <input
-                matInput
-                #message
-                maxlength="256"
-                mask="000000000/0000"
-                placeholder="Numero do Processo"
-                formControlName="numero_processo"
-              />
-              <mat-hint align="start"> </mat-hint>
-            </mat-form-field>-->
-
             <mat-form-field appearance="outline" class="col-4">
               <mat-label>SR</mat-label>
               <mat-select multiple formControlName="sr">
@@ -143,11 +126,6 @@
               <input matInput formControlName="codigo_projeto" />
             </mat-form-field>
 
-            <!--<mat-form-field appearance="outline" class="col-3">
-              <mat-label>Lote</mat-label>
-
-              <input matInput formControlName="lote" />
-            </mat-form-field>-->
             <mat-form-field appearance="outline" class="col-4">
               <mat-label>Situação</mat-label>
 
@@ -157,34 +135,6 @@
                 }
               </mat-select>
             </mat-form-field>
-
-            <!-- <mat-form-field appearance="outline" class="col-3"
-              ><mat-label>Data da Homologação</mat-label>
-              <input
-                matInput
-                [matDatepicker]="picker"
-                formControlName="data_situacao" />
-
-              <mat-datepicker-toggle
-                matIconSuffix
-                [for]="picker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker
-            ></mat-form-field>
-
-            <mat-form-field appearance="outline" class="col-3"
-              ><mat-label>Data final da Homologação</mat-label>
-              <input
-                matInput
-                [matDatepicker]="pickerf"
-                formControlName="data_final_situacao" />
-
-              <mat-datepicker-toggle
-                matIconSuffix
-                [for]="pickerf"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #pickerf></mat-datepicker
-            ></mat-form-field>-->
 
             <div class="row">
               <button

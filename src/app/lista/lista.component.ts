@@ -48,6 +48,7 @@ import { Beneficiario } from './beneficiario';
 import { MOCK_BENEFICIARIOS } from './MOCK_BENEFICIATIO';
 import { ConjugeComponent } from './modal/conjuge/conjuge.component';
 import { RegularizacaoComponent } from '../novo-cadastro/regularizacao/regularizacao.component';
+import { BuscaBeneficiarioService } from './servico/busca-beneficiario.service';
 
 @Component({
   selector: 'app-lista',
@@ -153,7 +154,7 @@ export class ListaComponent implements AfterViewInit {
   check: any;
 
   toppings = new FormControl('');
-  sr: string[] = ['021', '002', '003', '004', '005'];
+  sr: string[] = ['SR-01', 'SR-02', 'SR-03', 'SR-04', 'SR-05'];
   situacao: string[] = [
     'assentado',
     'evadido',
@@ -164,11 +165,13 @@ export class ListaComponent implements AfterViewInit {
   ];
 
   dadosOriginais = [...MOCK_BENEFICIARIOS];
-
+  resultados: any[] = [];
+  beneficiarios = [...MOCK_BENEFICIARIOS];
   constructor(
     private router: Router,
     fb: FormBuilder,
-    private servicosService: ServicosService
+    private servicosService: ServicosService,
+    private searchService: BuscaBeneficiarioService
   ) {
     this.form = fb.group({
       codigo_beneficiario: [],
@@ -191,6 +194,15 @@ export class ListaComponent implements AfterViewInit {
 
   ngOnInit() {
     this.carregarEstados();
+
+    this.resultados = this.searchService.filtrar(this.beneficiarios, {
+      cpf: '673.062.412-49',
+      municipio: 'Tomé-Açu',
+    });
+  }
+
+  removerMascara(cpf: string): string {
+    return cpf ? cpf.replace(/\D/g, '') : '';
   }
 
   pesquisar() {
@@ -200,12 +212,19 @@ export class ListaComponent implements AfterViewInit {
       const matchCodigo = filtros.codigo_beneficiario
         ? item.codigo_beneficiario
             ?.toString()
+            .includes(filtros.codigo_beneficiario) ||
+          item.cod_beneficiario
+            ?.toString()
             .includes(filtros.codigo_beneficiario)
         : true;
 
       const matchCpf = filtros.cpf
-        ? item.cpf_T1?.includes(filtros.cpf) ||
-          item.cpf_conjuge?.includes(filtros.cpf)
+        ? this.removerMascara(item.cpf_T1)?.includes(
+            this.removerMascara(filtros.cpf)
+          ) ||
+          this.removerMascara(item.cpf_conjuge)?.includes(
+            this.removerMascara(filtros.cpf)
+          )
         : true;
 
       const matchNome = filtros.nome_beneficiario
@@ -218,16 +237,14 @@ export class ListaComponent implements AfterViewInit {
         : true;
 
       const matchEstado = filtros.estados
-        ? item.uf_orgao === filtros.estados
+        ? item.estados === filtros.estados
         : true;
 
       const matchMunicipio = filtros.municipios
-        ? item.codigo_municipio === filtros.municipios
+        ? item.codigo_municipio?.toString() === filtros.municipios.toString()
         : true;
 
-      const matchSR = filtros.sr?.length
-        ? filtros.sr.includes(item.check.toString().padStart(3, '0'))
-        : true;
+      const matchSR = filtros.sr?.length ? filtros.sr.includes(item.sr) : true;
 
       const matchProjeto = filtros.nome_projeto
         ? item.projeto
@@ -236,7 +253,7 @@ export class ListaComponent implements AfterViewInit {
         : true;
 
       const matchCodProjeto = filtros.codigo_projeto
-        ? item.projeto
+        ? item.codigo_projeto
             ?.toLowerCase()
             .includes(filtros.codigo_projeto.toLowerCase())
         : true;
@@ -366,10 +383,10 @@ export class ListaComponent implements AfterViewInit {
     });
   }
 
-  carregarMunicipiosPorEstado(siglaEstado: string): void {
-    if (!siglaEstado) return;
+  carregarMunicipiosPorEstado(idEstado: any): void {
+    if (!idEstado) return;
 
-    this.servicosService.getMunicipiosPorUF(siglaEstado).subscribe({
+    this.servicosService.getMunicipiosPorUF(idEstado).subscribe({
       next: (dados) => (this.municipios = dados),
       error: (erro) => console.error('Erro ao carregar municípios:', erro),
     });

@@ -17,7 +17,9 @@ export class ServicosService {
   }
 
   // Lista municípios por UF (id numérico do estado)
-  getMunicipiosPorUF(uf: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/estados/${uf}/municipios`);
+  getMunicipiosPorUF(idEstado: number): Observable<any[]> {
+    return this.http.get<any[]>(
+      `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${idEstado}/municipios`
+    );
   }
 }

@@ -62,7 +62,7 @@ export interface Beneficiario {
   municipios: string;
   estados: string;
   apto_para_beneficiario: string; // será validado pelo formulário (required)
-  cpf_conjuge: string;
+  cpf_conjuge: string | any | null;
   cod_beneficiario: String;
   dependentes: UnidadeFamiliar[];
   bloqueios: BeneficiarioBloqueio[];

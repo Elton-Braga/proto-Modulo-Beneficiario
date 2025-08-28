@@ -311,7 +311,7 @@ export class AssentamentoComponent {
     console.log('clicou', this.estados);
   }
 
-  carregarMunicipiosPorEstado(siglaEstado: string): void {
+  carregarMunicipiosPorEstado(siglaEstado: any): void {
     if (!siglaEstado) return;
 
     this.servicosService.getMunicipiosPorUF(siglaEstado).subscribe({
