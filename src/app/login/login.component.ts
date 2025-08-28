@@ -12,6 +12,7 @@ import {
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from './servico de autenticacao/auth-service.service';
+import { SessionService } from './servico de autenticacao/session.service';
 
 @Component({
   selector: 'app-login',
@@ -39,12 +40,17 @@ export class LoginComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private sessionService: SessionService
   ) {
     this.registrationForm = this.fb.group({
       cpf: ['', [Validators.required]],
       senha: ['', [Validators.required, Validators.minLength(6)]],
     });
+  }
+
+  ngOnInit() {
+    this.sessionService.iniciarMonitoramento();
   }
 
   onSubmit() {
