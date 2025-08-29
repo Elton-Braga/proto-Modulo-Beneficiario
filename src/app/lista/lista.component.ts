@@ -143,7 +143,8 @@ export class ListaComponent implements AfterViewInit {
     { chave: 'acoes', label: 'Ações', visivel: true },
   ];
 
-  dataSource = new MatTableDataSource<Beneficiario>(MOCK_BENEFICIARIOS);
+  //dataSource = new MatTableDataSource<Beneficiario>(MOCK_BENEFICIARIOS);
+  dataSource = new MatTableDataSource<Beneficiario>([]);
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   selection = new SelectionModel<Beneficiario>(true, []);
   form!: FormGroup;
@@ -298,7 +299,8 @@ export class ListaComponent implements AfterViewInit {
 
   limpar() {
     this.form.reset();
-    this.dataSource.data = [...this.dadosOriginais];
+    //this.dataSource.data = [...this.dadosOriginais];
+    this.dataSource.data = [];
   }
 
   openDialogEspelho(elemento: Beneficiario) {
