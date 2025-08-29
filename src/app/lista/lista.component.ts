@@ -73,6 +73,7 @@ import { BuscaBeneficiarioService } from './servico/busca-beneficiario.service';
     ReactiveFormsModule,
     MatDatepickerModule,
     MatDialogModule,
+    RouterLink,
   ],
   providers: [provideNgxMask(), ServicosService, provideNativeDateAdapter()],
   templateUrl: './lista.component.html',
