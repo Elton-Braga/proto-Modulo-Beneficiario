@@ -6,6 +6,7 @@ import { AuthService } from './auth-service.service';
 })
 export class SessionService {
   private intervalId: any;
+  private usuarioLogado = false;
 
   constructor(private auth: AuthService, private ngZone: NgZone) {}
 
@@ -23,6 +24,14 @@ export class SessionService {
         }
       }, 60000); // verifica a cada 1 min
     });
+  }
+
+  isLoggedIn(): boolean {
+    return this.auth.isLoggedIn();
+  }
+
+  logout() {
+    this.auth.logout();
   }
 
   pararMonitoramento() {

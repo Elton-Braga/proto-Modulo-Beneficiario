@@ -9,7 +9,6 @@ export class AuthService {
   private readonly LAST_ACTIVITY_KEY = 'ultima_atividade';
   private readonly TIMEOUT_MINUTES = 30; // tempo máximo sem uso
 
-  // mock centralizado aqui
   private mockUsuarios = [
     { cpf: '11111111111', senha: '123456', perfil: 'admin' },
     { cpf: '22222222222', senha: 'senha123', perfil: 'colaborador' },
@@ -47,7 +46,6 @@ export class AuthService {
     localStorage.setItem(this.LAST_ACTIVITY_KEY, Date.now().toString());
   }
 
-  /** Verifica se passou do tempo limite */
   isSessionExpired(): boolean {
     const last = localStorage.getItem(this.LAST_ACTIVITY_KEY);
     if (!last) return true;

@@ -1,3 +1,54 @@
 * {
   padding: 0;
 }
+/* You can add global styles to this file, and also import other style files */
+
+@import "primeicons/primeicons.css";
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+  padding: 0;
+  background-color: rgb(255, 255, 255);
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+#topo {
+  box-shadow: 10px 5px 5px rgb(245, 244, 244);
+  padding: 2rem 1.5rem 1rem 1rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+.imagem-govbr {
+  width: 6%;
+}
+
+button[mat-icon-button] {
+  border: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Aumenta o tamanho do ícone */
+mat-icon {
+  font-size: 36px !important; /* tamanho maior */
+  width: 36px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+}
+
+/* Ajuste para o botão "Sair" dentro do menu */
+mat-menu button[mat-menu-item] mat-icon {
+  font-size: 20px;
+}

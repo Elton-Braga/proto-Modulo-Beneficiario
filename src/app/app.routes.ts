@@ -30,10 +30,6 @@ export const routes: Routes = [
         children: [
           { path: '', redirectTo: 'Titular', pathMatch: 'full' },
           { path: 'Titular', component: Tela1Component },
-          //{ path: 'Tela2', component: Tela2Component },
-          //{ path: 'UnidadeFamiliar', component: UnidadeFamilarComponent },
-          //{ path: 'Assentamento', component: AssentamentoComponent },
-          //{ path: 'Regularizacao', component: RegularizacaoComponent },
         ],
       },
     ],
