@@ -1,5 +1,13 @@
-table {
+.datatable {
   width: 100%;
+  overflow-x: auto;
+}
+.mat-table {
+  min-width: 100%; /* garante proporção */
+}
+.mat-header-cell,
+.mat-cell {
+  flex: 1; /* divide proporcionalmente */
 }
 .topo {
   width: 100%;

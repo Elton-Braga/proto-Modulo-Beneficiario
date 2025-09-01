@@ -226,8 +226,13 @@
           </div>
         </div>
       </div>
-      <div class="mat-elevation-z2 p-4">
-        <table mat-table [dataSource]="dataSource" class="mat-table" matSort>
+      <div class="table-responsive">
+        <table
+          mat-table
+          [dataSource]="dataSource"
+          class="mat-table table table-striped"
+          matSort
+        >
           <ng-container matColumnDef="check">
             <th mat-header-cell *matHeaderCellDef>
               <mat-checkbox
@@ -327,15 +332,6 @@
             </td>
           </ng-container>
 
-          <!-- Situação T2 -->
-          <!--
-          <ng-container matColumnDef="situacao_T2">
-            <th mat-header-cell *matHeaderCellDef>Situação T2</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.situacao_T2 }}
-            </td>
-          </ng-container>-->
-
           <!-- Data da Situação T2 -->
           <ng-container matColumnDef="data_situacao_T2">
             <th mat-header-cell *matHeaderCellDef>Data Situação</th>
@@ -343,28 +339,6 @@
               {{ element.data_situacao_T2 }}
             </td>
           </ng-container>
-
-          <!-- Regularização 
-          <ng-container matColumnDef="regularizacao">
-            <th mat-header-cell *matHeaderCellDef>Regularização</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.regularizacao }}
-            </td>
-          </ng-container>-->
-
-          <!-- Período de Regularização 
-          <ng-container matColumnDef="periodo_regularizacao">
-            <th mat-header-cell *matHeaderCellDef>Período</th>
-            <td mat-cell *matCellDef="let element">
-              {{ element.periodo_regularizacao }}
-            </td>
-          </ng-container>-->
-
-          <!-- Status 
-          <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef>Status</th>
-            <td mat-cell *matCellDef="let element">{{ element.status }}</td>
-          </ng-container>-->
 
           <ng-container matColumnDef="pendencias">
             <th mat-header-cell *matHeaderCellDef>Pendencias</th>
@@ -392,20 +366,10 @@
                   <mat-icon *ngIf="acao === 'Histórico do Beneficiário'"
                     >history</mat-icon
                   >
-                  <!--<mat-icon *ngIf="acao === 'Histórico do Beneficiario'"
-                    >history_2</mat-icon
-                  >-->
 
                   <mat-icon *ngIf="acao === 'Espelho do Beneficiário'"
                     >picture_as_pdf</mat-icon
                   >
-                  <!--<mat-icon *ngIf="acao === 'Inclusão/Alteração de Cônjuge'"
-                    >person_add</mat-icon
-                  >
-                  <mat-icon *ngIf="acao === 'Bloqueio / Desbloqueio'"
-                    >block</mat-icon
-                  >
-                  -->
 
                   <mat-icon *ngIf="acao === 'Operações'"
                     >view_timeline</mat-icon
