@@ -1,3 +1,4 @@
+//import { NgFor } from '@angular/common';
 import { Component, AfterViewInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
@@ -7,11 +8,32 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [MatIconModule, RouterModule],
   templateUrl: './tela-dashboard.component.html',
-  styleUrl: './tela-dashboard.component.scss',
+  styleUrls: ['./tela-dashboard.component.scss'],
 })
 export class TelaDashboardComponent implements AfterViewInit {
+  dashboardItems = [
+    { title: 'Item 1', description: 'Descrição do item 1' },
+    { title: 'Item 2', description: 'Descrição do item 2' },
+    { title: 'Item 3', description: 'Descrição do item 3' },
+    { title: 'Item 4', description: 'Descrição do item 4' },
+    { title: 'Item 5', description: 'Descrição do item 5' },
+    { title: 'Item 6', description: 'Descrição do item 6' },
+  ];
+  ngOnInit() {
+    console.log('Itens carregados:', this.dashboardItems);
+    //this.initCarousel();
+  }
   ngAfterViewInit(): void {
     this.initCarousel();
+    const carouselInner = document.querySelector('.carousel-inner');
+    if (!carouselInner) {
+      console.error(
+        'Erro: elementos do carrossel não foram encontrados no DOM.'
+      );
+      return;
+    }
+    console.log('Carrossel inicializado com sucesso!', carouselInner);
+    // aqui você coloca a lógica de movimentação do carrossel
   }
 
   private initCarousel(): void {
@@ -30,7 +52,7 @@ export class TelaDashboardComponent implements AfterViewInit {
       '.carousel-indicator'
     );
 
-    if (!carousel || !prevBtn || !nextBtn) {
+    if (!carousel || !prevBtn || !nextBtn || items.length === 0) {
       console.error(
         'Erro: elementos do carrossel não foram encontrados no DOM.'
       );
@@ -38,25 +60,21 @@ export class TelaDashboardComponent implements AfterViewInit {
     }
 
     let currentIndex: number = 0;
-    const itemsPerView: number = window.innerWidth > 768 ? 3 : 1;
     const itemCount: number = items.length;
 
     const updateCarousel = (): void => {
       const translateX: number = currentIndex * 100;
-      if (carousel) {
-        carousel.style.transform = `translateX(-${translateX}%)`;
-      }
+      carousel.style.transform = `translateX(-${translateX}%)`;
 
       indicators.forEach((indicator: HTMLElement, index: number): void => {
         indicator.classList.toggle('active', index === currentIndex);
       });
+
+      console.log('Slide atual:', currentIndex, 'TranslateX:', translateX);
     };
 
     nextBtn.addEventListener('click', (): void => {
-      currentIndex = (currentIndex + itemsPerView) % itemCount;
-      if (currentIndex > itemCount - itemsPerView) {
-        currentIndex = 0;
-      }
+      currentIndex = (currentIndex + 1) % itemCount;
       updateCarousel();
     });
 
@@ -75,12 +93,12 @@ export class TelaDashboardComponent implements AfterViewInit {
       });
     });
 
+    // autoplay
     setInterval((): void => {
-      currentIndex = (currentIndex + itemsPerView) % itemCount;
-      if (currentIndex > itemCount - itemsPerView) {
-        currentIndex = 0;
-      }
+      currentIndex = (currentIndex + 1) % itemCount;
       updateCarousel();
     }, 5000);
+
+    updateCarousel();
   }
 }

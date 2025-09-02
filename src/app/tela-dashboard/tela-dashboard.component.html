@@ -45,72 +45,81 @@
     </div>
 
     <!-- Carrossel -->
-    <section class="carousel">
+    <div class="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item">
-          <h4>Reforma Agrária</h4>
-          <p>Conheça os programas de reforma agrária e como participar</p>
-          <button>Saiba mais</button>
+        <!-- Slide 1 -->
+        <div class="carousel-slide">
+          <div class="carousel-item">
+            <h2>Item 1</h2>
+            <p>Descrição do item 1</p>
+          </div>
+          <div class="carousel-item">
+            <h2>Item 2</h2>
+            <p>Descrição do item 2</p>
+          </div>
+          <div class="carousel-item">
+            <h2>Item 3</h2>
+            <p>Descrição do item 3</p>
+          </div>
         </div>
-        <div class="carousel-item">
-          <h4>Regularização Fundiária</h4>
-          <p>Regularize sua propriedade rural com o INCRA</p>
-          <button>Saiba mais</button>
+
+        <!-- Slide 2 -->
+        <div class="carousel-slide">
+          <div class="carousel-item">
+            <h2>Item 4</h2>
+            <p>Descrição do item 4</p>
+          </div>
+          <div class="carousel-item">
+            <h2>Item 5</h2>
+            <p>Descrição do item 5</p>
+          </div>
+          <div class="carousel-item">
+            <h2>Item 6</h2>
+            <p>Descrição do item 6</p>
+          </div>
         </div>
-        <div class="carousel-item">
-          <h4>Titulação</h4>
-          <p>Processos de titulação de terras públicas</p>
-          <button>Saiba mais</button>
+
+        <!-- Slide 3 -->
+        <div class="carousel-slide">
+          <div class="carousel-item">
+            <h2>Item 7</h2>
+            <p>Descrição do item 7</p>
+          </div>
+          <div class="carousel-item">
+            <h2>Item 8</h2>
+            <p>Descrição do item 8</p>
+          </div>
+          <div class="carousel-item">
+            <h2>Item 9</h2>
+            <p>Descrição do item 9</p>
+          </div>
         </div>
       </div>
 
-      <!-- Controles -->
-      <button class="carousel-control prev">&#10094;</button>
-      <button class="carousel-control next">&#10095;</button>
+      <button class="carousel-control prev">
+        <i class="material-icons">chevron_left</i>
+      </button>
+      <button class="carousel-control next">
+        <i class="material-icons">chevron_right</i>
+      </button>
 
-      <!-- Indicadores -->
       <div class="carousel-indicators">
-        <span class="carousel-indicator active" data-index="0"></span>
-        <span class="carousel-indicator" data-index="1"></span>
-        <span class="carousel-indicator" data-index="2"></span>
-      </div>
-    </section>
-  </div>
-</div>
-
-<!--tela antiga
-<div class="d-flex align-items-center principal">
-  <div class="container">
-    <h1>PGT - Modulo Beneficiário - Proto</h1>
-  </div>
-
-  <div class="card">
-    <div class="card-body">
-      <h4 class="text-center">Acesso rápido</h4>
-      <br />
-      <div class="row text-center">
-        <div class="col-12 mb-4 hover-icone">
-          <mat-icon>assignment</mat-icon>
-          <p>Cidadão</p>
-        </div>
-
-        <div class="col-12 mb-4 hover-icone">
-          <mat-icon>assignment</mat-icon>
-          <p>Analista</p>
-        </div>
-
-        <div class="col-12 mb-4 hover-icone">
-          <a
-            routerLink="/lista"
-            class="text-decoration-none text-dark d-block text-center"
-            ><span>
-              <mat-icon>receipt_long</mat-icon>
-              <p>Modulo Beneficiario</p></span
-            >
-          </a>
-        </div>
+        <div class="carousel-indicator active" data-index="0"></div>
       </div>
     </div>
+    <!--
+    <div class="carousel">
+      <div class="carousel-inner" [style.transform]="'translateX(-0%)'">
+        <div class="carousel-item">
+          <h2>Item 1</h2>
+        </div>
+        <div class="carousel-item">
+          <h2>Item 2</h2>
+        </div>
+        <div class="carousel-item">
+          <h2>Item 3</h2>
+        </div>
+      </div>
+    </div>-->
   </div>
 </div>
------------------------------------------------------------>

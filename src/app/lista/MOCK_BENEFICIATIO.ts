@@ -23,7 +23,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     acoes: [
       'Detalhar',
       'Editar',
-      'Histórico do Beneficiário',
+      'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
@@ -152,7 +152,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     acoes: [
       'Detalhar',
       'Editar',
-      'Histórico do Beneficiário',
+      'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
@@ -295,7 +295,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     acoes: [
       'Detalhar',
       'Editar',
-      'Histórico do Beneficiário',
+      'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
@@ -411,7 +411,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     acoes: [
       'Detalhar',
       'Editar',
-      'Histórico do Beneficiário',
+      'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
@@ -543,7 +543,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     acoes: [
       'Detalhar',
       'Editar',
-      'Histórico do Beneficiário',
+      'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
@@ -672,7 +672,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     acoes: [
       'Detalhar',
       'Editar',
-      'Histórico do Beneficiário',
+      'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
@@ -788,7 +788,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     acoes: [
       'Detalhar',
       'Editar',
-      'Histórico do Beneficiário',
+      'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
@@ -904,7 +904,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     acoes: [
       'Detalhar',
       'Editar',
-      'Histórico do Beneficiário',
+      'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
@@ -1035,7 +1035,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     acoes: [
       'Detalhar',
       'Editar',
-      'Histórico do Beneficiário',
+      'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
@@ -1164,7 +1164,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     acoes: [
       'Detalhar',
       'Editar',
-      'Histórico do Beneficiário',
+      'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 

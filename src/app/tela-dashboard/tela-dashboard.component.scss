@@ -112,40 +112,55 @@
 /* Carrossel */
 .carousel {
   position: relative;
-  display: inline flex;
+  overflow: hidden;
+  height: 20rem;
   width: 100%;
-  height: 15rem;
+  max-width: 100%;
+  margin: 0 auto 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
 .carousel-inner {
   display: flex;
-  transition: transform 0.5s ease;
-  width: 100%; /* largura será ajustada automaticamente pelos itens */
-  height: 15rem;
-  border: solid 1px #1f2937;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 0 20px;
+  box-sizing: border-box;
 }
 
 .carousel-item {
-  flex: 0 0 100%; /* Mostrar 1 item por vez */
+  flex: 0 0 calc(33.333% - 14px);
   box-sizing: border-box;
-  padding: 1rem;
-  background: rgb(0, 0, 0);
-  border-radius: 0.5rem;
-  margin: 0 0.5rem;
+  padding: 1.5rem;
   text-align: center;
+  background: #fff;
+  border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.carousel-item button {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background: #16a34a;
-  color: white;
-  border: none;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  width: 30%;
-  border: solid 1px #1f2937;
+.carousel-item h2 {
+  color: #0066a6;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.carousel-item p {
+  color: #4a4a4a;
+  font-size: 1rem;
 }
 
 .carousel-control {
@@ -155,16 +170,29 @@
   background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  padding: 0.5rem 1rem;
+  font-size: 2rem;
   cursor: pointer;
-  border-radius: 9999px;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  transition: background 0.3s;
+}
+
+.carousel-control:hover {
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .carousel-control.prev {
-  left: 0.5rem;
+  left: 15px;
 }
+
 .carousel-control.next {
-  right: 0.5rem;
+  right: 15px;
 }
 
 .carousel-indicators {
@@ -174,16 +202,18 @@
 }
 
 .carousel-indicator {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
+  margin: 0 8px;
   border-radius: 50%;
   background: #ccc;
-  margin: 0 5px;
   cursor: pointer;
+  transition: background 0.9s;
+  //transition: background 0.3s;
 }
 
 .carousel-indicator.active {
-  background: #333;
+  background: #0066a6;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////

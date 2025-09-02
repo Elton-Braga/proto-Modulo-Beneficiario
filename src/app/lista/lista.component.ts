@@ -510,7 +510,7 @@ export class ListaComponent implements AfterViewInit {
         this.openDialogDetalhar(elemento);
         // lógica para visualizar
         break;
-      case 'Histórico do Beneficiário':
+      case 'Histórico do PNRA':
         this.openDialogHistorico();
         // lógica para histórico
         break;
