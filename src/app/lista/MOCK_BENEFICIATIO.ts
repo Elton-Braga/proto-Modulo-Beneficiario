@@ -63,6 +63,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       'Espelho do Beneficiário',
 
       'Operações',
+      'Requerimentos',
+      'Serviços',
     ],
     codigo_beneficiario: 'AC000500004120',
     telefone: '(00) 12345-456',
@@ -225,6 +227,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       'Espelho do Beneficiário',
 
       'Operações',
+      'Requerimentos',
+      'Serviços',
     ],
     codigo_beneficiario: '0001',
     telefone: '(00) 00000-0000',
@@ -378,6 +382,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       'Espelho do Beneficiário',
 
       'Operações',
+      'Requerimentos',
+      'Serviços',
     ],
     codigo_beneficiario: '0002',
     telefone: '(00) 00000-0000',
@@ -512,6 +518,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       'Espelho do Beneficiário',
 
       'Operações',
+      'Requerimentos',
+      'Serviços',
     ],
     codigo_beneficiario: '0004',
     telefone: '(00) 12345-456',
@@ -657,6 +665,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       'Espelho do Beneficiário',
 
       'Operações',
+      'Requerimentos',
+      'Serviços',
     ],
     codigo_beneficiario: '0004',
     telefone: '(00) 00000-0000',
@@ -796,6 +806,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       'Espelho do Beneficiário',
 
       'Operações',
+      'Requerimentos',
+      'Serviços',
     ],
     codigo_beneficiario: '0005',
     telefone: '(00) 00000-0000',
@@ -925,6 +937,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       'Espelho do Beneficiário',
 
       'Operações',
+      'Requerimentos',
+      'Serviços',
     ],
     codigo_beneficiario: '0006',
     telefone: '(00) 00000-0000',
@@ -1051,6 +1065,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       'Espelho do Beneficiário',
 
       'Operações',
+      'Requerimentos',
+      'Serviços',
     ],
     codigo_beneficiario: '0007',
     telefone: '(00) 00000-0000',
@@ -1195,6 +1211,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       'Espelho do Beneficiário',
 
       'Operações',
+      'Requerimentos',
+      'Serviços',
     ],
     codigo_beneficiario: '0009',
     telefone: '(00) 00000-0000',
@@ -1334,6 +1352,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       'Espelho do Beneficiário',
 
       'Operações',
+      'Requerimentos',
+      'Serviços',
     ],
     codigo_beneficiario: '00010',
     telefone: '(00) 00000-0000',
