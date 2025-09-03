@@ -20,6 +20,41 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cod_beneficiario: 'AC000500004120',
     cpf_conjuge: '815.563.812-04',
     numero_processo: ['PA000600000003', '000000011/0000'],
+    historico_PNRA: [
+      {
+        CPF: ['669.069.382-15', '815.563.812-04'],
+        nome: [
+          'FRANCISCO HERLIDIO CARNEIRO DOS SANTOS',
+          'MARIA BENEDITA COSTA DOS SANTOS',
+        ],
+        codigo_beneficiario: 'AC000500004120',
+        nome_PA: 'PA MIRITIPITANGA',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+      {
+        CPF: ['669.069.382-15', '815.563.812-04'],
+        nome: [
+          'FRANCISCO HERLIDIO CARNEIRO DOS SANTOS',
+          'MARIA BENEDITA COSTA DOS SANTOS',
+        ],
+        codigo_beneficiario: 'AC000500004120',
+        nome_PA: 'PA ASSENTAMENTO1',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+      {
+        CPF: ['669.069.382-15', '815.563.812-04'],
+        nome: [
+          'FRANCISCO HERLIDIO CARNEIRO DOS SANTOS',
+          'MARIA BENEDITA COSTA DOS SANTOS',
+        ],
+        codigo_beneficiario: 'AC000500004120',
+        nome_PA: 'PA ASSENTAMENTO2',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+    ],
     acoes: [
       'Detalhar',
       'Editar',
@@ -29,7 +64,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
 
       'Operações',
     ],
-    codigo_beneficiario: '001',
+    codigo_beneficiario: 'AC000500004120',
     telefone: '(00) 12345-456',
     email: 'aaa@aa.com',
     data_nascimento: '10/12/1988',
@@ -149,6 +184,39 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cod_beneficiario: 'AC000500004121',
     cpf_conjuge: '423.960.772-87',
     numero_processo: ['PA000600000004', '000000011/0000'],
+    historico_PNRA: [
+      {
+        CPF: ['211.431.102-34', '423.960.772-87'],
+        nome: ['ANTONIO PEREIRA PINTO', 'MARIA DALVA LIMA PINTO'],
+        codigo_beneficiario: 'AC000500004120',
+        nome_PA: 'PA MIRITIPITANGA',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+      {
+        CPF: ['669.069.382-15', '815.563.812-04'],
+        nome: [
+          'FRANCISCO HERLIDIO CARNEIRO DOS SANTOS',
+          'MARIA BENEDITA COSTA DOS SANTOS',
+        ],
+        codigo_beneficiario: 'AC000500004120',
+        nome_PA: 'PA ASSENTAMENTO1',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+      {
+        CPF: ['669.069.382-15', '815.563.812-04'],
+        nome: [
+          'FRANCISCO HERLIDIO CARNEIRO DOS SANTOS',
+          'MARIA BENEDITA COSTA DOS SANTOS',
+        ],
+        codigo_beneficiario: 'AC000500004120',
+        nome_PA: 'PA ASSENTAMENTO2',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+    ],
+
     acoes: [
       'Detalhar',
       'Editar',
@@ -292,6 +360,16 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cod_beneficiario: 'AC000500004122',
     cpf_conjuge: '123.456.789-22',
     numero_processo: ['000000000/2222'],
+    historico_PNRA: [
+      {
+        CPF: ['000.000.000-25', '123.456.789-22'],
+        nome: ['Ana Clara Barbosa', 'Pedro Martins'],
+        codigo_beneficiario: 'AC000500004122',
+        nome_PA: 'PA AAAAAAAA',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+    ],
     acoes: [
       'Detalhar',
       'Editar',
@@ -408,6 +486,24 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cod_beneficiario: 'AC000500004123',
     cpf_conjuge: '423.960.772-87',
     numero_processo: ['000000011/0000', 'PA000600000004'],
+    historico_PNRA: [
+      {
+        CPF: ['211.431.102-34', '423.960.772-87'],
+        nome: ['ANTONIO PEREIRA PINTO', 'MARIA DALVA LIMA PINTO'],
+        codigo_beneficiario: 'AC000500004123',
+        nome_PA: 'PA BBBBBBB',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+      {
+        CPF: ['211.431.102-34', '423.960.772-87'],
+        nome: ['ANTONIO PEREIRA PINTO', 'MARIA DALVA LIMA PINTO'],
+        codigo_beneficiario: 'AC000500004123',
+        nome_PA: 'PA CCCCCCC',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+    ],
     acoes: [
       'Detalhar',
       'Editar',
@@ -540,6 +636,19 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cod_beneficiario: 'AC000500504120',
     cpf_conjuge: '430.605.522-15',
     numero_processo: ['645789456/0000', 'PA000600000010'],
+    historico_PNRA: [
+      {
+        CPF: ['848.462.832-91', '430.605.522-15'],
+        nome: [
+          'RAIMUNDO ADVILSON XAVIER DA COSTA DUARTE',
+          'MARIA DAS DORES BEZERRA DA SILVA',
+        ],
+        codigo_beneficiario: 'AC000500504120',
+        nome_PA: 'PA ASDFGVF',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+    ],
     acoes: [
       'Detalhar',
       'Editar',
@@ -669,6 +778,16 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cod_beneficiario: 'AC000500204120',
     cpf_conjuge: '',
     numero_processo: ['123789456/0000', 'PA000600000011'],
+    historico_PNRA: [
+      {
+        CPF: ['848.462.832-91'],
+        nome: ['ODACIR CARLOS DAS CHAGAS'],
+        codigo_beneficiario: 'AC000500204120',
+        nome_PA: 'PA sdfgsdgdf',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+    ],
     acoes: [
       'Detalhar',
       'Editar',
@@ -785,6 +904,19 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cod_beneficiario: 'AC000500004127',
     cpf_conjuge: null,
     numero_processo: ['123456789/0000', 'PA000600000013'],
+    historico_PNRA: [
+      {
+        CPF: ['124.644.732-00'],
+        nome: [
+          'RAUL GUILHERME SILVA DE AMORIM',
+          'MARIA LUCIRENE RIBEIRO DE AMORIM',
+        ],
+        codigo_beneficiario: 'AC000500004127',
+        nome_PA: 'PA sdfgsdgdf',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+    ],
     acoes: [
       'Detalhar',
       'Editar',
@@ -901,6 +1033,16 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cod_beneficiario: 'AC000500004128',
     cpf_conjuge: '920.631.602-87',
     numero_processo: ['222222223/0000', 'PA000600000014'],
+    historico_PNRA: [
+      {
+        CPF: ['124.644.732-00'],
+        nome: ['JOSE APARECIDO DIAS DOS SANTOS', 'MARISTELA DE SOUZA E SOUZA'],
+        codigo_beneficiario: 'AC000500004128',
+        nome_PA: 'PA SDFHGDHFJ',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+    ],
     acoes: [
       'Detalhar',
       'Editar',
@@ -1032,6 +1174,19 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cod_beneficiario: 'AC000500004129',
     cpf_conjuge: null,
     numero_processo: ['PA000600000015'],
+    historico_PNRA: [
+      {
+        CPF: ['124.644.732-00'],
+        nome: [
+          'RAIMUNDO DE JESUS SOUZA DE LIMA',
+          'MARIA DO PSRTO DO NASCIMENTO LIMA',
+        ],
+        codigo_beneficiario: 'AC000500004129',
+        nome_PA: 'PA FGHJFGFGHJFG',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+    ],
     acoes: [
       'Detalhar',
       'Editar',
@@ -1161,6 +1316,16 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_conjuge: '793.662.872-04',
     cod_beneficiario: 'AC000500004130',
     numero_processo: ['PA000600000018', '111111111/0000'],
+    historico_PNRA: [
+      {
+        CPF: ['793.662.282-91', '793.662.872-04'],
+        nome: ['DOMINGOS DOS SANTOS SILVA', 'DORACI DE ABREU SILVA'],
+        codigo_beneficiario: 'AC000500004129',
+        nome_PA: 'PA FGHJFGFGHJFG',
+        situacao: 'evadido',
+        data_Situacao: '01/01/2001',
+      },
+    ],
     acoes: [
       'Detalhar',
       'Editar',

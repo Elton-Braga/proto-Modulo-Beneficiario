@@ -1,62 +1,35 @@
 <div class="container-fluid">
   <div class="row ajuste">
-    <h1>Histórico</h1>
-    <div class="col-12 ajusteItem">
+    <h1>Histórico do PNRA</h1>
+
+    <div class="col-12 ajusteItem" *ngFor="let item of data.historicoPNRA">
       <table>
         <tr>
-          <thead></thead>
+          <td><strong>CPF(s):</strong></td>
+          <td>
+            <p *ngFor="let cpf of item.CPF">{{ cpf }}</p>
+          </td>
         </tr>
         <tr>
-          <td><strong>Criado por:</strong></td>
-          <td><p>Fulano da Silva - 000.000.000-00</p></td>
+          <td class="coluna_nome"><strong>Nome(s):</strong></td>
+          <td>
+            <p *ngFor="let nome of item.nome">{{ nome }}</p>
+          </td>
         </tr>
         <tr>
-          <td><strong>Solicitante: </strong></td>
-          <td><p>Inácio de solza da silva</p></td>
+          <td><strong>PA:</strong></td>
+          <td>{{ item.nome_PA }}</td>
         </tr>
         <tr>
-          <td><strong>Status:</strong></td>
-          <td><p>Em andamento</p></td>
+          <td><strong>Situação:</strong></td>
+          <td>{{ item.situacao }}</td>
+        </tr>
+        <tr>
+          <td><strong>Data Situação:</strong></td>
+          <td>{{ item.data_Situacao }}</td>
         </tr>
       </table>
-    </div>
-    <div class="col-12 ajusteItem">
-      <table>
-        <tr>
-          <thead></thead>
-        </tr>
-        <tr>
-          <td><strong>Criado por:</strong></td>
-          <td><p>Zeca Miranda - 111.000.000-11</p></td>
-        </tr>
-        <tr>
-          <td><strong>Solicitante: </strong></td>
-          <td><p>Julio da silva</p></td>
-        </tr>
-        <tr>
-          <td><strong>Status:</strong></td>
-          <td><p>Bloqueado</p></td>
-        </tr>
-      </table>
-    </div>
-    <div class="col-12 ajusteItem">
-      <table>
-        <tr>
-          <thead></thead>
-        </tr>
-        <tr>
-          <td><strong>Criado por:</strong></td>
-          <td><p>Fulano da Silva - 000.000.000-00</p></td>
-        </tr>
-        <tr>
-          <td><strong>Solicitante: </strong></td>
-          <td><p>Inácio de solza da silva</p></td>
-        </tr>
-        <tr>
-          <td><strong>Status:</strong></td>
-          <td><p>Encerrado</p></td>
-        </tr>
-      </table>
+      <hr />
     </div>
   </div>
 </div>

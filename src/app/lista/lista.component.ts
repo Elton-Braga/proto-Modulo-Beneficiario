@@ -317,11 +317,14 @@ export class ListaComponent implements AfterViewInit {
     });
   }
 
-  openDialogHistorico() {
+  openDialogHistorico(elemento: Beneficiario) {
     const dialogRef = this.dialog.open(ModalHistoricoComponent, {
-      width: '40vw',
+      width: '90vw',
       height: '90vh',
       maxWidth: 'none',
+      data: {
+        historicoPNRA: elemento.historico_PNRA, // <<< envia somente o histórico do beneficiário selecionado
+      },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -511,7 +514,7 @@ export class ListaComponent implements AfterViewInit {
         // lógica para visualizar
         break;
       case 'Histórico do PNRA':
-        this.openDialogHistorico();
+        this.openDialogHistorico(elemento);
         // lógica para histórico
         break;
       case 'Espelho do Beneficiário':
@@ -531,10 +534,6 @@ export class ListaComponent implements AfterViewInit {
       //openDialogSucessaoLote(elemento: Beneficiario)
     }
 
-    //Inclusão/Alteração de Cônjuge
-
-    //console.log('Email:', elemento.email);
-    //console.log('Telefone:', elemento.telefone);
     console.log('nome 2:', elemento.nome_T2);
   }
 
