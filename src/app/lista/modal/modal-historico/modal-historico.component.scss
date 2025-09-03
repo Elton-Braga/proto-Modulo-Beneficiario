@@ -27,14 +27,13 @@ table {
   width: 100%;
 }
 table tr {
-  border: solid 1px rgb(207, 207, 207);
-  width: 100%;
+  //width: 100%;
   padding: 0;
   margin: 0;
 }
 
 table td {
-  width: 50%;
+  border: solid 1px rgb(207, 207, 207);
   height: 2rem;
   padding: 0;
   margin: 0;
