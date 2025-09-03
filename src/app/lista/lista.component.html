@@ -347,6 +347,13 @@
             </td>
           </ng-container>
 
+          <ng-container matColumnDef="Bloqueios">
+            <th mat-header-cell *matHeaderCellDef>Bloqueios</th>
+            <td mat-cell *matCellDef="let element">
+              {{ preencher_pendencias }}
+            </td>
+          </ng-container>
+
           <!-- Ações -->
           <ng-container matColumnDef="acoes">
             <th mat-header-cell *matHeaderCellDef>Ações</th>

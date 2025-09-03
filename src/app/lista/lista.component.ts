@@ -114,6 +114,7 @@ export class ListaComponent implements AfterViewInit {
     // 'periodo_regularizacao',
     //'status',
     'pendencias',
+    'Bloqueios',
     'acoes',
   ];
   //naturalidade, municipio
@@ -140,7 +141,7 @@ export class ListaComponent implements AfterViewInit {
     //{ chave: 'regularizacao', label: 'Regularização', visivel: true },
     // { chave: 'periodo_regularizacao', label: 'Período', visivel: true },
     { chave: 'pendencias', label: 'Período', visivel: true },
-    //{ chave: 'status', label: 'Status', visivel: true },
+    { chave: 'Bloqueios', label: 'Bloqueios', visivel: true },
     { chave: 'acoes', label: 'Ações', visivel: true },
   ];
 
