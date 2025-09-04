@@ -56,13 +56,11 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       },
     ],
     acoes: [
-      'Detalhar',
       'Editar',
       'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
-      'Operações',
       'Requerimentos',
       'Serviços',
     ],
@@ -169,9 +167,9 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     requerimento: [
       {
-        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
-        tipoDeServico: 'Emissão de Certidão',
-        perfilDoSolicitante: 'Pessoa Física',
+        numerosDoRequerimento: ['REQ-2025-0001'],
+        tipoDeServico: 'Desbloqueio',
+        perfilDoSolicitante: 'Incra',
         status: 'Em análise',
         detalhar: 'Documentação completa; aguardando validação.',
       },
@@ -229,13 +227,11 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
 
     acoes: [
-      'Detalhar',
       'Editar',
       'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
-      'Operações',
       'Requerimentos',
       'Serviços',
     ],
@@ -356,9 +352,9 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     requerimento: [
       {
-        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
-        tipoDeServico: 'Emissão de Certidão',
-        perfilDoSolicitante: 'Pessoa Física',
+        numerosDoRequerimento: ['REQ-2025-0001'],
+        tipoDeServico: 'Desbloqueio',
+        perfilDoSolicitante: 'Incra',
         status: 'Em análise',
         detalhar: 'Documentação completa; aguardando validação.',
       },
@@ -393,13 +389,11 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       },
     ],
     acoes: [
-      'Detalhar',
       'Editar',
       'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
-      'Operações',
       'Requerimentos',
       'Serviços',
     ],
@@ -493,9 +487,9 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     requerimento: [
       {
-        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
-        tipoDeServico: 'Emissão de Certidão',
-        perfilDoSolicitante: 'Pessoa Física',
+        numerosDoRequerimento: ['REQ-2025-0001'],
+        tipoDeServico: 'Desbloqueio',
+        perfilDoSolicitante: 'Incra',
         status: 'Em análise',
         detalhar: 'Documentação completa; aguardando validação.',
       },
@@ -538,13 +532,11 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       },
     ],
     acoes: [
-      'Detalhar',
       'Editar',
       'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
-      'Operações',
       'Requerimentos',
       'Serviços',
     ],
@@ -654,9 +646,9 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     requerimento: [
       {
-        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
-        tipoDeServico: 'Emissão de Certidão',
-        perfilDoSolicitante: 'Pessoa Física',
+        numerosDoRequerimento: ['REQ-2025-0001'],
+        tipoDeServico: 'Desbloqueio',
+        perfilDoSolicitante: 'Incra',
         status: 'Em análise',
         detalhar: 'Documentação completa; aguardando validação.',
       },
@@ -694,13 +686,11 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       },
     ],
     acoes: [
-      'Detalhar',
       'Editar',
       'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
-      'Operações',
       'Requerimentos',
       'Serviços',
     ],
@@ -807,9 +797,9 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     requerimento: [
       {
-        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
-        tipoDeServico: 'Emissão de Certidão',
-        perfilDoSolicitante: 'Pessoa Física',
+        numerosDoRequerimento: ['REQ-2025-0001'],
+        tipoDeServico: 'Desbloqueio',
+        perfilDoSolicitante: 'Incra',
         status: 'Em análise',
         detalhar: 'Documentação completa; aguardando validação.',
       },
@@ -844,13 +834,11 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       },
     ],
     acoes: [
-      'Detalhar',
       'Editar',
       'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
-      'Operações',
       'Requerimentos',
       'Serviços',
     ],
@@ -944,9 +932,9 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     requerimento: [
       {
-        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
-        tipoDeServico: 'Emissão de Certidão',
-        perfilDoSolicitante: 'Pessoa Física',
+        numerosDoRequerimento: ['REQ-2025-0001'],
+        tipoDeServico: 'Desbloqueio',
+        perfilDoSolicitante: 'Incra',
         status: 'Em análise',
         detalhar: 'Documentação completa; aguardando validação.',
       },
@@ -984,13 +972,11 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       },
     ],
     acoes: [
-      'Detalhar',
       'Editar',
       'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
-      'Operações',
       'Requerimentos',
       'Serviços',
     ],
@@ -1084,9 +1070,9 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     requerimento: [
       {
-        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
-        tipoDeServico: 'Emissão de Certidão',
-        perfilDoSolicitante: 'Pessoa Física',
+        numerosDoRequerimento: ['REQ-2025-0001'],
+        tipoDeServico: 'Desbloqueio',
+        perfilDoSolicitante: 'Incra',
         status: 'Em análise',
         detalhar: 'Documentação completa; aguardando validação.',
       },
@@ -1121,13 +1107,11 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       },
     ],
     acoes: [
-      'Detalhar',
       'Editar',
       'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
-      'Operações',
       'Requerimentos',
       'Serviços',
     ],
@@ -1236,9 +1220,9 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     requerimento: [
       {
-        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
-        tipoDeServico: 'Emissão de Certidão',
-        perfilDoSolicitante: 'Pessoa Física',
+        numerosDoRequerimento: ['REQ-2025-0001'],
+        tipoDeServico: 'Desbloqueio',
+        perfilDoSolicitante: 'Incra',
         status: 'Em análise',
         detalhar: 'Documentação completa; aguardando validação.',
       },
@@ -1276,13 +1260,11 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       },
     ],
     acoes: [
-      'Detalhar',
       'Editar',
       'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
-      'Operações',
       'Requerimentos',
       'Serviços',
     ],
@@ -1389,9 +1371,9 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     requerimento: [
       {
-        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
-        tipoDeServico: 'Emissão de Certidão',
-        perfilDoSolicitante: 'Pessoa Física',
+        numerosDoRequerimento: ['REQ-2025-0001'],
+        tipoDeServico: 'Desbloqueio',
+        perfilDoSolicitante: 'Incra',
         status: 'Em análise',
         detalhar: 'Documentação completa; aguardando validação.',
       },
@@ -1426,13 +1408,11 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
       },
     ],
     acoes: [
-      'Detalhar',
       'Editar',
       'Histórico do PNRA',
 
       'Espelho do Beneficiário',
 
-      'Operações',
       'Requerimentos',
       'Serviços',
     ],
@@ -1525,9 +1505,9 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     requerimento: [
       {
-        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
-        tipoDeServico: 'Emissão de Certidão',
-        perfilDoSolicitante: 'Pessoa Física',
+        numerosDoRequerimento: ['REQ-2025-0001'],
+        tipoDeServico: 'Desbloqueio',
+        perfilDoSolicitante: 'Incra',
         status: 'Em análise',
         detalhar: 'Documentação completa; aguardando validação.',
       },

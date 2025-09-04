@@ -97,24 +97,18 @@ export class ListaComponent implements AfterViewInit {
 
   displayedColumns: string[] = [
     'check',
+    'cod_beneficiario',
+    'nome_T1',
+    'cpf_T1',
+    'nome_T2',
+    'cpf_conjuge',
     'SR',
     'Estado',
     'municipio',
     'codigo_projeto',
     'projeto',
-
-    'cod_beneficiario',
-    'nome_T1',
-    'cpf_T1',
-
-    'nome_T2',
-    'cpf_conjuge',
     'situacao_T1',
-    //'situacao_T2',
     'data_situacao_T2',
-    //'regularizacao',
-    // 'periodo_regularizacao',
-    //'status',
     'pendencias',
     'Bloqueios',
     'acoes',
@@ -122,11 +116,6 @@ export class ListaComponent implements AfterViewInit {
   //naturalidade, municipio
   colunasDisponiveis = [
     { chave: 'check', label: 'Selecionar', visivel: true },
-    { chave: 'SR', label: 'SR', visivel: true },
-    { chave: 'Estado', label: 'Estado', visivel: true },
-    { chave: 'municipio', label: 'municipio', visivel: true },
-    { chave: 'codigo_projeto', label: 'Código', visivel: true },
-    { chave: 'projeto', label: 'Projeto', visivel: true },
     {
       chave: 'cod_beneficiario',
       label: 'Codigo do Beneficiario',
@@ -134,14 +123,15 @@ export class ListaComponent implements AfterViewInit {
     },
     { chave: 'nome_T1', label: 'Nome T1', visivel: true },
     { chave: 'cpf_T1', label: 'CPF do Titular', visivel: true },
-
     { chave: 'nome_T2', label: 'Nome T2', visivel: true },
     { chave: 'cpf_conjuge', label: 'CPF do COnjuge', visivel: true },
+    { chave: 'SR', label: 'SR', visivel: true },
+    { chave: 'Estado', label: 'Estado', visivel: true },
+    { chave: 'municipio', label: 'municipio', visivel: true },
+    { chave: 'codigo_projeto', label: 'Código', visivel: true },
+    { chave: 'projeto', label: 'Projeto', visivel: true },
     { chave: 'situacao_T1', label: 'Situação T1', visivel: true },
-    //{ chave: 'situacao_T2', label: 'Situação T2', visivel: true },
     { chave: 'data_situacao_T2', label: 'Data Situação T2', visivel: true },
-    //{ chave: 'regularizacao', label: 'Regularização', visivel: true },
-    // { chave: 'periodo_regularizacao', label: 'Período', visivel: true },
     { chave: 'pendencias', label: 'Período', visivel: true },
     { chave: 'Bloqueios', label: 'Bloqueios', visivel: true },
     { chave: 'acoes', label: 'Ações', visivel: true },
@@ -525,10 +515,6 @@ export class ListaComponent implements AfterViewInit {
         });
         break;
 
-      case 'Detalhar':
-        this.openDialogDetalhar(elemento);
-        // lógica para visualizar
-        break;
       case 'Histórico do PNRA':
         this.openDialogHistorico(elemento);
         // lógica para histórico
@@ -545,10 +531,6 @@ export class ListaComponent implements AfterViewInit {
 
       case 'Requerimentos':
         this.openDialogRequerimentos(elemento);
-        // lógica para PDF
-        break;
-      case 'Operações':
-        this.openDialogSucessaoLote(elemento);
         // lógica para PDF
         break;
 
