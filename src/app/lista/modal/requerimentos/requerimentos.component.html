@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="row ajuste">
+    <h1>Requerimentos</h1>
+
+    <div class="col-12 ajusteItem">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>Números do Requerimento</th>
+            <th>Tipo de Serviço</th>
+            <th>Perfil do Solicitante</th>
+            <th>Status</th>
+            <th>Detalhar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Agora percorre diretamente data.requerimento -->
+          <tr *ngFor="let req of data.requerimento">
+            <td>
+              <p *ngFor="let numero of req.numerosDoRequerimento">
+                {{ numero }}
+              </p>
+            </td>
+            <td>
+              <p>{{ req.tipoDeServico }}</p>
+            </td>
+            <td>
+              <p>{{ req.perfilDoSolicitante }}</p>
+            </td>
+            <td>
+              <p>{{ req.status }}</p>
+            </td>
+            <td>
+              <p>{{ req.detalhar }}</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr />
+    </div>
+  </div>
+</div>

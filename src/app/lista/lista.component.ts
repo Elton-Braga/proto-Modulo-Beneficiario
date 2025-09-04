@@ -49,6 +49,8 @@ import { MOCK_BENEFICIARIOS } from './MOCK_BENEFICIATIO';
 import { ConjugeComponent } from './modal/conjuge/conjuge.component';
 import { RegularizacaoComponent } from '../novo-cadastro/regularizacao/regularizacao.component';
 import { BuscaBeneficiarioService } from './servico/busca-beneficiario.service';
+import { RequerimentosComponent } from './modal/requerimentos/requerimentos.component';
+import { Requerimento } from './modal/requerimentos/requeurimentos';
 
 @Component({
   selector: 'app-lista',
@@ -374,6 +376,19 @@ export class ListaComponent implements AfterViewInit {
     });
   }
 
+  openDialogRequerimentos(elemento: Beneficiario) {
+    const dialogRef = this.dialog.open(RequerimentosComponent, {
+      width: '90vw',
+      maxWidth: 'none',
+      panelClass: 'custom-dialog-container',
+      data: elemento, // <-- Aqui está a passagem do dado
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
   trackByValue(index: number, item: any): string {
     return item.value;
   }
@@ -526,7 +541,12 @@ export class ListaComponent implements AfterViewInit {
         this.openDialogInclusaoConjuge(elemento);
         // lógica para PDF
         break;
+      //openDialogRequerimentos(elemento: Requerimento)
 
+      case 'Requerimentos':
+        this.openDialogRequerimentos(elemento);
+        // lógica para PDF
+        break;
       case 'Operações':
         this.openDialogSucessaoLote(elemento);
         // lógica para PDF

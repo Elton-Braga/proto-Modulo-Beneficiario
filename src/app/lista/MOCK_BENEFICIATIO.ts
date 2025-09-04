@@ -167,6 +167,15 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         denominacao_lote: 'Lote 12 - Boa Esperança',
       },
     ],
+    requerimento: [
+      {
+        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
+        tipoDeServico: 'Emissão de Certidão',
+        perfilDoSolicitante: 'Pessoa Física',
+        status: 'Em análise',
+        detalhar: 'Documentação completa; aguardando validação.',
+      },
+    ],
   },
   {
     check: 2,
@@ -345,6 +354,15 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         denominacao_lote: 'Lote 12 - Boa Esperança',
       },
     ],
+    requerimento: [
+      {
+        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
+        tipoDeServico: 'Emissão de Certidão',
+        perfilDoSolicitante: 'Pessoa Física',
+        status: 'Em análise',
+        detalhar: 'Documentação completa; aguardando validação.',
+      },
+    ],
   },
   {
     check: 3,
@@ -471,6 +489,15 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         codigo_SNCR: 'SNCR2023002',
         denominacao_Gleba: 'Gleba Boa Esperança',
         denominacao_lote: 'Lote 12 - Boa Esperança',
+      },
+    ],
+    requerimento: [
+      {
+        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
+        tipoDeServico: 'Emissão de Certidão',
+        perfilDoSolicitante: 'Pessoa Física',
+        status: 'Em análise',
+        detalhar: 'Documentação completa; aguardando validação.',
       },
     ],
   },
@@ -625,6 +652,15 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         denominacao_lote: 'Lote 12 - Boa Esperança',
       },
     ],
+    requerimento: [
+      {
+        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
+        tipoDeServico: 'Emissão de Certidão',
+        perfilDoSolicitante: 'Pessoa Física',
+        status: 'Em análise',
+        detalhar: 'Documentação completa; aguardando validação.',
+      },
+    ],
   },
   {
     check: 5,
@@ -769,6 +805,15 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         denominacao_lote: 'Lote 12 - Boa Esperança',
       },
     ],
+    requerimento: [
+      {
+        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
+        tipoDeServico: 'Emissão de Certidão',
+        perfilDoSolicitante: 'Pessoa Física',
+        status: 'Em análise',
+        detalhar: 'Documentação completa; aguardando validação.',
+      },
+    ],
   },
   {
     check: 6,
@@ -895,6 +940,15 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         codigo_SNCR: 'SNCR2023002',
         denominacao_Gleba: 'Gleba Boa Esperança',
         denominacao_lote: 'Lote 12 - Boa Esperança',
+      },
+    ],
+    requerimento: [
+      {
+        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
+        tipoDeServico: 'Emissão de Certidão',
+        perfilDoSolicitante: 'Pessoa Física',
+        status: 'Em análise',
+        detalhar: 'Documentação completa; aguardando validação.',
       },
     ],
   },
@@ -1026,6 +1080,15 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         codigo_SNCR: 'SNCR2023002',
         denominacao_Gleba: 'Gleba Boa Esperança',
         denominacao_lote: 'Lote 12 - Boa Esperança',
+      },
+    ],
+    requerimento: [
+      {
+        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
+        tipoDeServico: 'Emissão de Certidão',
+        perfilDoSolicitante: 'Pessoa Física',
+        status: 'Em análise',
+        detalhar: 'Documentação completa; aguardando validação.',
       },
     ],
   },
@@ -1169,6 +1232,15 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         codigo_SNCR: 'SNCR2023002',
         denominacao_Gleba: 'Gleba Boa Esperança',
         denominacao_lote: 'Lote 12 - Boa Esperança',
+      },
+    ],
+    requerimento: [
+      {
+        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
+        tipoDeServico: 'Emissão de Certidão',
+        perfilDoSolicitante: 'Pessoa Física',
+        status: 'Em análise',
+        detalhar: 'Documentação completa; aguardando validação.',
       },
     ],
   },
@@ -1315,6 +1387,15 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         denominacao_lote: 'Lote 12 - Boa Esperança',
       },
     ],
+    requerimento: [
+      {
+        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
+        tipoDeServico: 'Emissão de Certidão',
+        perfilDoSolicitante: 'Pessoa Física',
+        status: 'Em análise',
+        detalhar: 'Documentação completa; aguardando validação.',
+      },
+    ],
   },
   {
     check: 10,
@@ -1440,6 +1521,15 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         codigo_SNCR: 'SNCR2023002',
         denominacao_Gleba: 'Gleba Boa Esperança',
         denominacao_lote: 'Lote 12 - Boa Esperança',
+      },
+    ],
+    requerimento: [
+      {
+        numerosDoRequerimento: ['REQ-2025-0001', 'REQ-2025-0002'],
+        tipoDeServico: 'Emissão de Certidão',
+        perfilDoSolicitante: 'Pessoa Física',
+        status: 'Em análise',
+        detalhar: 'Documentação completa; aguardando validação.',
       },
     ],
   },

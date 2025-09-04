@@ -1,5 +1,7 @@
 import { BeneficiarioBloqueio } from './beneficiarioBloqueio';
 import { Lote } from './lote';
+import { HistoricoPNRA } from './modal/modal-historico/HistoricoPNRA';
+import { Requerimento } from './modal/requerimentos/requeurimentos';
 import { UnidadeFamiliar } from './unidadeFamiliar';
 //import { Historico } from './modal/modal-historico';
 
@@ -69,13 +71,5 @@ export interface Beneficiario {
   bloqueios: BeneficiarioBloqueio[];
   tela_lote: Lote[];
   historico_PNRA: HistoricoPNRA[];
-}
-
-interface HistoricoPNRA {
-  CPF: string[];
-  nome: string[];
-  codigo_beneficiario: string;
-  nome_PA: string;
-  situacao: string;
-  data_Situacao: string;
+  requerimento: Requerimento[];
 }
