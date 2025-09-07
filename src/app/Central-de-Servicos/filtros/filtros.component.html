@@ -156,3 +156,106 @@
     </div>
   </div>
 </div>
+
+<div class="table-container mat-elevation-z2 ajuste">
+  <table mat-table [dataSource]="dataSource" class="mat-table" matSort>
+    <!-- Colunas -->
+
+    <ng-container matColumnDef="numeroRequerimento">
+      <th mat-header-cell *matHeaderCellDef>Nº Requerimento</th>
+      <td mat-cell *matCellDef="let row">{{ row.numeroRequerimento }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dataRequerimento">
+      <th mat-header-cell *matHeaderCellDef>Data</th>
+      <td mat-cell *matCellDef="let row">{{ row.dataRequerimento | date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="codigoBeneficiario">
+      <th mat-header-cell *matHeaderCellDef>Código Beneficiário</th>
+      <td mat-cell *matCellDef="let row">{{ row.codigoBeneficiario }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cpfBeneficiario">
+      <th mat-header-cell *matHeaderCellDef>CPF Beneficiário</th>
+      <td mat-cell *matCellDef="let row">{{ row.cpfBeneficiario }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nomeBeneficiario">
+      <th mat-header-cell *matHeaderCellDef>Nome Beneficiário</th>
+      <td mat-cell *matCellDef="let row">{{ row.nomeBeneficiario }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="cpfConjuge">
+      <th mat-header-cell *matHeaderCellDef>CPF Cônjuge</th>
+      <td mat-cell *matCellDef="let row">{{ row.cpfConjuge }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nomeConjuge">
+      <th mat-header-cell *matHeaderCellDef>Nome Cônjuge</th>
+      <td mat-cell *matCellDef="let row">{{ row.nomeConjuge }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="sr">
+      <th mat-header-cell *matHeaderCellDef>SR</th>
+      <td mat-cell *matCellDef="let row">{{ row.sr }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="uf">
+      <th mat-header-cell *matHeaderCellDef>UF</th>
+      <td mat-cell *matCellDef="let row">{{ row.uf }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="projetoAssentamento">
+      <th mat-header-cell *matHeaderCellDef>Projeto</th>
+      <td mat-cell *matCellDef="let row">{{ row.projetoAssentamento }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="tipoServico">
+      <th mat-header-cell *matHeaderCellDef>Tipo de Serviço</th>
+      <td mat-cell *matCellDef="let row">{{ row.tipoServico }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="perfilSolicitante">
+      <th mat-header-cell *matHeaderCellDef>Perfil</th>
+      <td mat-cell *matCellDef="let row">{{ row.perfilSolicitante }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let row">{{ row.status }}</td>
+    </ng-container>
+
+    <!-- Ações -->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Ações">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="detalhar(row)">
+            <mat-icon>info</mat-icon>
+            <span>Detalhar</span>
+          </button>
+          <button mat-menu-item (click)="analisar(row)">
+            <mat-icon>check_circle</mat-icon>
+            <span>Analisar</span>
+          </button>
+          <button mat-menu-item (click)="historico(row)">
+            <mat-icon>history</mat-icon>
+            <span>Histórico</span>
+          </button>
+          <button mat-menu-item (click)="cancelar(row)">
+            <mat-icon>cancel</mat-icon>
+            <span>Cancelar</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <!-- Cabeçalho e células -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

@@ -15,3 +15,13 @@ p {
   margin: 1rem;
   width: 98.5%;
 }
+
+.table-container {
+  overflow: auto;
+  max-width: 100%;
+}
+
+.mat-header-cell,
+.mat-cell {
+  white-space: nowrap;
+}

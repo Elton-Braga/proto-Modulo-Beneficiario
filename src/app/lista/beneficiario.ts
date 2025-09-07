@@ -1,3 +1,4 @@
+import { RequerimentoFiltro } from '../Central-de-Servicos/filtros/requerimentoFiltro';
 import { BeneficiarioBloqueio } from './beneficiarioBloqueio';
 import { Lote } from './lote';
 import { HistoricoPNRA } from './modal/modal-historico/HistoricoPNRA';
@@ -25,27 +26,22 @@ export interface Beneficiario {
   codigo_beneficiario: string;
   telefone: string;
   email: string;
-
   // 🔹 Novos atributos já existentes
   data_nascimento: string; // formato 'yyyy-MM-dd' ou Date
   estado_civil: string;
   falecido: boolean;
   data_falecimento?: string | null; // opcional, só se falecido for true
-
   nome_pai: string;
   nome_mae: string;
   nacionalidade: string;
   naturalidade: string;
   municipio: string;
   codigo_municipio: string;
-
   tipo_documento: string; // ex: 'RG'
   numero_documento: string;
   orgao_emissor: string;
   uf_orgao: string;
-
   numero_nis: string;
-
   // 🔹 Atributos da nova lista
   data_homologacao_Titular: string;
   situacao_Titular: string;
@@ -71,5 +67,5 @@ export interface Beneficiario {
   bloqueios: BeneficiarioBloqueio[];
   tela_lote: Lote[];
   historico_PNRA: HistoricoPNRA[];
-  requerimento: Requerimento[];
+  requerimento: RequerimentoFiltro[];
 }

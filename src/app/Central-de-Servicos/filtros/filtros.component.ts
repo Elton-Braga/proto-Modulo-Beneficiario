@@ -19,6 +19,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { ServicosService } from '../../novo-cadastro/tela-1/servico/servicos.service';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTooltipModule } from '@angular/material/tooltip';
+//import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   standalone: true,
@@ -35,6 +40,10 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     RouterLink,
     MatIconModule,
+    MatMenuModule,
+    MatTableModule,
+    MatSortModule,
+    MatTooltipModule,
   ],
   templateUrl: './filtros.component.html',
   styleUrls: ['./filtros.component.scss'],
@@ -51,6 +60,59 @@ export class FiltrosComponent implements OnInit {
     'Atualização Cadastral',
     'Outro',
   ];
+
+  displayedColumns: string[] = [
+    'numeroRequerimento',
+    'dataRequerimento',
+    'codigoBeneficiario',
+    'cpfBeneficiario',
+    'nomeBeneficiario',
+    'cpfConjuge',
+    'nomeConjuge',
+    'sr',
+    'uf',
+    'projetoAssentamento',
+    'tipoServico',
+    'perfilSolicitante',
+    'status',
+    'acoes',
+  ];
+
+  dataSource = new MatTableDataSource([
+    {
+      numeroRequerimento: 'REQ-001',
+      dataRequerimento: new Date(),
+      codigoBeneficiario: '123456',
+      cpfBeneficiario: '000.000.000-00',
+      nomeBeneficiario: 'João Silva',
+      cpfConjuge: '111.111.111-11',
+      nomeConjuge: 'Maria Silva',
+      sr: 'SR-01',
+      uf: 'SP',
+      projetoAssentamento: 'PA Novo Horizonte',
+      tipoServico: 'Crédito Instalação',
+      perfilSolicitante: 'Titular',
+      status: 'Em análise',
+    },
+    // Adicione mais objetos conforme necessário
+  ]);
+
+  // Métodos das ações
+  detalhar(row: any) {
+    console.log('Detalhar:', row);
+  }
+
+  analisar(row: any) {
+    console.log('Analisar:', row);
+  }
+
+  historico(row: any) {
+    console.log('Histórico:', row);
+  }
+
+  cancelar(row: any) {
+    console.log('Cancelar:', row);
+  }
 
   constructor(
     private fb: FormBuilder,
