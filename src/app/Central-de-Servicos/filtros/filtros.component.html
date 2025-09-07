@@ -157,7 +157,30 @@
   </div>
 </div>
 
-<div class="table-container mat-elevation-z2 ajuste">
+<div class="row ajuste">
+  <div class="col-10"></div>
+  <div class="col-2">
+    <div>
+      <!-- Botão de dropdown para ajustar colunas -->
+      <button mat-button [matMenuTriggerFor]="menuColunas">
+        <mat-icon>view_column</mat-icon> Ajustar Colunas
+      </button>
+
+      <!-- Menu suspenso com checkboxes -->
+      <mat-menu #menuColunas="matMenu">
+        <mat-checkbox
+          *ngFor="let coluna of colunasDisponiveis"
+          [(ngModel)]="coluna.visivel"
+          (change)="atualizarColunasVisiveis()"
+        >
+          {{ coluna.label }}
+        </mat-checkbox>
+      </mat-menu>
+    </div>
+  </div>
+</div>
+
+<div class="table-container mat-elevation-z2 ajuste espaco">
   <table mat-table [dataSource]="dataSource" class="mat-table" matSort>
     <!-- Colunas -->
 
@@ -234,21 +257,24 @@
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="detalhar(row)">
-            <mat-icon>info</mat-icon>
-            <span>Detalhar</span>
-          </button>
-          <button mat-menu-item (click)="analisar(row)">
-            <mat-icon>check_circle</mat-icon>
-            <span>Analisar</span>
-          </button>
-          <button mat-menu-item (click)="historico(row)">
-            <mat-icon>history</mat-icon>
-            <span>Histórico</span>
-          </button>
-          <button mat-menu-item (click)="cancelar(row)">
-            <mat-icon>cancel</mat-icon>
-            <span>Cancelar</span>
+          <button
+            mat-menu-item
+            *ngFor="let acao of row.acoes"
+            (click)="
+              acao.toLowerCase() === 'detalhar'
+                ? detalhar(row)
+                : acao.toLowerCase() === 'analisar'
+                ? analisar(row)
+                : acao.toLowerCase() === 'historico' ||
+                  acao.toLowerCase() === 'histórico'
+                ? historico(row)
+                : acao.toLowerCase() === 'cancelar'
+                ? cancelar(row)
+                : null
+            "
+          >
+            <mat-icon>{{ getIcon(acao) }}</mat-icon>
+            <span>{{ acao }}</span>
           </button>
         </mat-menu>
       </td>
