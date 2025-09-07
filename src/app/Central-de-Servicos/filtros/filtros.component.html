@@ -100,12 +100,12 @@
             </div>
 
             <div class="row">
-              <mat-form-field appearance="outline" class="w-full col-4">
+              <mat-form-field appearance="outline" class="w-full col-3">
                 <mat-label>Número do Requerimento</mat-label>
                 <input matInput formControlName="numeroDoRequerimento" />
               </mat-form-field>
 
-              <mat-form-field appearance="outline" class="w-full col-4">
+              <mat-form-field appearance="outline" class="w-full col-3">
                 <mat-label>Data do Requerimento</mat-label>
                 <input
                   matInput
@@ -119,13 +119,18 @@
                 <mat-datepicker #picker></mat-datepicker>
               </mat-form-field>
 
-              <mat-form-field appearance="outline" class="w-full col-4">
+              <mat-form-field appearance="outline" class="w-full col-3">
                 <mat-label>Tipo de Serviço</mat-label>
                 <mat-select formControlName="tipoDeServico">
                   <mat-option *ngFor="let tipo of tiposServico" [value]="tipo">
                     {{ tipo }}
                   </mat-option>
                 </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-full col-3">
+                <mat-label>Status</mat-label>
+                <input matInput formControlName="status" />
               </mat-form-field>
             </div>
 

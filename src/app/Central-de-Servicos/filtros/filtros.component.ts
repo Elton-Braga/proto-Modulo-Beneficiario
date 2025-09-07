@@ -193,16 +193,16 @@ export class FiltrosComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      cpf: ['', [Validators.required]],
-      nome: ['', [Validators.required, Validators.minLength(3)]],
-      sr: ['', Validators.required],
-      uf: ['', Validators.required],
-      municipio: ['', Validators.required],
+      cpf: [''],
+      nome: [''],
+      sr: [''],
+      uf: [''],
+      municipio: [''],
       projetoDeAssentamento: [''],
-      numeroDoRequerimento: ['', Validators.required],
-      dataDoRequerimento: ['', Validators.required],
-      tipoDeServico: ['', Validators.required],
-      status: ['Pendente', Validators.required],
+      numeroDoRequerimento: [''],
+      dataDoRequerimento: [''],
+      tipoDeServico: [''],
+      status: ['Pendente'],
     });
 
     this.carregarEstados();
