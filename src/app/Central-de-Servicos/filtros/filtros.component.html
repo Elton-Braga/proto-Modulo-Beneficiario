@@ -1,0 +1,158 @@
+<div class="ajuste">
+  <div class="row div-titulo">
+    <div class="col-11">
+      <p class="text-left text-primary">Central de Serviços</p>
+    </div>
+    <div class="col-1 d-flex justify-content-center align-items-center">
+      <button class="btn btn-primary" routerLink="/selecaodeservicos">
+        Voltar
+      </button>
+    </div>
+  </div>
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button
+            class="btn btn-link"
+            data-toggle="collapse"
+            data-target="#collapseOne"
+            aria-expanded="true"
+            aria-controls="collapseOne"
+          >
+            Filtro de busca
+          </button>
+        </h5>
+      </div>
+
+      <div
+        id="collapseOne"
+        class="collapse show"
+        aria-labelledby="headingOne"
+        data-parent="#accordion"
+      >
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <mat-form-field appearance="outline" class="w-full col-4">
+                <mat-label>CPF</mat-label>
+                <input
+                  matInput
+                  formControlName="cpf"
+                  mask="000.000.000-00"
+                  placeholder="000.000.000-00"
+                />
+                <mat-error *ngIf="form.get('cpf')?.hasError('required')">
+                  CPF é obrigatório
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-full col-4">
+                <mat-label>Nome</mat-label>
+                <input matInput formControlName="nome" />
+                <mat-error *ngIf="form.get('nome')?.hasError('required')">
+                  Nome é obrigatório
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-full col-4">
+                <mat-label>SR</mat-label>
+                <mat-select formControlName="sr">
+                  <mat-option *ngFor="let item of srList" [value]="item">
+                    {{ item }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field appearance="outline" class="w-full col-4">
+                <mat-label>Estado (UF)</mat-label>
+                <mat-select
+                  formControlName="uf"
+                  (selectionChange)="carregarMunicipios($event)"
+                >
+                  <mat-option
+                    *ngFor="let estado of estados"
+                    [value]="estado.id"
+                  >
+                    {{ estado.nome }} ({{ estado.sigla }})
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-full col-4">
+                <mat-label>Município</mat-label>
+                <mat-select formControlName="municipio">
+                  <mat-option
+                    *ngFor="let municipio of municipios"
+                    [value]="municipio.id"
+                  >
+                    {{ municipio.nome }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-full col-4">
+                <mat-label>Projeto de Assentamento</mat-label>
+                <input matInput formControlName="projetoDeAssentamento" />
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <mat-form-field appearance="outline" class="w-full col-4">
+                <mat-label>Número do Requerimento</mat-label>
+                <input matInput formControlName="numeroDoRequerimento" />
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-full col-4">
+                <mat-label>Data do Requerimento</mat-label>
+                <input
+                  matInput
+                  formControlName="dataDoRequerimento"
+                  [matDatepicker]="picker"
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="picker"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="w-full col-4">
+                <mat-label>Tipo de Serviço</mat-label>
+                <mat-select formControlName="tipoDeServico">
+                  <mat-option *ngFor="let tipo of tiposServico" [value]="tipo">
+                    {{ tipo }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="row">
+              <button
+                mat-stroked-button
+                color="primary"
+                class="col-1 btn_buscar"
+                (click)="pesquisar()"
+              >
+                Pesquisar
+                <mat-icon class="me-1">search</mat-icon>
+              </button>
+
+              <button
+                mat-stroked-button
+                color="warn"
+                class="col-1 btn_buscar"
+                (click)="limpar()"
+              >
+                Limpar
+                <mat-icon class="me-1">clear_all</mat-icon>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

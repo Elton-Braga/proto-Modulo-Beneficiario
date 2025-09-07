@@ -112,7 +112,6 @@
 /* Carrossel */
 .carousel {
   position: relative;
-  overflow: hidden;
   height: 20rem;
   width: 100%;
   max-width: 100%;
@@ -123,24 +122,23 @@
 
 .carousel-inner {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  overflow: hidden; /* impede que os cards vazem */
   height: 100%;
 }
 
 .carousel-slide {
-  flex: 0 0 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  padding: 0 20px;
+  width: 100%;
+  justify-content: space-between;
+  gap: 20px; /* ⬅️ define 20px de espaçamento entre os cards */
+  padding: 0 10px;
   box-sizing: border-box;
 }
 
 .carousel-item {
-  flex: 0 0 calc(33.333% - 14px);
-  box-sizing: border-box;
-  padding: 1.5rem;
+  flex: 1;
+  max-width: calc((100% - 40px) / 3);
+  padding: 1.2rem;
   text-align: center;
   background: #ffffff;
   border-radius: 12px;
@@ -151,7 +149,6 @@
   justify-content: center;
   align-items: center;
 }
-
 .carousel-item h2 {
   color: #0066a6;
   margin-bottom: 15px;
@@ -163,57 +160,10 @@
   font-size: 1rem;
 }
 
-.carousel-control {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-  transition: background 0.3s;
-}
-
-.carousel-control:hover {
-  background: rgba(0, 0, 0, 0.8);
-}
-
-.carousel-control.prev {
-  left: 15px;
-}
-
-.carousel-control.next {
-  right: 15px;
-}
-
 .carousel-indicators {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
-}
-
-.carousel-indicator {
-  width: 12px;
-  height: 12px;
-  margin: 0 8px;
-  border-radius: 50%;
-  background: #ccc;
-  cursor: pointer;
-  transition: background 0.9s;
-  //transition: background 0.3s;
-}
-
-.carousel-indicator.active {
-  background: #0066a6;
 }
 
 //////////////////////////////////////////////////////////////////////////////////////
