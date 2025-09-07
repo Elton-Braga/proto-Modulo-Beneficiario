@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatPaginator } from '@angular/material/paginator';
+import { SelectionModel } from '@angular/cdk/collections';
 
 // Angular Material
 import { MatInputModule } from '@angular/material/input';
@@ -15,18 +16,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
-
-// Serviço
-import { ServicosService } from '../../novo-cadastro/tela-1/servico/servicos.service';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-//import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+// Serviço
+import { ServicosService } from '../../novo-cadastro/tela-1/servico/servicos.service';
+import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
 
 @Component({
   standalone: true,
@@ -49,6 +50,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatTooltipModule,
     MatCheckboxModule,
     FormsModule,
+    MatPaginatorModule,
   ],
   templateUrl: './filtros.component.html',
   styleUrls: ['./filtros.component.scss'],
@@ -67,6 +69,7 @@ export class FiltrosComponent implements OnInit {
   ];
 
   displayedColumns: string[] = [
+    'check',
     'numeroRequerimento',
     'dataRequerimento',
     'codigoBeneficiario',
@@ -84,6 +87,7 @@ export class FiltrosComponent implements OnInit {
   ];
 
   colunasDisponiveis = [
+    { chave: 'check', label: 'Selecionar', visivel: true },
     { chave: 'numeroRequerimento', label: 'Nº Requerimento', visivel: true },
     { chave: 'dataRequerimento', label: 'Data do Requerimento', visivel: true },
     {
@@ -112,19 +116,47 @@ export class FiltrosComponent implements OnInit {
     { chave: 'acoes', label: 'Ações', visivel: true },
   ];
 
+  dataSource = new MatTableDataSource(
+    this.extrairRequerimentos(MOCK_BENEFICIARIOS)
+  );
+  selection = new SelectionModel<any>(true, []);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  ngOnInit(): void {
+    this.form = this.fb.group({
+      cpf: [''],
+      nome: [''],
+      sr: [''],
+      uf: [''],
+      municipio: [''],
+      projetoDeAssentamento: [''],
+      numeroDoRequerimento: [''],
+      dataDoRequerimento: [''],
+      tipoDeServico: [''],
+      status: ['Pendente'],
+    });
+
+    this.carregarEstados();
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
+  constructor(
+    private fb: FormBuilder,
+    private servicosService: ServicosService
+  ) {}
+
   atualizarColunasVisiveis() {
     this.displayedColumns = this.colunasDisponiveis
       .filter((c) => c.visivel)
       .map((c) => c.chave);
   }
 
-  dataSource = new MatTableDataSource(
-    this.extrairRequerimentos(MOCK_BENEFICIARIOS)
-  );
-
   extrairRequerimentos(beneficiarios: any[]): any[] {
     const requerimentos: any[] = [];
-
     beneficiarios.forEach((beneficiario) => {
       if (beneficiario.requerimento && beneficiario.requerimento.length > 0) {
         beneficiario.requerimento.forEach((req: any) => {
@@ -149,23 +181,70 @@ export class FiltrosComponent implements OnInit {
         });
       }
     });
-
     return requerimentos;
+  }
+
+  // Seleção
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  toggleAllRows() {
+    if (this.isAllSelected()) {
+      this.selection.clear();
+      return;
+    }
+    this.selection.select(...this.dataSource.data);
+  }
+
+  get hasSelection(): boolean {
+    return this.selection.selected.length > 0;
+  }
+
+  // Exportar dados selecionados
+  exportar(tipo: string) {
+    const selecionados = this.selection.selected;
+    if (selecionados.length === 0) {
+      alert('Nenhum registro selecionado!');
+      return;
+    }
+
+    if (tipo === 'json') {
+      const jsonStr = JSON.stringify(selecionados, null, 2);
+      console.log('Export JSON:', jsonStr);
+    } else if (tipo === 'csv') {
+      const headers = Object.keys(selecionados[0]);
+      const csv = [
+        headers.join(','),
+        ...selecionados.map((row) =>
+          headers.map((field) => row[field]).join(',')
+        ),
+      ].join('\n');
+      console.log('Export CSV:', csv);
+    } else if (tipo === 'excel') {
+      console.log('Export Excel ainda não implementado');
+      // 👉 aqui você pode usar XLSX.utils.json_to_sheet(selecionados)
+    } else if (tipo === 'pdf') {
+      console.log('Export PDF ainda não implementado');
+      // 👉 aqui você pode usar jsPDF ou pdfmake
+    }
   }
 
   getIcon(acao: string): string {
     switch (acao.toLowerCase()) {
       case 'detalhar':
-        return 'info';
+        return 'search';
       case 'analisar':
-        return 'check_circle';
+        return 'analytics';
       case 'historico':
       case 'histórico':
         return 'history';
       case 'cancelar':
         return 'cancel';
       default:
-        return 'help_outline'; // ícone genérico para ações desconhecidas
+        return 'more_horiz';
     }
   }
 
@@ -184,28 +263,6 @@ export class FiltrosComponent implements OnInit {
 
   cancelar(row: any) {
     console.log('Cancelar:', row);
-  }
-
-  constructor(
-    private fb: FormBuilder,
-    private servicosService: ServicosService
-  ) {}
-
-  ngOnInit(): void {
-    this.form = this.fb.group({
-      cpf: [''],
-      nome: [''],
-      sr: [''],
-      uf: [''],
-      municipio: [''],
-      projetoDeAssentamento: [''],
-      numeroDoRequerimento: [''],
-      dataDoRequerimento: [''],
-      tipoDeServico: [''],
-      status: ['Pendente'],
-    });
-
-    this.carregarEstados();
   }
 
   carregarEstados(): void {

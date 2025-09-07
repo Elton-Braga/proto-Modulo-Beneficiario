@@ -1,4 +1,5 @@
 export interface RequerimentoFiltro {
+  //check: any;
   numerosDoRequerimento: string[];
   dataRequerimento: Date | string;
   codigoBeneficiario: string;
