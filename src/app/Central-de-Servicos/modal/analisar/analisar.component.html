@@ -1,9 +1,88 @@
-<h2 mat-dialog-title>Analisar Requerimento</h2>
-<mat-dialog-content>
-  <p><strong>Nº Requerimento:</strong> {{ data.numeroRequerimento }}</p>
-  <p><strong>Nome Beneficiário:</strong> {{ data.nomeBeneficiario }}</p>
-  <p><strong>Status:</strong> {{ data.status }}</p>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button (click)="fechar()">Fechar</button>
-</mat-dialog-actions>
+<div class="row mt-3 ajuste shadow-md rounded-xl p-4">
+  <div class="col-12"></div>
+  <div class="col-12 d-flex justify-content-end gap-2">
+    <!-- Botão Relatório de Conformidade -->
+    <button mat-raised-button color="accent" class="btn btn-ligth">
+      <mat-icon>assignment</mat-icon>
+      Relatório de Conformidade
+    </button>
+
+    <!-- Botão Imprimir -->
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="imprimirAnalise()"
+      class="btn btn-ligth"
+    >
+      <mat-icon>print</mat-icon>
+      Imprimir Análise
+    </button>
+  </div>
+
+  <h2 mat-dialog-title class="col-12">Analisar Requerimento</h2>
+  <mat-dialog-content class="col-12">
+    <p><strong>Nº Requerimento:</strong> {{ data.numeroRequerimento }}</p>
+    <p><strong>Nome Beneficiário:</strong> {{ data.nomeBeneficiario }}</p>
+    <p><strong>Status:</strong> {{ data.status }}</p>
+  </mat-dialog-content>
+</div>
+
+<mat-card class="shadow-md rounded-xl p-4 ajuste">
+  <!-- Título -->
+  <mat-card-header>
+    <mat-icon color="primary">check_circle</mat-icon>
+    <mat-card-title>Decisão da Análise</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <!-- Decisão sobre a Solicitação -->
+    <div class="mt-3">
+      <label class="font-semibold">Decisão sobre a Solicitação *</label>
+      <mat-radio-group class="d-block mt-2">
+        <mat-radio-button value="deferir" class="me-3">
+          <!--<mat-icon color="primary">check_circle_outline</mat-icon>-->
+          <span class="text-success">Deferir Solicitação</span>
+        </mat-radio-button>
+
+        <mat-radio-button value="indeferir">
+          <!--<mat-icon color="warn">highlight_off</mat-icon>-->
+          <span class="text-danger">Indeferir Solicitação</span>
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <!-- Justificativa da Decisão -->
+    <div class="mt-4">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Justificativa da Decisão *</mat-label>
+        <textarea
+          matInput
+          rows="4"
+          placeholder="Digite a justificativa detalhada para sua decisão..."
+        ></textarea>
+        <mat-hint>Descreva os motivos de forma clara e objetiva</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <!-- Documentos Comprobatórios -->
+    <div class="mt-4 p-3 border rounded-lg text-center bg-light">
+      <mat-icon color="primary" class="mb-2">upload_file</mat-icon>
+      <p class="mb-1">
+        Clique para selecionar documentos ou arraste e solte aqui
+      </p>
+      <small class="text-muted">
+        Formatos aceitos: PDF, DOC, DOCX, JPG, PNG (máx. 10MB cada)
+      </small>
+      <input type="file" class="d-none" id="uploadDocs" multiple />
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<div class="row">
+  <div class="col-10"></div>
+  <div class="col-2">
+    <button mat-button (click)="fechar()" class="btn btn-primary">
+      Fechar
+    </button>
+  </div>
+</div>
