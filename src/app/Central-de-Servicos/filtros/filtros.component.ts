@@ -28,6 +28,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 // Serviço
 import { ServicosService } from '../../novo-cadastro/tela-1/servico/servicos.service';
 import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
+import { Beneficiario } from '../../lista/beneficiario';
 
 @Component({
   standalone: true,
@@ -116,11 +117,16 @@ export class FiltrosComponent implements OnInit {
     { chave: 'acoes', label: 'Ações', visivel: true },
   ];
 
-  dataSource = new MatTableDataSource(
+  /*dataSource = new MatTableDataSource(
     this.extrairRequerimentos(MOCK_BENEFICIARIOS)
-  );
+  );*/
   dataSourceOriginal: any[] = this.extrairRequerimentos(MOCK_BENEFICIARIOS);
   selection = new SelectionModel<any>(true, []);
+  private beneficiariosOriginais = MOCK_BENEFICIARIOS;
+
+  dataSource = new MatTableDataSource(
+    this.extrairRequerimentos(this.beneficiariosOriginais)
+  );
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -187,7 +193,7 @@ export class FiltrosComponent implements OnInit {
 
   // 🔎 Método de busca
   pesquisar(): void {
-    const filtros = this.form.value;
+    const f = this.form.value;
 
     const normalizar = (valor: any): string =>
       (valor || '')
@@ -198,62 +204,164 @@ export class FiltrosComponent implements OnInit {
         .replace(/[^\w\s]/g, '') // remove pontuação (útil p/ CPF e nomes)
         .trim();
 
-    const filtrados = this.dataSourceOriginal.filter((item) => {
-      return Object.keys(filtros).every((campo) => {
-        const valorFiltro = filtros[campo];
-        if (!valorFiltro) return true; // ignora campo vazio
-        const filtroNormalizado = normalizar(valorFiltro);
+    // Normaliza SR: extrai apenas dígitos e padStart para 3 chars (ex: "SR-01" -> "001")
+    const normalizeSR = (valor: any): string => {
+      const digits = (valor || '').toString().replace(/\D/g, '');
+      return digits ? digits.padStart(3, '0') : '';
+    };
 
-        switch (campo) {
-          case 'nome': // formControlName="nome"
-            return (
-              normalizar(item.nome_T1).includes(filtroNormalizado) ||
-              normalizar(item.nome_T2).includes(filtroNormalizado)
-            );
+    const beneficiariosFiltrados = this.beneficiariosOriginais.filter(
+      (b: any) => {
+        // ✔ Nome (nome_T1 ou nome_T2)
+        const matchNome = f.nome
+          ? normalizar(b.nome_T1).includes(normalizar(f.nome)) ||
+            normalizar(b.nome_T2).includes(normalizar(f.nome))
+          : true;
 
-          case 'cpf': // formControlName="cpf"
-            return (
-              normalizar(item.cpf_T1).includes(filtroNormalizado) ||
-              normalizar(item.cpf_conjuge).includes(filtroNormalizado)
-            );
+        // ✔ CPF (cpf_T1 ou cpf_conjuge) — sem máscara
+        const matchCpf = f.cpf
+          ? normalizar(b.cpf_T1).includes(normalizar(f.cpf)) ||
+            normalizar(b.cpf_conjuge).includes(normalizar(f.cpf))
+          : true;
 
-          case 'projetoDeAssentamento': // formControlName="projetoDeAssentamento"
-            return normalizar(item.projeto).includes(filtroNormalizado);
+        // ✔ Projeto de Assentamento (campo projeto no JSON)
+        const matchProjeto = f.projetoDeAssentamento
+          ? normalizar(b.projeto).includes(normalizar(f.projetoDeAssentamento))
+          : true;
 
-          case 'numeroRequerimento': // formControlName="numeroRequerimento"
-            return (item.requerimento || []).some((req: any) =>
-              normalizar((req.numerosDoRequerimento || []).join(' ')).includes(
-                filtroNormalizado
+        // ✔ SR (trata formatos diferentes: "SR-01", "01", "001" etc.)
+        const matchSR = f.sr
+          ? (() => {
+              const filtroSRs = Array.isArray(f.sr) ? f.sr : [f.sr];
+              const filtroNormalized = filtroSRs.map((s: any) =>
+                normalizeSR(s)
+              );
+              const bsr = normalizeSR(b.sr);
+              return filtroNormalized.length === 0
+                ? true
+                : filtroNormalized.includes(bsr);
+            })()
+          : true;
+
+        // ✔ UF (tenta comparar sigla/nome/id de forma tolerante)
+        const matchUf = f.uf
+          ? (() => {
+              const fv = f.uf?.toString().toLowerCase();
+              if (!fv) return true;
+              // compara com sigla ou nome (campo 'estados' no mock) ou campo 'uf' caso exista
+              return (
+                (b.estados &&
+                  b.estados.toString().toLowerCase().includes(fv)) ||
+                (b.uf && b.uf.toString().toLowerCase().includes(fv)) ||
+                (b.estadoId && b.estadoId?.toString() === fv) // se você tiver id nos dados
+              );
+            })()
+          : true;
+
+        // ✔ Município (tolerante a nome ou código)
+        const matchMunicipio = f.municipio
+          ? (() => {
+              const mv = f.municipio?.toString();
+              if (!mv) return true;
+              return (
+                (b.codigo_municipio && b.codigo_municipio.toString() === mv) ||
+                (b.municipio &&
+                  normalizar(b.municipio).includes(normalizar(mv)))
+              );
+            })()
+          : true;
+
+        // 🔎 Filtros que incidem dentro de requerimento
+        const reqs = b.requerimento || [];
+        const algumFiltroDeReq = !!(
+          f.numeroDoRequerimento ||
+          f.tipoDeServico ||
+          f.status ||
+          f.dataDoRequerimento
+        );
+
+        // ✔ Combinação dentro do MESMO requerimento (AND entre filtros de requerimento)
+        const reqMatch = reqs.some((req: any) => {
+          const matchNumReq = f.numeroDoRequerimento
+            ? normalizar((req.numerosDoRequerimento || []).join(' ')).includes(
+                normalizar(f.numeroDoRequerimento)
               )
-            );
+            : true;
 
-          case 'status': // formControlName="status"
-            return (
-              normalizar(item.status).includes(filtroNormalizado) ||
-              (item.requerimento || []).some((req: any) =>
-                normalizar(req.status).includes(filtroNormalizado)
+          const matchTipoServico = f.tipoDeServico
+            ? normalizar(req.tipoDeServico).includes(
+                normalizar(f.tipoDeServico)
               )
-            );
+            : true;
 
-          case 'tipoDeServico': // formControlName="tipoDeServico"
-            return (item.requerimento || []).some((req: any) =>
-              normalizar(req.tipoDeServico).includes(filtroNormalizado)
-            );
+          const matchStatusReq = f.status
+            ? normalizar(req.status).includes(normalizar(f.status))
+            : true;
 
-          default:
-            return normalizar(item[campo]).includes(filtroNormalizado);
-        }
-      });
-    });
+          // se for buscado por dataDoRequerimento, compare (assumindo que o form fornece Date ou string)
+          const matchDataReq = f.dataDoRequerimento
+            ? (() => {
+                const filtroData = f.dataDoRequerimento;
+                if (!req.dataRequerimento) return false;
+                // tenta comparar strings normalizadas (caso seu formato seja dd/mm/yyyy no mock)
+                return normalizar(req.dataRequerimento).includes(
+                  normalizar(filtroData)
+                );
+              })()
+            : true;
 
-    this.dataSource.data = filtrados;
+          return (
+            matchNumReq && matchTipoServico && matchStatusReq && matchDataReq
+          );
+        });
+
+        // ✔ Status também pode bater no topo do beneficiário (quando não há filtros de requerimento)
+        const matchStatusTopo = f.status
+          ? normalizar(b.status).includes(normalizar(f.status))
+          : true;
+
+        // Regra final para a parte de requerimentos:
+        // - Se houver QUALQUER filtro de requerimento, exige que ALGO bata em um requerimento (reqMatch).
+        // - Se não houver filtro de requerimento, aceita status no topo do beneficiário.
+        const matchRequerimentos = algumFiltroDeReq
+          ? reqMatch
+          : matchStatusTopo;
+
+        return (
+          matchNome &&
+          matchCpf &&
+          matchProjeto &&
+          matchSR &&
+          matchUf &&
+          matchMunicipio &&
+          matchRequerimentos
+        );
+      }
+    );
+
+    // Atualiza a tabela com os requerimentos dos beneficiários filtrados
+    this.dataSource.data = this.extrairRequerimentos(beneficiariosFiltrados);
     this.dataSource.paginator = this.paginator;
   }
 
-  // 🔄 Limpar filtros
   limpar(): void {
-    this.form.reset();
-    this.dataSource.data = this.dataSourceOriginal;
+    this.form.reset({
+      cpf: '',
+      nome: '',
+      sr: '',
+      uf: '',
+      municipio: '',
+      projetoDeAssentamento: '',
+      numeroDoRequerimento: '',
+      dataDoRequerimento: '',
+      tipoDeServico: '',
+      status: '',
+    });
+
+    this.selection.clear();
+    this.dataSource.data = this.extrairRequerimentos(
+      this.beneficiariosOriginais
+    );
     this.dataSource.paginator = this.paginator;
   }
 
