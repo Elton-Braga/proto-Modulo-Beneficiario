@@ -462,7 +462,19 @@ export class FiltrosComponent implements OnInit {
           width: '90rem',
           height: '70rem',
           maxWidth: 'none',
-          data: elemento,
+          data: {
+            ...elemento,
+            bloqueios: elemento.bloqueios || [
+              // se não existir, mocka um array
+              {
+                descricao_bloqueio: 'Documento pendente',
+                situacao_analise: 'Em análise',
+                descricao_sub_bloqueio: 'Falta RG',
+                desbloqueio_atendido: 'Não',
+                descricao_motivo_bloqueio: 'Aguardando documentação',
+              },
+            ],
+          },
           enterAnimationDuration: '300ms',
           exitAnimationDuration: '200ms',
         });

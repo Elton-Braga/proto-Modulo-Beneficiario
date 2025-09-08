@@ -18,3 +18,20 @@ p {
   background-color: #fff; // Fundo branco
   margin: 2rem 3rem; // Espaço entre os blocos
 }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  width: 10rem;
+}
+
+.table th {
+  background-color: #f9f9f9;
+  text-align: left;
+}
