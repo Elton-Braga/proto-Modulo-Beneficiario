@@ -130,8 +130,19 @@
 
               <mat-form-field appearance="outline" class="w-full col-3">
                 <mat-label>Status</mat-label>
-                <input matInput formControlName="status" />
+                <mat-select formControlName="status">
+                  @for (item of status; track item) {
+                  <mat-option [value]="item">
+                    {{ item }}
+                  </mat-option>
+                  }
+                </mat-select>
               </mat-form-field>
+
+              <!--<mat-form-field appearance="outline" class="w-full col-3">
+                <mat-label>Status</mat-label>
+                <input matInput formControlName="status" />
+              </mat-form-field>-->
             </div>
 
             <div class="row">

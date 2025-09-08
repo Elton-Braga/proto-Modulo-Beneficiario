@@ -81,10 +81,11 @@ export class FiltrosComponent implements OnInit {
   srList: string[] = ['SR-01', 'SR-02', 'SR-03', 'SR-04'];
   statusList: string[] = ['Pendente', 'Em Andamento', 'Concluído', 'Cancelado'];
   tiposServico: string[] = [
-    'Vistoria',
-    'Regularização',
-    'Atualização Cadastral',
-    'Outro',
+    'Transferencia de Assentamento',
+    'Desbloqueio',
+    'Altualização de unidade familiar',
+    'Atualização de dados pessoais',
+    'Atualização de situação',
   ];
 
   displayedColumns: string[] = [
@@ -149,6 +150,14 @@ export class FiltrosComponent implements OnInit {
   readonly dialog = inject(MatDialog);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  status = [
+    'Processada',
+    'Processada com pendencias',
+    'Deferido',
+    'Indeferido',
+    'Cancelado',
+  ];
 
   ngOnInit(): void {
     this.form = this.fb.group({
