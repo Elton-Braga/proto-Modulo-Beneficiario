@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   FormBuilder,
   FormGroup,
@@ -29,7 +35,18 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { ServicosService } from '../../novo-cadastro/tela-1/servico/servicos.service';
 import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
 import { Beneficiario } from '../../lista/beneficiario';
-
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose,
+  MatDialogContent,
+  MatDialogRef,
+  MatDialogTitle,
+} from '@angular/material/dialog';
+import { AnalisarComponent } from '../modal/analisar/analisar.component';
+import { HistoricoComponent } from '../modal/historico/historico.component';
+import { DetalharComponent } from '../modal/detalhar/detalhar.component';
+import { CancelamentosComponent } from '../modal/cancelamentos/cancelamentos.component';
 @Component({
   standalone: true,
   selector: 'app-filtros',
@@ -55,6 +72,7 @@ import { Beneficiario } from '../../lista/beneficiario';
   ],
   templateUrl: './filtros.component.html',
   styleUrls: ['./filtros.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FiltrosComponent implements OnInit {
   form!: FormGroup;
@@ -127,6 +145,8 @@ export class FiltrosComponent implements OnInit {
   dataSource = new MatTableDataSource(
     this.extrairRequerimentos(this.beneficiariosOriginais)
   );
+
+  readonly dialog = inject(MatDialog);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -408,6 +428,80 @@ export class FiltrosComponent implements OnInit {
       console.log('Export Excel ainda não implementado');
     } else if (tipo === 'pdf') {
       console.log('Export PDF ainda não implementado');
+    }
+  }
+
+  /*openDialogAnalisar(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialog.open(AnalisarComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+
+  openDialogHistorico(
+    enterAnimationDuration: string,
+    exitAnimationDuration: string
+  ): void {
+    this.dialog.open(HistoricoComponent, {
+      width: '250px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }*/
+
+  executarAcao(acao: string, elemento: Beneficiario) {
+    console.log(`Ação "${acao}" executada para CPF ${elemento.cpf_T1}`);
+
+    switch (acao) {
+      case 'Detalhar':
+        this.dialog.open(DetalharComponent, {
+          width: '90rem',
+          height: '70rem',
+          maxWidth: 'none',
+          data: elemento,
+          enterAnimationDuration: '300ms',
+          exitAnimationDuration: '200ms',
+        });
+        break;
+
+      case 'Historico':
+        this.dialog.open(HistoricoComponent, {
+          width: '90rem',
+          height: '70rem',
+          maxWidth: 'none',
+          data: elemento,
+          enterAnimationDuration: '300ms',
+          exitAnimationDuration: '200ms',
+        });
+        break;
+
+      case 'Analisar':
+        this.dialog.open(AnalisarComponent, {
+          width: '90rem',
+          height: '70rem',
+          maxWidth: 'none',
+          data: elemento,
+          enterAnimationDuration: '300ms',
+          exitAnimationDuration: '200ms',
+        });
+        break;
+      case 'Cancelar':
+        this.dialog.open(CancelamentosComponent, {
+          width: '90rem',
+          height: '70rem',
+          maxWidth: 'none',
+          data: elemento,
+          enterAnimationDuration: '300ms',
+          exitAnimationDuration: '200ms',
+        });
+        break;
+
+      default:
+        console.warn(`Ação "${acao}" não tratada ainda.`);
     }
   }
 

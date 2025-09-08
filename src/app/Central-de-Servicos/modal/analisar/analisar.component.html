@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Analisar Requerimento</h2>
+<mat-dialog-content>
+  <p><strong>Nº Requerimento:</strong> {{ data.numeroRequerimento }}</p>
+  <p><strong>Nome Beneficiário:</strong> {{ data.nomeBeneficiario }}</p>
+  <p><strong>Status:</strong> {{ data.status }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="fechar()">Fechar</button>
+</mat-dialog-actions>

@@ -316,18 +316,7 @@
           <button
             mat-menu-item
             *ngFor="let acao of row.acoes"
-            (click)="
-              acao.toLowerCase() === 'detalhar'
-                ? detalhar(row)
-                : acao.toLowerCase() === 'analisar'
-                ? analisar(row)
-                : acao.toLowerCase() === 'historico' ||
-                  acao.toLowerCase() === 'histórico'
-                ? historico(row)
-                : acao.toLowerCase() === 'cancelar'
-                ? cancelar(row)
-                : null
-            "
+            (click)="executarAcao(acao, row)"
           >
             <mat-icon>{{ getIcon(acao) }}</mat-icon>
             <span>{{ acao }}</span>
