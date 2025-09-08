@@ -5,8 +5,7 @@ export interface RequerimentoFiltro {
   codigoBeneficiario: string;
   cpfBeneficiario: string;
   nomeBeneficiario: string;
-  cpfConjuge: string;
-  nomeConjuge: string;
+  solicitante: string;
   sr: string;
   uf: string;
   projetoAssentamento: string;

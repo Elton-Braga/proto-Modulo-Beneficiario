@@ -1,1 +1,51 @@
-<p>detalhar works!</p>
+<div class="row">
+  <!-- 1. Informações do Solicitante -->
+  <div class="col-6">
+    <div class="card-box">
+      <h5>
+        <mat-icon>person</mat-icon>
+        Informações do solicitante
+      </h5>
+      <p><strong>Nome:</strong> {{ data.nome_T1 }}</p>
+      <p><strong>CPF:</strong> {{ data.cpf_T1 }}</p>
+    </div>
+  </div>
+
+  <!-- 2. Localização -->
+  <div class="col-6">
+    <div class="card-box">
+      <h5>
+        <mat-icon>location_on</mat-icon>
+        Localização
+      </h5>
+      <p><strong>UF:</strong> {{ data.estados }}</p>
+      <p><strong>SR:</strong> {{ data.sr }}</p>
+      <p><strong>Município:</strong> {{ data.municipio }}</p>
+      <p><strong>Projeto:</strong> {{ data.projeto }}</p>
+    </div>
+  </div>
+
+  <!-- 3. Informações da Solicitação -->
+  <div class="col-12">
+    <div class="card-box">
+      <h5>
+        <mat-icon>assignment</mat-icon>
+        Informações da solicitação
+      </h5>
+      <p>
+        <strong>Tipo da solicitação:</strong>
+        {{ data.requerimento[0]?.tipoDeServico }}
+      </p>
+      <p>
+        <strong>Data da solicitação:</strong>
+        {{ data.requerimento[0]?.dataRequerimento || "Não informada" }}
+      </p>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-10"></div>
+  <div class="col-2">
+    <button class="btn btn-primary" (click)="fechar()">Fechar</button>
+  </div>
+</div>
