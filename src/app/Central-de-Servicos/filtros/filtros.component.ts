@@ -59,7 +59,7 @@ export class FiltrosComponent implements OnInit {
   form!: FormGroup;
   estados: any[] = [];
   municipios: any[] = [];
-  srList: string[] = ['001', '002', '003', '004'];
+  srList: string[] = ['SR-01', 'SR-02', 'SR-03', 'SR-04'];
   statusList: string[] = ['Pendente', 'Em Andamento', 'Concluído', 'Cancelado'];
   tiposServico: string[] = [
     'Vistoria',
@@ -119,6 +119,7 @@ export class FiltrosComponent implements OnInit {
   dataSource = new MatTableDataSource(
     this.extrairRequerimentos(MOCK_BENEFICIARIOS)
   );
+  dataSourceOriginal: any[] = this.extrairRequerimentos(MOCK_BENEFICIARIOS);
   selection = new SelectionModel<any>(true, []);
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -134,7 +135,7 @@ export class FiltrosComponent implements OnInit {
       numeroDoRequerimento: [''],
       dataDoRequerimento: [''],
       tipoDeServico: [''],
-      status: ['Pendente'],
+      status: [''],
     });
 
     this.carregarEstados();
@@ -184,6 +185,78 @@ export class FiltrosComponent implements OnInit {
     return requerimentos;
   }
 
+  // 🔎 Método de busca
+  pesquisar(): void {
+    const filtros = this.form.value;
+
+    const normalizar = (valor: any): string =>
+      (valor || '')
+        .toString()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '') // remove acentos
+        .replace(/[^\w\s]/g, '') // remove pontuação (útil p/ CPF e nomes)
+        .trim();
+
+    const filtrados = this.dataSourceOriginal.filter((item) => {
+      return Object.keys(filtros).every((campo) => {
+        const valorFiltro = filtros[campo];
+        if (!valorFiltro) return true; // ignora campo vazio
+        const filtroNormalizado = normalizar(valorFiltro);
+
+        switch (campo) {
+          case 'nome': // formControlName="nome"
+            return (
+              normalizar(item.nome_T1).includes(filtroNormalizado) ||
+              normalizar(item.nome_T2).includes(filtroNormalizado)
+            );
+
+          case 'cpf': // formControlName="cpf"
+            return (
+              normalizar(item.cpf_T1).includes(filtroNormalizado) ||
+              normalizar(item.cpf_conjuge).includes(filtroNormalizado)
+            );
+
+          case 'projetoDeAssentamento': // formControlName="projetoDeAssentamento"
+            return normalizar(item.projeto).includes(filtroNormalizado);
+
+          case 'numeroRequerimento': // formControlName="numeroRequerimento"
+            return (item.requerimento || []).some((req: any) =>
+              normalizar((req.numerosDoRequerimento || []).join(' ')).includes(
+                filtroNormalizado
+              )
+            );
+
+          case 'status': // formControlName="status"
+            return (
+              normalizar(item.status).includes(filtroNormalizado) ||
+              (item.requerimento || []).some((req: any) =>
+                normalizar(req.status).includes(filtroNormalizado)
+              )
+            );
+
+          case 'tipoDeServico': // formControlName="tipoDeServico"
+            return (item.requerimento || []).some((req: any) =>
+              normalizar(req.tipoDeServico).includes(filtroNormalizado)
+            );
+
+          default:
+            return normalizar(item[campo]).includes(filtroNormalizado);
+        }
+      });
+    });
+
+    this.dataSource.data = filtrados;
+    this.dataSource.paginator = this.paginator;
+  }
+
+  // 🔄 Limpar filtros
+  limpar(): void {
+    this.form.reset();
+    this.dataSource.data = this.dataSourceOriginal;
+    this.dataSource.paginator = this.paginator;
+  }
+
   // Seleção
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -225,10 +298,8 @@ export class FiltrosComponent implements OnInit {
       console.log('Export CSV:', csv);
     } else if (tipo === 'excel') {
       console.log('Export Excel ainda não implementado');
-      // 👉 aqui você pode usar XLSX.utils.json_to_sheet(selecionados)
     } else if (tipo === 'pdf') {
       console.log('Export PDF ainda não implementado');
-      // 👉 aqui você pode usar jsPDF ou pdfmake
     }
   }
 
@@ -285,7 +356,4 @@ export class FiltrosComponent implements OnInit {
       this.form.markAllAsTouched();
     }
   }
-
-  limpar() {}
-  pesquisar() {}
 }
