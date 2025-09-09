@@ -1,3 +1,11 @@
+<div class="row">
+  <div class="col-2 ajuste">
+    <button class="btn btn-ligth" (click)="abrirDetalhar(data)">
+      <i class="fas fa-search"></i> Analisar
+    </button>
+  </div>
+  <div class="col-10"></div>
+</div>
 <div class="card-box">
   <div class="card-header"><h5>Dados do Requerimento</h5></div>
   <div class="card-body">
@@ -84,77 +92,84 @@
     </table>
 
     <!-- Tabela de bloqueios -->
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Observação do Bloqueio</th>
-          <th>Situação de Bloqueio</th>
-          <th>Tipo de Subbloqueio</th>
-          <th>Desbloqueio</th>
-          <th>Justificativa do Desbloqueio</th>
-          <th>Envio de Arquivo Comprovante</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let bloqueio of data?.bloqueios || []">
-          <td>{{ getValorOuDefault(bloqueio?.descricao_bloqueio) }}</td>
-          <td>{{ getValorOuDefault(bloqueio?.situacao_analise) }}</td>
-          <td>{{ getValorOuDefault(bloqueio?.descricao_sub_bloqueio) }}</td>
-          <td>{{ getValorOuDefault(bloqueio?.desbloqueio_atendido) }}</td>
-          <td>{{ getValorOuDefault(bloqueio?.descricao_motivo_bloqueio) }}</td>
-          <td>
-            <a href="#" target="_blank">
-              <mat-icon aria-hidden="false" aria-label="Comprovante"
-                >attach_file</mat-icon
-              >
-              comprovante.pdf
-            </a>
-          </td>
-        </tr>
-        <tr *ngIf="!data?.bloqueios || data?.bloqueios?.length === 0">
-          <td colspan="6" class="text-center text-muted">
-            Nenhum bloqueio informado
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div *ngIf="data?.tipoServico === 'Desbloqueio'">
+      <h3>Bloqueios</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Observação do Bloqueio</th>
+            <th>Situação de Bloqueio</th>
+            <th>Tipo de Subbloqueio</th>
+            <th>Desbloqueio</th>
+            <th>Justificativa do Desbloqueio</th>
+            <th>Envio de Arquivo Comprovante</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bloqueio of data?.bloqueios || []">
+            <td>{{ getValorOuDefault(bloqueio?.descricao_bloqueio) }}</td>
+            <td>{{ getValorOuDefault(bloqueio?.situacao_analise) }}</td>
+            <td>{{ getValorOuDefault(bloqueio?.descricao_sub_bloqueio) }}</td>
+            <td>{{ getValorOuDefault(bloqueio?.desbloqueio_atendido) }}</td>
+            <td>
+              {{ getValorOuDefault(bloqueio?.descricao_motivo_bloqueio) }}
+            </td>
+            <td><mat-icon>attach_file</mat-icon> comprovante.pdf</td>
+          </tr>
+          <tr *ngIf="!data?.bloqueios?.length">
+            <td colspan="6" class="text-center text-muted">
+              Nenhum bloqueio informado
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <!-- Unidade familiar -->
-    <h3>Atualização de Unidade Familiar</h3>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>CPF do Titular</th>
-          <th>Nome do Titular</th>
-          <th>CPF do Cônjuge</th>
-          <th>Nome do Cônjuge/Companheiro(a)</th>
-          <th>Situação Conjugal</th>
-          <th>Data da União</th>
-          <th>Envio de arquivo comprovante</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngIf="data?.dependentes?.length > 0; else semDependente">
-          <td>{{ data?.cpf_T1 }}</td>
-          <td>{{ data?.nome_T1 }}</td>
-          <td>{{ data?.cpf_conjuge }}</td>
-          <td>{{ data?.nome_T2 }}</td>
-          <td>
-            {{ data?.dependentes[0]?.situacao_conjugal || "Não informado" }}
-          </td>
-          <td>
-            {{
-              data?.dependentes[0]?.data_uniao
-                ? (data?.dependentes[0]?.data_uniao | date : "dd/MM/yyyy")
-                : "Não informado"
-            }}
-          </td>
-          <td>
-            <mat-icon>attach_file</mat-icon>
-            <a href="#">comprovante.pdf</a>
-          </td>
-        </tr>
-      </tbody>
+    <div *ngIf="data?.tipoServico === 'Altualização de unidade familiar'">
+      <h3>Atualização de Unidade Familiar</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>CPF do Titular</th>
+            <th>Nome do Titular</th>
+            <th>CPF do Cônjuge</th>
+            <th>Nome do Cônjuge/Companheiro(a)</th>
+            <th>Situação Conjugal</th>
+            <th>Data da União</th>
+            <th>Envio de arquivo comprovante</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="data?.dependentes?.length > 0; else semDependente">
+            <td>{{ data?.cpf_T1 }}</td>
+            <td>{{ data?.nome_T1 }}</td>
+            <td>{{ data?.cpf_conjuge }}</td>
+            <td>{{ data?.nome_T2 }}</td>
+            <td>
+              {{ data?.dependentes[0]?.situacao_conjugal || "Não informado" }}
+            </td>
+            <td>
+              {{
+                data?.dependentes[0]?.data_uniao
+                  ? (data?.dependentes[0]?.data_uniao | date : "dd/MM/yyyy")
+                  : "Não informado"
+              }}
+            </td>
+            <td>
+              <mat-icon>attach_file</mat-icon>
+              <a href="#">comprovante.pdf</a>
+            </td>
+          </tr>
+        </tbody>
+        <ng-template #semDependente>
+          <tr>
+            <td colspan="7" class="text-center text-muted">
+              Nenhum dependente informado
+            </td>
+          </tr>
+        </ng-template>
+      </table>
       <ng-template #semDependente>
         <tr>
           <td colspan="7" class="text-center text-muted">
@@ -162,72 +177,68 @@
           </td>
         </tr>
       </ng-template>
-    </table>
-    <ng-template #semDependente>
-      <tr>
-        <td colspan="7" class="text-center text-muted">
-          Nenhum dependente informado
-        </td>
-      </tr>
-    </ng-template>
+    </div>
 
     <!-- Atualizar dados pessoais -->
-    <h3>Atualizar dados pessoais?</h3>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>CPF do Beneficiário</th>
-          <th>Nome do Beneficiário</th>
-          <th>Data de nascimento</th>
-          <th>Naturalidade</th>
-          <th>Nome da mãe</th>
-          <th>Telefone</th>
-          <th>E-mail</th>
-          <th>Endereço</th>
-          <th>Atualizar meus dados pela Receita Federal</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{ getValorOuDefault(data?.cpf_T1) }}</td>
-          <td>{{ getValorOuDefault(data?.nome_T1) }}</td>
-          <td>{{ getValorOuDefault(data?.data_nascimento) }}</td>
-          <td>{{ getValorOuDefault(data?.naturalidade) }}</td>
-          <td>{{ getValorOuDefault(data?.nome_mae) }}</td>
-          <td>{{ getValorOuDefault(data?.telefone) }}</td>
-          <td>{{ getValorOuDefault(data?.email) }}</td>
-          <td>
-            {{ getValorOuDefault(data?.municipio) }} -
-            {{ getValorOuDefault(data?.estados) }}
-          </td>
-          <td>Não</td>
-        </tr>
-      </tbody>
-    </table>
+    <div *ngIf="data?.tipoServico === 'Atualização de dados pessoais'">
+      <h3>Atualizar dados pessoais</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>CPF do Beneficiário</th>
+            <th>Nome do Beneficiário</th>
+            <th>Data de nascimento</th>
+            <th>Naturalidade</th>
+            <th>Nome da mãe</th>
+            <th>Telefone</th>
+            <th>E-mail</th>
+            <th>Endereço</th>
+            <th>Atualizar meus dados pela Receita Federal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ getValorOuDefault(data?.cpf_T1) }}</td>
+            <td>{{ getValorOuDefault(data?.nome_T1) }}</td>
+            <td>{{ getValorOuDefault(data?.data_nascimento) }}</td>
+            <td>{{ getValorOuDefault(data?.naturalidade) }}</td>
+            <td>{{ getValorOuDefault(data?.nome_mae) }}</td>
+            <td>{{ getValorOuDefault(data?.telefone) }}</td>
+            <td>{{ getValorOuDefault(data?.email) }}</td>
+            <td>
+              {{ getValorOuDefault(data?.municipio) }} -
+              {{ getValorOuDefault(data?.estados) }}
+            </td>
+            <td>Não</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <!-- Alterar situação do Assentamento -->
-    <h3>Alterar situação do Assentamento</h3>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Situação no Assentamento</th>
-          <th>Data da Situação</th>
-          <th>Motivo</th>
-          <th>Declaração de desistência</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>{{ getValorOuDefault(data?.situacao_Titular) }}</td>
-          <td>{{ getValorOuDefault(data?.data_situacao_Titular) }}</td>
-          <td>{{ getValorOuDefault(data?.observacao) }}</td>
-          <td>
-            <mat-icon>attach_file</mat-icon>
-            <a href="#">desistencia.pdf</a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+    <div *ngIf="data?.tipoServico === 'Transferencia de Assentamento'">
+      <!--<h3>Alterar situação do Assentamento</h3>-->
+      <h3>Transferência de Assentamento</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Município</th>
+            <th>Projeto de Assentamento</th>
+            <th>Número do Lote</th>
+            <th>Data de Início da Ocupação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ getValorOuDefault(data?.municipio) }}</td>
+            <td>{{ getValorOuDefault(data?.projeto) }}</td>
+            <td>{{ getValorOuDefault(data?.numero_lote) }}</td>
+            <td>{{ getValorOuDefault(data?.periodo_regularizacao) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
 

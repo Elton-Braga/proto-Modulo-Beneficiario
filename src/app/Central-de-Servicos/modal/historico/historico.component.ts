@@ -13,7 +13,7 @@ export class HistoricoComponent {
   displayedColumns = ['status', 'cpf', 'dataHora'];
   dados = [
     {
-      status: 'Concluído',
+      status: 'Processado',
       cpf: '123.456.789-00',
       dataHora: '01/09/2025 14:32',
     },
@@ -24,16 +24,20 @@ export class HistoricoComponent {
       dataHora: '03/09/2025 16:48',
     },
     {
-      status: 'Cancelado',
+      status: 'Deferido',
       cpf: '555.666.777-88',
       dataHora: '04/09/2025 11:03',
     },
     {
-      status: 'Rejeitado',
+      status: 'Indeferido',
       cpf: '222.333.444-55',
       dataHora: '05/09/2025 18:27',
     },
-    { status: 'Aprovado', cpf: '999.888.777-66', dataHora: '06/09/2025 08:05' },
+    {
+      status: 'Processado com pendencias',
+      cpf: '999.888.777-66',
+      dataHora: '06/09/2025 08:05',
+    },
   ];
   constructor(
     public dialogRef: MatDialogRef<AnalisarComponent>,
