@@ -1,1 +1,23 @@
-<p>cancelamentos works!</p>
+<!-- cancelar-solicitacao.component.html -->
+<div class="cancelar-container">
+  <div class="cancelar-card">
+    <h2 class="titulo">Cancelar solicitação</h2>
+
+    <div class="form-group">
+      <label for="justificativa" class="ajuste">Justificativa</label>
+      <textarea
+        id="justificativa"
+        [(ngModel)]="justificativa"
+        rows="6"
+        placeholder="Informe o motivo detalhado do cancelamento"
+      ></textarea>
+    </div>
+
+    <div class="acoes">
+      <button class="btn btn-cancelar" (click)="onCancelar()">Cancelar</button>
+      <button class="btn btn-confirmar" (click)="onConfirmar()">
+        Confirmar
+      </button>
+    </div>
+  </div>
+</div>

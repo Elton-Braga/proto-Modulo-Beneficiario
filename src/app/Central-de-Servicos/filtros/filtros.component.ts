@@ -440,28 +440,6 @@ export class FiltrosComponent implements OnInit {
     }
   }
 
-  /*openDialogAnalisar(
-    enterAnimationDuration: string,
-    exitAnimationDuration: string
-  ): void {
-    this.dialog.open(AnalisarComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-  }
-
-  openDialogHistorico(
-    enterAnimationDuration: string,
-    exitAnimationDuration: string
-  ): void {
-    this.dialog.open(HistoricoComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-  }*/
-
   executarAcao(acao: string, elemento: Beneficiario) {
     console.log(`Ação "${acao}" executada para CPF ${elemento.cpf_T1}`);
 
@@ -512,12 +490,14 @@ export class FiltrosComponent implements OnInit {
         break;
       case 'Cancelar':
         this.dialog.open(CancelamentosComponent, {
-          width: '90rem',
-          height: '70rem',
+          width: '50rem',
+          height: '27.6rem',
+
           maxWidth: 'none',
           data: elemento,
           enterAnimationDuration: '300ms',
           exitAnimationDuration: '200ms',
+          panelClass: 'no-scroll-dialog',
         });
         break;
 

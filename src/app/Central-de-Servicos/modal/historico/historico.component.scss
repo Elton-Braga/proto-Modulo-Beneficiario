@@ -1,0 +1,19 @@
+/* historico.component.scss */
+.historico-wrapper {
+  margin: 5rem; /* afastada 5rem das bordas da tela */
+}
+
+.historico-table {
+  width: 100%;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+th[mat-header-cell] {
+  font-weight: 600;
+}
+
+td[mat-cell],
+th[mat-header-cell] {
+  padding: 0.75rem 1rem;
+}
