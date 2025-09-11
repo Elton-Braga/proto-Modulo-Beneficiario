@@ -350,7 +350,15 @@
           <ng-container matColumnDef="Bloqueios">
             <th mat-header-cell *matHeaderCellDef>Bloqueios</th>
             <td mat-cell *matCellDef="let element">
-              {{ preencher_pendencias }}
+              <ng-container
+                *ngIf="element.bloqueios?.length > 0; else semBloqueio"
+              >
+                <div *ngFor="let b of element.bloqueios">
+                  {{ b.bloqueio }}
+                  <!-- - {{ b.descricao_bloqueio }}-->
+                </div>
+              </ng-container>
+              <ng-template #semBloqueio> Nenhum bloqueio </ng-template>
             </td>
           </ng-container>
 

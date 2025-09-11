@@ -103,6 +103,7 @@ export class FiltrosComponent implements OnInit {
     'tipoServico',
     'perfilSolicitante',
     'status',
+    'Bloqueios',
     'acoes',
   ];
 
@@ -133,6 +134,7 @@ export class FiltrosComponent implements OnInit {
       visivel: true,
     },
     { chave: 'status', label: 'Status', visivel: true },
+    { chave: 'bloqueios', label: 'Bloqueios', visivel: true },
     { chave: 'acoes', label: 'Ações', visivel: true },
   ];
 
@@ -213,6 +215,7 @@ export class FiltrosComponent implements OnInit {
             perfilSolicitante: req.perfilDoSolicitante || '',
             status: req.status || '',
             acoes: req.acoes || [],
+            bloqueios: beneficiario.bloqueios || [],
           });
         });
       }

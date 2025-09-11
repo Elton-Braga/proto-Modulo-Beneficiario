@@ -94,10 +94,12 @@
     <!-- Tabela de bloqueios -->
     <div *ngIf="data?.tipoServico === 'Desbloqueio'">
       <h3>Bloqueios</h3>
+
+      <!-- Tabela principal (sem Observação do Bloqueio) -->
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Observação do Bloqueio</th>
+            <!-- Coluna REMOVIDA: Observação do Bloqueio -->
             <th>Situação de Bloqueio</th>
             <th>Tipo de Subbloqueio</th>
             <th>Desbloqueio</th>
@@ -107,7 +109,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let bloqueio of data?.bloqueios || []">
-            <td>{{ getValorOuDefault(bloqueio?.descricao_bloqueio) }}</td>
+            <!-- Célula REMOVIDA: descrição_bloqueio -->
             <td>{{ getValorOuDefault(bloqueio?.situacao_analise) }}</td>
             <td>{{ getValorOuDefault(bloqueio?.descricao_sub_bloqueio) }}</td>
             <td>{{ getValorOuDefault(bloqueio?.desbloqueio_atendido) }}</td>
@@ -116,6 +118,7 @@
             </td>
             <td><mat-icon>attach_file</mat-icon> comprovante.pdf</td>
           </tr>
+
           <tr *ngIf="!data?.bloqueios?.length">
             <td colspan="6" class="text-center text-muted">
               Nenhum bloqueio informado
@@ -123,6 +126,50 @@
           </tr>
         </tbody>
       </table>
+
+      <!-- ✅ Nova tabela abaixo com Observação do Bloqueio -->
+      <table class="table table-bordered mt-3">
+        <thead>
+          <tr>
+            <th>Observação do Bloqueio</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="data?.bloqueios?.length">
+            <td>
+              <textarea class="form-control" rows="4" readonly>{{
+                data.bloqueios[0]?.descricao_bloqueio
+              }}</textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Desbloqueios</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Justificativa</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <textarea
+                class="form-control"
+                rows="4"
+                placeholder="Digite a justificativa aqui..."
+              ></textarea>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="row">
+        <div class="col-2">
+          <button type="button" class="btn btn-primary">Salvar</button>
+        </div>
+        <div class="col-10"></div>
+      </div>
     </div>
 
     <!-- Unidade familiar -->

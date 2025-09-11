@@ -12,8 +12,6 @@ import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
 import { Beneficiario } from '../../lista/beneficiario';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
-//import { MatSelectModule } from "@angular/material/select";
-//import { MatRadioModule } from "@angular/material/radio";
 
 type Bloqueio = 'sim' | 'não';
 
