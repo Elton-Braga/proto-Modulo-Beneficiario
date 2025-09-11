@@ -1,4 +1,5 @@
 export interface BeneficiarioBloqueio {
+  bloqueio: string;
   codigo_beneficiario: string;
   codigo_tipo_bloqueio: string;
   descricao_bloqueio: string;

@@ -132,6 +132,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
+        bloqueio: 'Sim',
         codigo_beneficiario: '001',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -312,6 +313,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
+        bloqueio: 'Sim',
         codigo_beneficiario: '0001',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -327,6 +329,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         data_resultado: '2023-08-10',
       },
       {
+        bloqueio: 'Não',
         codigo_beneficiario: '0001',
         codigo_tipo_bloqueio: '02',
         descricao_bloqueio: 'Bloqueio por inconsistência cadastral',
@@ -470,6 +473,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
+        bloqueio: 'Sim',
         codigo_beneficiario: '0002',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -622,6 +626,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
+        bloqueio: 'Sim',
         codigo_beneficiario: '0003',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -637,6 +642,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         data_resultado: '2023-08-10',
       },
       {
+        bloqueio: 'Não',
         codigo_beneficiario: '0003',
         codigo_tipo_bloqueio: '02',
         descricao_bloqueio: 'Bloqueio por inconsistência cadastral',
@@ -784,6 +790,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
+        bloqueio: 'Sim',
         codigo_beneficiario: '0004',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -799,6 +806,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         data_resultado: '2023-08-10',
       },
       {
+        bloqueio: 'Não',
         codigo_beneficiario: '0004',
         codigo_tipo_bloqueio: '02',
         descricao_bloqueio: 'Bloqueio por inconsistência cadastral',
@@ -941,6 +949,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
+        bloqueio: 'Não',
         codigo_beneficiario: '0005',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -1088,6 +1097,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
+        bloqueio: 'Não',
         codigo_beneficiario: '0006',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'não tratado',
@@ -1232,6 +1242,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
+        bloqueio: 'Não',
         codigo_beneficiario: '0007',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -1247,6 +1258,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         data_resultado: '2023-08-10',
       },
       {
+        bloqueio: 'Não',
         codigo_beneficiario: '0007',
         codigo_tipo_bloqueio: '02',
         descricao_bloqueio: 'Bloqueio por inconsistência cadastral',
@@ -1394,6 +1406,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
+        bloqueio: 'Não',
         codigo_beneficiario: '0009',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -1409,6 +1422,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         data_resultado: '2023-08-10',
       },
       {
+        bloqueio: 'Não',
         codigo_beneficiario: '0009',
         codigo_tipo_bloqueio: '02',
         descricao_bloqueio: 'Bloqueio por inconsistência cadastral',
@@ -1551,6 +1565,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
+        bloqueio: 'Não',
         codigo_beneficiario: '00010',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',

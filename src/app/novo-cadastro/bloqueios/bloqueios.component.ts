@@ -10,6 +10,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MOCK_BENEFICIARIOS } from '../../lista/MOCK_BENEFICIATIO';
 import { Beneficiario } from '../../lista/beneficiario';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+//import { MatSelectModule } from "@angular/material/select";
+//import { MatRadioModule } from "@angular/material/radio";
+
+type Bloqueio = 'sim' | 'não';
 
 @Component({
   selector: 'app-bloqueios',
@@ -18,6 +24,8 @@ import { Beneficiario } from '../../lista/beneficiario';
     MatInputModule,
     MatFormFieldModule,
     MatDatepickerModule,
+    MatRadioModule,
+    MatSelectModule,
   ],
   templateUrl: './bloqueios.component.html',
   styleUrl: './bloqueios.component.scss',
@@ -27,6 +35,7 @@ import { Beneficiario } from '../../lista/beneficiario';
 export class BloqueiosComponent {
   form!: FormGroup;
   beneficiarios: Beneficiario[] = [];
+  bloqueio: Bloqueio = 'não';
 
   constructor(private fb: FormBuilder) {
     const dadosRota = history.state;
@@ -35,7 +44,11 @@ export class BloqueiosComponent {
         ? dadosRota.bloqueios[0]
         : {};
 
+    const bloqueioInicial: Bloqueio =
+      (bloqueio.bloqueio || '').toLowerCase() === 'sim' ? 'sim' : 'não';
+
     this.form = this.fb.group({
+      bloqueio: [bloqueioInicial, Validators.required],
       codigoBeneficiario: [
         { value: bloqueio.codigo_beneficiario || '', disabled: true }, // <--- Alteração aqui
         [Validators.required],

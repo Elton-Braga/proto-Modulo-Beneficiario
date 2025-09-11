@@ -1,19 +1,36 @@
 <div class="row">
   <form [formGroup]="form" class="ajuste-form">
     <!-- Código Beneficiário -->
-    <mat-form-field appearance="outline" class="w-100 col-4">
+    <mat-form-field appearance="outline" class="w-100 col-3">
       <mat-label>Código Beneficiário</mat-label>
       <input matInput formControlName="codigoBeneficiario" />
     </mat-form-field>
 
     <!-- Código Tipo Bloqueio -->
-    <mat-form-field appearance="outline" class="w-100 col-4">
+    <mat-form-field appearance="outline" class="w-100 col-3">
       <mat-label>Código Tipo Bloqueio</mat-label>
       <input matInput formControlName="codigoTipoBloqueio" />
     </mat-form-field>
+    <!-- BLoqueado - Sim / Não -->
+    <!--
+    <mat-form-field appearance="outline" class="w-100 col-3">
+      <mat-label>Bloqueado?</mat-label>
+      <input matInput formControlName="bloqueio" />
+    </mat-form-field>
+    -->
+
+    <mat-form-field appearance="outline" class="w-100 col-3">
+      <mat-label>Bloqueio?</mat-label>
+      <mat-select formControlName="bloqueio">
+        <mat-option value="sim">Sim</mat-option>
+        <mat-option value="não">Não</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!--<p>Valor selecionado: {{ form.get("bloqueio")?.value }}</p>-->
 
     <!-- Descrição Bloqueio -->
-    <mat-form-field appearance="outline" class="w-100 col-4">
+    <mat-form-field appearance="outline" class="w-100 col-3">
       <mat-label>Descrição Bloqueio</mat-label>
       <input matInput formControlName="descricaoBloqueio" />
     </mat-form-field>
