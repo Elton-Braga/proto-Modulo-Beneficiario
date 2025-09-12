@@ -35,6 +35,14 @@ export class DetalharComponent {
     return valor;
   }
 
+  formatarData(valor: string | Date | null): string {
+    if (!valor) return 'Não informado';
+    const data = new Date(valor);
+    return isNaN(data.getTime())
+      ? 'Data inválida'
+      : data.toLocaleDateString('pt-BR');
+  }
+
   abrirDetalhar(elemento: Beneficiario) {
     console.log('clicou');
 

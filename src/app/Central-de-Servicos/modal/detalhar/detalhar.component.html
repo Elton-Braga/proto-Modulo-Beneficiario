@@ -99,28 +99,36 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <!-- Coluna REMOVIDA: Observação do Bloqueio -->
             <th>Situação de Bloqueio</th>
             <th>Tipo de Subbloqueio</th>
-            <th>Desbloqueio</th>
-            <th>Justificativa do Desbloqueio</th>
+            <th>Desbloqueio Atendido?</th>
+            <th>Justificativa do Bloqueio</th>
+            <th>Código da Transação</th>
+            <th>Data do Bloqueio</th>
+            <th>Código do Subbloqueio</th>
+            <th>Código do Motivo do Bloqueio</th>
+            <th>Data do Resultado</th>
             <th>Envio de Arquivo Comprovante</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let bloqueio of data?.bloqueios || []">
-            <!-- Célula REMOVIDA: descrição_bloqueio -->
             <td>{{ getValorOuDefault(bloqueio?.situacao_analise) }}</td>
             <td>{{ getValorOuDefault(bloqueio?.descricao_sub_bloqueio) }}</td>
             <td>{{ getValorOuDefault(bloqueio?.desbloqueio_atendido) }}</td>
             <td>
               {{ getValorOuDefault(bloqueio?.descricao_motivo_bloqueio) }}
             </td>
+            <td>{{ getValorOuDefault(bloqueio?.codigo_transacao) }}</td>
+            <td>{{ formatarData(bloqueio?.data_bloqueio) }}</td>
+            <td>{{ getValorOuDefault(bloqueio?.codigo_sub_bloqueio) }}</td>
+            <td>{{ getValorOuDefault(bloqueio?.codigo_motivo_bloqueio) }}</td>
+            <td>{{ formatarData(bloqueio?.data_resultado) }}</td>
             <td><mat-icon>attach_file</mat-icon> comprovante.pdf</td>
           </tr>
 
           <tr *ngIf="!data?.bloqueios?.length">
-            <td colspan="6" class="text-center text-muted">
+            <td colspan="10" class="text-center text-muted">
               Nenhum bloqueio informado
             </td>
           </tr>
