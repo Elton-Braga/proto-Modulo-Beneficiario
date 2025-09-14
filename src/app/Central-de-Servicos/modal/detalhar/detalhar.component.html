@@ -101,13 +101,13 @@
           <tr>
             <th>Situação de Bloqueio</th>
             <th>Tipo de Subbloqueio</th>
-            <th>Desbloqueio Atendido?</th>
+            <!--<th>Desbloqueio Atendido?</th>-->
             <th>Justificativa do Bloqueio</th>
-            <th>Código da Transação</th>
-            <th>Data do Bloqueio</th>
-            <th>Código do Subbloqueio</th>
+            <th>Tipo da Transação</th>
+            <!--<th>Data do Bloqueio</th>
+           <th>Código do Subbloqueio</th>-->
             <th>Código do Motivo do Bloqueio</th>
-            <th>Data do Resultado</th>
+            <!--<th>Data do Resultado</th>-->
             <th>Envio de Arquivo Comprovante</th>
           </tr>
         </thead>
@@ -115,15 +115,15 @@
           <tr *ngFor="let bloqueio of data?.bloqueios || []">
             <td>{{ getValorOuDefault(bloqueio?.situacao_analise) }}</td>
             <td>{{ getValorOuDefault(bloqueio?.descricao_sub_bloqueio) }}</td>
-            <td>{{ getValorOuDefault(bloqueio?.desbloqueio_atendido) }}</td>
+            <!--<td>{{ getValorOuDefault(bloqueio?.desbloqueio_atendido) }}</td>-->
             <td>
               {{ getValorOuDefault(bloqueio?.descricao_motivo_bloqueio) }}
             </td>
             <td>{{ getValorOuDefault(bloqueio?.codigo_transacao) }}</td>
-            <td>{{ formatarData(bloqueio?.data_bloqueio) }}</td>
-            <td>{{ getValorOuDefault(bloqueio?.codigo_sub_bloqueio) }}</td>
+            <!--<td>{{ formatarData(bloqueio?.data_bloqueio) }}</td>
+            <td>{{ getValorOuDefault(bloqueio?.codigo_sub_bloqueio) }}</td>-->
             <td>{{ getValorOuDefault(bloqueio?.codigo_motivo_bloqueio) }}</td>
-            <td>{{ formatarData(bloqueio?.data_resultado) }}</td>
+            <!--<td>{{ formatarData(bloqueio?.data_resultado) }}</td>-->
             <td><mat-icon>attach_file</mat-icon> comprovante.pdf</td>
           </tr>
 
@@ -166,16 +166,17 @@
               <textarea
                 class="form-control"
                 rows="4"
-                placeholder="Digite a justificativa aqui..."
+                placeholder="Aqui consta o motivo do desbloqueio..."
+                readonly
               ></textarea>
             </td>
           </tr>
         </tbody>
       </table>
       <div class="row">
-        <div class="col-2">
+        <!--<div class="col-2">
           <button type="button" class="btn btn-primary">Salvar</button>
-        </div>
+        </div>-->
         <div class="col-10"></div>
       </div>
     </div>
