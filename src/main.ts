@@ -7,7 +7,7 @@ import { environment } from './environments/environment'; // <-- importa o ambie
 
 bootstrapApplication(AppComponent, {
   providers: [
-    { provide: APP_BASE_HREF, useValue: environment.baseHref },
+    //{ provide: APP_BASE_HREF, useValue: environment.baseHref },
     provideRouter(routes),
   ],
 });
