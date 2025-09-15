@@ -140,11 +140,16 @@ export class Tela1Component {
       ],
 
       data_nascimento: [
-        dadosRota.data_nascimento ? new Date(dadosRota.data_nascimento) : null,
+        {
+          value: dadosRota.data_nascimento
+            ? new Date(dadosRota.data_nascimento)
+            : null,
+          disabled: true,
+        },
         Validators.required,
       ],
-      estado_civil: [dadosRota.estado_civil || ''],
-      falecido: [dadosRota.falecido || false],
+      estado_civil: [{ value: dadosRota.estado_civil || '', disabled: true }],
+      falecido: [dadosRota.falecido || true],
       data_falecimento: [
         dadosRota.data_falecimento
           ? new Date(dadosRota.data_falecimento)
@@ -152,9 +157,9 @@ export class Tela1Component {
       ],
 
       nome_pai: [dadosRota.nome_pai || ''],
-      nome_mae: [dadosRota.nome_mae || ''],
-      nacionalidade: [dadosRota.nacionalidade || ''],
-      naturalidade: [dadosRota.naturalidade || ''],
+      nome_mae: [{ value: dadosRota.nome_mae || '', disabled: true }],
+      nacionalidade: [{ value: dadosRota.nacionalidade || '', disabled: true }],
+      naturalidade: [{ value: dadosRota.naturalidade || '', disabled: true }],
       municipio: [dadosRota.municipio || ''],
       codigo_municipio: [dadosRota.codigo_municipio || ''],
       tipo_documento: [dadosRota.tipo_documento || 'RG'],
