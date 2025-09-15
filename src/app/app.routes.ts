@@ -13,7 +13,10 @@ import { RelatorioRDComponent } from './lista/modal/relatorio-rd/relatorio-rd.co
 export const routes: Routes = [
   // Rotas públicas
   { path: 'login', component: LoginComponent },
-
+  {
+    path: 'relatorio',
+    component: RelatorioRDComponent,
+  },
   // Rotas protegidas (precisam de login)
   {
     path: '',
@@ -31,10 +34,10 @@ export const routes: Routes = [
           { path: 'Titular', component: Tela1Component },
         ],
       },
-      {
+      /*{
         path: 'relatorio',
         component: RelatorioRDComponent,
-      },
+      },*/
     ],
   },
 
