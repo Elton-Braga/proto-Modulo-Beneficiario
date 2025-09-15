@@ -12,4 +12,5 @@ export interface BeneficiarioBloqueio {
   desbloqueio_atendido: string;
   situacao_analise: string;
   data_resultado: string; // pode ser Date se quiser converter
+  observacoes: string;
 }

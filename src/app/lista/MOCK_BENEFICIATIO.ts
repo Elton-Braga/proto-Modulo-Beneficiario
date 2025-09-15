@@ -133,6 +133,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     bloqueios: [
       {
         bloqueio: 'Sim',
+        observacoes: 'Aqui consta a observação',
         codigo_beneficiario: '001',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -314,6 +315,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     bloqueios: [
       {
         bloqueio: 'Sim',
+        observacoes: 'Aqui consta a observação',
         codigo_beneficiario: '0001',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -459,6 +461,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     bloqueios: [
       {
         bloqueio: 'Sim',
+        observacoes: 'Aqui consta a observação',
         codigo_beneficiario: '0002',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -612,6 +615,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     bloqueios: [
       {
         bloqueio: 'Sim',
+        observacoes: 'Aqui consta a observação',
         codigo_beneficiario: '0003',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -761,6 +765,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     bloqueios: [
       {
         bloqueio: 'Sim',
+        observacoes: 'Aqui consta a observação',
         codigo_beneficiario: '0004',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -904,7 +909,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
-        bloqueio: 'Não',
+        bloqueio: 'Sim',
+        observacoes: 'Aqui consta a observação',
         codigo_beneficiario: '0005',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -1052,7 +1058,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
-        bloqueio: 'Não',
+        bloqueio: 'Sim',
+        observacoes: 'Aqui consta a observação',
         codigo_beneficiario: '0006',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'não tratado',
@@ -1197,7 +1204,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
-        bloqueio: 'Não',
+        bloqueio: 'Sim',
+        observacoes: 'Aqui consta a observação',
         codigo_beneficiario: '0007',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -1346,7 +1354,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
-        bloqueio: 'Não',
+        bloqueio: 'Sim',
+        observacoes: 'Aqui consta a observação',
         codigo_beneficiario: '0009',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',
@@ -1490,7 +1499,8 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     ],
     bloqueios: [
       {
-        bloqueio: 'Não',
+        bloqueio: 'Sim',
+        observacoes: 'Aqui consta a observação',
         codigo_beneficiario: '00010',
         codigo_tipo_bloqueio: '01',
         descricao_bloqueio: 'Bloqueio por pendência documental',

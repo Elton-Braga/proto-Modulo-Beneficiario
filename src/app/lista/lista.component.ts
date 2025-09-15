@@ -455,6 +455,7 @@ export class ListaComponent implements AfterViewInit {
           municipios,
           estados,
           apto_para_beneficiario,
+
           bloqueios,
           tela_lote,
 
@@ -503,6 +504,8 @@ export class ListaComponent implements AfterViewInit {
             denominacao_Gleba,
             denominacao_lote,
             observacao,
+            //observacao: observacaoDoBloqueio,       // <-- adiciona/garante a observação
+            //bloqueios: elemento.bloqueios ?? [],
             data_observacao,
             municipios,
             estados,

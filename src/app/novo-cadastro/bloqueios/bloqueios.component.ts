@@ -36,52 +36,71 @@ export class BloqueiosComponent {
   bloqueio: Bloqueio = 'não';
 
   constructor(private fb: FormBuilder) {
+    // Recupera os dados passados via state na navegação
     const dadosRota = history.state;
+
+    // Pega o primeiro item da lista de bloqueios (caso exista)
     const bloqueio =
       dadosRota.bloqueios && dadosRota.bloqueios.length > 0
         ? dadosRota.bloqueios[0]
         : {};
 
-    const bloqueioInicial: Bloqueio =
+    // Define valor inicial do campo "bloqueio" (sim ou não)
+    const bloqueioInicial: 'sim' | 'não' =
       (bloqueio.bloqueio || '').toLowerCase() === 'sim' ? 'sim' : 'não';
 
+    // Criação do formulário com os valores preenchidos a partir do bloqueio
     this.form = this.fb.group({
       bloqueio: [bloqueioInicial, Validators.required],
+
       codigoBeneficiario: [
-        { value: bloqueio.codigo_beneficiario || '', disabled: true }, // <--- Alteração aqui
+        { value: bloqueio.codigo_beneficiario || '', disabled: true },
         [Validators.required],
       ],
+
       codigoTipoBloqueio: [
         bloqueio.codigo_tipo_bloqueio || '',
         [Validators.required],
       ],
+
+      observacoes: [bloqueio.observacao || '', [Validators.required]],
+
       descricaoBloqueio: [
         bloqueio.descricao_bloqueio || '',
         [Validators.required],
       ],
+
       codigoTransacao: [bloqueio.codigo_transacao || '', [Validators.required]],
+
       dataBloqueio: [bloqueio.data_bloqueio || '', [Validators.required]],
+
       codigoSubBloqueio: [
         bloqueio.codigo_sub_bloqueio || '',
         [Validators.required],
       ],
+
       descricaoSubBloqueio: [
         bloqueio.descricao_sub_bloqueio || '',
         [Validators.required],
       ],
+
       codigoMotivoBloqueio: [
         bloqueio.codigo_motivo_bloqueio || '',
         [Validators.required],
       ],
+
       descricaoMotivoBloqueio: [
         bloqueio.descricao_motivo_bloqueio || '',
         [Validators.required],
       ],
+
       desbloqueioAtendido: [
         bloqueio.desbloqueio_atendido || '',
         [Validators.required],
       ],
+
       situacaoAnalise: [bloqueio.situacao_analise || '', [Validators.required]],
+
       dataResultado: [bloqueio.data_resultado || '', [Validators.required]],
     });
   }
