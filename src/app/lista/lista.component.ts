@@ -51,6 +51,7 @@ import { RegularizacaoComponent } from '../novo-cadastro/regularizacao/regulariz
 import { BuscaBeneficiarioService } from './servico/busca-beneficiario.service';
 import { RequerimentosComponent } from './modal/requerimentos/requerimentos.component';
 import { Requerimento } from './modal/requerimentos/requeurimentos';
+import { RealtorioService } from './servico/realtorio.service';
 
 @Component({
   selector: 'app-lista',
@@ -163,6 +164,7 @@ export class ListaComponent implements AfterViewInit {
   resultados: any[] = [];
   beneficiarios = [...MOCK_BENEFICIARIOS];
   constructor(
+    private relatorioService: RealtorioService,
     private router: Router,
     fb: FormBuilder,
     private servicosService: ServicosService,
@@ -189,11 +191,8 @@ export class ListaComponent implements AfterViewInit {
 
   ngOnInit() {
     this.carregarEstados();
-
-    this.resultados = this.searchService.filtrar(this.beneficiarios, {
-      cpf: '673.062.412-49',
-      municipio: 'Tomé-Açu',
-    });
+    // inicia tabela totalmente vazia
+    this.dataSource.data = [];
   }
 
   removerMascara(cpf: string): string {
@@ -289,12 +288,12 @@ export class ListaComponent implements AfterViewInit {
         matchNumeroProcesso
       );
     });
+    //this.dataSource.data = resultados; // só agora popula
   }
 
   limpar() {
     this.form.reset();
-    //this.dataSource.data = [...this.dadosOriginais];
-    this.dataSource.data = [];
+    this.dataSource.data = []; // garante que tabela fica vazia ao limpar
   }
 
   openDialogEspelho(elemento: Beneficiario) {
@@ -585,5 +584,28 @@ export class ListaComponent implements AfterViewInit {
     this.displayedColumns = this.colunasDisponiveis
       .filter((c) => c.visivel)
       .map((c) => c.chave);
+  }
+
+  gerarRelatorio() {
+    const relatorio = MOCK_BENEFICIARIOS.map((b) => ({
+      codigoBeneficiario: b.cod_beneficiario || b.codigo_beneficiario,
+      nomeTitular: b.nome_T1,
+      cpfTitular: this.hachurarCPF(b.cpf_T1),
+      conjuge: b.nome_T2,
+      dataHomologacao: b.data_homologacao_Titular,
+      numeroLote: b.numero_lote,
+    }));
+
+    // salva no localStorage
+    localStorage.setItem('dadosRelatorio', JSON.stringify(relatorio));
+
+    // abre nova aba
+    window.open('/relatorio', '_blank');
+  }
+
+  hachurarCPF(cpf: string): string {
+    if (!cpf || cpf.length < 11) return cpf;
+    const cpfNumerico = cpf.replace(/\D/g, '');
+    return `***.***.${cpfNumerico.slice(6, 9)}-${cpfNumerico.slice(9)}`;
   }
 }

@@ -6,6 +6,7 @@ import { Tela1Component } from './novo-cadastro/tela-1/tela-1.component';
 import { TelaDashboardComponent } from './tela-dashboard/tela-dashboard.component';
 import { authGuard } from './login/guarda de rotas/auth.guard';
 import { FiltrosComponent } from './Central-de-Servicos/filtros/filtros.component';
+import { RelatorioRDComponent } from './lista/modal/relatorio-rd/relatorio-rd.component';
 
 //import { authGuard } from './auth.guard'; // guarda funcional
 
@@ -30,6 +31,7 @@ export const routes: Routes = [
           { path: 'Titular', component: Tela1Component },
         ],
       },
+      { path: 'relatorio', component: RelatorioRDComponent },
     ],
   },
 
