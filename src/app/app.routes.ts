@@ -31,7 +31,10 @@ export const routes: Routes = [
           { path: 'Titular', component: Tela1Component },
         ],
       },
-      { path: 'relatorio', component: RelatorioRDComponent },
+      {
+        path: 'relatorio',
+        component: RelatorioRDComponent,
+      },
     ],
   },
 

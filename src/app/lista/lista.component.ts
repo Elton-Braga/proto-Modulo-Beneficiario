@@ -24,7 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
-import { NgFor, NgIf } from '@angular/common';
+import { APP_BASE_HREF, NgFor, NgIf } from '@angular/common';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxMaskConfig, NgxMaskDirective, provideNgxMask } from 'ngx-mask';
@@ -86,6 +86,7 @@ import { RealtorioService } from './servico/realtorio.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class ListaComponent implements AfterViewInit {
+  baseHref = inject(APP_BASE_HREF);
   formularioBusca!: FormGroup;
   estados: any[] = [];
   municipios: any[] = [];
@@ -169,7 +170,8 @@ export class ListaComponent implements AfterViewInit {
     fb: FormBuilder,
     private servicosService: ServicosService,
     private searchService: BuscaBeneficiarioService
-  ) {
+  ) //private location: Location
+  {
     this.form = fb.group({
       codigo_beneficiario: [],
       codigo_projeto: [],
@@ -596,11 +598,14 @@ export class ListaComponent implements AfterViewInit {
       numeroLote: b.numero_lote,
     }));
 
-    // salva no localStorage
     localStorage.setItem('dadosRelatorio', JSON.stringify(relatorio));
 
-    // abre nova aba
-    window.open('/relatorio', '_blank');
+    // ✅ Corrigido: usa o APP_BASE_HREF diretamente
+    const url = `${window.location.origin}${this.baseHref}relatorio`;
+
+    // 🔥 Agora isso funciona no GitHub Pages
+    window.open(`${window.location.origin}${this.baseHref}relatorio`, '_blank');
+    //window.open(url, '_blank');
   }
 
   hachurarCPF(cpf: string): string {
