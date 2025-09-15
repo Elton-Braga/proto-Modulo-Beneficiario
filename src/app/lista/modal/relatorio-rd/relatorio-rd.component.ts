@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RealtorioService } from '../../servico/realtorio.service';
 import { CommonModule } from '@angular/common';
-
+//import pdfMake from 'pdfmake/build/pdfmake';
+//import pdfFonts from 'pdfmake/build/vfs_fonts';
+//pdfMake.vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-relatorio-rd',
   imports: [
@@ -29,5 +31,9 @@ export class RelatorioRDComponent {
   ngOnInit(): void {
     const dados = localStorage.getItem('dadosRelatorio');
     this.dataSource.data = dados ? JSON.parse(dados) : [];
+  }
+
+  imprimirRelatorio() {
+    window.print();
   }
 }

@@ -1,4 +1,27 @@
-<div class="mat-elevation-z2">
+<div class="mat-elevation-z2 relatorio row">
+  <div class="col-2 btn-imprimir">
+    <button class="btn btn-primary btn-imprimir" (click)="imprimirRelatorio()">
+      Imprimir Relatorio
+    </button>
+  </div>
+  <div class="col-10"></div>
+  <div class="col-2">
+    <img
+      src="https://www.gov.br/incra/pt-br/canais_atendimento/LogoINCRAverticaldegrad.png"
+      alt="relatorio de Beneficiario"
+    />
+  </div>
+  <div class="col-1"></div>
+  <div class="col-8">
+    <p>
+      INSTITUTO NACIONAL DE COLONIZAÇÃO E REFORMA AGRÁRIA - INCRA<br />
+      Coordenação Geral de Implantação DT - DTI<br />
+      SUPERINTENDÊNCIA REGIONAL DO ESTADO DE GOIÁS - SR (04) <br />
+      SISTEMA DE INFORMAÇÕES DE PROJETOS DE REFORMA AGRÁRIA<br />
+      RELAÇÃO DE BENEFICIÁRIOS - RB
+    </p>
+  </div>
+
   <table mat-table [dataSource]="dataSource" class="mat-table">
     <ng-container matColumnDef="codigoBeneficiario">
       <th mat-header-cell *matHeaderCellDef>Código</th>
