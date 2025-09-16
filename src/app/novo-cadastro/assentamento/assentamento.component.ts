@@ -152,10 +152,10 @@ export class AssentamentoComponent {
 
     this.carregarEstados();
     this.form = this.fb.group({
-      titular_1: [
+      /*titular_1: [
         { value: situacao.nome || '', disabled: true },
         [Validators.required],
-      ],
+      ],*/
       data_homologacao_1: [
         { value: situacao.data_homologacao_Titular, disabled: false },
         Validators.required,
@@ -164,10 +164,7 @@ export class AssentamentoComponent {
         { value: situacao.situacao_Titular || '', disabled: false },
         Validators.required,
       ],
-      data_situacao_1: [
-        situacao.data_situacao_Titular || '',
-        Validators.required,
-      ],
+      motivo: [situacao.motivo_situacao || '', Validators.required] /*
       data_situacao_2: [
         situacao.data_situacao_Conjuge || '',
         Validators.required,
@@ -207,7 +204,7 @@ export class AssentamentoComponent {
       ],
       municipios: ['', Validators.required],
       estados: ['', Validators.required],
-      apto_para_beneficiario: ['', Validators.required],
+      apto_para_beneficiario: ['', Validators.required],*/,
     });
 
     // tenta carregar do localStorage

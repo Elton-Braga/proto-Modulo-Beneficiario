@@ -12,6 +12,7 @@ export interface Beneficiario {
   codigo_projeto: string;
   projeto: any;
   lote: any | number;
+  motivo_situacao: string;
   nome_T1: string;
   situacao_T1: any;
   nome_T2: string;

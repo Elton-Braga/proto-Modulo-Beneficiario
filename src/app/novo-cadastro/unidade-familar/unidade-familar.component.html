@@ -72,7 +72,7 @@
     </div>
 
     <div class="row espaco_campos gx-0">
-      <mat-form-field appearance="outline" class="col-2">
+      <!--<mat-form-field appearance="outline" class="col-2">
         <mat-label>Tipo de dependente</mat-label>
         <mat-select formControlName="tipo_dependente">
           @for (t_dependente of t_dependente; track t_dependente) {
@@ -81,9 +81,9 @@
           }}</mat-option>
           }
         </mat-select>
-      </mat-form-field>
+      </mat-form-field>-->
 
-      <mat-form-field appearance="outline" class="col-2">
+      <mat-form-field appearance="outline" class="col-6">
         <mat-label>Nome do dependente</mat-label>
 
         <input
@@ -94,7 +94,7 @@
         />
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="col-2">
+      <!--<mat-form-field appearance="outline" class="col-2">
         <mat-label>Data de Nascimento</mat-label>
         <input
           matInput
@@ -107,8 +107,8 @@
           [for]="picker"
         ></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-
+      </mat-form-field>-->
+      <!--
       <mat-form-field appearance="outline" class="col-2">
         <mat-label>Data na Familia</mat-label>
         <input
@@ -122,9 +122,9 @@
           [for]="picker1"
         ></mat-datepicker-toggle>
         <mat-datepicker #picker1></mat-datepicker>
-      </mat-form-field>
+      </mat-form-field>-->
 
-      <mat-form-field appearance="outline" class="col-3">
+      <mat-form-field appearance="outline" class="col-5">
         <mat-label>Informe o CPF</mat-label>
 
         <input
@@ -158,7 +158,7 @@
       </div>
     </div>
 
-    <div class="row">
+    <!--<div class="row">
       <mat-form-field appearance="outline" class="col-11">
         <mat-label>Associação da Unidade Familiar</mat-label>
         <input
@@ -175,7 +175,8 @@
       >
         Incluir Unidade
       </button>
-    </div>
+    </div>-->
+
     <!--
       <mat-icon
         class="flex justify-center card col-auto d-inline-flex align-items-center ajuste_plus"
@@ -300,14 +301,15 @@
     </table>
   </div>
 
-  <hr />
+  <!--<hr />
+
   <table
     mat-table
     [dataSource]="dataSource"
     class="tabela"
     *ngIf="dataSource && dataSource.length > 0"
-  >
-    <!-- Coluna de Associação -->
+  >-->
+  <!-- Coluna de Associação 
     <ng-container matColumnDef="associacao">
       <th mat-header-cell *matHeaderCellDef class="tabela">Associação</th>
       <td mat-cell *matCellDef="let element" class="tabela">
@@ -319,9 +321,9 @@
           [disabled]="!element.editando"
         />
       </td>
-    </ng-container>
+    </ng-container>-->
 
-    <!-- Coluna de Ações -->
+  <!-- Coluna de Ações 
     <ng-container matColumnDef="acoes">
       <th mat-header-cell *matHeaderCellDef class="tabela">Ações</th>
       <td mat-cell *matCellDef="let element" class="tabela ajusta-celula">
@@ -351,10 +353,10 @@
           </button>
         </mat-menu>
       </td>
-    </ng-container>
+    </ng-container>-->
 
-    <!-- Cabeçalho e Linhas -->
+  <!-- Cabeçalho e Linhas 
     <tr mat-header-row *matHeaderRowDef="associacoesDisplayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: associacoesDisplayedColumns"></tr>
-  </table>
+  </table>-->
 </div>

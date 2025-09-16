@@ -19,6 +19,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_T1: '669.069.382-15',
     cod_beneficiario: 'AC000500004120',
     cpf_conjuge: '815.563.812-04',
+    motivo_situacao: 'TEste 123456789',
     numero_processo: ['PA000600000003', '000000011/0000'],
     historico_PNRA: [
       {
@@ -144,7 +145,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         codigo_motivo_bloqueio: 'MOT123',
         descricao_motivo_bloqueio: 'Aqui consta o motivo do bloqueio',
         desbloqueio_atendido: 'Não',
-        situacao_analise: 'Em análise',
+        situacao_analise: 'teste 123',
         data_resultado: '2023-08-10',
       },
     ],
@@ -203,6 +204,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     cpf_T1: '211.431.102-34',
     cod_beneficiario: 'AC000500004121',
     cpf_conjuge: '423.960.772-87',
+    motivo_situacao: 'TEste 123456789',
     numero_processo: ['PA000600000004', '000000011/0000'],
     historico_PNRA: [
       {
@@ -327,7 +329,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         descricao_motivo_bloqueio:
           'Falta de documentação exigida para análise cadastral',
         desbloqueio_atendido: 'Não',
-        situacao_analise: 'Em análise',
+        situacao_analise: 'rwxgfx',
         data_resultado: '2023-08-10',
       },
     ],
@@ -384,6 +386,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     status: 'Em Análise',
     cpf_T1: '000.000.000-25',
     cod_beneficiario: 'AC000500004122',
+    motivo_situacao: 'TEste 123456789',
     cpf_conjuge: '123.456.789-22',
     numero_processo: ['000000000/2222'],
     historico_PNRA: [
@@ -473,7 +476,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         descricao_motivo_bloqueio:
           'Falta de documentação exigida para análise cadastral',
         desbloqueio_atendido: 'Não',
-        situacao_analise: 'Em análise',
+        situacao_analise: 'khgcfhxcfgx',
         data_resultado: '2023-08-10',
       },
     ],
@@ -530,6 +533,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     status: 'Negado',
     cpf_T1: '211.431.102-34',
     cod_beneficiario: 'AC000500004123',
+    motivo_situacao: 'TEste 123456789',
     cpf_conjuge: '423.960.772-87',
     numero_processo: ['000000011/0000', 'PA000600000004'],
     historico_PNRA: [
@@ -627,7 +631,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         descricao_motivo_bloqueio:
           'Falta de documentação exigida para análise cadastral',
         desbloqueio_atendido: 'Não',
-        situacao_analise: 'Em análise',
+        situacao_analise: 'fhjfjfjfgjhgfj',
         data_resultado: '2023-08-10',
       },
     ],
@@ -685,6 +689,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '01/04/2004',
     status: 'Cancelado',
     cpf_T1: '848.462.832-91',
+    motivo_situacao: 'TEste 123456789',
     cod_beneficiario: 'AC000500504120',
     cpf_conjuge: '430.605.522-15',
     numero_processo: ['645789456/0000', 'PA000600000010'],
@@ -777,7 +782,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         descricao_motivo_bloqueio:
           'Falta de documentação exigida para análise cadastral',
         desbloqueio_atendido: 'Não',
-        situacao_analise: 'Em análise',
+        situacao_analise: '456dfshndfshfghjs',
         data_resultado: '2023-08-10',
       },
     ],
@@ -833,6 +838,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '18/10/2003',
     status: 'Deferido',
     cpf_T1: '673.062.412-49',
+    motivo_situacao: 'TEste 123456789',
     cod_beneficiario: 'AC000500204120',
     cpf_conjuge: '',
     numero_processo: ['123789456/0000', 'PA000600000011'],
@@ -922,7 +928,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         descricao_motivo_bloqueio:
           'Falta de documentação exigida para análise cadastral',
         desbloqueio_atendido: 'Não',
-        situacao_analise: 'Em análise',
+        situacao_analise: 'jdfgjdfgjfsdghdjfgjfj',
         data_resultado: '2023-08-10',
       },
     ],
@@ -978,6 +984,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     regularizacao: 'Transferido',
     periodo_regularizacao: '02/09/2002',
     status: 'Negado',
+    motivo_situacao: 'TEste 123456789',
     cpf_T1: '124.644.732-00',
     cod_beneficiario: 'AC000500004127',
     cpf_conjuge: null,
@@ -1071,7 +1078,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         descricao_motivo_bloqueio:
           'Falta de documentação exigida para análise cadastral',
         desbloqueio_atendido: 'Não',
-        situacao_analise: 'Em análise',
+        situacao_analise: 'jfghjffgjhfgjhfgjhfg',
         data_resultado: '2023-08-10',
       },
     ],
@@ -1128,6 +1135,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '19/01/2010',
     status: 'Em Análise',
     cpf_T1: '899.011.262-15',
+    motivo_situacao: 'TEste 123456789',
     cod_beneficiario: 'AC000500004128',
     cpf_conjuge: '920.631.602-87',
     numero_processo: ['222222223/0000', 'PA000600000014'],
@@ -1217,7 +1225,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         descricao_motivo_bloqueio:
           'Falta de documentação exigida para análise cadastral',
         desbloqueio_atendido: 'Não',
-        situacao_analise: 'Em análise',
+        situacao_analise: 'fhjfghjgdjhjdhjdghjfgkf',
         data_resultado: '2023-08-10',
       },
     ],
@@ -1275,6 +1283,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     periodo_regularizacao: '30/07/1999',
     status: 'Suspenso',
     cpf_T1: '35205407204',
+    motivo_situacao: 'TEste 123456789',
     cod_beneficiario: 'AC000500004129',
     cpf_conjuge: null,
     numero_processo: ['PA000600000015'],
@@ -1367,7 +1376,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         descricao_motivo_bloqueio:
           'Falta de documentação exigida para análise cadastral',
         desbloqueio_atendido: 'Não',
-        situacao_analise: 'Em análise',
+        situacao_analise: 'fghdfghfdghdfghdfhgdfgh',
         data_resultado: '2023-08-10',
       },
     ],
@@ -1424,6 +1433,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
     status: 'Cancelado',
     cpf_T1: '793.662.282-91',
     cpf_conjuge: '793.662.872-04',
+    motivo_situacao: 'TEste 123456789',
     cod_beneficiario: 'AC000500004130',
     numero_processo: ['PA000600000018', '111111111/0000'],
     historico_PNRA: [
@@ -1512,7 +1522,7 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
         descricao_motivo_bloqueio:
           'Falta de documentação exigida para análise cadastral',
         desbloqueio_atendido: 'Não',
-        situacao_analise: 'Em análise',
+        situacao_analise: 'kghjkghkghjkghkjghkj',
         data_resultado: '2023-08-10',
       },
     ],

@@ -169,9 +169,8 @@ export class ListaComponent implements AfterViewInit {
     private router: Router,
     fb: FormBuilder,
     private servicosService: ServicosService,
-    private searchService: BuscaBeneficiarioService
-  ) //private location: Location
-  {
+    private searchService: BuscaBeneficiarioService //private location: Location
+  ) {
     this.form = fb.group({
       codigo_beneficiario: [],
       codigo_projeto: [],
@@ -456,7 +455,7 @@ export class ListaComponent implements AfterViewInit {
           municipios,
           estados,
           apto_para_beneficiario,
-
+          motivo_situacao,
           bloqueios,
           tela_lote,
 
@@ -511,7 +510,7 @@ export class ListaComponent implements AfterViewInit {
             municipios,
             estados,
             apto_para_beneficiario,
-
+            motivo_situacao,
             dependentes: elemento.dependentes ?? [],
             bloqueios: elemento.bloqueios ?? [],
             tela_lote: elemento.tela_lote ?? [],

@@ -84,15 +84,6 @@ export class UnidadeFamilarComponent {
     { value: '4', viewValue: 'Mãe' },
     { value: '4', viewValue: 'Outros' },
   ];
-  /*
-  displayedColumns: string[] = [
-    'nome',
-    'CPF',
-    'tipo_dependente',
-    'data_nascimento',
-    'data_entrada_na_familia',
-    'acoes',
-  ];*/
 
   displayedColumns: string[] = [
     'nome',
@@ -117,15 +108,15 @@ export class UnidadeFamilarComponent {
       data_separacao: [''],
       renda_familiar: ['', [Validators.required, Validators.min(0)]],
       nome_dependente: ['', Validators.required],
-      tipo_dependente: ['', Validators.required],
+      //tipo_dependente: ['', Validators.required],
       nome: ['', Validators.required],
-      data_nascimento: ['', Validators.required],
-      data_entrada_na_familia: ['', Validators.required],
+      //data_nascimento: ['', Validators.required],
+      //data_entrada_na_familia: ['', Validators.required],
       cpf_dependente: [
         '',
         [Validators.required, Validators.pattern(/^\d{11}$/)],
       ],
-      associacao_unidade_familiar: ['', Validators.required],
+      //associacao_unidade_familiar: ['', Validators.required],
     });
 
     this.situacao_conjugal = this.formgroup.get(

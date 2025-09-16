@@ -2,7 +2,7 @@
   <div class="area_conteudo">
     <form class="container-fluid px-0" [formGroup]="form">
       <div class="row gx-2">
-        <div class="col-3">
+        <!--<div class="col-3">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Nome</mat-label>
             <input
@@ -11,9 +11,9 @@
               formControlName="titular_1"
             />
           </mat-form-field>
-        </div>
+        </div>-->
 
-        <div class="col-3">
+        <div class="col-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Data de homologação</mat-label>
             <input
@@ -23,7 +23,7 @@
             />
           </mat-form-field>
         </div>
-        <div class="col-3">
+        <div class="col-4">
           <mat-form-field appearance="outline" class="w-100">
             <mat-label>Situação do Assentado</mat-label>
             <mat-select formControlName="situacao_titular">
@@ -35,8 +35,12 @@
             </mat-select>
           </mat-form-field>
         </div>
-        <div class="col-3">
+        <div class="col-4">
           <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Motivo</mat-label>
+            <input matInput placeholder="Motivo" formControlName="motivo" />
+          </mat-form-field>
+          <!--<mat-form-field appearance="outline" class="w-100">
             <mat-label>Selecione a data</mat-label>
             <input
               matInput
@@ -49,10 +53,11 @@
               [for]="picker"
             ></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-          </mat-form-field>
+          </mat-form-field>-->
         </div>
       </div>
 
+      <!--
       <div class="row gx-2">
         <div class="col-3">
           <mat-form-field appearance="outline" class="w-100">
@@ -120,7 +125,7 @@
             <mat-radio-button value="N">Não</mat-radio-button>
           </mat-radio-group>
         </div>
-      </div>
+      </div>-->
 
       <!--<hr />
       

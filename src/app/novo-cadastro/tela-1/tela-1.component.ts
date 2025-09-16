@@ -156,7 +156,7 @@ export class Tela1Component {
           : null,
       ],
 
-      nome_pai: [dadosRota.nome_pai || ''],
+      nome_pai: [{ value: dadosRota.nome_pai || '', disabled: true }],
       nome_mae: [{ value: dadosRota.nome_mae || '', disabled: true }],
       nacionalidade: [{ value: dadosRota.nacionalidade || '', disabled: true }],
       naturalidade: [{ value: dadosRota.naturalidade || '', disabled: true }],

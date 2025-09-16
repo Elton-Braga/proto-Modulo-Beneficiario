@@ -36,7 +36,7 @@ export class ObservacoesComponent {
         Validators.required,
       ],
 
-      apto_para_beneficiario: ['', Validators.required],
+      //apto_para_beneficiario: ['', Validators.required],
     });
 
     // tenta carregar do localStorage
