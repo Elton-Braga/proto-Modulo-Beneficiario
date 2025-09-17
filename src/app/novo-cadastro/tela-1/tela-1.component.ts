@@ -114,7 +114,7 @@ export class Tela1Component {
     'Conjuge',
     'Unidade Familiar',
     'Situação',
-    'Lote',
+    'Projeto de assentamento',
     'Observações',
     'Bloqueios',
     //'Assentamento',

@@ -14,7 +14,7 @@
   justify-content: center;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.04); // leve efeito hover
+    background-color: rgba(0, 0, 0, 0.04);
   }
 
   mat-icon {
@@ -28,12 +28,5 @@
 }
 
 .tabela {
-  min-width: 800px; // valor base para não colapsar colunas
-}
-
-@media screen and (max-width: 768px) {
-  .mat-column-codigo_SNCR,
-  .mat-column-denominacao_Gleba {
-    display: none;
-  }
+  min-width: 800px;
 }

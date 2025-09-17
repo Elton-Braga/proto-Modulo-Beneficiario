@@ -7,12 +7,9 @@ import {
   FormsModule,
 } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
-import { ServicosService } from '../tela-1/servico/servicos.service';
-import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 
@@ -23,7 +20,6 @@ import { MatMenuModule } from '@angular/material/menu';
     CommonModule,
     MatInputModule,
     MatFormFieldModule,
-    MatSelectModule,
     ReactiveFormsModule,
     MatTableModule,
     FormsModule,
@@ -38,63 +34,42 @@ export class LoteComponent {
   lotes: Lote[] = [];
   loteSelecionado?: Lote;
   indexSelecionado?: number;
-  tipo_lote = [
-    { value: 'teste1', viewValue: 'teste1' },
-    { value: 'teste2', viewValue: 'teste2' },
-    { value: 'teste3', viewValue: 'teste3' },
-  ];
 
   colunasTabela: string[] = [
-    'tipo_lote',
-    'area_lote',
-    'numero_lote',
-    'codigo_SNCR',
-    'denominacao_Gleba',
-    'denominacao_lote',
-    'acoes', // adiciona a coluna de ações
+    'codigoProjeto',
+    'nomeProjeto',
+    'agrovilaContato',
+    'codigoContato',
+    'loteIndividualContato',
+    'nomeLote',
+    'numeroLote',
+    'codigoMunicipioComunincra',
+    'acoes',
   ];
 
-  constructor(
-    private fb: FormBuilder,
-    private servicosService: ServicosService,
-    private router: Router
-  ) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
-      tipo_lote: ['', Validators.required],
-      area_lote: [
-        '',
-        [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
-      ],
-      numero_lote: ['', Validators.required],
-      codigo_SNCR: ['', Validators.required],
-      denominacao_Gleba: ['', Validators.required],
-      denominacao_lote: ['', Validators.required],
+      codigoProjeto: ['', Validators.required],
+      nomeProjeto: ['', Validators.required],
+      agrovilaContato: ['', Validators.required],
+      codigoContato: ['', Validators.required],
+      loteIndividualContato: ['', Validators.required],
+      nomeLote: ['', Validators.required],
+      numeroLote: ['', Validators.required],
+      codigoMunicipioComunincra: ['', Validators.required],
     });
-
-    // Recupera dados enviados pela rota
-    // ✅ Recupera via history.state
-    const state = history.state as any;
-    if (state?.tela_lote) {
-      this.lotes = state.tela_lote.map((l: Lote) => ({
-        ...l,
-        editando: false,
-      }));
-    }
   }
 
   adicionarLote(): void {
-    if (!this.form.valid) {
-      return;
-    }
+    if (!this.form.valid) return;
 
     const lote: Lote = {
       ...this.form.value,
       editando: false,
     };
     this.lotes = [...this.lotes, lote];
-
     this.form.reset();
   }
 
@@ -104,7 +79,6 @@ export class LoteComponent {
 
   salvarLote(lote: Lote): void {
     lote.editando = false;
-    // Aqui pode chamar service para persistir alterações, se necessário
   }
 
   excluirLote(index: number): void {
@@ -118,11 +92,13 @@ export class LoteComponent {
 }
 
 interface Lote {
-  tipo_lote: string;
-  area_lote: string;
-  numero_lote: string;
-  codigo_SNCR: string;
-  denominacao_Gleba: string;
-  denominacao_lote: string;
-  editando?: boolean; // controle de edição
+  codigoProjeto: string;
+  nomeProjeto: string;
+  agrovilaContato: string;
+  codigoContato: string;
+  loteIndividualContato: string;
+  nomeLote: string;
+  numeroLote: string;
+  codigoMunicipioComunincra: string;
+  editando?: boolean;
 }

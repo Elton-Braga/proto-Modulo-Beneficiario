@@ -10,61 +10,67 @@
         <strong>Novo Lote</strong>
       </button>
     </div>
-    <div class="col-3"></div>
-    <div class="col-3"></div>
-    <div class="col-3"></div>
   </div>
+
   <div class="row">
     <div class="col-3">
       <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Tipo</mat-label>
-        <mat-select formControlName="tipo_lote">
-          @for (tipo_lote of tipo_lote; track tipo_lote.value) {
-          <mat-option [value]="tipo_lote.value">
-            {{ tipo_lote.viewValue }}
-          </mat-option>
-          }
-        </mat-select>
+        <mat-label>Código do Projeto</mat-label>
+        <input matInput formControlName="codigoProjeto" />
       </mat-form-field>
     </div>
+
     <div class="col-3">
       <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Area do lote</mat-label>
-        <input
-          matInput
-          placeholder="Informe a área do lote"
-          formControlName="area_lote"
-        />
+        <mat-label>Nome do Projeto</mat-label>
+        <input matInput formControlName="nomeProjeto" />
       </mat-form-field>
     </div>
+
     <div class="col-3">
       <mat-form-field appearance="outline" class="w-100">
-        <mat-label>numero</mat-label>
-        <input matInput value="" formControlName="numero_lote" />
+        <mat-label>Agrovila Contato</mat-label>
+        <input matInput formControlName="agrovilaContato" />
       </mat-form-field>
     </div>
+
     <div class="col-3">
       <mat-form-field appearance="outline" class="w-100">
-        <mat-label>numero do SNCR</mat-label>
-        <input matInput value="" formControlName="codigo_SNCR" />
+        <mat-label>Código Contato</mat-label>
+        <input matInput formControlName="codigoContato" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-3">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Lote Individual Contato</mat-label>
+        <input matInput formControlName="loteIndividualContato" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-3">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Nome Lote</mat-label>
+        <input matInput formControlName="nomeLote" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-3">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Número Lote</mat-label>
+        <input matInput formControlName="numeroLote" />
+      </mat-form-field>
+    </div>
+
+    <div class="col-3">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Código Município COMUNINCRA</mat-label>
+        <input matInput formControlName="codigoMunicipioComunincra" />
       </mat-form-field>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-6">
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Area de denominação da Gleba</mat-label>
-        <input matInput value="" formControlName="denominacao_Gleba" />
-      </mat-form-field>
-    </div>
-    <div class="col-6">
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Area de denominação do Lote</mat-label>
-        <input matInput value="" formControlName="denominacao_lote" />
-      </mat-form-field>
-    </div>
-  </div>
+  <div class="row"></div>
 </form>
 
 <!-- ================== TABELA DE LOTES ================== -->
@@ -74,73 +80,89 @@
     [dataSource]="lotes"
     class="mat-elevation-z8 w-100 mt-3 tabela"
   >
-    <!-- Tipo -->
-    <ng-container matColumnDef="tipo_lote">
-      <th mat-header-cell *matHeaderCellDef>Tipo</th>
-      <td mat-cell *matCellDef="let lote; let i = index">
+    <ng-container matColumnDef="codigoProjeto">
+      <th mat-header-cell *matHeaderCellDef>Código Projeto</th>
+      <td mat-cell *matCellDef="let lote">
         <input
           matInput
-          [(ngModel)]="lote.tipo_lote"
+          [(ngModel)]="lote.codigoProjeto"
           [disabled]="!lote.editando"
         />
       </td>
     </ng-container>
 
-    <!-- Área -->
-    <ng-container matColumnDef="area_lote">
-      <th mat-header-cell *matHeaderCellDef>Área</th>
-      <td mat-cell *matCellDef="let lote; let i = index">
+    <ng-container matColumnDef="nomeProjeto">
+      <th mat-header-cell *matHeaderCellDef>Nome Projeto</th>
+      <td mat-cell *matCellDef="let lote">
         <input
           matInput
-          [(ngModel)]="lote.area_lote"
+          [(ngModel)]="lote.nomeProjeto"
           [disabled]="!lote.editando"
         />
       </td>
     </ng-container>
 
-    <!-- Número -->
-    <ng-container matColumnDef="numero_lote">
-      <th mat-header-cell *matHeaderCellDef>Número</th>
-      <td mat-cell *matCellDef="let lote; let i = index">
+    <ng-container matColumnDef="agrovilaContato">
+      <th mat-header-cell *matHeaderCellDef>Agrovila Contato</th>
+      <td mat-cell *matCellDef="let lote">
         <input
           matInput
-          [(ngModel)]="lote.numero_lote"
+          [(ngModel)]="lote.agrovilaContato"
           [disabled]="!lote.editando"
         />
       </td>
     </ng-container>
 
-    <!-- SNCR -->
-    <ng-container matColumnDef="codigo_SNCR">
-      <th mat-header-cell *matHeaderCellDef>SNCR</th>
-      <td mat-cell *matCellDef="let lote; let i = index">
+    <ng-container matColumnDef="codigoContato">
+      <th mat-header-cell *matHeaderCellDef>Código Contato</th>
+      <td mat-cell *matCellDef="let lote">
         <input
           matInput
-          [(ngModel)]="lote.codigo_SNCR"
+          [(ngModel)]="lote.codigoContato"
           [disabled]="!lote.editando"
         />
       </td>
     </ng-container>
 
-    <!-- Gleba -->
-    <ng-container matColumnDef="denominacao_Gleba">
-      <th mat-header-cell *matHeaderCellDef>Gleba</th>
-      <td mat-cell *matCellDef="let lote; let i = index">
+    <ng-container matColumnDef="loteIndividualContato">
+      <th mat-header-cell *matHeaderCellDef>Lote Individual Contato</th>
+      <td mat-cell *matCellDef="let lote">
         <input
           matInput
-          [(ngModel)]="lote.denominacao_Gleba"
+          [(ngModel)]="lote.loteIndividualContato"
           [disabled]="!lote.editando"
         />
       </td>
     </ng-container>
 
-    <!-- Lote -->
-    <ng-container matColumnDef="denominacao_lote">
-      <th mat-header-cell *matHeaderCellDef>Lote</th>
-      <td mat-cell *matCellDef="let lote; let i = index">
+    <ng-container matColumnDef="nomeLote">
+      <th mat-header-cell *matHeaderCellDef>Nome Lote</th>
+      <td mat-cell *matCellDef="let lote">
         <input
           matInput
-          [(ngModel)]="lote.denominacao_lote"
+          [(ngModel)]="lote.nomeLote"
+          [disabled]="!lote.editando"
+        />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="numeroLote">
+      <th mat-header-cell *matHeaderCellDef>Número Lote</th>
+      <td mat-cell *matCellDef="let lote">
+        <input
+          matInput
+          [(ngModel)]="lote.numeroLote"
+          [disabled]="!lote.editando"
+        />
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="codigoMunicipioComunincra">
+      <th mat-header-cell *matHeaderCellDef>Cód. Município COMUNINCRA</th>
+      <td mat-cell *matCellDef="let lote">
+        <input
+          matInput
+          [(ngModel)]="lote.codigoMunicipioComunincra"
           [disabled]="!lote.editando"
         />
       </td>
