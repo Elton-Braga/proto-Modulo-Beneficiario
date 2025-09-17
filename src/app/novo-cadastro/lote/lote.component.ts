@@ -12,6 +12,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-lote',
@@ -47,7 +48,11 @@ export class LoteComponent {
     'acoes',
   ];
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -60,6 +65,22 @@ export class LoteComponent {
       numeroLote: ['', Validators.required],
       codigoMunicipioComunincra: ['', Validators.required],
     });
+
+    // Recuperar dados enviados via state
+    const state = history.state;
+
+    if (state?.tela_lote && Array.isArray(state.tela_lote)) {
+      // Popula tabela com os lotes
+      this.lotes = state.tela_lote.map((l: any) => ({
+        ...l,
+        editando: false,
+      }));
+
+      // Preenche o form com o primeiro lote (caso exista)
+      if (this.lotes.length > 0) {
+        this.form.patchValue(this.lotes[0]);
+      }
+    }
   }
 
   adicionarLote(): void {
