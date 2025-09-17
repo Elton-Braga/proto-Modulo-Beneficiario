@@ -148,7 +148,12 @@ export class Tela1Component {
         },
         Validators.required,
       ],
+
       estado_civil: [{ value: dadosRota.estado_civil || '', disabled: true }],
+
+      // 🔹 Campo novo: sexo
+      sexo: [dadosRota.sexo || '', Validators.required],
+
       falecido: [dadosRota.falecido || true],
       data_falecimento: [
         dadosRota.data_falecimento
@@ -177,7 +182,11 @@ export class Tela1Component {
         Validators.required,
       ],
 
-      numero_processo: ['', [Validators.required]], // 🔹 agora sempre vazio
+      numero_processo: ['', [Validators.required]],
+
+      // 🔹 Campos novos: datas
+      data_processo: [null, Validators.required],
+      data_homologacao: [null, Validators.required],
     });
 
     // 🔹 processo vindo da rota salvo direto na lista (não no form)

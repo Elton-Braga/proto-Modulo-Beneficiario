@@ -179,12 +179,25 @@
                 </mat-form-field>
 
                 <mat-form-field
-                  class="col-5"
+                  class="col-3"
                   appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Estado Civil</mat-label>
                   <input matInput type="text" formControlName="estado_civil" />
+                </mat-form-field>
+
+                <mat-form-field
+                  class="col-2"
+                  appearance="outline"
+                  floatLabel="always"
+                >
+                  <mat-label>Sexo</mat-label>
+                  <mat-select formControlName="sexo">
+                    <mat-option value="M">Masculino</mat-option>
+                    <mat-option value="F">Feminino</mat-option>
+                    <mat-option value="O">Outro</mat-option>
+                  </mat-select>
                 </mat-form-field>
 
                 <mat-form-field
@@ -374,6 +387,44 @@
                 >
                   Novo Processo
                 </button>
+              </div>
+
+              <div class="row espaco_campos">
+                <mat-form-field
+                  class="col-6"
+                  appearance="outline"
+                  floatLabel="always"
+                >
+                  <mat-label>Data do Processo</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="pickerDataProcesso"
+                    formControlName="data_processo"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="pickerDataProcesso"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #pickerDataProcesso></mat-datepicker>
+                </mat-form-field>
+
+                <mat-form-field
+                  class="col-6"
+                  appearance="outline"
+                  floatLabel="always"
+                >
+                  <mat-label>Data de Homologação</mat-label>
+                  <input
+                    matInput
+                    [matDatepicker]="pickerDataHomologacao"
+                    formControlName="data_homologacao"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="pickerDataHomologacao"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #pickerDataHomologacao></mat-datepicker>
+                </mat-form-field>
               </div>
             </form>
 

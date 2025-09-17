@@ -33,9 +33,18 @@
       <mat-datepicker #pickerNascimento></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field appearance="outline" class="col-5" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-3" floatLabel="always">
       <mat-label>Estado Civil</mat-label>
       <input matInput type="text" formControlName="estado_civil" />
+    </mat-form-field>
+
+    <mat-form-field class="col-2" appearance="outline" floatLabel="always">
+      <mat-label>Sexo</mat-label>
+      <mat-select formControlName="sexo">
+        <mat-option value="M">Masculino</mat-option>
+        <mat-option value="F">Feminino</mat-option>
+        <mat-option value="O">Outro</mat-option>
+      </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="col-3" floatLabel="always">
