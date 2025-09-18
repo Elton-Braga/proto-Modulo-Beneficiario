@@ -97,12 +97,12 @@ export class Tela2Component {
       ],
       estado_civil: [{ value: dadosRota.estado_civil || '', disabled: true }],
       sexo: [dadosRota.sexo || '', Validators.required],
-      falecido: [dadosRota.falecido || false],
+      /*
       data_falecimento: [
         dadosRota.data_falecimento
           ? new Date(dadosRota.data_falecimento)
           : null,
-      ],
+      ],*/
 
       nome_pai: [{ value: dadosRota.nome_pai || '', disabled: true }],
       nome_mae: [{ value: dadosRota.nome_mae || '', disabled: true }],
@@ -156,16 +156,6 @@ export class Tela2Component {
 
       this.cpfOriginal = dados.cpf || '';
     }
-
-    this.formgroup.get('falecido')?.valueChanges.subscribe((falecido) => {
-      const dataFalecimentoControl = this.formgroup.get('data_falecimento');
-      if (falecido) {
-        dataFalecimentoControl?.enable();
-      } else {
-        dataFalecimentoControl?.disable();
-        dataFalecimentoControl?.reset();
-      }
-    });
   }
 
   salvarFormularioNoLocalStorage(): void {

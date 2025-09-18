@@ -179,7 +179,7 @@
                 </mat-form-field>
 
                 <mat-form-field
-                  class="col-3"
+                  class="col-5"
                   appearance="outline"
                   floatLabel="always"
                 >
@@ -188,7 +188,7 @@
                 </mat-form-field>
 
                 <mat-form-field
-                  class="col-2"
+                  class="col-4"
                   appearance="outline"
                   floatLabel="always"
                 >
@@ -199,30 +199,6 @@
                     <mat-option value="O">Outro</mat-option>
                   </mat-select>
                 </mat-form-field>
-
-                <mat-form-field
-                  class="col-3"
-                  appearance="outline"
-                  floatLabel="always"
-                >
-                  <mat-label>Data de Falecimento</mat-label>
-                  <input
-                    matInput
-                    [matDatepicker]="pickerFalecimento"
-                    formControlName="data_falecimento"
-                  />
-                  <mat-datepicker-toggle
-                    matSuffix
-                    [for]="pickerFalecimento"
-                  ></mat-datepicker-toggle>
-                  <mat-datepicker #pickerFalecimento></mat-datepicker>
-                </mat-form-field>
-
-                <!--<div class=" d-flex align-items-center">-->
-                <mat-checkbox formControlName="falecido" class="col-1"
-                  >Falecido</mat-checkbox
-                >
-                <!--</div>-->
 
                 <mat-form-field
                   class="col-6"
