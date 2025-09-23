@@ -109,7 +109,7 @@ export class ListaComponent implements AfterViewInit {
     'municipio',
     'codigo_projeto',
     'projeto',
-    'Lote',
+    'lote',
     'situacao_T1',
     'data_situacao_T2',
     'Bloqueios',
