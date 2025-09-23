@@ -152,10 +152,6 @@ export class AssentamentoComponent {
 
     this.carregarEstados();
     this.form = this.fb.group({
-      /*titular_1: [
-        { value: situacao.nome || '', disabled: true },
-        [Validators.required],
-      ],*/
       data_homologacao_1: [
         { value: situacao.data_homologacao_Titular, disabled: false },
         Validators.required,
@@ -164,47 +160,7 @@ export class AssentamentoComponent {
         { value: situacao.situacao_Titular || '', disabled: false },
         Validators.required,
       ],
-      motivo: [situacao.motivo_situacao || '', Validators.required] /*
-      data_situacao_2: [
-        situacao.data_situacao_Conjuge || '',
-        Validators.required,
-      ],
-      titular_2: [
-        { value: situacao.nome_T2 || '', disabled: true },
-        [Validators.required],
-      ],
-      data_homologacao_2: [
-        { value: situacao.data_homologacao_conjuge, disabled: false },
-        Validators.required,
-      ],
-      situacao_conjuge: [
-        { value: situacao.situacao_conjuge || '', disabled: false },
-        Validators.required,
-      ],
-      aptoPNRA: [
-        { value: situacao.apto_para_beneficiario || '', disabled: false },
-        Validators.required,
-      ],
-
-      tipo_lote: ['', Validators.required],
-      area_lote: [
-        '',
-        [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
-      ],
-      numero_lote: ['', Validators.required],
-      codigo_SNCR: ['', Validators.required],
-      //link_mapa: ['', Validators.pattern(/^https?:\/\//i)],
-      denominacao_Gleba: ['', Validators.required],
-      denominacao_lote: ['', Validators.required],
-
-      observacao: [''],
-      data_observacao: [
-        { value: situacao.data_observacao || '', disabled: false },
-        Validators.required,
-      ],
-      municipios: ['', Validators.required],
-      estados: ['', Validators.required],
-      apto_para_beneficiario: ['', Validators.required],*/,
+      motivo: [situacao.motivo_situacao || '', Validators.required],
     });
 
     // tenta carregar do localStorage

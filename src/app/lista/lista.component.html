@@ -140,7 +140,7 @@
               </mat-select>
             </mat-form-field>
 
-            <div class="row">
+            <div class="row ajustar">
               <button
                 mat-stroked-button
                 color="primary"
@@ -167,7 +167,7 @@
                 (click)="gerarRelatorio()"
                 class="col-1 btn_buscar"
               >
-                Relatorio RD
+                Relatorio RB
                 <mat-icon class="me-1">insert_chart</mat-icon>
               </button>
             </div>
@@ -330,7 +330,7 @@
           <ng-container matColumnDef="nome_T2">
             <th mat-header-cell *matHeaderCellDef>Conjuge</th>
             <td mat-cell *matCellDef="let element">
-              {{ element.cpf_conjuge }}
+              {{ element.nome_T2 }}
             </td>
           </ng-container>
 
