@@ -64,62 +64,24 @@
 
     <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>Naturalidade</mat-label>
-      <input matInput type="text" formControlName="naturalidade" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
-      <mat-label>Município</mat-label>
-      <input matInput type="text" formControlName="municipio" />
+      <input
+        matInput
+        type="text"
+        formControlName="naturalidade"
+      /> </mat-form-field
+    ><mat-form-field appearance="outline" class="col-4" floatLabel="always">
+      <mat-label>Número do Documento</mat-label>
+      <input matInput type="text" formControlName="numero_documento" />
     </mat-form-field>
   </div>
 
   <div class="row espaco_campos">
     <mat-form-field appearance="outline" class="col-4" floatLabel="always">
-      <mat-label>Código do Município</mat-label>
-      <input matInput type="text" formControlName="codigo_municipio" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
-      <mat-label>Tipo de Documento</mat-label>
-      <input matInput type="text" formControlName="tipo_documento" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
-      <mat-label>Número do Documento</mat-label>
-      <input matInput type="text" formControlName="numero_documento" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
-      <mat-label>Órgão Emissor</mat-label>
-      <input matInput type="text" formControlName="orgao_emissor" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
-      <mat-label>UF do Órgão</mat-label>
-      <input matInput type="text" formControlName="uf_orgao" />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>Número do NIS</mat-label>
       <input matInput type="text" formControlName="numero_nis" />
     </mat-form-field>
 
-    <!--Encerra campos novos-->
-    <!--
-                <button
-                  type="button"
-                  class="btn btn-primary col-1 mais-dependente-btn"
-                  [disabled]="
-                    !formgroup.valid ||
-                    dependentes.length >= 1 ||
-                    cpfIgualAoOriginal
-                  "
-                  (click)="adicionarDependente()"
-                >
-                  <mat-label>Incluir Conjuge</mat-label>
-                </button>-->
-
-    <mat-form-field appearance="outline" class="col-6" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>Telefone</mat-label>
       <input
         matInput
@@ -128,7 +90,7 @@
         formControlName="telefone"
       />
     </mat-form-field>
-    <mat-form-field appearance="outline" class="col-6" floatLabel="always">
+    <mat-form-field appearance="outline" class="col-4" floatLabel="always">
       <mat-label>E-mail</mat-label>
       <input
         matInput

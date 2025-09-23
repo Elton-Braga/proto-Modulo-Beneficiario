@@ -106,14 +106,13 @@ export class Tela2Component {
 
       nome_pai: [{ value: dadosRota.nome_pai || '', disabled: true }],
       nome_mae: [{ value: dadosRota.nome_mae || '', disabled: true }],
-      nacionalidade: [{ value: dadosRota.nacionalidade || '', disabled: true }],
+      nacionalidade: [
+        { value: dadosRota.nacionalidade || '', disabled: false },
+      ],
       naturalidade: [{ value: dadosRota.naturalidade || '', disabled: true }],
-      municipio: [dadosRota.municipio || ''],
-      codigo_municipio: [dadosRota.codigo_municipio || ''],
-      tipo_documento: [dadosRota.tipo_documento || 'RG'],
+
       numero_documento: [dadosRota.numero_documento || ''],
-      orgao_emissor: [dadosRota.orgao_emissor || ''],
-      uf_orgao: [dadosRota.uf_orgao || ''],
+
       numero_nis: [dadosRota.numero_nis || ''],
       telefone: [
         { value: dadosRota.telefone || '', disabled: false },
