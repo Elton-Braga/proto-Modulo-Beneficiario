@@ -68,8 +68,11 @@ export class DetalharComponent {
   fechar() {
     this.dialogRef.close();
   }
-  assinarDeclaracao(beneficiario: any) {
-    console.log('Assinatura iniciada para:', beneficiario.nome_T1);
-    // Aqui você pode abrir um diálogo de assinatura digital
+  // função de assinatura: recebe o beneficiário, o item do histórico e o índice (opcional)
+  assinarDeclaracao(beneficiario: any, historico: any, index: number) {
+    console.log('Assinar declaração para:', beneficiario?.nome_T1, historico);
+    // Exemplo: marcando a declaração como "Assinada"
+    historico.declaracao_desistencia =
+      'Assinada em ' + new Date().toLocaleDateString();
   }
 }

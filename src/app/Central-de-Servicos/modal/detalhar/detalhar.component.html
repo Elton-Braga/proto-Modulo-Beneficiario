@@ -243,47 +243,67 @@
             <th>Data da Situação</th>
             <th>Motivo</th>
             <th>Declaração de Desistência</th>
+            <th class="text-center">Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngIf="data?.historico_PNRA?.length > 0; else semSituacao">
-            <td>
-              {{
-                data?.data_situacao_Titular
-                  ? (data?.data_situacao_Titular | date : "dd/MM/yyyy")
-                  : "Não informado"
-              }}
-            </td>
-            <td>
-              <mat-form-field appearance="fill">
-                <mat-label>Motivo</mat-label>
-                <mat-select [(value)]="data.motivo_situacao">
-                  <mat-option *ngFor="let motivo of motivos" [value]="motivo">
-                    {{ motivo }}
-                  </mat-option>
-                </mat-select>
-              </mat-form-field>
-            </td>
-            <td class="text-center">
-              <button
-                mat-icon-button
-                color="primary"
-                (click)="assinarDeclaracao(data)"
-              >
-                <mat-icon>edit_document</mat-icon>
-              </button>
-            </td>
-          </tr>
+          <!-- Se houver histórico -->
+          <ng-container
+            *ngIf="data?.historico_PNRA?.length > 0; else semSituacao"
+          >
+            <tr *ngFor="let h of data.historico_PNRA; let i = index">
+              <!-- Coluna Data -->
+              <td>
+                {{ h.data_Situacao || "Não informado" }}
+              </td>
+
+              <!-- Coluna Motivo -->
+              <td>
+                <mat-form-field appearance="fill" class="w-100">
+                  <mat-label>Motivo</mat-label>
+                  <mat-select [(value)]="h.motivo_situacao">
+                    <mat-option *ngFor="let motivo of motivos" [value]="motivo">
+                      {{ motivo }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </td>
+
+              <!-- Coluna Declaração de Desistência -->
+              <td class="text-center">
+                <!-- Se já existir uma declaração vinculada no JSON -->
+                <span *ngIf="h.declaracao_desistencia; else naoAssinada">
+                  {{ h.declaracao_desistencia }}
+                </span>
+                <ng-template #naoAssinada>
+                  <span class="text-muted">Não assinada</span>
+                </ng-template>
+              </td>
+
+              <!-- Coluna Ações -->
+              <td class="text-center">
+                <button
+                  mat-raised-button
+                  color="primary"
+                  (click)="assinarDeclaracao(data, h, i)"
+                >
+                  <mat-icon class="me-1">edit_document</mat-icon>
+                  Assinar
+                </button>
+              </td>
+            </tr>
+          </ng-container>
+
+          <!-- Template caso não haja histórico -->
+          <ng-template #semSituacao>
+            <tr>
+              <td colspan="4" class="text-center text-muted">
+                Nenhuma situação informada
+              </td>
+            </tr>
+          </ng-template>
         </tbody>
       </table>
-
-      <ng-template #semSituacao>
-        <tr>
-          <td colspan="3" class="text-center text-muted">
-            Nenhuma situação informada
-          </td>
-        </tr>
-      </ng-template>
     </div>
 
     <!-- Atualizar dados pessoais -->
@@ -347,11 +367,11 @@
       </table>
     </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-10"></div>
-  <div class="col-2">
-    <button class="btn btn-primary" (click)="fechar()">Voltar</button>
+  <div class="row">
+    <div class="col-10"></div>
+    <div class="col-2">
+      <button class="btn btn-primary" (click)="fechar()">Voltar</button>
+    </div>
   </div>
 </div>
