@@ -298,6 +298,11 @@
             <td mat-cell *matCellDef="let element">{{ element.projeto }}</td>
           </ng-container>
 
+          <ng-container matColumnDef="lote">
+            <th mat-header-cell *matHeaderCellDef>Lote</th>
+            <td mat-cell *matCellDef="let element">{{ element.lote }}</td>
+          </ng-container>
+
           <!-- Código do Beneficiario -->
           <ng-container matColumnDef="cod_beneficiario">
             <th mat-header-cell *matHeaderCellDef>Código do Beneficiario</th>
@@ -347,13 +352,6 @@
             <th mat-header-cell *matHeaderCellDef>Data Situação</th>
             <td mat-cell *matCellDef="let element">
               {{ element.data_situacao_T2 }}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="pendencias">
-            <th mat-header-cell *matHeaderCellDef>Pendencias</th>
-            <td mat-cell *matCellDef="let element">
-              {{ preencher_pendencias }}
             </td>
           </ng-container>
 

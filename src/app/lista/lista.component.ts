@@ -109,9 +109,9 @@ export class ListaComponent implements AfterViewInit {
     'municipio',
     'codigo_projeto',
     'projeto',
+    'Lote',
     'situacao_T1',
     'data_situacao_T2',
-    'pendencias',
     'Bloqueios',
     'acoes',
   ];
@@ -132,9 +132,9 @@ export class ListaComponent implements AfterViewInit {
     { chave: 'municipio', label: 'municipio', visivel: true },
     { chave: 'codigo_projeto', label: 'Código', visivel: true },
     { chave: 'projeto', label: 'Projeto', visivel: true },
+    { chave: 'lote', label: 'Lote', visivel: true },
     { chave: 'situacao_T1', label: 'Situação T1', visivel: true },
     { chave: 'data_situacao_T2', label: 'Data Situação T2', visivel: true },
-    { chave: 'pendencias', label: 'Período', visivel: true },
     { chave: 'Bloqueios', label: 'Bloqueios', visivel: true },
     { chave: 'acoes', label: 'Ações', visivel: true },
   ];
@@ -458,8 +458,6 @@ export class ListaComponent implements AfterViewInit {
           motivo_situacao,
           bloqueios,
           tela_lote,
-
-          // codigo_beneficiario_lote, codigo_tipo_bloqueio, descricao_bloqueio, codigo_transacao, data_bloqueio, codigo_sub_bloqueio, descricao_sub_bloqueio, codigo_motivo_bloqueio, descricao_motivo_bloqueio, desbloqueio_atendido, situacao_analise, data_resultado
         } = elemento;
 
         this.router.navigate(['/novo'], {
@@ -471,8 +469,6 @@ export class ListaComponent implements AfterViewInit {
             codigo_beneficiario,
             email,
             telefone,
-
-            // Inclusão dos novos atributos
             data_nascimento,
             estado_civil,
             falecido,
@@ -492,10 +488,8 @@ export class ListaComponent implements AfterViewInit {
             data_situacao_Conjuge,
             data_situacao_Titular,
             data_homologacao_conjuge,
-
             situacao_Titular,
             situacao_conjuge,
-
             aptoPNRA_conjuge,
             tipo_lote,
             area_lote,
@@ -504,8 +498,6 @@ export class ListaComponent implements AfterViewInit {
             denominacao_Gleba,
             denominacao_lote,
             observacao,
-            //observacao: observacaoDoBloqueio,       // <-- adiciona/garante a observação
-            //bloqueios: elemento.bloqueios ?? [],
             data_observacao,
             municipios,
             estados,
