@@ -54,25 +54,9 @@
           </tr>
           <tr>
             <th><strong>Nome da Mãe: </strong>{{ beneficiario.nome_mae }}</th>
-            <th><strong>Estado: </strong>{{ beneficiario.estados }}</th>
-            <th><strong>Município:</strong> {{ beneficiario.municipio }}</th>
-            <th>
-              <strong>Tipo do Documento: </strong
-              >{{ beneficiario.tipo_documento }}
-            </th>
-          </tr>
-          <tr>
-            <th>
-              <strong>Número do Documento:</strong>
-              {{ beneficiario.numero_documento }}
-            </th>
-            <th>
-              <strong>Órgão Emissor: </strong>{{ beneficiario.orgao_emissor }}
-            </th>
             <th>
               <strong>Número do NIS: </strong>{{ beneficiario.numero_nis }}
             </th>
-            <th></th>
           </tr>
         </table>
 
@@ -83,11 +67,7 @@
             <th><strong>Nome: </strong>{{ beneficiario.nome_T2 }}</th>
             <th><strong>CPF: </strong>{{ beneficiario.cpf_conjuge }}</th>
             <th>
-              <strong>Estado Civil: </strong>{{ beneficiario.situacao_conjuge }}
-            </th>
-            <th>
-              <strong>Data da Situação:</strong>
-              {{ beneficiario.data_situacao_Conjuge }}
+              <strong>Estado Civil: </strong>{{ beneficiario.estado_civil }}
             </th>
           </tr>
           <tr>
@@ -95,10 +75,11 @@
               <strong>Data de Homologação:</strong>
               {{ beneficiario.data_homologacao_conjuge }}
             </th>
+
             <th>
-              <strong>Apto PNRA: </strong>{{ beneficiario.aptoPNRA_conjuge }}
+              <strong>Data de Homologação : </strong
+              >{{ beneficiario.data_homologacao_Titular }}
             </th>
-            <th></th>
             <th></th>
           </tr>
         </table>
@@ -115,37 +96,40 @@
             <th><strong>Data da União</strong></th>
             <th><strong>Data da Separação</strong></th>
             <th><strong>Renda Familiar</strong></th>
-          </tr>
-          <tr *ngFor="let dep of beneficiario.dependentes">
-            <td>{{ dep.situacao_conjugal }}</td>
-            <td>{{ dep.data_uniao }}</td>
-            <td>{{ dep.data_separacao }}</td>
-            <td>{{ dep.renda_familiar }}</td>
-          </tr>
-
-          <tr>
             <th><strong>Nome do Dependente</strong></th>
-            <th><strong>Tipo de Dependente</strong></th>
-            <th><strong>Nome</strong></th>
-            <th><strong>Data de Nascimento</strong></th>
-          </tr>
-          <tr *ngFor="let dep of beneficiario.dependentes">
-            <td>{{ dep.nome_dependente }}</td>
-            <td>{{ dep.tipo_dependente }}</td>
-            <td>{{ dep.nome }}</td>
-            <td>{{ dep.data_nascimento }}</td>
+            <th><strong>CPF do Dependente</strong></th>
           </tr>
 
-          <tr>
-            <th><strong>Data de Entrada na Família</strong></th>
-            <th><strong>CPF do Dependente</strong></th>
-            <th colspan="2"><strong>Associação Unidade Familiar</strong></th>
-          </tr>
-          <tr *ngFor="let dep of beneficiario.dependentes">
-            <td>{{ dep.data_entrada_na_familia }}</td>
-            <td>{{ dep.cpf_dependente }}</td>
-            <td colspan="2">{{ dep.associacao_unidade_familiar }}</td>
-          </tr>
+          <ng-container
+            *ngFor="let dep of beneficiario.dependentes; let i = index"
+          >
+            <tr>
+              <!-- Exibe apenas na primeira linha -->
+              <td
+                *ngIf="i === 0"
+                [attr.rowspan]="beneficiario.dependentes.length"
+              >
+                {{ dep.situacao_conjugal }}
+              </td>
+              <td
+                *ngIf="i === 0"
+                [attr.rowspan]="beneficiario.dependentes.length"
+              >
+                {{ dep.data_uniao }}
+              </td>
+              <td>{{ dep.data_separacao }}</td>
+              <td
+                *ngIf="i === 0"
+                [attr.rowspan]="beneficiario.dependentes.length"
+              >
+                {{ dep.renda_familiar }}
+              </td>
+
+              <!-- Sempre exibidos -->
+              <td>{{ dep.nome_dependente }}</td>
+              <td>{{ dep.cpf_dependente }}</td>
+            </tr>
+          </ng-container>
         </table>
 
         <!-- Caso não tenha dependentes -->
@@ -167,7 +151,8 @@
             <th><strong>Projeto: </strong>{{ beneficiario.projeto }}</th>
             <th><strong>Lote: </strong>{{ beneficiario.lote }}</th>
             <th>
-              <strong>Regularização: </strong>{{ beneficiario.regularizacao }}
+              <strong>Situação: </strong
+              >{{ beneficiario.historico_PNRA[0].situacao }}
             </th>
           </tr>
           <tr>
