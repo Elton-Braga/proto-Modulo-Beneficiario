@@ -8,16 +8,26 @@ import { AnalisarComponent } from '../analisar/analisar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule, NgFor } from '@angular/common';
 import { Beneficiario } from '../../../lista/beneficiario';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-detalhar',
-  imports: [MatIconModule, CommonModule, NgFor],
+  imports: [
+    MatIconModule,
+    CommonModule,
+    NgFor,
+    MatFormFieldModule,
+    MatSelectModule,
+  ],
   standalone: true,
   templateUrl: './detalhar.component.html',
   styleUrl: './detalhar.component.scss',
 })
 export class DetalharComponent {
   readonly dialog = inject(MatDialog);
+  // Lista de motivos possíveis
+  motivos: string[] = ['Tipo 1', 'Tipo 2', 'Tipo 3'];
   constructor(
     public dialogRef: MatDialogRef<AnalisarComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -57,5 +67,9 @@ export class DetalharComponent {
   }
   fechar() {
     this.dialogRef.close();
+  }
+  assinarDeclaracao(beneficiario: any) {
+    console.log('Assinatura iniciada para:', beneficiario.nome_T1);
+    // Aqui você pode abrir um diálogo de assinatura digital
   }
 }

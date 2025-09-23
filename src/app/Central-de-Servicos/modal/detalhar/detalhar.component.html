@@ -235,6 +235,57 @@
       </ng-template>
     </div>
 
+    <div *ngIf="data?.tipoServico === 'Atualização de situação'">
+      <h3>Atualização de Situação</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Data da Situação</th>
+            <th>Motivo</th>
+            <th>Declaração de Desistência</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngIf="data?.historico_PNRA?.length > 0; else semSituacao">
+            <td>
+              {{
+                data?.data_situacao_Titular
+                  ? (data?.data_situacao_Titular | date : "dd/MM/yyyy")
+                  : "Não informado"
+              }}
+            </td>
+            <td>
+              <mat-form-field appearance="fill">
+                <mat-label>Motivo</mat-label>
+                <mat-select [(value)]="data.motivo_situacao">
+                  <mat-option *ngFor="let motivo of motivos" [value]="motivo">
+                    {{ motivo }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </td>
+            <td class="text-center">
+              <button
+                mat-icon-button
+                color="primary"
+                (click)="assinarDeclaracao(data)"
+              >
+                <mat-icon>edit_document</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ng-template #semSituacao>
+        <tr>
+          <td colspan="3" class="text-center text-muted">
+            Nenhuma situação informada
+          </td>
+        </tr>
+      </ng-template>
+    </div>
+
     <!-- Atualizar dados pessoais -->
     <div *ngIf="data?.tipoServico === 'Atualização de dados pessoais'">
       <h3>Atualizar dados pessoais</h3>
