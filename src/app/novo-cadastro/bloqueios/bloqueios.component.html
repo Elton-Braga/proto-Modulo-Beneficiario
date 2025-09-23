@@ -15,20 +15,9 @@
       <mat-datepicker #picker1></mat-datepicker>
     </mat-form-field>
 
-    <!-- Observacao  input
-    <mat-form-field appearance="outline" class="w-100 col-3">
-      <mat-label>Observação</mat-label>
-      <input matInput formControlName="observacao" />
-    </mat-form-field>-->
-
-    <!-- Código Tipo Bloqueio -->
-    <mat-form-field appearance="outline" class="w-100 col-6">
-      <mat-label>Código Tipo Bloqueio</mat-label>
-      <input matInput formControlName="codigoTipoBloqueio" />
-    </mat-form-field>
     <!-- BLoqueado - Sim / Não -->
 
-    <mat-form-field appearance="outline" class="w-100 col-4">
+    <mat-form-field appearance="outline" class="w-100 col-6">
       <mat-label>Bloqueio?</mat-label>
       <mat-select formControlName="bloqueio">
         <mat-option value="sim">Sim</mat-option>
@@ -36,74 +25,17 @@
       </mat-select>
     </mat-form-field>
 
-    <!-- Descrição Bloqueio
-    <mat-form-field appearance="outline" class="w-100 col-3">
-      <mat-label>Descrição Bloqueio</mat-label>
-      <input matInput formControlName="descricaoBloqueio" />
-    </mat-form-field> -->
-
-    <!-- Código Transação 
-    <mat-form-field appearance="outline" class="w-100 col-3">
-      <mat-label>Código Transação</mat-label>
-      <input matInput formControlName="codigoTransacao" />
-    </mat-form-field>-->
-
-    <!-- Código SubBloqueio 
-    <mat-form-field appearance="outline" class="w-100 col-3">
-      <mat-label>Código SubBloqueio</mat-label>
-      <input matInput formControlName="codigoSubBloqueio" />
-    </mat-form-field>-->
-
     <!-- Descrição SubBloqueio -->
-    <mat-form-field appearance="outline" class="w-100 col-4">
+    <mat-form-field appearance="outline" class="w-100 col-6">
       <mat-label>Tipo do SubBloqueio</mat-label>
       <input matInput formControlName="descricaoSubBloqueio" />
     </mat-form-field>
 
-    <!-- Código Motivo Bloqueio 
-    <mat-form-field appearance="outline" class="w-100 col-4">
-      <mat-label>Código Motivo Bloqueio</mat-label>
-      <input matInput formControlName="codigoMotivoBloqueio" />
-    </mat-form-field>-->
-
-    <!-- Descrição Motivo Bloqueio 
-    <mat-form-field appearance="outline" class="w-100 col-4">
-      <mat-label>Descrição Motivo Bloqueio</mat-label>
-      <input matInput formControlName="descricaoMotivoBloqueio" />
-    </mat-form-field>-->
-
-    <!-- Desbloqueio Atendido 
-    <mat-form-field appearance="outline" class="w-100 col-4">
-      <mat-label>Desbloqueio Atendido</mat-label>
-      <input matInput formControlName="desbloqueioAtendido" />
-    </mat-form-field>-->
-
     <!-- Situação Análise -->
-    <mat-form-field appearance="outline" class="w-100 col-4">
+    <mat-form-field appearance="outline" class="w-100 col-6">
       <mat-label>Tipo de Transação</mat-label>
       <input matInput formControlName="situacaoAnalise" />
     </mat-form-field>
-
-    <!-- Data Resultado 
-    <mat-form-field appearance="outline" class="w-100 col-6">
-      <mat-label>Data Resultado</mat-label>
-      <input
-        matInput
-        [matDatepicker]="picker2"
-        formControlName="dataResultado"
-      />
-      <mat-datepicker-toggle
-        matIconSuffix
-        [for]="picker2"
-      ></mat-datepicker-toggle>
-      <mat-datepicker #picker2></mat-datepicker>
-    </mat-form-field>-->
-
-    <!-- Botão de salvar -->
-    <!--
-    <button mat-raised-button color="primary" [disabled]="form.invalid">
-      Salvar
-    </button>-->
 
     <mat-form-field appearance="outline" class="w-100 col-12">
       <mat-label>Observação</mat-label>
