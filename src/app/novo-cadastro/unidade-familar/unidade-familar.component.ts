@@ -38,10 +38,7 @@ import { Router } from '@angular/router';
     MatIconModule,
     NgxMaskDirective,
     MatTableModule,
-    MatMenu,
     MatMenuModule,
-
-    NgIf,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
