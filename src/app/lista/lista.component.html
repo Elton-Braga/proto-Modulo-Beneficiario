@@ -355,6 +355,13 @@
             </td>
           </ng-container>
 
+          <ng-container matColumnDef="Processo">
+            <th mat-header-cell *matHeaderCellDef>Processos</th>
+            <td mat-cell *matCellDef="let element">
+              {{ element.numero_processo[0] }}
+            </td>
+          </ng-container>
+
           <ng-container matColumnDef="Bloqueios">
             <th mat-header-cell *matHeaderCellDef>Bloqueios</th>
             <td mat-cell *matCellDef="let element">

@@ -4,7 +4,6 @@ export const MOCK_BENEFICIARIOS: Beneficiario[] = [
   {
     check: 1,
     sr: 'SR-01',
-
     codigo_projeto: 'PA0006000',
     projeto: 'PA MIRITIPITANGA',
     lote: 102,

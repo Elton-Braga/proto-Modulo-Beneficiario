@@ -5,29 +5,22 @@
     <div class="col-12 ajusteItem" *ngFor="let item of data.historicoPNRA">
       <table>
         <tr>
-          <th>CPF's</th>
+          <th>Código do Beneficiário</th>
           <th>Nomes</th>
           <th>Nome do PA</th>
           <th>Situação</th>
           <th>Data da Situação</th>
         </tr>
 
-        <tr>
-          <td>
-            <p *ngFor="let cpf of item.CPF">{{ cpf }}</p>
-          </td>
-
-          <td>
-            <p *ngFor="let nome of item.nome">{{ nome }}</p>
-          </td>
-
+        <tr *ngFor="let nome of item.nome; let i = index">
+          <td>{{ item.codigo_beneficiario }}</td>
+          <td>{{ nome }}</td>
           <td>{{ item.nome_PA }}</td>
-
           <td>{{ item.situacao }}</td>
-
           <td>{{ item.data_Situacao }}</td>
         </tr>
       </table>
+
       <hr />
     </div>
   </div>

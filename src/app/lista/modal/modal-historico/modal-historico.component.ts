@@ -1,6 +1,6 @@
 import { Component, Inject, Input } from '@angular/core';
 import { HistoricoPNRA } from './HistoricoPNRA';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({

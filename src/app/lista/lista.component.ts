@@ -112,6 +112,7 @@ export class ListaComponent implements AfterViewInit {
     'lote',
     'situacao_T1',
     'data_situacao_T2',
+    'Processo',
     'Bloqueios',
     'acoes',
   ];
@@ -135,6 +136,7 @@ export class ListaComponent implements AfterViewInit {
     { chave: 'lote', label: 'Lote', visivel: true },
     { chave: 'situacao_T1', label: 'Situação T1', visivel: true },
     { chave: 'data_situacao_T2', label: 'Data Situação T2', visivel: true },
+    { chave: 'Processo', label: 'Processo', visivel: true },
     { chave: 'Bloqueios', label: 'Bloqueios', visivel: true },
     { chave: 'acoes', label: 'Ações', visivel: true },
   ];
