@@ -512,25 +512,22 @@ export class ListaComponent implements AfterViewInit {
 
       case 'Histórico do PNRA':
         this.openDialogHistorico(elemento);
-        // lógica para histórico
+
         break;
       case 'Espelho do Beneficiário':
         this.openDialogEspelho(elemento);
-        // lógica para PDF
+
         break;
+
       case 'Inclusão/Alteração de Cônjuge':
         this.openDialogInclusaoConjuge(elemento);
-        // lógica para PDF
         break;
-      //openDialogRequerimentos(elemento: Requerimento)
 
       case 'Requerimentos':
         window.open(
           'https://marcorapg.github.io/PGTPrototipo/autoservico/acompanharsolicitacoes',
           '_blank'
         );
-
-        // lógica para PDF
         break;
 
       case 'Serviços':
@@ -538,11 +535,7 @@ export class ListaComponent implements AfterViewInit {
           'https://marcorapg.github.io/PGTPrototipo/autoservico/criarsolicitacao',
           '_blank'
         );
-
-        // lógica para PDF
         break;
-
-      //openDialogSucessaoLote(elemento: Beneficiario)
     }
 
     console.log('nome 2:', elemento.nome_T2);
