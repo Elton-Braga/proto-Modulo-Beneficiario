@@ -5,7 +5,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal-historico',
-  imports: [NgFor],
+  imports: [NgFor, NgIf],
   templateUrl: './modal-historico.component.html',
   styleUrl: './modal-historico.component.scss',
 })

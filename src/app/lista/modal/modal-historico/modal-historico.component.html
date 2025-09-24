@@ -14,13 +14,30 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of historicoPNRA">
-            <td>{{ item.codigo_beneficiario }}</td>
-            <td>{{ item.nome.join(", ") }}</td>
-            <td>{{ item.nome_PA }}</td>
-            <td>{{ item.situacao }}</td>
-            <td>{{ item.data_Situacao }}</td>
-          </tr>
+          <ng-container *ngFor="let item of historicoPNRA">
+            <ng-container *ngFor="let nome of item.nome; let i = index">
+              <tr>
+                <!-- Código do Beneficiário (mesclado) -->
+                <td *ngIf="i === 0" [attr.rowspan]="item.nome.length">
+                  {{ item.codigo_beneficiario }}
+                </td>
+
+                <!-- Nome -->
+                <td>{{ nome }}</td>
+
+                <!-- Nome do PA (mesclado) -->
+                <td *ngIf="i === 0" [attr.rowspan]="item.nome.length">
+                  {{ item.nome_PA }}
+                </td>
+
+                <!-- Situação -->
+                <td>{{ item.situacao }}</td>
+
+                <!-- Data da Situação -->
+                <td>{{ item.data_Situacao }}</td>
+              </tr>
+            </ng-container>
+          </ng-container>
         </tbody>
       </table>
     </div>
