@@ -525,7 +525,20 @@ export class ListaComponent implements AfterViewInit {
       //openDialogRequerimentos(elemento: Requerimento)
 
       case 'Requerimentos':
-        this.openDialogRequerimentos(elemento);
+        window.open(
+          'https://marcorapg.github.io/PGTPrototipo/autoservico/acompanharsolicitacoes',
+          '_blank'
+        );
+
+        // lógica para PDF
+        break;
+
+      case 'Serviços':
+        window.open(
+          'https://marcorapg.github.io/PGTPrototipo/autoservico/criarsolicitacao',
+          '_blank'
+        );
+
         // lógica para PDF
         break;
 

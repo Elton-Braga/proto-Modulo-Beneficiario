@@ -219,7 +219,7 @@
                 </mat-form-field>
 
                 <mat-form-field
-                  class="col-4"
+                  class="col-6"
                   appearance="outline"
                   floatLabel="always"
                 >
@@ -228,25 +228,12 @@
                 </mat-form-field>
 
                 <mat-form-field
-                  class="col-4"
+                  class="col-6"
                   appearance="outline"
                   floatLabel="always"
                 >
                   <mat-label>Naturalidade</mat-label>
                   <input matInput type="text" formControlName="naturalidade" />
-                </mat-form-field>
-
-                <mat-form-field
-                  class="col-4"
-                  appearance="outline"
-                  floatLabel="always"
-                >
-                  <mat-label>Número do Documento</mat-label>
-                  <input
-                    matInput
-                    type="text"
-                    formControlName="numero_documento"
-                  />
                 </mat-form-field>
 
                 <mat-form-field
@@ -349,88 +336,8 @@
               </div>
             </form>
 
-            <!--<div class="col-12" *ngIf="processos.length > 0">
-              
-
-              <table
-                mat-table
-                [dataSource]="processos"
-                class="mat-elevation-z8 w-100"
-              >
-                
-                <ng-container matColumnDef="numero">
-                  <th mat-header-cell *matHeaderCellDef>
-                    Processos Adicionados
-                  </th>
-                  <td mat-cell *matCellDef="let p; let i = index">
-                    <input
-                      matInput
-                      [(ngModel)]="p.numero"
-                      [disabled]="!p.editando"
-                      class="w-100"
-                    />
-                  </td>
-                </ng-container>
-
-                
-                <ng-container matColumnDef="acoes">
-                  <th mat-header-cell *matHeaderCellDef>Ações</th>
-                  <td mat-cell *matCellDef="let p" class="ajuste-coluna-acoes">
-                    <button
-                      mat-icon-button
-                      [matMenuTriggerFor]="menu"
-                      (click)="processoSelecionado = p"
-                    >
-                      <mat-icon>more_vert</mat-icon>
-                    </button>
-
-                    <mat-menu #menu="matMenu">
-                      <button
-                        mat-menu-item
-                        *ngIf="!processoSelecionado?.editando"
-                        (click)="editarProcesso(processoSelecionado!)"
-                      >
-                        <mat-icon>edit</mat-icon>
-                        <span>Editar</span>
-                      </button>
-
-                      <button
-                        mat-menu-item
-                        *ngIf="processoSelecionado?.editando"
-                        (click)="salvarProcesso(processoSelecionado!)"
-                      >
-                        <mat-icon>save</mat-icon>
-                        <span>Salvar</span>
-                      </button>
-
-                      <button
-                        mat-menu-item
-                        (click)="excluirProcesso(processoSelecionado!)"
-                      >
-                        <mat-icon>delete</mat-icon>
-                        <span>Excluir</span>
-                      </button>
-                    </mat-menu>
-                  </td>
-                </ng-container>
-
-                
-                <tr mat-header-row *matHeaderRowDef="['numero', 'acoes']"></tr>
-
-                
-                <tr
-                  mat-row
-                  *matRowDef="let row; columns: ['numero', 'acoes']"
-                ></tr>
-              </table>
-            </div>-->
-
             <div class="row ajuste-btns">
-              <div class="col-11">
-                <!--<button type="button" class="btn btn-primary ajuste_plus">
-                  Salvar
-                </button>-->
-              </div>
+              <div class="col-11"></div>
 
               <div class="col-1"></div>
             </div>
