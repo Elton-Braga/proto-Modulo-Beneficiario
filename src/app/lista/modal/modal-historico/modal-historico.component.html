@@ -2,26 +2,27 @@
   <div class="row ajuste">
     <h1>Histórico do PNRA</h1>
 
-    <div class="col-12 ajusteItem" *ngFor="let item of data.historicoPNRA">
-      <table>
-        <tr>
-          <th>Código do Beneficiário</th>
-          <th>Nomes</th>
-          <th>Nome do PA</th>
-          <th>Situação</th>
-          <th>Data da Situação</th>
-        </tr>
-
-        <tr *ngFor="let nome of item.nome; let i = index">
-          <td>{{ item.codigo_beneficiario }}</td>
-          <td>{{ nome }}</td>
-          <td>{{ item.nome_PA }}</td>
-          <td>{{ item.situacao }}</td>
-          <td>{{ item.data_Situacao }}</td>
-        </tr>
+    <div class="col-12 ajusteItem">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Código do Beneficiário</th>
+            <th>Nomes</th>
+            <th>Nome do PA</th>
+            <th>Situação</th>
+            <th>Data da Situação</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of historicoPNRA">
+            <td>{{ item.codigo_beneficiario }}</td>
+            <td>{{ item.nome.join(", ") }}</td>
+            <td>{{ item.nome_PA }}</td>
+            <td>{{ item.situacao }}</td>
+            <td>{{ item.data_Situacao }}</td>
+          </tr>
+        </tbody>
       </table>
-
-      <hr />
     </div>
   </div>
 </div>
