@@ -238,6 +238,7 @@
         <thead>
           <tr>
             <th>Data da Situação</th>
+            <th>Situação</th>
             <th>Motivo</th>
             <th>Declaração de Desistência</th>
           </tr>
@@ -251,6 +252,10 @@
               <!-- Coluna Data -->
               <td>
                 {{ h.data_Situacao || "Não informado" }}
+              </td>
+
+              <td>
+                {{ h.situacao || "Não informado" }}
               </td>
 
               <!-- Coluna Motivo -->
