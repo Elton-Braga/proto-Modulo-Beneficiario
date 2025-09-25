@@ -30,11 +30,15 @@
                   {{ item.nome_PA }}
                 </td>
 
-                <!-- Situação -->
-                <td>{{ item.situacao }}</td>
+                <!-- Situação (mesclado) -->
+                <td *ngIf="i === 0" [attr.rowspan]="item.nome.length">
+                  {{ item.situacao }}
+                </td>
 
-                <!-- Data da Situação -->
-                <td>{{ item.data_Situacao }}</td>
+                <!-- Data da Situação (mesclado) -->
+                <td *ngIf="i === 0" [attr.rowspan]="item.nome.length">
+                  {{ item.data_Situacao }}
+                </td>
               </tr>
             </ng-container>
           </ng-container>
